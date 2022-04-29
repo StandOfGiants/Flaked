@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://froggyman.png" type="Texture" id=1]
 [ext_resource path="res://RigidBody.gd" type="Script" id=2]
+[ext_resource path="res://fman2.png" type="Texture" id=3]
 
 [sub_resource type="SpatialMaterial" id=3]
 albedo_texture = ExtResource( 1 )
@@ -39,8 +40,8 @@ shape = SubResource( 4 )
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 2.70871, 0.0233029, 0 )
 
 [node name="Sprite3D" type="Sprite3D" parent="Player2"]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.774342, -5.96046e-08 )
-texture = ExtResource( 1 )
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.0325, 0.981783, -0.284652 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Player2"]
 transform = Transform( 1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0.704845, -0.236531 )
