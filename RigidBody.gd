@@ -1,8 +1,5 @@
 extends KinematicBody
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 const MAX_SPEED = 3
 const JUMP_SPEED = 5
 const ACCELERATION = 2
@@ -39,7 +36,7 @@ func _process(delta):
 	velocity.z = hvel.z
 	velocity = move_and_slide(velocity, Vector3.UP)
 
-	if velocity.x > 0:
+	if velocity.x > 0.1:
 		$Sprite3D.rotation.y = lerp($Sprite3D.rotation.y, 0, .25)
-	else:
+	elif velocity.x < -0.1:
 		$Sprite3D.rotation.y = lerp($Sprite3D.rotation.y, PI, .25)
