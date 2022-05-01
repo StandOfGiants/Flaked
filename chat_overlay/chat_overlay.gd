@@ -14,10 +14,17 @@ onready var npc_portrait := $Balloon/NPCPortrait
 onready var player_portrait := $Balloon/PlayerPortrait
 
 const npc_portraits = {
-	"Gorvan": preload("res://entities/npc/gorvan_portrait.png"),
-	"Porvan": preload("res://entities/npc/porvan_portrait.png"),
-	"Morvan": preload("res://entities/npc/gorvan.png"),
-	"Nathan": preload("res://entities/npc/Hand-Holding-Cell-Phone.png")
+	# Phone people
+	"Aaron": preload("res://entities/npc/Hand-Holding-Cell-Phone.png"),
+	"Cal": preload("res://entities/npc/Hand-Holding-Cell-Phone.png"),
+	"Miles": preload("res://entities/npc/Hand-Holding-Cell-Phone.png"),
+	"Phone": preload("res://entities/npc/Hand-Holding-Cell-Phone.png"),
+	# Bar patrons
+	"Benny": preload("res://entities/npc/Benny/Benny_portrait.png"),
+	"Don": preload("res://entities/npc/Don/Don_portrait.png"),
+	"Kat": preload("res://entities/npc/Kat/Kat_portrait.png"),
+	"Tony Macaroni": preload("res://entities/npc/TonyMacaroni/TonyMacaroni_portrait.png"),
+	"Troy": preload("res://entities/npc/Troy/Troy_portrait.png"),
 }
 
 var dialog: DialogLine

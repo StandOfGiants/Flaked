@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/eefd21b351916398ec59775e44ce1027.jpg-dd1e88e22a0b5040326f82219bb0d915.stex"
+path="res://.import/Benny_portrait.png-dabf30439d0a75ebb072cfbac6ffa8d8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/npc/eefd21b351916398ec59775e44ce1027.jpg"
-dest_files=[ "res://.import/eefd21b351916398ec59775e44ce1027.jpg-dd1e88e22a0b5040326f82219bb0d915.stex" ]
+source_file="res://entities/npc/Benny/Benny_portrait.png"
+dest_files=[ "res://.import/Benny_portrait.png-dabf30439d0a75ebb072cfbac6ffa8d8.stex" ]
 
 [params]
 

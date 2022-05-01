@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://entities/npc/Benny/Benny.tres" type="Resource" id=1]
+[ext_resource path="res://entities/npc/NPC.tscn" type="PackedScene" id=2]
+[ext_resource path="res://entities/npc/Benny/Benny.png" type="Texture" id=3]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.409045, 0.277792, 0.127055 )
+
+[sub_resource type="SphereShape" id=2]
+radius = 1.29679
+
+[node name="Benny" instance=ExtResource( 2 )]
+full_body = ExtResource( 3 )
+dialog = ExtResource( 1 )
+
+[node name="Sprite3D" parent="." index="0"]
+transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.738224, 0 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape" parent="." index="1"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape" parent="Area" index="0"]
+shape = SubResource( 2 )

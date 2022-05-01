@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://entities/player/froggyman.png" type="Texture" id=1]
+[ext_resource path="res://entities/player/player.png" type="Texture" id=1]
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_transparent = true

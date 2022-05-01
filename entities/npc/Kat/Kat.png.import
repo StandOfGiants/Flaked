@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/gorvan_portrait.png-1463c95eca5fe67d6cb5b5f639440930.s3tc.stex"
-path.etc2="res://.import/gorvan_portrait.png-1463c95eca5fe67d6cb5b5f639440930.etc2.stex"
+path.s3tc="res://.import/Kat.png-a329cf65e89db6b46830b44da65febf6.s3tc.stex"
+path.etc2="res://.import/Kat.png-a329cf65e89db6b46830b44da65febf6.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://entities/npc/gorvan_portrait.png"
-dest_files=[ "res://.import/gorvan_portrait.png-1463c95eca5fe67d6cb5b5f639440930.s3tc.stex", "res://.import/gorvan_portrait.png-1463c95eca5fe67d6cb5b5f639440930.etc2.stex" ]
+source_file="res://entities/npc/Kat/Kat.png"
+dest_files=[ "res://.import/Kat.png-a329cf65e89db6b46830b44da65febf6.s3tc.stex", "res://.import/Kat.png-a329cf65e89db6b46830b44da65febf6.etc2.stex" ]
 
 [params]
 

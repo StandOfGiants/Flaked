@@ -1,0 +1,35 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialog_manager/dialog_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+syntax_version = 2
+raw_text = "~ begin
+
+Kat: Yo, I'm Kat."
+errors = [  ]
+titles = {
+"begin": "2"
+}
+lines = {
+"0": {
+"next_id": "2",
+"text": "begin",
+"type": "title"
+},
+"2": {
+"character": "Kat",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Yo, I'm Kat.",
+"time": null,
+"translation_key": "Yo, I'm Kat.",
+"type": "dialog"
+}
+}

@@ -11,6 +11,7 @@ onready var gravity = -ProjectSettings.get_setting("physics/3d/default_gravity")
 var velocity: Vector3
 
 var chat_overlay = preload("res://chat_overlay/chat_overlay.tscn")
+var intro_text = preload("res://entities/player/Intro.tres")
 var running_talk = false
 
 
@@ -23,10 +24,14 @@ func run_dialog(id: String, resource: DialogResource):
 		run_dialog(yield(overlay, "actioned"), resource)
 
 
+func _ready():
+	run_dialog("begin", intro_text)
+
+
 func _process(_delta):
 	if (
 		nearestNPC != null
-		and Input.is_action_just_pressed("ui_select")
+		and Input.is_action_just_pressed("ui_accept")
 		and not has_node("ChatOverlay")
 	):
 		run_dialog("begin", nearestNPC.dialog)

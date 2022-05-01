@@ -1,8 +1,8 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://TableWithLight.tscn" type="PackedScene" id=2]
-[ext_resource path="res://entities/npc/porvan.png" type="Texture" id=3]
+[ext_resource path="res://entities/npc/Benny/Benny.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Dust_and_smudge_1.jpg" type="Texture" id=4]
 [ext_resource path="res://WallTexture.tres" type="Material" id=5]
 [ext_resource path="res://MainScene.lmbake" type="BakedLightmapData" id=6]
@@ -11,13 +11,15 @@
 [ext_resource path="res://Torch.tscn" type="PackedScene" id=9]
 [ext_resource path="res://models/supportBeam.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ce-starfield-background-1.jpg" type="Texture" id=11]
-[ext_resource path="res://entities/npc/NPC.tscn" type="PackedScene" id=12]
+[ext_resource path="res://entities/npc/NPC.gd" type="Script" id=12]
 [ext_resource path="res://models/firewoodPile.tscn" type="PackedScene" id=13]
-[ext_resource path="res://entities/npc/gorvan.png" type="Texture" id=14]
-[ext_resource path="res://dialog/Gorvan.tres" type="Resource" id=15]
-[ext_resource path="res://dialog/Porvan.tres" type="Resource" id=16]
+[ext_resource path="res://entities/npc/Don/Don.tscn" type="PackedScene" id=14]
+[ext_resource path="res://entities/npc/Kat/Kat.tscn" type="PackedScene" id=15]
+[ext_resource path="res://entities/npc/NPC.gd" type="Script" id=16]
 [ext_resource path="res://models/shelving.tscn" type="PackedScene" id=17]
 [ext_resource path="res://MainScene.gd" type="Script" id=18]
+[ext_resource path="res://entities/npc/TonyMacaroni/TonyMacaroni.tscn" type="PackedScene" id=19]
+[ext_resource path="res://entities/npc/Troy/Troy.tscn" type="PackedScene" id=20]
 
 [sub_resource type="PanoramaSky" id=10]
 panorama = ExtResource( 11 )
@@ -113,51 +115,12 @@ material = ExtResource( 5 )
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.520265, 0.854005, 0, -0.854005, 0.520265, 0, 4.51251, 0 )
 light_color = Color( 0.176471, 0.203922, 0.427451, 1 )
-light_energy = 0.44
 light_specular = 0.0
 light_bake_mode = 2
 directional_shadow_mode = 0
 
-[node name="TableWithLight4" parent="." instance=ExtResource( 2 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.7246, 0.140412, -2.40851 )
-seed_value = 29
-
-[node name="TableWithLight5" parent="." instance=ExtResource( 2 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.19194, 0.140412, 1.4481 )
-seed_value = 12
-
-[node name="TableWithLight6" parent="." instance=ExtResource( 2 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.12965, 0.140412, 5.05504 )
-seed_value = 30
-
-[node name="TableWithLight7" parent="." instance=ExtResource( 2 )]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.8901, 0.140412, 7.70734 )
-seed_value = 12
-
-[node name="TableWithLight" parent="." instance=ExtResource( 2 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.87855, 0, 8.05301 )
-seed_value = 24
-
-[node name="TableWithLight2" parent="." instance=ExtResource( 2 )]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.01175, 0, 12.4033 )
-seed_value = 15
-
-[node name="TableWithLight3" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.89699, 0, 12.4042 )
-seed_value = 20
-
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.512301, 0 )
-
-[node name="Gorvan" parent="." instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.28911, 0.133394, 0.620685 )
-full_body = ExtResource( 14 )
-dialog = ExtResource( 15 )
-
-[node name="Porvan" parent="." instance=ExtResource( 12 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.53301, 0.125291, -3.20017 )
-full_body = ExtResource( 3 )
-dialog = ExtResource( 16 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.369412, 0.512301, 11.2838 )
 
 [node name="Bar Area" parent="." instance=ExtResource( 8 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.7099, 0.16637, -0.0382721 )
@@ -195,37 +158,87 @@ transform = Transform( 0.4, 0, 0, 0, 0.393971, -0.0691912, 0, 0.0691912, 0.39397
 [node name="Torch5" parent="Stage" instance=ExtResource( 9 )]
 transform = Transform( 0.4, 0, 0, 0, 0.393971, -0.0691912, 0, 0.0691912, 0.393971, -3.23541, 1.9707, -1.20623 )
 
-[node name="supportBeam2" parent="." instance=ExtResource( 10 )]
+[node name="Decor" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.65932, 0, -4.56099 )
 
-[node name="supportBeam" parent="." instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.503437, 0, -4.65297 )
+[node name="TableWithLight4" parent="Decor" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.38392, 0.140412, 2.15248 )
+seed_value = 29
 
-[node name="supportBeam3" parent="." instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.45531, 0, -3.83851 )
+[node name="TableWithLight5" parent="Decor" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.46738, 0.140412, 6.00909 )
+seed_value = 12
 
-[node name="supportBeam4" parent="." instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.41187, 0, 3.24184 )
+[node name="TableWithLight6" parent="Decor" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.789, 0.140412, 9.61603 )
+seed_value = 30
 
-[node name="supportBeam5" parent="." instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.08834, 0, 1.99367 )
+[node name="TableWithLight7" parent="Decor" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.76922, 0.140412, 12.2683 )
+seed_value = 12
 
-[node name="supportBeam6" parent="." instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.50894, 0, 7.45656 )
+[node name="TableWithLight" parent="Decor" instance=ExtResource( 2 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -14.5379, 0, 12.614 )
+seed_value = 24
 
-[node name="supportBeam7" parent="." instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.50625, 0, 10.3886 )
+[node name="TableWithLight2" parent="Decor" instance=ExtResource( 2 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -10.6711, 0, 16.9643 )
+seed_value = 15
 
-[node name="supportBeam8" parent="." instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.55051, 0, 13.2338 )
+[node name="TableWithLight3" parent="Decor" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.76233, 0, 16.9652 )
+seed_value = 20
 
-[node name="firewoodPile" parent="." instance=ExtResource( 13 )]
-transform = Transform( 0.327119, 0, -0.944983, 0, 1, 0, 0.944983, 0, 0.327119, 6.40368, 0.56613, 11.0408 )
+[node name="supportBeam2" parent="Decor" instance=ExtResource( 10 )]
 
-[node name="shelving" parent="." instance=ExtResource( 17 )]
-transform = Transform( 0.418787, 0, -0.908085, 0, 1, 0, 0.908085, 0, 0.418787, -7.66111, 0.0920854, 13.4244 )
+[node name="supportBeam" parent="Decor" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.15588, 0, -0.09198 )
 
-[node name="shelving2" parent="." instance=ExtResource( 17 )]
-transform = Transform( -0.553537, 0, -0.832825, 0, 1, 0, 0.832825, 0, -0.553537, 6.74947, 0.0920854, 13.4244 )
+[node name="supportBeam3" parent="Decor" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.1146, 0, 0.72248 )
+
+[node name="supportBeam4" parent="Decor" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0712, 0, 7.80283 )
+
+[node name="supportBeam5" parent="Decor" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57098, 0, 6.55466 )
+
+[node name="supportBeam6" parent="Decor" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1683, 0, 12.0175 )
+
+[node name="supportBeam7" parent="Decor" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.15307, 0, 14.9496 )
+
+[node name="supportBeam8" parent="Decor" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2098, 0, 17.7948 )
+
+[node name="firewoodPile" parent="Decor" instance=ExtResource( 13 )]
+transform = Transform( 0.327119, 0, -0.944983, 0, 1, 0, 0.944983, 0, 0.327119, -1.25564, 0.122621, 15.6018 )
+
+[node name="shelving" parent="Decor" instance=ExtResource( 17 )]
+transform = Transform( 0.418787, 0, -0.908085, 0, 1, 0, 0.908085, 0, 0.418787, -15.3204, 0.0920854, 17.9854 )
+
+[node name="shelving2" parent="Decor" instance=ExtResource( 17 )]
+transform = Transform( -0.553537, 0, -0.832825, 0, 1, 0, 0.832825, 0, -0.553537, -0.90985, 0.0920854, 17.9854 )
+
+[node name="NPCs" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34074, 0.140412, -3.07895 )
+
+[node name="TonyMacaroni" parent="NPCs" instance=ExtResource( 19 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.28356, 0.930746, -2.71801 )
+script = ExtResource( 16 )
+
+[node name="Benny" parent="NPCs" instance=ExtResource( 3 )]
+script = ExtResource( 12 )
+
+[node name="Don" parent="NPCs" instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.27233, 0.0161482, 5.33636 )
+
+[node name="Kat" parent="NPCs" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75782, 3.27826e-07, 6.94716 )
+
+[node name="Troy" parent="NPCs" instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21794, -0.140412, 10.0789 )
+script = ExtResource( 16 )
 
 [editable path="Stage"]

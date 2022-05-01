@@ -1,0 +1,35 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialog_manager/dialog_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+syntax_version = 2
+raw_text = "~ begin
+
+Tony Macaroni: I'm Macaroni, Tony Macaroni."
+errors = [  ]
+titles = {
+"begin": "2"
+}
+lines = {
+"0": {
+"next_id": "2",
+"text": "begin",
+"type": "title"
+},
+"2": {
+"character": "Tony Macaroni",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I'm Macaroni, Tony Macaroni.",
+"time": null,
+"translation_key": "I'm Macaroni, Tony Macaroni.",
+"type": "dialog"
+}
+}

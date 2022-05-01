@@ -8,7 +8,7 @@
 [ext_resource path="res://chat_overlay/Open_Sans/OpenSans-Italic.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://addons/dialog_manager/dialog_label.tscn" type="PackedScene" id=7]
 [ext_resource path="res://chat_overlay/background.svg" type="Texture" id=8]
-[ext_resource path="res://entities/npc/fman2.png" type="Texture" id=9]
+[ext_resource path="res://entities/npc/Hand-Holding-Cell-Phone.png" type="Texture" id=9]
 [ext_resource path="res://entities/player/froggyman_portrait.png" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=1]

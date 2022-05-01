@@ -1,8 +1,9 @@
+tool
 class_name NPC
 
 extends KinematicBody
 
-export(StreamTexture) var full_body
+export(StreamTexture) var full_body setget set_sprite_texture
 export(Resource) var dialog
 
 # Declare member variables here. Examples:
@@ -12,10 +13,14 @@ export(Resource) var dialog
 onready var initial_y = translation.y
 
 
+func set_sprite_texture(tex: StreamTexture):
+	full_body = tex
+	$Sprite3D.texture = full_body
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Sprite3D.texture = full_body
-	pass  # Replace with function body.
 
 
 var is_near_player = false
@@ -25,6 +30,9 @@ var velocity = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Engine.editor_hint:
+		return
+
 	is_near_player = false
 	for body in $Area.get_overlapping_bodies():
 		if body is Player:
