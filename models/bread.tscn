@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://models/nordictavern/bread.fbx" type="PackedScene" id=1]
+
+[node name="bread" type="Spatial"]
+
+[node name="bread" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.999798, 0.0200874, 0, -0.0193831, 0.964744, 0.262475, 0.00527245, -0.262423, 0.964939, -4.214, -5.628, 1.572 )

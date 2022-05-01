@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Cobblestone_Dirt_Transition_1.obj-fad4709f1ce08fc59d832253fabb3a0c.mesh"
+
+[deps]
+
+files=[ "res://.import/Cobblestone_Dirt_Transition_1.obj-fad4709f1ce08fc59d832253fabb3a0c.mesh" ]
+
+source_file="res://models/modular village/Cobblestone_Dirt_Transition_1.obj"
+dest_files=[ "res://.import/Cobblestone_Dirt_Transition_1.obj-fad4709f1ce08fc59d832253fabb3a0c.mesh", "res://.import/Cobblestone_Dirt_Transition_1.obj-fad4709f1ce08fc59d832253fabb3a0c.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

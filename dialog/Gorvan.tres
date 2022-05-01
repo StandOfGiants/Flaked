@@ -1,0 +1,182 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialog_manager/dialog_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+syntax_version = 2
+raw_text = "~ begin
+
+if has_met(\"gorvan\") == false
+	Gorvan: Hi, I'm Gorvan.
+	do set_has_met(\"gorvan\")
+Gorvan: [wave amp=25 freq=5]How[/wave] can I [shake rate=20 level=10]hel[/shake]p you?
+- What broinis?
+	Player: Why bmo?
+	Gorvan: I do
+	=> begin
+- Fuck off
+	Player: I hate you
+	Gorvan: Fuck off then.
+	=> END"
+errors = [  ]
+titles = {
+"begin": "2"
+}
+lines = {
+"0": {
+"next_id": "2",
+"text": "begin",
+"type": "title"
+},
+"10": {
+"next_id": "11",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "Fuck off",
+"translation_key": "Fuck off",
+"type": "response"
+},
+"11": {
+"character": "Player",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "12",
+"parent_id": "10",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I hate you",
+"time": null,
+"translation_key": "I hate you",
+"type": "dialog"
+},
+"12": {
+"character": "Gorvan",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "13",
+"parent_id": "10",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Fuck off then.",
+"time": null,
+"translation_key": "Fuck off then.",
+"type": "dialog"
+},
+"13": {
+"next_id": "end",
+"parent_id": "10",
+"type": "goto"
+},
+"2": {
+"condition": {
+"expression": [ {
+"function": "has_met",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "gorvan"
+} ] ]
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "bool",
+"value": false
+} ]
+},
+"next_conditional_id": "5",
+"next_id": "3",
+"next_id_after": "5",
+"type": "condition"
+},
+"3": {
+"character": "Gorvan",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "4",
+"parent_id": "2",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Hi, I'm Gorvan.",
+"time": null,
+"translation_key": "Hi, I'm Gorvan.",
+"type": "dialog"
+},
+"4": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "gorvan"
+} ] ],
+"function": "set_has_met"
+},
+"next_id": "5",
+"parent_id": "2",
+"type": "mutation"
+},
+"5": {
+"character": "Gorvan",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "6",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "[wave amp=25 freq=5]How[/wave] can I [shake rate=20 level=10]hel[/shake]p you?",
+"time": null,
+"translation_key": "[wave amp=25 freq=5]How[/wave] can I [shake rate=20 level=10]hel[/shake]p you?",
+"type": "dialog"
+},
+"6": {
+"next_id": "7",
+"next_id_after": "end",
+"replacements": [  ],
+"responses": PoolStringArray( "6", "10" ),
+"text": "What broinis?",
+"translation_key": "What broinis?",
+"type": "response"
+},
+"7": {
+"character": "Player",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "8",
+"parent_id": "6",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Why bmo?",
+"time": null,
+"translation_key": "Why bmo?",
+"type": "dialog"
+},
+"8": {
+"character": "Gorvan",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "9",
+"parent_id": "6",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I do",
+"time": null,
+"translation_key": "I do",
+"type": "dialog"
+},
+"9": {
+"next_id": "2",
+"parent_id": "6",
+"type": "goto"
+}
+}

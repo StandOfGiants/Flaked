@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://models/nordictavern/pitcher.fbx" type="PackedScene" id=1]
+
+[node name="pitcher" type="Spatial"]
+
+[node name="pitcher" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.397, -0.925, -2.882 )

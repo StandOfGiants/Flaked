@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://models/nordictavern/shelving.fbx" type="PackedScene" id=1]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.550324, 0.795653, 0.328111 )
+
+[node name="shelving" type="RigidBody"]
+mode = 1
+
+[node name="shelving" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.544, -0.849, 6.261 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.803407, 0.0312488 )
+shape = SubResource( 1 )

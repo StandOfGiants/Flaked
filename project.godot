@@ -8,11 +8,42 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "DialogResource",
+"language": "GDScript",
+"path": "res://addons/dialog_manager/dialog_resource.gd"
+}, {
+"base": "KinematicBody",
+"class": "NPC",
+"language": "GDScript",
+"path": "res://entities/npc/NPC.gd"
+}, {
+"base": "KinematicBody",
+"class": "Player",
+"language": "GDScript",
+"path": "res://entities/player/Player.gd"
+} ]
+_global_script_class_icons={
+"DialogResource": "",
+"NPC": "",
+"Player": ""
+}
+
 [application]
 
 config/name="FrogBand"
-run/main_scene="res://Spatial.tscn"
+run/main_scene="res://MainScene.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+DialogManager="*res://addons/dialog_manager/dialog_manager.gd"
+GameState="*res://GameState.gd"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/dialog_manager/plugin.cfg" )
 
 [importer_defaults]
 
@@ -1045,23 +1076,23 @@ scene={
 "animation/filter_script": "",
 "animation/fps": 15,
 "animation/import": true,
-"animation/keep_custom_tracks": true,
+"animation/keep_custom_tracks": false,
 "animation/optimizer/enabled": true,
 "animation/optimizer/max_angle": 22,
 "animation/optimizer/max_angular_error": 0.01,
 "animation/optimizer/max_linear_error": 0.05,
 "animation/optimizer/remove_unused_tracks": true,
-"animation/storage": true,
-"external_files/store_in_subdir": false,
+"animation/storage": false,
+"external_files/store_in_subdir": true,
 "materials/keep_on_reimport": true,
-"materials/location": 1,
-"materials/storage": 2,
+"materials/location": 0,
+"materials/storage": 1,
 "meshes/compress": 4286,
 "meshes/ensure_tangents": true,
-"meshes/light_baking": 0,
+"meshes/light_baking": 2,
 "meshes/lightmap_texel_size": 0.1,
 "meshes/octahedral_compression": true,
-"meshes/storage": 1,
+"meshes/storage": 2,
 "nodes/custom_script": "",
 "nodes/root_name": "Scene Root",
 "nodes/root_scale": 1.0,
@@ -1076,21 +1107,25 @@ scene={
 move_right={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":2,"axis_value":1.0,"script":null)
  ]
 }
 move_left={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":2,"axis_value":-1.0,"script":null)
  ]
 }
 move_forward={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":3,"axis_value":-1.0,"script":null)
  ]
 }
 move_back={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":3,"axis_value":1.0,"script":null)
  ]
 }
 

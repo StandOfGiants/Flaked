@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://models/table.tscn" type="PackedScene" id=1]
+
+[node name="Stage" type="Spatial"]
+
+[node name="table" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.124788, -0.725976, -1.94657 )
+
+[node name="table5" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61268, -0.725976, -1.94657 )
+
+[node name="table2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37184, -0.725976, -1.94657 )
+
+[node name="table3" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.86869, -0.725976, -1.94657 )
+
+[node name="table4" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3653, -0.725976, -1.94657 )

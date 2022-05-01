@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://entities/npc/gorvan_portrait.png" type="Texture" id=3]
+[ext_resource path="res://dialog/Morvan.tres" type="Resource" id=4]
+[ext_resource path="res://models/barrel.tscn" type="PackedScene" id=5]
+[ext_resource path="res://models/shelving.tscn" type="PackedScene" id=6]
+[ext_resource path="res://models/bread.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Counter.tscn" type="PackedScene" id=8]
+[ext_resource path="res://models/pitcher.tscn" type="PackedScene" id=9]
+[ext_resource path="res://models/cup.tscn" type="PackedScene" id=10]
+[ext_resource path="res://entities/npc/NPC.tscn" type="PackedScene" id=11]
+[ext_resource path="res://models/firewoodPile.tscn" type="PackedScene" id=12]
+
+[node name="Bar Area" type="Spatial"]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.67819, 0.16637, 1.4886 )
+
+[node name="Morvan" parent="." instance=ExtResource( 11 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.2892, -0.057806, 4.63936 )
+full_body = ExtResource( 3 )
+dialog = ExtResource( 4 )
+
+[node name="CollisionShape" parent="Morvan/Area" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16486, 0.481308, 0 )
+
+[node name="firewoodPile" parent="." instance=ExtResource( 12 )]
+transform = Transform( 0.317321, 0, -0.948318, 0, 1, 0, 0.948318, 0, 0.317321, -2.88058, 0, 4.22758 )
+
+[node name="Counter" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.51997, 0, 5.85188 )
+seed_value = 20
+
+[node name="Counter2" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9999, 0, 5.85188 )
+seed_value = 23
+
+[node name="Counter3" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5214, 0, 5.85188 )
+seed_value = 30
+
+[node name="barrel2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 2.43366e-10, -4.37107e-08, -1, -0.999985, -0.00556757, 0, -0.00556757, 0.999985, -4.37114e-08, -4.14424, 0.25051, 5.36922 )
+
+[node name="barrel" parent="." instance=ExtResource( 5 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.73291, -0.0259574, 6.28322 )
+
+[node name="shelving" parent="." instance=ExtResource( 6 )]
+transform = Transform( 0.998829, 0, -0.0483791, 0, 1, 0, 0.0483791, 0, 0.998829, -0.644103, -0.0259574, 3.50866 )
+
+[node name="bread" parent="shelving" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 2.6077e-08, 0, 1, 0, -2.6077e-08, 0, 1, 0.220758, 0.497618, 0.021925 )
+
+[node name="cup" parent="shelving" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 2.6077e-08, 0, 1, 0, -2.6077e-08, 0, 1, -0.316709, 0.518012, -0.104028 )
+
+[node name="cup2" parent="shelving" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 3.35276e-08, 0, 1, 0, -3.35276e-08, 0, 1, -0.136042, 0.493664, 0.165634 )
+
+[node name="cup3" parent="shelving" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 3.35276e-08, 0, 1, 0, -3.35276e-08, 0, 1, -0.0544438, 0.481689, -0.0287356 )
+
+[node name="cup4" parent="shelving" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 3.35276e-08, 0, 1, 0, -3.35276e-08, 0, 1, 0.0948135, 1.27829, 0.170044 )
+
+[node name="pitcher" parent="shelving" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 4.09782e-08, 0, 1, 0, -4.09782e-08, 0, 1, 0.256523, 1.56318, 0.153402 )
+
+[node name="pitcher2" parent="shelving" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 3.72529e-08, 0, 1, 0, -3.72529e-08, 0, 1, 0.0351438, 1.55425, 0.0876579 )
+
+[node name="pitcher3" parent="shelving" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 3.72529e-08, 0, 1, 0, -3.72529e-08, 0, 1, -0.265379, 1.55425, 0.0885906 )
+
+[editable path="Morvan"]

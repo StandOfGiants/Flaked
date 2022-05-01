@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/Stucco_Prop_Support_Pillar_2.obj-7c22096969052df11efa9559fc176315.mesh"
+
+[deps]
+
+files=[ "res://.import/Stucco_Prop_Support_Pillar_2.obj-7c22096969052df11efa9559fc176315.mesh" ]
+
+source_file="res://models/modular village/Stucco_Prop_Support_Pillar_2.obj"
+dest_files=[ "res://.import/Stucco_Prop_Support_Pillar_2.obj-7c22096969052df11efa9559fc176315.mesh", "res://.import/Stucco_Prop_Support_Pillar_2.obj-7c22096969052df11efa9559fc176315.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

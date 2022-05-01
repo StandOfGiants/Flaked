@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://models/nordictavern/tappedBarrel.fbx" type="PackedScene" id=1]
+
+[node name="tappedBarrel" type="Spatial"]
+
+[node name="tappedBarrel" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.24, -5.765, 0 )

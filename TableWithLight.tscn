@@ -1,32 +1,69 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://torch/torch.fbx" type="PackedScene" id=1]
-[ext_resource path="res://table/table.fbx" type="PackedScene" id=2]
+[ext_resource path="res://Torch.tscn" type="PackedScene" id=1]
+[ext_resource path="res://models/nordictavern/table.fbx" type="PackedScene" id=2]
+[ext_resource path="res://models/nordictavern/bread.fbx" type="PackedScene" id=3]
+[ext_resource path="res://models/nordictavern/pitcher.fbx" type="PackedScene" id=4]
+[ext_resource path="res://models/nordictavern/cup.fbx" type="PackedScene" id=5]
+[ext_resource path="res://RandomizedDecor.gd" type="Script" id=6]
+[ext_resource path="res://models/bread.tscn" type="PackedScene" id=7]
+[ext_resource path="res://models/bench.tscn" type="PackedScene" id=8]
 
 [sub_resource type="BoxShape" id=9]
-extents = Vector3( 0.624991, 0.382535, 0.601625 )
+extents = Vector3( 0.815081, 0.435644, 1.62192 )
+
+[sub_resource type="BoxShape" id=10]
+extents = Vector3( 0.30334, 0.338778, 1.19631 )
 
 [node name="TableWithLight" type="RigidBody"]
 mode = 1
+script = ExtResource( 6 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.396898, 0 )
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.0196444, 0.317518, 0 )
 shape = SubResource( 9 )
 
-[node name="table" parent="." instance=ExtResource( 2 )]
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+transform = Transform( 0.996551, 0, -0.0829821, 0, 1, 0, 0.0829821, 0, 0.996551, -0.78784, 0.207922, 0.07477 )
+shape = SubResource( 10 )
 
-[node name="torch" parent="." instance=ExtResource( 1 )]
-transform = Transform( 0.5, 0, 0, 0, 0.498012, 0.0445428, 0, -0.0445428, 0.498012, -0.003824, 0.715819, -3.59714e-05 )
+[node name="bench" parent="." instance=ExtResource( 8 )]
+transform = Transform( 0.797603, 0, -0.0618764, 0, 0.8, 0, 0.0618764, 0, 0.797603, -0.822088, 0, 0.120673 )
 
-[node name="OmniLight3" type="OmniLight" parent="torch"]
-transform = Transform( 2, 0, 0, 0, 1.99205, -0.178171, 0, 0.178171, 1.99205, -0.0254302, 0.836758, 0.0714989 )
-light_color = Color( 0.6, 0.388235, 0.156863, 1 )
-light_energy = 1.054
-light_indirect_energy = 5.698
-light_specular = 2.448
-light_bake_mode = 2
-shadow_enabled = true
-shadow_bias = 1.492
-omni_range = 2.9741
-omni_attenuation = 1.41421
-omni_shadow_mode = 0
+[node name="bench2" parent="." instance=ExtResource( 8 )]
+transform = Transform( 0.794932, 0, 0.0899105, 0, 0.8, 0, -0.0899105, 0, 0.794932, 1.12444, 0, 0.120673 )
+
+[node name="Torch" parent="." instance=ExtResource( 1 )]
+
+[node name="table2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 1.06299, 0, -1.60656 )
+
+[node name="decor" type="Spatial" parent="."]
+
+[node name="bread" parent="decor" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 0.974327, 0.225138, 0, -0.225138, 0.974327, -4.235, -5.03, 0.658 )
+visible = false
+
+[node name="bread2" parent="decor" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 0.974327, 0.225138, 0, -0.225138, 0.974327, -4.09498, -5.03, 2.2103 )
+visible = false
+
+[node name="bread3" parent="decor/bread2" instance=ExtResource( 7 )]
+transform = Transform( 0.937258, -0.348637, 0, 0.339687, 0.913195, -0.225138, 0.0784915, 0.211012, 0.974327, 3.88829, 5.98094, -0.107233 )
+
+[node name="pitcher" parent="decor" instance=ExtResource( 4 )]
+transform = Transform( 0.488042, 0, 0.87282, 0, 1, 0, -0.87282, 0, 0.488042, -1.50672, -0.207756, -3.21708 )
+visible = false
+
+[node name="pitcher2" parent="decor" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02141, -0.223823, -3.00228 )
+
+[node name="cup" parent="decor" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36458, -0.19195, -2.14049 )
+visible = false
+
+[node name="cup2" parent="decor" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32989, -0.207545, -3.06944 )
+visible = false
+
+[editable path="table2"]
