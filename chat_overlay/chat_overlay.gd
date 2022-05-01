@@ -20,6 +20,7 @@ const npc_portraits = {
 	"Miles": preload("res://entities/npc/Hand-Holding-Cell-Phone.png"),
 	"Phone": preload("res://entities/npc/Hand-Holding-Cell-Phone.png"),
 	# Bar patrons
+	"Bartender": preload("res://entities/npc/Bartender/Bartender_portrait.png"),
 	"Benny": preload("res://entities/npc/Benny/Benny_portrait.png"),
 	"Don": preload("res://entities/npc/Don/Don_portrait.png"),
 	"Kat": preload("res://entities/npc/Kat/Kat_portrait.png"),

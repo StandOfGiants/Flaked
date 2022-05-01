@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://entities/npc/NPC.gd" type="Script" id=1]
-[ext_resource path="res://entities/npc/gorvan.png" type="Texture" id=2]
+[ext_resource path="res://entities/npc/Benny/Benny.png" type="Texture" id=2]
 
 [sub_resource type="BoxShape" id=4]
 extents = Vector3( 0.766003, 0.277792, 0.127055 )

@@ -226,10 +226,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34074, 0.140412, -3.07895 )
 
 [node name="TonyMacaroni" parent="NPCs" instance=ExtResource( 19 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.28356, 0.930746, -2.71801 )
-script = ExtResource( 16 )
+script = ExtResource( 12 )
 
 [node name="Benny" parent="NPCs" instance=ExtResource( 3 )]
-script = ExtResource( 12 )
+script = ExtResource( 16 )
 
 [node name="Don" parent="NPCs" instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.27233, 0.0161482, 5.33636 )
@@ -239,6 +239,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75782, 3.27826e-07, 6.94716
 
 [node name="Troy" parent="NPCs" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21794, -0.140412, 10.0789 )
-script = ExtResource( 16 )
+script = ExtResource( 12 )
 
 [editable path="Stage"]
