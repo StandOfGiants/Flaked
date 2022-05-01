@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Dust_and_smudge_6.jpg-fdb6ceb0e958201fb21b12fbfd56157e.s3tc.stex"
-path.etc2="res://.import/Dust_and_smudge_6.jpg-fdb6ceb0e958201fb21b12fbfd56157e.etc2.stex"
+path.s3tc="res://.import/props_base_color.png-1041776efda9330da40ddcfa9a0e4436.s3tc.stex"
+path.etc2="res://.import/props_base_color.png-1041776efda9330da40ddcfa9a0e4436.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Dust_and_smudge_6.jpg"
-dest_files=[ "res://.import/Dust_and_smudge_6.jpg-fdb6ceb0e958201fb21b12fbfd56157e.s3tc.stex", "res://.import/Dust_and_smudge_6.jpg-fdb6ceb0e958201fb21b12fbfd56157e.etc2.stex" ]
+source_file="res://models/torch/props_base_color.png"
+dest_files=[ "res://.import/props_base_color.png-1041776efda9330da40ddcfa9a0e4436.s3tc.stex", "res://.import/props_base_color.png-1041776efda9330da40ddcfa9a0e4436.etc2.stex" ]
 
 [params]
 

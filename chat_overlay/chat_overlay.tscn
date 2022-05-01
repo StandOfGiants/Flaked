@@ -52,6 +52,7 @@ margin_left = -5.19995
 margin_right = 781.8
 margin_bottom = 503.0
 rect_rotation = 180.0
+rect_scale = Vector2( 0.997393, 1.02386 )
 texture = ExtResource( 9 )
 expand = true
 stretch_mode = 5

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/eefd21b351916398ec59775e44ce1027.jpg-6a3825989f380f5c8ede184af18b68bc.stex"
+path="res://.import/skybox.jpg-b08558aeb7bac4cc0afd4d9f85c5739d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://eefd21b351916398ec59775e44ce1027.jpg"
-dest_files=[ "res://.import/eefd21b351916398ec59775e44ce1027.jpg-6a3825989f380f5c8ede184af18b68bc.stex" ]
+source_file="res://skybox.jpg"
+dest_files=[ "res://.import/skybox.jpg-b08558aeb7bac4cc0afd4d9f85c5739d.stex" ]
 
 [params]
 
