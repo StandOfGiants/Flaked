@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://models/Instruments/Prop_Instrument_DrumKit/Prop_Instrument_DrumKit.obj" type="ArrayMesh" id=1]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1.22372, 0.749485, 1.2403 )
+
+[node name="Spatial" type="KinematicBody"]
+
+[node name="Prop_Instrument_DrumKit" type="MeshInstance" parent="."]
+transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -16.517, -3.032, 50.282 )
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.716322, 0.0795913 )
+shape = SubResource( 1 )

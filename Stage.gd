@@ -1,5 +1,10 @@
 extends Spatial
 
+signal player_enter
+signal player_exit
+
+var player_was_inside = false
+
 
 func _process(_delta):
 	var player_inside = false
@@ -7,13 +12,10 @@ func _process(_delta):
 		if body is Player:
 			player_inside = true
 
-	get_tree().call_group("player", "is_inside", "stage", player_inside)
-	if (
-		player_inside
-		and get_parent().get_node("AnimationPlayer").current_animation == ""
-		and $"Main BG".playing
-	):
-		get_parent().get_node("AnimationPlayer").play("Start The Music")
+	if player_inside and not player_was_inside:
+		emit_signal("player_enter")
+	if not player_inside and player_was_inside:
+		emit_signal("player_exit")
 
 
 func quiet_down():
@@ -21,8 +23,39 @@ func quiet_down():
 	AudioServer.set_bus_volume_db(sfx, -20)
 
 
+func position_guitar():
+	$Performance/Guitar.visible = true
+	$Performance/Guitar.translation.y = 1
+
+	match GameState.who_plays("Guitar"):
+		"Benny":
+			$Performance/Guitar.translation.y = 0.694
+		"Don":
+			$Performance/Guitar.translation.y = 1.873
+		"Kat":
+			$Performance/Guitar.translation.y = 1.098
+		"Sarah":
+			$Performance/Guitar.translation.y = 0.597
+		"Tony Macaroni":
+			$Performance/Guitar.translation.y = 0.408
+		"Troy":
+			$Performance/Guitar.translation.y = 1.154
+		"NONE":
+			$Performance/Guitar.visible = false
+
+	$Performance/Drummer.translation.y = 0.12
+	match GameState.who_plays("Drums"):
+		"Sarah":
+			$Performance/Drummer.translation.y = 0.5
+
+
 func play_song():
 	if $"Main BG".playing:
+		position_guitar()
+		$Performance/Guitarist.who = GameState.who_plays("Guitar")
+		$Performance/Keyboardist.who = GameState.who_plays("Keyboard")
+		$Performance/Drummer.who = GameState.who_plays("Drums")
+
 		$"Main BG".stop()
 
 		$Performance/Bass.play()

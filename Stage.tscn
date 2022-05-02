@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://models/table.tscn" type="PackedScene" id=1]
 [ext_resource path="res://music/bg/BG.wav" type="AudioStream" id=2]
@@ -10,9 +10,17 @@
 [ext_resource path="res://music/performance/Good Keys.wav" type="AudioStream" id=8]
 [ext_resource path="res://music/performance/Bass.wav" type="AudioStream" id=9]
 [ext_resource path="res://music/performance/Good Drums.wav" type="AudioStream" id=10]
+[ext_resource path="res://models/Instruments/GuitareLowPoly.fbx" type="PackedScene" id=11]
+[ext_resource path="res://models/BassGuitar.tscn" type="PackedScene" id=12]
+[ext_resource path="res://models/Instruments/Drumkit.tscn" type="PackedScene" id=13]
+[ext_resource path="res://models/Instruments/Keyboard.tscn" type="PackedScene" id=14]
+[ext_resource path="res://entities/npc/AnyCharacter.tscn" type="PackedScene" id=16]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 3.07322, 1, 1.07562 )
+
+[sub_resource type="Environment" id=2]
+fog_depth_begin = 0.0
 
 [node name="Stage" type="Spatial"]
 script = ExtResource( 3 )
@@ -46,6 +54,14 @@ bus = "BGM"
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.937967, 0.104218 )
 shape = SubResource( 1 )
 
+[node name="PreShow" type="Spatial" parent="."]
+transform = Transform( 0.999949, 0.0100879, 0, -0.0100879, 0.999949, 0, 0, 0, 1, -0.29052, 0.76434, -1.38284 )
+
+[node name="Bass Guitar" parent="PreShow" instance=ExtResource( 12 )]
+
+[node name="Guitar" parent="PreShow" instance=ExtResource( 11 )]
+transform = Transform( -0.0656959, -0.0100879, -0.997789, -0.000662766, 0.999949, -0.0100661, 0.997839, 0, -0.0656992, 1.01608, -0.271698, 0.0750551 )
+
 [node name="Performance" type="Spatial" parent="."]
 
 [node name="Bass" type="AudioStreamPlayer" parent="Performance"]
@@ -78,7 +94,69 @@ bus = "Performance"
 stream = ExtResource( 4 )
 bus = "Performance"
 
+[node name="Lights" type="Spatial" parent="Performance"]
+
+[node name="SpotLight" type="SpotLight" parent="Performance/Lights"]
+transform = Transform( 0.965953, -0.132106, 0.222448, 0, 0.859808, 0.510618, -0.258718, -0.493233, 0.830534, 2.49626, 2.27243, 4.167 )
+light_color = Color( 1, 0.960784, 0.537255, 1 )
+light_energy = 3.151
+shadow_enabled = true
+spot_range = 12.9397
+spot_angle = 32.2018
+
+[node name="SpotLight2" type="SpotLight" parent="Performance/Lights"]
+transform = Transform( 0.965953, 0.132106, -0.222448, 0, 0.859808, 0.510618, 0.258718, -0.493233, 0.830534, -2.59929, 2.27243, 4.167 )
+light_color = Color( 1, 0.960784, 0.537255, 1 )
+light_energy = 3.151
+shadow_enabled = true
+spot_range = 12.9397
+spot_angle = 32.2018
+
+[node name="SpotLight3" type="SpotLight" parent="Performance/Lights"]
+transform = Transform( 0.746069, 0.340004, -0.572519, 0, 0.859808, 0.510618, 0.665869, -0.380956, 0.641476, -5.18015, 2.27243, 4.167 )
+light_color = Color( 0.572549, 0.537255, 1, 1 )
+light_energy = 3.151
+shadow_enabled = true
+spot_range = 12.9397
+spot_angle = 32.2018
+
+[node name="SpotLight4" type="SpotLight" parent="Performance/Lights"]
+transform = Transform( 0.746069, -0.340005, 0.572519, 0, 0.859808, 0.510618, -0.665869, -0.380956, 0.641476, 5.2826, 2.27243, 4.167 )
+light_color = Color( 0.572549, 0.537255, 1, 1 )
+light_energy = 3.151
+shadow_enabled = true
+spot_range = 12.9397
+spot_angle = 32.2018
+
 [node name="Camera" type="Camera" parent="Performance"]
 transform = Transform( 1, 0, 0, 0, 0.990278, 0.139104, 0, -0.139104, 0.990278, 0, 1.808, 4.167 )
+environment = SubResource( 2 )
 fov = 87.2
 near = 0.01
+
+[node name="BassGuitar" parent="Performance" instance=ExtResource( 12 )]
+transform = Transform( 0.630405, 0.776267, 0, -0.776267, 0.630405, 0, 0, 0, 1, 0.596567, 0.857654, 0.861439 )
+
+[node name="Guitar" parent="Performance" instance=ExtResource( 11 )]
+transform = Transform( -0.0290251, 0.89712, -0.440833, 0.0589401, 0.441788, 0.895181, 0.997839, 0, -0.0656992, -0.995309, 1.15367, 0.879045 )
+
+[node name="BassGuitarist" parent="Performance" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.735155, 0.178716, 0.779395 )
+who = "Player"
+
+[node name="Keyboardist" parent="Performance" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35308, 0.119561, -0.804183 )
+
+[node name="Drummer" parent="Performance" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77776, 0.558763, -0.560464 )
+who = "Sarah"
+
+[node name="Guitarist" parent="Performance" instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.780529, 0.215636, 0.725302 )
+who = "Troy"
+
+[node name="Drums" parent="." instance=ExtResource( 13 )]
+transform = Transform( 0.971155, 0, 0.238449, 0, 1, 0, -0.238449, 0, 0.971155, 2.38868, 0.174886, -0.318846 )
+
+[node name="Keyboard" parent="." instance=ExtResource( 14 )]
+transform = Transform( 0.264479, 0, 0.964391, 0, 1, 0, -0.964391, 0, 0.264479, -2.28627, 1.05705, -0.413745 )

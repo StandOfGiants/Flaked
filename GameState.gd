@@ -90,6 +90,10 @@ const PREFERRED_INSTRUMENTS = {
 }
 
 
+func who_plays(instrument: String) -> String:
+	return get_state("instruments", instrument, "NONE")
+
+
 func played_well(instrument: String) -> bool:
 	var person = get_state("instruments", instrument, null)
 	if person == null:

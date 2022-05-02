@@ -33,15 +33,31 @@ func look_left():
 	$AnimationPlayer.play("LookLeft")
 
 
-var no_dialog_frames = 0
-var inside_stage = false
+var nearbyNPCs = []
 
 
-func is_inside(area: String, is_inside: bool):
-	if area == "stage":
-		if is_inside and not inside_stage and not in_dialog():
-			run_dialog("on_stage", general_text)
-		inside_stage = is_inside
+func ensure(error: int):
+	if error != 0:
+		print("FAILED TO CONNECT: ", error)
+
+
+func inform_of_npc(npc: NPC):
+	ensure(npc.connect("can_converse", self, "on_can_converse"))
+	ensure(npc.connect("cannot_converse", self, "on_cannot_converse"))
+
+
+func on_can_converse(npc: NPC):
+	if not npc in nearbyNPCs:
+		nearbyNPCs.push_back(npc)
+
+
+func on_cannot_converse(npc: NPC):
+	if npc in nearbyNPCs:
+		nearbyNPCs.remove(nearbyNPCs.find(npc))
+
+
+func _on_Stage_player_enter():
+	run_dialog("on_stage", general_text)
 
 
 func run_dialog(id: String, resource: DialogResource):
@@ -51,6 +67,9 @@ func run_dialog(id: String, resource: DialogResource):
 		overlay.dialog = dialog
 		add_child(overlay)
 		run_dialog(yield(overlay, "actioned"), resource)
+
+
+var no_dialog_frames = 0
 
 
 func in_dialog() -> bool:
@@ -109,13 +128,3 @@ func _physics_process(delta):
 		$Sprite3D.rotation.y = lerp($Sprite3D.rotation.y, PI, .25)
 	elif velocity.x < -0.1:
 		$Sprite3D.rotation.y = lerp($Sprite3D.rotation.y, 0, .25)
-
-
-var nearbyNPCs = []
-
-
-func set_near_npc(is_near, npc):
-	if is_near and not npc in nearbyNPCs:
-		nearbyNPCs.push_back(npc)
-	if not is_near and npc in nearbyNPCs:
-		nearbyNPCs.remove(nearbyNPCs.find(npc))

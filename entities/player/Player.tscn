@@ -1,15 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://entities/player/player.png" type="Texture" id=2]
-
-[sub_resource type="SpatialMaterial" id=1]
-flags_transparent = true
-params_cull_mode = 2
-albedo_texture = ExtResource( 2 )
-rim_enabled = true
-rim = 0.22
-rim_tint = 1.0
 
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 0.321823, 0.125, 0.228933 )
@@ -124,8 +116,9 @@ bus = "SFX"
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.802353, -0.25 )
-material_override = SubResource( 1 )
+cast_shadow = 2
 shaded = true
+alpha_cut = 2
 texture = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]

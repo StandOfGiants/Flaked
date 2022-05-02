@@ -7,11 +7,14 @@ export(StreamTexture) var full_body setget set_sprite_texture
 export(Resource) var dialog
 export(AudioStream) var call
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+signal can_converse(npc)
+signal cannot_converse(npc)
 
 onready var initial_y = translation.y
+var player
+var was_near_player = false
+var acceleration = -1
+var velocity = 0
 
 
 func set_sprite_texture(tex: StreamTexture):
@@ -19,27 +22,25 @@ func set_sprite_texture(tex: StreamTexture):
 	$Sprite3D.texture = full_body
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	$Sprite3D.texture = full_body
 
+	if not Engine.editor_hint:
+		player = get_parent().get_parent().get_node("Player")
+		if player:
+			player.inform_of_npc(self)
 
-var is_near_player = false
-var acceleration = -1
-var velocity = 0
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Engine.editor_hint:
 		return
 
-	is_near_player = false
-	for body in $Area.get_overlapping_bodies():
-		if body is Player:
-			is_near_player = true
-
-	get_tree().call_group("player", "set_near_npc", is_near_player, self)
+	var is_near_player = $Area.overlaps_body(player)
+	if is_near_player and not was_near_player:
+		emit_signal("can_converse", self)
+	if not is_near_player and was_near_player:
+		emit_signal("cannot_converse", self)
+	was_near_player = is_near_player
 
 	if translation.y <= initial_y:
 		acceleration = 0
@@ -52,5 +53,3 @@ func _process(delta):
 
 	velocity += acceleration * delta
 	translation.y += velocity * delta
-
-	# $Sprite3D.flip_v = is_near_player
