@@ -7,7 +7,9 @@ script = ExtResource( 1 )
 syntax_version = 2
 raw_text = "~ begin
 
-Troy: Troy is me."
+if first_visit(\"Troy\")
+	Troy: Troy is me.
+Troy: How goes?"
 errors = [  ]
 titles = {
 "begin": "2"
@@ -19,6 +21,37 @@ lines = {
 "type": "title"
 },
 "2": {
+"condition": {
+"expression": [ {
+"function": "first_visit",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Troy"
+} ] ]
+} ]
+},
+"next_conditional_id": "4",
+"next_id": "3",
+"next_id_after": "4",
+"type": "condition"
+},
+"3": {
+"character": "Troy",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "4",
+"parent_id": "2",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Troy is me.",
+"time": null,
+"translation_key": "Troy is me.",
+"type": "dialog"
+},
+"4": {
 "character": "Troy",
 "character_replacements": [  ],
 "inline_mutations": [  ],
@@ -27,9 +60,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Troy is me.",
+"text": "How goes?",
 "time": null,
-"translation_key": "Troy is me.",
+"translation_key": "How goes?",
 "type": "dialog"
 }
 }

@@ -5,6 +5,7 @@ extends KinematicBody
 
 export(StreamTexture) var full_body setget set_sprite_texture
 export(Resource) var dialog
+export(AudioStream) var call
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -37,7 +38,8 @@ func _process(delta):
 	for body in $Area.get_overlapping_bodies():
 		if body is Player:
 			is_near_player = true
-			body.set_near_npc(self)
+
+	get_tree().call_group("player", "set_near_npc", is_near_player, self)
 
 	if translation.y <= initial_y:
 		acceleration = 0

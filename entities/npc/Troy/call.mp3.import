@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/call.mp3-9806959e17502766d584e89b2809195e.mp3str"
+
+[deps]
+
+source_file="res://entities/npc/Troy/call.mp3"
+dest_files=[ "res://.import/call.mp3-9806959e17502766d584e89b2809195e.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

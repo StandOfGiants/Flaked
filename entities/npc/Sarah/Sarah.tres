@@ -1,0 +1,68 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://addons/dialog_manager/dialog_resource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+syntax_version = 2
+raw_text = "~ begin
+
+if first_visit(\"Sarah\")
+	Sarah: Ssssssssup? I'm Ssssssarah.
+Sarah: Do you need ssssomething?"
+errors = [  ]
+titles = {
+"begin": "2"
+}
+lines = {
+"0": {
+"next_id": "2",
+"text": "begin",
+"type": "title"
+},
+"2": {
+"condition": {
+"expression": [ {
+"function": "first_visit",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Sarah"
+} ] ]
+} ]
+},
+"next_conditional_id": "4",
+"next_id": "3",
+"next_id_after": "4",
+"type": "condition"
+},
+"3": {
+"character": "Sarah",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "4",
+"parent_id": "2",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Ssssssssup? I'm Ssssssarah.",
+"time": null,
+"translation_key": "Ssssssssup? I'm Ssssssarah.",
+"type": "dialog"
+},
+"4": {
+"character": "Sarah",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Do you need ssssomething?",
+"time": null,
+"translation_key": "Do you need ssssomething?",
+"type": "dialog"
+}
+}

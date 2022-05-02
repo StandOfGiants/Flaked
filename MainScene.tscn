@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://TableWithLight.tscn" type="PackedScene" id=2]
@@ -11,13 +11,22 @@
 [ext_resource path="res://Torch.tscn" type="PackedScene" id=9]
 [ext_resource path="res://models/supportBeam.tscn" type="PackedScene" id=10]
 [ext_resource path="res://skybox.jpg" type="Texture" id=11]
+[ext_resource path="res://music/243373__johnsonbrandediting__small-crowd-pre-concert-talking-party-bar-walla-talking.mp3" type="AudioStream" id=12]
 [ext_resource path="res://models/firewoodPile.tscn" type="PackedScene" id=13]
 [ext_resource path="res://entities/npc/Don/Don.tscn" type="PackedScene" id=14]
 [ext_resource path="res://entities/npc/Kat/Kat.tscn" type="PackedScene" id=15]
+[ext_resource path="res://music/543913__soundsexciting__bar-chatter.mp3" type="AudioStream" id=16]
 [ext_resource path="res://models/shelving.tscn" type="PackedScene" id=17]
 [ext_resource path="res://MainScene.gd" type="Script" id=18]
 [ext_resource path="res://entities/npc/TonyMacaroni/TonyMacaroni.tscn" type="PackedScene" id=19]
 [ext_resource path="res://entities/npc/Troy/Troy.tscn" type="PackedScene" id=20]
+[ext_resource path="res://PauseMenu.tscn" type="PackedScene" id=21]
+[ext_resource path="res://entities/npc/Sarah/Sarah.tscn" type="PackedScene" id=22]
+[ext_resource path="res://entities/silhouettes/A.tscn" type="PackedScene" id=23]
+[ext_resource path="res://entities/silhouettes/B.tscn" type="PackedScene" id=24]
+[ext_resource path="res://entities/silhouettes/D.tscn" type="PackedScene" id=25]
+[ext_resource path="res://entities/silhouettes/C.tscn" type="PackedScene" id=26]
+[ext_resource path="res://entities/silhouettes/E.tscn" type="PackedScene" id=27]
 
 [sub_resource type="PanoramaSky" id=10]
 panorama = ExtResource( 11 )
@@ -38,6 +47,166 @@ rim = 1.0
 rim_tint = 0.5
 uv1_scale = Vector3( 0.5, 0.5, 0.5 )
 uv1_triplanar = true
+
+[sub_resource type="Animation" id=11]
+resource_name = "Entry"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Player:translation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0.369, -0.25, 0, 0.25, 0, 0.369, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Player:translation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0.135108, -0.25, 0, 0.25, 0, 0.135108, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Player:translation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 12.9273, -0.25, 0, 0.25, 0, 11.4251, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Control/ColorRect:modulate:r")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Control/ColorRect:modulate:g")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Control/ColorRect:modulate:b")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("Control/ColorRect:modulate:a")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/7/type = "method"
+tracks/7/path = NodePath("Player")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_intro"
+} ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Player:translation:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0.369, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Player:translation:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0.135108, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Player:translation:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 12.9273, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Control/ColorRect:modulate:r")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Control/ColorRect:modulate:g")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Control/ColorRect:modulate:b")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("Control/ColorRect:modulate:a")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
 
 [node name="MainScene" type="Spatial"]
 script = ExtResource( 18 )
@@ -118,7 +287,7 @@ light_bake_mode = 2
 directional_shadow_mode = 0
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.369412, 0.512301, 11.2838 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.369, 0.135108, 12.9273 )
 
 [node name="Bar Area" parent="." instance=ExtResource( 8 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.7099, 0.16637, -0.0382721 )
@@ -158,6 +327,42 @@ transform = Transform( 0.4, 0, 0, 0, 0.393971, -0.0691912, 0, 0.0691912, 0.39397
 
 [node name="Decor" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.65932, 0, -4.56099 )
+
+[node name="Crowd Ambience" type="AudioStreamPlayer3D" parent="Decor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4579, 0.817464, 16.956 )
+stream = ExtResource( 12 )
+unit_db = 47.059
+autoplay = true
+max_distance = 24.44
+out_of_range_mode = 1
+bus = "SFX"
+
+[node name="Crowd Ambience2" type="AudioStreamPlayer3D" parent="Decor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.44828, 0.817464, 14.144 )
+stream = ExtResource( 12 )
+unit_db = 47.059
+autoplay = true
+max_distance = 24.44
+out_of_range_mode = 1
+bus = "SFX"
+
+[node name="Crowd Ambience3" type="AudioStreamPlayer3D" parent="Decor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6331, 0.817464, 3.68201 )
+stream = ExtResource( 16 )
+unit_db = 47.059
+autoplay = true
+max_distance = 24.44
+out_of_range_mode = 1
+bus = "SFX"
+
+[node name="Crowd Ambience4" type="AudioStreamPlayer3D" parent="Decor"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.89988, 0.817464, 8.63403 )
+stream = ExtResource( 12 )
+unit_db = 47.059
+autoplay = true
+max_distance = 24.44
+out_of_range_mode = 1
+bus = "SFX"
 
 [node name="TableWithLight4" parent="Decor" instance=ExtResource( 2 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.38392, 0.140412, 2.15248 )
@@ -199,7 +404,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.1146, 0, 0.72248 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0712, 0, 7.80283 )
 
 [node name="supportBeam5" parent="Decor" instance=ExtResource( 10 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.57098, 0, 6.55466 )
+transform = Transform( 0.99996, -0.00891851, 0, 0.00891851, 0.99996, 0, 0, 0, 1, -3.59016, 0, 6.55466 )
 
 [node name="supportBeam6" parent="Decor" instance=ExtResource( 10 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1683, 0, 12.0175 )
@@ -211,13 +416,123 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.15307, 0, 14.9496 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2098, 0, 17.7948 )
 
 [node name="firewoodPile" parent="Decor" instance=ExtResource( 13 )]
-transform = Transform( 0.327119, 0, -0.944983, 0, 1, 0, 0.944983, 0, 0.327119, -1.25564, 0.122621, 15.6018 )
+transform = Transform( -0.333527, 0, -0.94274, 0, 1, 0, 0.94274, 0, -0.333527, -1.2304, 0.122621, 16.6492 )
 
 [node name="shelving" parent="Decor" instance=ExtResource( 17 )]
 transform = Transform( 0.418787, 0, -0.908085, 0, 1, 0, 0.908085, 0, 0.418787, -15.3204, 0.0920854, 17.9854 )
 
 [node name="shelving2" parent="Decor" instance=ExtResource( 17 )]
 transform = Transform( -0.553537, 0, -0.832825, 0, 1, 0, 0.832825, 0, -0.553537, -0.90985, 0.0920854, 17.9854 )
+
+[node name="Silhouettes" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6336, 2.77385 )
+
+[node name="Cluster" type="Spatial" parent="Silhouettes"]
+
+[node name="B" parent="Silhouettes/Cluster" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.71361, -1.50217, 9.48643 )
+
+[node name="C" parent="Silhouettes/Cluster" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.21663, -1.49968, 9.02744 )
+
+[node name="C2" parent="Silhouettes/Cluster" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.84351, -1.49968, 10.11 )
+
+[node name="A2" parent="Silhouettes/Cluster" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.58997, -1.49968, 10.6144 )
+
+[node name="E" parent="Silhouettes/Cluster" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.51669, -1.49968, 9.7506 )
+
+[node name="A" parent="Silhouettes/Cluster" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.52162, -1.49157, 10.9115 )
+
+[node name="Cluster2" type="Spatial" parent="Silhouettes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1677, 0, -3.00459 )
+
+[node name="B" parent="Silhouettes/Cluster2" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.71361, -1.50217, 9.48643 )
+
+[node name="C" parent="Silhouettes/Cluster2" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.21663, -1.49968, 9.02744 )
+
+[node name="C2" parent="Silhouettes/Cluster2" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.84351, -1.49968, 10.11 )
+
+[node name="A2" parent="Silhouettes/Cluster2" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.58997, -1.49968, 10.6144 )
+
+[node name="E" parent="Silhouettes/Cluster2" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.51669, -1.49968, 9.7506 )
+
+[node name="A" parent="Silhouettes/Cluster2" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.52162, -1.49157, 10.9115 )
+
+[node name="Cluster3" type="Spatial" parent="Silhouettes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3934, 0, -18.9138 )
+
+[node name="B" parent="Silhouettes/Cluster3" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.71361, -1.50217, 9.48643 )
+
+[node name="C" parent="Silhouettes/Cluster3" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.21663, -1.49968, 9.02744 )
+
+[node name="C2" parent="Silhouettes/Cluster3" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.84351, -1.49968, 10.11 )
+
+[node name="A2" parent="Silhouettes/Cluster3" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.58997, -1.49968, 10.6144 )
+
+[node name="E" parent="Silhouettes/Cluster3" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.51669, -1.49968, 9.7506 )
+
+[node name="A" parent="Silhouettes/Cluster3" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.52162, -1.49157, 10.9115 )
+
+[node name="Cluster4" type="Spatial" parent="Silhouettes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0028, 0, -15.6666 )
+
+[node name="B" parent="Silhouettes/Cluster4" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.71361, -1.50217, 9.48643 )
+
+[node name="C" parent="Silhouettes/Cluster4" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.21663, -1.49968, 9.02744 )
+
+[node name="C2" parent="Silhouettes/Cluster4" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.84351, -1.49968, 10.11 )
+
+[node name="A2" parent="Silhouettes/Cluster4" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.58997, -1.49968, 10.6144 )
+
+[node name="E" parent="Silhouettes/Cluster4" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.51669, -1.49968, 9.7506 )
+
+[node name="A" parent="Silhouettes/Cluster4" instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.52162, -1.49157, 10.9115 )
+
+[node name="B2" parent="Silhouettes" instance=ExtResource( 24 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65292, -1.49319, 8.0917 )
+
+[node name="C" parent="Silhouettes" instance=ExtResource( 26 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.49136, -1.49319, 0.561157 )
+
+[node name="E" parent="Silhouettes" instance=ExtResource( 27 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.58823, -1.49319, 6.60447 )
+
+[node name="D" parent="Silhouettes" instance=ExtResource( 25 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03758, -1.49319, 0.0224571 )
+
+[node name="D2" parent="Silhouettes" instance=ExtResource( 25 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.97434, -1.49319, 3.77152 )
+
+[node name="E2" parent="Silhouettes" instance=ExtResource( 27 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.43771, -1.49319, 1.18809 )
+
+[node name="A" parent="Silhouettes" instance=ExtResource( 23 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.98308, -1.49319, -5.88819 )
+
+[node name="B" parent="Silhouettes" instance=ExtResource( 24 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.7938, -1.49319, -4.44266 )
 
 [node name="NPCs" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34074, 0.140412, -3.07895 )
@@ -228,12 +543,33 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.28356, 0.930746, -2.71801 )
 [node name="Benny" parent="NPCs" instance=ExtResource( 3 )]
 
 [node name="Don" parent="NPCs" instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.27233, 0.0161482, 5.33636 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.41604, 0.0161482, 5.33636 )
 
 [node name="Kat" parent="NPCs" instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75782, 3.27826e-07, 6.94716 )
 
 [node name="Troy" parent="NPCs" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21794, -0.140412, 10.0789 )
+
+[node name="Sarah" parent="NPCs" instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75612, -0.0551952, 12.4587 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Entry = SubResource( 11 )
+anims/RESET = SubResource( 12 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Control2" parent="." instance=ExtResource( 21 )]
 
 [editable path="Stage"]

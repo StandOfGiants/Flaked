@@ -7,10 +7,33 @@ script = ExtResource( 1 )
 syntax_version = 2
 raw_text = "~ begin
 
-Benny: Hhi there! I'm benny!
-"
+if first_visit(\"Benny\")
+	Benny: Hhi there! I'm benny!
+if is_not_assigned(\"Benny\")
+	Benny: What do you need?
+else
+	Benny: Excited for our set!
+- Nothing => END
+- To punch you in the face!
+	Benny: Whyyyyyyy
+	do update_karma(\"Benny\", -1)
+- To love you [if has_positive_karma(\"Benny\")]
+- To ask you to band! [if is_not_assigned(\"Benny\")] => band_questions
+
+~ band_questions
+Benny: I play occasionally, what do you need?
+- A Guitarist [if instrument_available(\"Guitar\")]
+	Benny: I'll do my best!
+	do assign_instrument(\"Guitar\", \"Benny\")
+- A Drummer [if instrument_available(\"Drums\")]
+	Benny: I'll do my best!
+	do assign_instrument(\"Drums\", \"Benny\")
+- A Keyboardist [if instrument_available(\"Keyboard\")]
+	Benny: I'll do my best!
+	do assign_instrument(\"Keyboard\", \"Benny\")"
 errors = [  ]
 titles = {
+"band_questions": "16",
 "begin": "2"
 }
 lines = {
@@ -19,11 +42,258 @@ lines = {
 "text": "begin",
 "type": "title"
 },
-"2": {
+"10": {
 "character": "Benny",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "",
+"next_id": "11",
+"parent_id": "9",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Whyyyyyyy",
+"time": null,
+"translation_key": "Whyyyyyyy",
+"type": "dialog"
+},
+"11": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Benny"
+} ], [ {
+"type": "number",
+"value": -1
+} ] ],
+"function": "update_karma"
+},
+"next_id": "end",
+"parent_id": "9",
+"type": "mutation"
+},
+"12": {
+"condition": {
+"expression": [ {
+"function": "has_positive_karma",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Benny"
+} ] ]
+} ]
+},
+"next_id": "end",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "To love you",
+"translation_key": "To love you",
+"type": "response"
+},
+"13": {
+"condition": {
+"expression": [ {
+"function": "is_not_assigned",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Benny"
+} ] ]
+} ]
+},
+"next_id": "16",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "To ask you to band!",
+"translation_key": "To ask you to band!",
+"type": "response"
+},
+"15": {
+"next_id": "16",
+"text": "band_questions",
+"type": "title"
+},
+"16": {
+"character": "Benny",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "17",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I play occasionally, what do you need?",
+"time": null,
+"translation_key": "I play occasionally, what do you need?",
+"type": "dialog"
+},
+"17": {
+"condition": {
+"expression": [ {
+"function": "instrument_available",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Guitar"
+} ] ]
+} ]
+},
+"next_id": "18",
+"next_id_after": "end",
+"replacements": [  ],
+"responses": PoolStringArray( "17", "20", "23" ),
+"text": "A Guitarist",
+"translation_key": "A Guitarist",
+"type": "response"
+},
+"18": {
+"character": "Benny",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "19",
+"parent_id": "17",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I'll do my best!",
+"time": null,
+"translation_key": "I'll do my best!",
+"type": "dialog"
+},
+"19": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Guitar"
+} ], [ {
+"type": "string",
+"value": "Benny"
+} ] ],
+"function": "assign_instrument"
+},
+"next_id": "end",
+"parent_id": "17",
+"type": "mutation"
+},
+"2": {
+"condition": {
+"expression": [ {
+"function": "first_visit",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Benny"
+} ] ]
+} ]
+},
+"next_conditional_id": "4",
+"next_id": "3",
+"next_id_after": "4",
+"type": "condition"
+},
+"20": {
+"condition": {
+"expression": [ {
+"function": "instrument_available",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Drums"
+} ] ]
+} ]
+},
+"next_id": "21",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "A Drummer",
+"translation_key": "A Drummer",
+"type": "response"
+},
+"21": {
+"character": "Benny",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "22",
+"parent_id": "20",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I'll do my best!",
+"time": null,
+"translation_key": "I'll do my best!",
+"type": "dialog"
+},
+"22": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Drums"
+} ], [ {
+"type": "string",
+"value": "Benny"
+} ] ],
+"function": "assign_instrument"
+},
+"next_id": "end",
+"parent_id": "20",
+"type": "mutation"
+},
+"23": {
+"condition": {
+"expression": [ {
+"function": "instrument_available",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Keyboard"
+} ] ]
+} ]
+},
+"next_id": "24",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "A Keyboardist",
+"translation_key": "A Keyboardist",
+"type": "response"
+},
+"24": {
+"character": "Benny",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "25",
+"parent_id": "23",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I'll do my best!",
+"time": null,
+"translation_key": "I'll do my best!",
+"type": "dialog"
+},
+"25": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Keyboard"
+} ], [ {
+"type": "string",
+"value": "Benny"
+} ] ],
+"function": "assign_instrument"
+},
+"next_id": "end",
+"parent_id": "23",
+"type": "mutation"
+},
+"3": {
+"character": "Benny",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "4",
+"parent_id": "2",
 "pauses": {
 },
 "replacements": [  ],
@@ -32,5 +302,74 @@ lines = {
 "time": null,
 "translation_key": "Hhi there! I'm benny!",
 "type": "dialog"
+},
+"4": {
+"condition": {
+"expression": [ {
+"function": "is_not_assigned",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Benny"
+} ] ]
+} ]
+},
+"next_conditional_id": "6",
+"next_id": "5",
+"next_id_after": "8",
+"type": "condition"
+},
+"5": {
+"character": "Benny",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "8",
+"parent_id": "4",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "What do you need?",
+"time": null,
+"translation_key": "What do you need?",
+"type": "dialog"
+},
+"6": {
+"next_conditional_id": "8",
+"next_id": "7",
+"next_id_after": "8",
+"type": "condition"
+},
+"7": {
+"character": "Benny",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "8",
+"parent_id": "6",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Excited for our set!",
+"time": null,
+"translation_key": "Excited for our set!",
+"type": "dialog"
+},
+"8": {
+"next_id": "end",
+"next_id_after": "end",
+"replacements": [  ],
+"responses": PoolStringArray( "8", "9", "12", "13" ),
+"text": "Nothing",
+"translation_key": "Nothing",
+"type": "response"
+},
+"9": {
+"next_id": "10",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "To punch you in the face!",
+"translation_key": "To punch you in the face!",
+"type": "response"
 }
 }

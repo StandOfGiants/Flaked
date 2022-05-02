@@ -24,6 +24,7 @@ const npc_portraits = {
 	"Benny": preload("res://entities/npc/Benny/Benny_portrait.png"),
 	"Don": preload("res://entities/npc/Don/Don_portrait.png"),
 	"Kat": preload("res://entities/npc/Kat/Kat_portrait.png"),
+	"Sarah": preload("res://entities/npc/Sarah/Sarah_portrait.png"),
 	"Tony Macaroni": preload("res://entities/npc/TonyMacaroni/TonyMacaroni_portrait.png"),
 	"Troy": preload("res://entities/npc/Troy/Troy_portrait.png"),
 }
@@ -32,6 +33,7 @@ var dialog: DialogLine
 
 
 func _ready() -> void:
+	var do_hide = false
 	balloon.visible = false
 	responses_menu.is_active = false
 
@@ -39,22 +41,22 @@ func _ready() -> void:
 		queue_free()
 		return
 
+	player_portrait.visible = false
+	npc_portrait.visible = false
+	character_label.visible = false
 	if dialog.character != "":
 		character_label.visible = true
 		if dialog.character == "Player":
 			character_label.bbcode_text = "Me"
 			player_portrait.visible = true
-			npc_portrait.visible = false
+		elif dialog.character == "HIDE":
+			do_hide = true
 		else:
 			if dialog.character in npc_portraits:
 				npc_portrait.texture = npc_portraits[dialog.character]
 			character_label.bbcode_text = dialog.character
 			npc_portrait.visible = true
-			player_portrait.visible = false
-	else:
-		player_portrait.visible = false
-		npc_portrait.visible = false
-		character_label.visible = false
+
 	dialog_label.dialog = dialog
 
 	yield(dialog_label.reset_height(), "completed")
@@ -83,8 +85,9 @@ func _ready() -> void:
 	# Ok, we can hide it now. It will come back later if we have any responses
 	responses_menu.visible = false
 
-	# Show our box
-	balloon.visible = true
+	if not do_hide:
+		# Show our box
+		balloon.visible = true
 
 	dialog_label.type_out()
 	yield(dialog_label, "finished")

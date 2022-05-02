@@ -7,7 +7,9 @@ script = ExtResource( 1 )
 syntax_version = 2
 raw_text = "~ begin
 
-Tony Macaroni: I'm Macaroni, Tony Macaroni."
+if first_visit(\"Tony Macaroni\")
+	Tony Macaroni: I'm Macaroni, Tony Macaroni.
+Tony Macaroni: Still Tony."
 errors = [  ]
 titles = {
 "begin": "2"
@@ -19,6 +21,37 @@ lines = {
 "type": "title"
 },
 "2": {
+"condition": {
+"expression": [ {
+"function": "first_visit",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Tony Macaroni"
+} ] ]
+} ]
+},
+"next_conditional_id": "4",
+"next_id": "3",
+"next_id_after": "4",
+"type": "condition"
+},
+"3": {
+"character": "Tony Macaroni",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "4",
+"parent_id": "2",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I'm Macaroni, Tony Macaroni.",
+"time": null,
+"translation_key": "I'm Macaroni, Tony Macaroni.",
+"type": "dialog"
+},
+"4": {
 "character": "Tony Macaroni",
 "character_replacements": [  ],
 "inline_mutations": [  ],
@@ -27,9 +60,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "I'm Macaroni, Tony Macaroni.",
+"text": "Still Tony.",
 "time": null,
-"translation_key": "I'm Macaroni, Tony Macaroni.",
+"translation_key": "Still Tony.",
 "type": "dialog"
 }
 }

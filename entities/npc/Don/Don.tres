@@ -7,7 +7,9 @@ script = ExtResource( 1 )
 syntax_version = 2
 raw_text = "~ begin
 
-Don: 'Sup. I'm Don."
+if first_visit(\"Don\")
+	Don: 'Sup. I'm don.
+Don: Need something, Croaks?"
 errors = [  ]
 titles = {
 "begin": "2"
@@ -19,6 +21,37 @@ lines = {
 "type": "title"
 },
 "2": {
+"condition": {
+"expression": [ {
+"function": "first_visit",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Don"
+} ] ]
+} ]
+},
+"next_conditional_id": "4",
+"next_id": "3",
+"next_id_after": "4",
+"type": "condition"
+},
+"3": {
+"character": "Don",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "4",
+"parent_id": "2",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "'Sup. I'm don.",
+"time": null,
+"translation_key": "'Sup. I'm don.",
+"type": "dialog"
+},
+"4": {
 "character": "Don",
 "character_replacements": [  ],
 "inline_mutations": [  ],
@@ -27,9 +60,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "'Sup. I'm Don.",
+"text": "Need something, Croaks?",
 "time": null,
-"translation_key": "'Sup. I'm Don.",
+"translation_key": "Need something, Croaks?",
 "type": "dialog"
 }
 }

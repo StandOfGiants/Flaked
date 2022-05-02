@@ -5,7 +5,7 @@
 [ext_resource path="res://entities/npc/Don/Don.tres" type="Resource" id=3]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 0.766003, 0.277792, 0.127055 )
+extents = Vector3( 0.479895, 0.277792, 0.127055 )
 
 [node name="Don" instance=ExtResource( 2 )]
 full_body = ExtResource( 1 )

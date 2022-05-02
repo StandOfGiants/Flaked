@@ -7,7 +7,9 @@ script = ExtResource( 1 )
 syntax_version = 2
 raw_text = "~ begin
 
-Kat: Yo, I'm Kat."
+if first_visit(\"Kat\")
+	Kat: Yo, I'm Kat.
+Kat: I'm here if you need something."
 errors = [  ]
 titles = {
 "begin": "2"
@@ -19,6 +21,37 @@ lines = {
 "type": "title"
 },
 "2": {
+"condition": {
+"expression": [ {
+"function": "first_visit",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Kat"
+} ] ]
+} ]
+},
+"next_conditional_id": "4",
+"next_id": "3",
+"next_id_after": "4",
+"type": "condition"
+},
+"3": {
+"character": "Kat",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "4",
+"parent_id": "2",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Yo, I'm Kat.",
+"time": null,
+"translation_key": "Yo, I'm Kat.",
+"type": "dialog"
+},
+"4": {
 "character": "Kat",
 "character_replacements": [  ],
 "inline_mutations": [  ],
@@ -27,9 +60,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Yo, I'm Kat.",
+"text": "I'm here if you need something.",
 "time": null,
-"translation_key": "Yo, I'm Kat.",
+"translation_key": "I'm here if you need something.",
 "type": "dialog"
 }
 }

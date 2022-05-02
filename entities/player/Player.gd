@@ -11,8 +11,37 @@ onready var gravity = -ProjectSettings.get_setting("physics/3d/default_gravity")
 var velocity: Vector3
 
 var chat_overlay = preload("res://chat_overlay/chat_overlay.tscn")
-var intro_text = preload("res://entities/player/Intro.tres")
+var general_text = preload("res://entities/player/General.tres")
 var running_talk = false
+
+
+func start_intro():
+	run_dialog("begin", general_text)
+
+
+func look_around():
+	$AnimationPlayer.play("LookRight")
+	yield($AnimationPlayer, "animation_finished")
+	$AnimationPlayer.play("LookLeft")
+
+
+func look_right():
+	$AnimationPlayer.play("LookRight")
+
+
+func look_left():
+	$AnimationPlayer.play("LookLeft")
+
+
+var no_dialog_frames = 0
+var inside_stage = false
+
+
+func is_inside(area: String, is_inside: bool):
+	if area == "stage":
+		if is_inside and not inside_stage and not in_dialog():
+			run_dialog("on_stage", general_text)
+		inside_stage = is_inside
 
 
 func run_dialog(id: String, resource: DialogResource):
@@ -24,23 +53,31 @@ func run_dialog(id: String, resource: DialogResource):
 		run_dialog(yield(overlay, "actioned"), resource)
 
 
-func _ready():
-	run_dialog("begin", intro_text)
+func in_dialog() -> bool:
+	return no_dialog_frames <= 5
 
 
 func _process(_delta):
-	if (
-		nearestNPC != null
-		and Input.is_action_just_pressed("ui_accept")
-		and not has_node("ChatOverlay")
-	):
+	if has_node("ChatOverlay"):
+		no_dialog_frames = 0
+	else:
+		no_dialog_frames += 1
+
+	if not nearbyNPCs.empty() and Input.is_action_just_pressed("ui_accept") and not in_dialog():
+		var nearestNPC = nearbyNPCs[0]
+		if nearestNPC.call:
+			$SFX.stream = nearestNPC.call
+			$SFX.play()
 		run_dialog("begin", nearestNPC.dialog)
+
+	if Input.is_action_just_pressed("pause") and not in_dialog():
+		get_tree().paused = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	# Don't do any movement while chat overlay is open.
-	if has_node("ChatOverlay"):
+	if in_dialog():
 		velocity = Vector3()
 		return
 
@@ -74,8 +111,11 @@ func _physics_process(delta):
 		$Sprite3D.rotation.y = lerp($Sprite3D.rotation.y, 0, .25)
 
 
-var nearestNPC = null
+var nearbyNPCs = []
 
 
-func set_near_npc(npc):
-	nearestNPC = npc
+func set_near_npc(is_near, npc):
+	if is_near and not npc in nearbyNPCs:
+		nearbyNPCs.push_back(npc)
+	if not is_near and npc in nearbyNPCs:
+		nearbyNPCs.remove(nearbyNPCs.find(npc))

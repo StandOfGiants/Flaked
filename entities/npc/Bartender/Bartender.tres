@@ -7,7 +7,9 @@ script = ExtResource( 1 )
 syntax_version = 2
 raw_text = "~ begin
 
-Bartender: Hello there! What can I get you?
+if first_visit(\"Bartender\")
+	Bartender: Hello there! Welcome to the club!
+Bartender: What can I get you?
 "
 errors = [  ]
 titles = {
@@ -20,6 +22,37 @@ lines = {
 "type": "title"
 },
 "2": {
+"condition": {
+"expression": [ {
+"function": "first_visit",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Bartender"
+} ] ]
+} ]
+},
+"next_conditional_id": "4",
+"next_id": "3",
+"next_id_after": "4",
+"type": "condition"
+},
+"3": {
+"character": "Bartender",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "4",
+"parent_id": "2",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Hello there! Welcome to the club!",
+"time": null,
+"translation_key": "Hello there! Welcome to the club!",
+"type": "dialog"
+},
+"4": {
 "character": "Bartender",
 "character_replacements": [  ],
 "inline_mutations": [  ],
@@ -28,9 +61,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Hello there! What can I get you?",
+"text": "What can I get you?",
 "time": null,
-"translation_key": "Hello there! What can I get you?",
+"translation_key": "What can I get you?",
 "type": "dialog"
 }
 }

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/call.mp3-ad3b74b94d606da3bb12b82f2fafe1fe.mp3str"
+
+[deps]
+
+source_file="res://entities/npc/Kat/call.mp3"
+dest_files=[ "res://.import/call.mp3-ad3b74b94d606da3bb12b82f2fafe1fe.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
