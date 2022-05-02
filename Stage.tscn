@@ -1,8 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://models/table.tscn" type="PackedScene" id=1]
 [ext_resource path="res://music/bg/BG.wav" type="AudioStream" id=2]
 [ext_resource path="res://Stage.gd" type="Script" id=3]
+[ext_resource path="res://music/performance/Bad Keys.wav" type="AudioStream" id=4]
+[ext_resource path="res://music/performance/Bad Drums.wav" type="AudioStream" id=5]
+[ext_resource path="res://music/performance/Good Guitar.wav" type="AudioStream" id=6]
+[ext_resource path="res://music/performance/Bad Guitar.wav" type="AudioStream" id=7]
+[ext_resource path="res://music/performance/Good Keys.wav" type="AudioStream" id=8]
+[ext_resource path="res://music/performance/Bass.wav" type="AudioStream" id=9]
+[ext_resource path="res://music/performance/Good Drums.wav" type="AudioStream" id=10]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 3.07322, 1, 1.07562 )
@@ -38,3 +45,40 @@ bus = "BGM"
 [node name="CollisionShape" type="CollisionShape" parent="OnStage"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.937967, 0.104218 )
 shape = SubResource( 1 )
+
+[node name="Performance" type="Spatial" parent="."]
+
+[node name="Bass" type="AudioStreamPlayer" parent="Performance"]
+stream = ExtResource( 9 )
+bus = "Performance"
+
+[node name="Good Drums" type="AudioStreamPlayer" parent="Performance"]
+stream = ExtResource( 10 )
+volume_db = 3.496
+bus = "Performance"
+
+[node name="Good Guitar" type="AudioStreamPlayer" parent="Performance"]
+stream = ExtResource( 6 )
+bus = "Performance"
+
+[node name="Good Keys" type="AudioStreamPlayer" parent="Performance"]
+stream = ExtResource( 8 )
+bus = "Performance"
+
+[node name="Bad Drums" type="AudioStreamPlayer" parent="Performance"]
+stream = ExtResource( 5 )
+volume_db = 3.377
+bus = "Performance"
+
+[node name="Bad Guitar" type="AudioStreamPlayer" parent="Performance"]
+stream = ExtResource( 7 )
+bus = "Performance"
+
+[node name="Bad Keys" type="AudioStreamPlayer" parent="Performance"]
+stream = ExtResource( 4 )
+bus = "Performance"
+
+[node name="Camera" type="Camera" parent="Performance"]
+transform = Transform( 1, 0, 0, 0, 0.990278, 0.139104, 0, -0.139104, 0.990278, 0, 1.808, 4.167 )
+fov = 87.2
+near = 0.01

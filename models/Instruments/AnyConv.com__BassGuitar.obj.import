@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/AnyConv.com__BassGuitar.obj-b99fdb1c19b0061d8eb58b3a0147d54f.mesh"
+
+[deps]
+
+files=[ "res://.import/AnyConv.com__BassGuitar.obj-b99fdb1c19b0061d8eb58b3a0147d54f.mesh" ]
+
+source_file="res://models/Instruments/AnyConv.com__BassGuitar.obj"
+dest_files=[ "res://.import/AnyConv.com__BassGuitar.obj-b99fdb1c19b0061d8eb58b3a0147d54f.mesh", "res://.import/AnyConv.com__BassGuitar.obj-b99fdb1c19b0061d8eb58b3a0147d54f.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

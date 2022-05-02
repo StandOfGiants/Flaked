@@ -80,6 +80,25 @@ func assign_instrument(instrument: String, character: String):
 	set_state("instruments", instrument, character)
 
 
+const PREFERRED_INSTRUMENTS = {
+	"Don": "Keyboard",
+	"Troy": "Guitar",
+	"Tony Macaroni": "Drums",
+	"Benny": "Guitar",
+	"Kat": "Keyboard",
+	"Sarah": "Drums",
+}
+
+
+func played_well(instrument: String) -> bool:
+	var person = get_state("instruments", instrument, null)
+	if person == null:
+		return false
+	if PREFERRED_INSTRUMENTS[person] == instrument:
+		return true
+	return false
+
+
 func look_around():
 	get_tree().call_group("player", "look_around")
 

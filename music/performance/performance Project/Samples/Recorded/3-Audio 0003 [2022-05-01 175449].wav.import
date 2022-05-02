@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/3-Audio 0003 [2022-05-01 175449].wav-d9b95c49dc87b6bfbf20542ca9a367ca.sample"
+
+[deps]
+
+source_file="res://music/performance/performance Project/Samples/Recorded/3-Audio 0003 [2022-05-01 175449].wav"
+dest_files=[ "res://.import/3-Audio 0003 [2022-05-01 175449].wav-d9b95c49dc87b6bfbf20542ca9a367ca.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

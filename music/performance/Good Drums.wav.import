@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Good Drums.wav-8d66c7013c7dd8705d53d0cf96418a87.sample"
+
+[deps]
+
+source_file="res://music/performance/Good Drums.wav"
+dest_files=[ "res://.import/Good Drums.wav-8d66c7013c7dd8705d53d0cf96418a87.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
