@@ -61,21 +61,21 @@ func play_song():
 	if $"Main BG".playing:
 		$"Main BG".stop()
 
-		$Performance/Bass.play()
+		$Music/Bass.play()
 		if not GameState.instrument_available("Drums"):
 			if GameState.played_well("Drums"):
-				$"Performance/Good Drums".play()
+				$"Music/Good Drums".play()
 			else:
-				$"Performance/Bad Drums".play()
+				$"Music/Bad Drums".play()
 
 		if not GameState.instrument_available("Keyboard"):
 			if GameState.played_well("Keyboard"):
-				$"Performance/Good Keys".play()
+				$"Music/Good Keys".play()
 			else:
-				$"Performance/Bad Keys".play()
+				$"Music/Bad Keys".play()
 
 		if not GameState.instrument_available("Guitar"):
 			if GameState.played_well("Guitar"):
-				$"Performance/Good Guitar".play()
+				$"Music/Good Guitar".play()
 			else:
-				$"Performance/Bad Guitar".play()
+				$"Music/Bad Guitar".play()

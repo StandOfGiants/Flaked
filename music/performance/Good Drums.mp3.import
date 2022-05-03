@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Good Drums.mp3-0ba11d87ad0dc78c4b4ec3da1e0edb3a.mp3str"
+
+[deps]
+
+source_file="res://music/performance/Good Drums.mp3"
+dest_files=[ "res://.import/Good Drums.mp3-0ba11d87ad0dc78c4b4ec3da1e0edb3a.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

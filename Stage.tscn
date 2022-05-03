@@ -1,15 +1,15 @@
 [gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://models/table.tscn" type="PackedScene" id=1]
-[ext_resource path="res://music/bg/BG.wav" type="AudioStream" id=2]
+[ext_resource path="res://music/bg/BG.mp3" type="AudioStream" id=2]
 [ext_resource path="res://Stage.gd" type="Script" id=3]
-[ext_resource path="res://music/performance/Bad Keys.wav" type="AudioStream" id=4]
-[ext_resource path="res://music/performance/Bad Drums.wav" type="AudioStream" id=5]
-[ext_resource path="res://music/performance/Good Guitar.wav" type="AudioStream" id=6]
-[ext_resource path="res://music/performance/Bad Guitar.wav" type="AudioStream" id=7]
-[ext_resource path="res://music/performance/Good Keys.wav" type="AudioStream" id=8]
-[ext_resource path="res://music/performance/Bass.wav" type="AudioStream" id=9]
-[ext_resource path="res://music/performance/Good Drums.wav" type="AudioStream" id=10]
+[ext_resource path="res://music/performance/Bad Guitar.mp3" type="AudioStream" id=4]
+[ext_resource path="res://music/performance/Bad Keys.mp3" type="AudioStream" id=5]
+[ext_resource path="res://music/performance/Bad Drums.mp3" type="AudioStream" id=6]
+[ext_resource path="res://music/performance/Bass.mp3" type="AudioStream" id=7]
+[ext_resource path="res://music/performance/Good Drums.mp3" type="AudioStream" id=8]
+[ext_resource path="res://music/performance/Good Guitar.mp3" type="AudioStream" id=9]
+[ext_resource path="res://music/performance/Good Keys.mp3" type="AudioStream" id=10]
 [ext_resource path="res://models/Instruments/GuitareLowPoly.fbx" type="PackedScene" id=11]
 [ext_resource path="res://models/BassGuitar.tscn" type="PackedScene" id=12]
 [ext_resource path="res://models/Instruments/Drumkit.tscn" type="PackedScene" id=13]
@@ -62,37 +62,39 @@ transform = Transform( 0.999949, 0.0100879, 0, -0.0100879, 0.999949, 0, 0, 0, 1,
 [node name="Guitar" parent="PreShow" instance=ExtResource( 11 )]
 transform = Transform( -0.0656959, -0.0100879, -0.997789, -0.000662766, 0.999949, -0.0100661, 0.997839, 0, -0.0656992, 1.01608, -0.271698, 0.0750551 )
 
-[node name="Performance" type="Spatial" parent="."]
+[node name="Music" type="Spatial" parent="."]
 
-[node name="Bass" type="AudioStreamPlayer" parent="Performance"]
-stream = ExtResource( 9 )
-bus = "Performance"
-
-[node name="Good Drums" type="AudioStreamPlayer" parent="Performance"]
-stream = ExtResource( 10 )
-volume_db = 3.496
-bus = "Performance"
-
-[node name="Good Guitar" type="AudioStreamPlayer" parent="Performance"]
-stream = ExtResource( 6 )
-bus = "Performance"
-
-[node name="Good Keys" type="AudioStreamPlayer" parent="Performance"]
-stream = ExtResource( 8 )
-bus = "Performance"
-
-[node name="Bad Drums" type="AudioStreamPlayer" parent="Performance"]
-stream = ExtResource( 5 )
-volume_db = 3.377
-bus = "Performance"
-
-[node name="Bad Guitar" type="AudioStreamPlayer" parent="Performance"]
+[node name="Bass" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource( 7 )
 bus = "Performance"
 
-[node name="Bad Keys" type="AudioStreamPlayer" parent="Performance"]
+[node name="Good Drums" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 8 )
+volume_db = 3.496
+bus = "Performance"
+
+[node name="Good Guitar" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 9 )
+bus = "Performance"
+
+[node name="Good Keys" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 10 )
+bus = "Performance"
+
+[node name="Bad Drums" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 6 )
+volume_db = 3.377
+bus = "Performance"
+
+[node name="Bad Guitar" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource( 4 )
 bus = "Performance"
+
+[node name="Bad Keys" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource( 5 )
+bus = "Performance"
+
+[node name="Performance" type="Spatial" parent="."]
 
 [node name="Lights" type="Spatial" parent="Performance"]
 

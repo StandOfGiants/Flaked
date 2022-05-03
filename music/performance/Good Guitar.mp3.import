@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Good Guitar.mp3-3a90b039694c3f853a3ebb74ee56ac03.mp3str"
+
+[deps]
+
+source_file="res://music/performance/Good Guitar.mp3"
+dest_files=[ "res://.import/Good Guitar.mp3-3a90b039694c3f853a3ebb74ee56ac03.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

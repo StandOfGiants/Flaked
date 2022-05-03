@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Good Keys.mp3-801f723bef0adf29fb4ca3057e83eacf.mp3str"
+
+[deps]
+
+source_file="res://music/performance/Good Keys.mp3"
+dest_files=[ "res://.import/Good Keys.mp3-801f723bef0adf29fb4ca3057e83eacf.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

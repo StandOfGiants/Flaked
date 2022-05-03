@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Bad Drums.mp3-a2d9951e86198511576a34afa649a8be.mp3str"
+
+[deps]
+
+source_file="res://music/performance/Bad Drums.mp3"
+dest_files=[ "res://.import/Bad Drums.mp3-a2d9951e86198511576a34afa649a8be.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

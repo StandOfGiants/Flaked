@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Bad Guitar.mp3-0d5864e427a45a10d23a446dcdb12ca7.mp3str"
+
+[deps]
+
+source_file="res://music/performance/Bad Guitar.mp3"
+dest_files=[ "res://.import/Bad Guitar.mp3-0d5864e427a45a10d23a446dcdb12ca7.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
