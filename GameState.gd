@@ -28,7 +28,6 @@ func set_state(category: String, name: String, value, or_else = null):
 	var retval = get_state(category, name, or_else)
 
 	if retval != value:
-		print("Setting ", category, name, value)
 		if not category in state:
 			state[category] = {}
 
@@ -53,6 +52,18 @@ func update_karma(character: String, amount: int):
 
 func has_positive_karma(character: String) -> bool:
 	return get_state("karma", character, 0) >= 0
+
+
+func karma(character: String) -> int:
+	return get_state("karma", character, 0)
+
+
+func complete_character(character: String):
+	set_state("complete", character, true)
+
+
+func is_complete(character: String) -> bool:
+	return get_state("complete", character, false)
 
 
 const INSTRUMENTS = ["Guitar", "Drums", "Keyboard"]
@@ -81,11 +92,16 @@ func is_not_assigned(character: String) -> bool:
 	return true
 
 
+func is_assigned(character: String) -> bool:
+	return not is_not_assigned(character)
+
+
 func instrument_available(instrument: String) -> bool:
 	return get_state("instruments", instrument, null) == null
 
 
 func assign_instrument(instrument: String, character: String):
+	complete_character(character)
 	set_state("instruments", instrument, character)
 
 
@@ -122,6 +138,14 @@ func go_to_stage():
 
 func play_song():
 	get_tree().call_group("stage", "play_song")
+
+
+func is_not_resolved(branch: String) -> bool:
+	return not get_state("resolved_branches", branch, false)
+
+
+func resolve_branch(branch: String):
+	set_state("resolved_branches", branch, true)
 
 
 func save_data():

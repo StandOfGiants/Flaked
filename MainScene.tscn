@@ -520,7 +520,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.369, 0.135108, 12.9273 )
 
 [node name="AnimatedSprite3D" parent="Player" index="1"]
 animation = "Walk"
-frame = 2
+frame = 5
 playing = true
 
 [node name="Camera" parent="Player" index="3"]
@@ -550,7 +550,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.27862, 0, -6.16391 )
 [node name="PreShow" parent="Stage" index="7"]
 transform = Transform( 0.999949, 0.0100879, 0, -0.0100879, 0.999949, 0, 0, 0, 1, -0.29052, 0.76434, -1.18459 )
 
-[node name="Performance" parent="Stage" index="8"]
+[node name="Performance" parent="Stage" index="9"]
 visible = false
 
 [node name="Torch" parent="Stage" instance=ExtResource( 9 )]

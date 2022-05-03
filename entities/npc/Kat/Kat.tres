@@ -8,27 +8,89 @@ syntax_version = 2
 raw_text = "~ begin
 
 if first_visit(\"Kat\")
-	Kat: Yo, I'm Kat.
-Kat: I'm here if you need something.
-- Nevermind => END
-- To ask you to band! [if is_not_assigned(\"Kat\")] => band_questions
+	Player: Hi! I think I've seen you around here before!
+	Kat: Been here long enough to remember when the walls were a groovy blue and the carpet was still shaggy[speed=0.2]... [speed=1][wave amp=25 freq=15]good times[/wave].
+	Player: Wow! That's uh- shaggy carpet? Really? In a bar?
+	Kat: Yeah baby, Brook was all about the experimental stuff back in the day. I miss it.
+	Player: Huh, that's uh... cool? So, do you, um, happen to play music?
+	Kat: I play a mean keyboard when the muse gets me.
+	Player: Really?! Uh, would you like to play keyboard for my band? My usual guy cancelled last second.
+if is_assigned(\"Kat\")
+	Kat: I'll be here until your set starts.
+elif is_complete(\"Kat\")
+	Kat: Good luck baby.
+else
+	=> Hub
+	
+~ Hub
+if first_visit(\"Kat main hub\")
+	Kat: Hmmm, maybe, what kinda music you play?
+else:
+	Kat: What kinda music you play?
+
+- A little of this and a little of that. We're not picky. [if is_not_resolved(\"K1\")]
+	do resolve_branch(\"K1\")
+	Kat: Radio top 40 [speed=0.2][shake rate=20 level=10]stuff[/shake]?
+	- No, no, we uh, lean more indie.
+		do update_karma(\"Kat\", 1)
+	- Sometimes yeah!
+	=> Hub
+- Rock and uh... alternative rock? What are genres anyway? [if is_not_resolved(\"K2\")]
+	do resolve_branch(\"K2\")
+	Kat: That's a deep question, my wife would like you. Cutting edge rock?
+	- I... What evin is that? No, I don't think so.
+	- ...Yes?
+		do update_karma(\"Kat\", 1)
+	=> Hub
+- Soul, groovy stuff! [if is_not_resolved(\"K3\")]
+	do resolve_branch(\"K3\")
+	Kat: ...Like a 60s [shake rate=20 level=10]cover band[/shake]?
+	- No! Like... experimental. Push the boundaries a little bit stuff.
+		do update_karma(\"Kat\", 1)
+	- Yeah, love me some Woodstock music.
+	=> Hub
+- Honestly, whatever you want. [if is_not_resolved(\"K4\")]
+	do resolve_branch(\"K4\")
+	Kat: Whatever [i][shake rate=20 level=10]I[/shake][/i] want? So some jazzy synthy theremin vibes...
+	- Uhh... let's not go that far haha... ha.
+	- We don't have a theremin, but the keyboard is an old Juno-6 from the 80s.
+		do update_karma(\"Kat\", 1)
+	=> Hub
+- A Tonight it could be anything! [if is_not_resolved(\"K5\")]
+	do resolve_branch(\"K5\")
+	Kat: Anything? You ready for an [i][wave amp=30 freq=10]Experience[/wave][/i] buddy?
+	- Yes, help me make an experience!
+		do update_karma(\"Kat\", 1)
+	- No. The night is chaotic enough as it is thanks.
+	=> Hub
+- I'll be back.
+	Kat: Take your time.
+	=> END
+- So, are you in?
+	if karma(\"Kat\") >= 3
+		=> band_questions
+	else:
+		Kat: Sorry buddy, this doesn't sound like my kinda scene.
+		Player: Okay, thanks anyway.
+		do complete_character(\"Kat\")
 
 ~ band_questions
-Kat: I play occasionally, what do you need?
-- A Guitarist [if instrument_available(\"Guitar\")]
-	Kat: I'll do my best!
+Kat: This sounds like a groovy time, I'll hel you out man. What kind of instrument do you want me to play?
+- The Guitar [if instrument_available(\"Guitar\")]
+	Kat: Far out, let's play when you're down.
 	do assign_instrument(\"Guitar\", \"Kat\")
-- A Drummer [if instrument_available(\"Drums\")]
-	Kat: I'll do my best!
+- Drums [if instrument_available(\"Drums\")]
+	Kat: Far out, let's play when you're down.
 	do assign_instrument(\"Drums\", \"Kat\")
-- A Keyboardist [if instrument_available(\"Keyboard\")]
-	Kat: I'll do my best!
+- The keyboard [if instrument_available(\"Keyboard\")]
+	Kat: Far out, let's play when you're down.
 	do assign_instrument(\"Keyboard\", \"Kat\")
-- Nevermind.
-	Kat: Okay then..."
+- I need to think about it.
+	Kat: I'll be here."
 errors = [  ]
 titles = {
-"band_questions": "9",
+"Hub": "18",
+"band_questions": "70",
 "begin": "2"
 }
 lines = {
@@ -40,155 +102,111 @@ lines = {
 "10": {
 "condition": {
 "expression": [ {
-"function": "instrument_available",
+"function": "is_assigned",
 "type": "function",
 "value": [ [ {
 "type": "string",
-"value": "Guitar"
+"value": "Kat"
 } ] ]
 } ]
 },
+"next_conditional_id": "12",
 "next_id": "11",
 "next_id_after": "end",
-"replacements": [  ],
-"responses": PoolStringArray( "10", "13", "16", "19" ),
-"text": "A Guitarist",
-"translation_key": "A Guitarist",
-"type": "response"
+"type": "condition"
 },
 "11": {
 "character": "Kat",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "12",
+"next_id": "end",
 "parent_id": "10",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "I'll do my best!",
+"text": "I'll be here until your set starts.",
 "time": null,
-"translation_key": "I'll do my best!",
+"translation_key": "I'll be here until your set starts.",
 "type": "dialog"
 },
 "12": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "Guitar"
-} ], [ {
+"condition": {
+"expression": [ {
+"function": "is_complete",
+"type": "function",
+"value": [ [ {
 "type": "string",
 "value": "Kat"
-} ] ],
-"function": "assign_instrument"
+} ] ]
+} ]
 },
-"next_id": "end",
-"parent_id": "10",
-"type": "mutation"
+"next_conditional_id": "14",
+"next_id": "13",
+"next_id_after": "end",
+"type": "condition"
 },
 "13": {
-"condition": {
-"expression": [ {
-"function": "instrument_available",
-"type": "function",
-"value": [ [ {
-"type": "string",
-"value": "Drums"
-} ] ]
-} ]
+"character": "Kat",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "end",
+"parent_id": "12",
+"pauses": {
 },
-"next_id": "14",
-"next_id_after": "end",
 "replacements": [  ],
-"text": "A Drummer",
-"translation_key": "A Drummer",
-"type": "response"
+"speeds": [  ],
+"text": "Good luck baby.",
+"time": null,
+"translation_key": "Good luck baby.",
+"type": "dialog"
 },
 "14": {
-"character": "Kat",
-"character_replacements": [  ],
-"inline_mutations": [  ],
+"next_conditional_id": "end",
 "next_id": "15",
-"parent_id": "13",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "I'll do my best!",
-"time": null,
-"translation_key": "I'll do my best!",
-"type": "dialog"
+"next_id_after": "end",
+"type": "condition"
 },
 "15": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "Drums"
-} ], [ {
-"type": "string",
-"value": "Kat"
-} ] ],
-"function": "assign_instrument"
+"next_id": "18",
+"parent_id": "14",
+"type": "goto"
 },
-"next_id": "end",
-"parent_id": "13",
-"type": "mutation"
+"17": {
+"next_id": "18",
+"text": "Hub",
+"type": "title"
 },
-"16": {
+"18": {
 "condition": {
 "expression": [ {
-"function": "instrument_available",
+"function": "first_visit",
 "type": "function",
 "value": [ [ {
 "type": "string",
-"value": "Keyboard"
+"value": "Kat main hub"
 } ] ]
 } ]
 },
-"next_id": "17",
-"next_id_after": "end",
-"replacements": [  ],
-"text": "A Keyboardist",
-"translation_key": "A Keyboardist",
-"type": "response"
+"next_conditional_id": "20",
+"next_id": "19",
+"next_id_after": "23",
+"type": "condition"
 },
-"17": {
+"19": {
 "character": "Kat",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "18",
-"parent_id": "16",
+"next_id": "23",
+"parent_id": "18",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "I'll do my best!",
+"text": "Hmmm, maybe, what kinda music you play?",
 "time": null,
-"translation_key": "I'll do my best!",
+"translation_key": "Hmmm, maybe, what kinda music you play?",
 "type": "dialog"
-},
-"18": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "Keyboard"
-} ], [ {
-"type": "string",
-"value": "Kat"
-} ] ],
-"function": "assign_instrument"
-},
-"next_id": "end",
-"parent_id": "16",
-"type": "mutation"
-},
-"19": {
-"next_id": "20",
-"next_id_after": "end",
-"replacements": [  ],
-"text": "Nevermind.",
-"translation_key": "Nevermind.",
-"type": "response"
 },
 "2": {
 "condition": {
@@ -201,28 +219,119 @@ lines = {
 } ] ]
 } ]
 },
-"next_conditional_id": "4",
+"next_conditional_id": "10",
 "next_id": "3",
-"next_id_after": "4",
+"next_id_after": "10",
 "type": "condition"
 },
 "20": {
+"next_conditional_id": "23",
+"next_id": "21",
+"next_id_after": "23",
+"type": "condition"
+},
+"21": {
 "character": "Kat",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "end",
-"parent_id": "19",
+"next_id": "23",
+"parent_id": "20",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Okay then...",
+"text": "What kinda music you play?",
 "time": null,
-"translation_key": "Okay then...",
+"translation_key": "What kinda music you play?",
 "type": "dialog"
 },
-"3": {
+"23": {
+"condition": {
+"expression": [ {
+"function": "is_not_resolved",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "K1"
+} ] ]
+} ]
+},
+"next_id": "24",
+"next_id_after": "end",
+"replacements": [  ],
+"responses": PoolStringArray( "23", "30", "37", "44", "51", "58", "61" ),
+"text": "A little of this and a little of that. We're not picky.",
+"translation_key": "A little of this and a little of that. We're not picky.",
+"type": "response"
+},
+"24": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "K1"
+} ] ],
+"function": "resolve_branch"
+},
+"next_id": "25",
+"parent_id": "23",
+"type": "mutation"
+},
+"25": {
 "character": "Kat",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "26",
+"parent_id": "23",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [ [ 13, 0.2 ] ],
+"text": "Radio top 40 [shake rate=20 level=10]stuff[/shake]?",
+"time": null,
+"translation_key": "Radio top 40 [shake rate=20 level=10]stuff[/shake]?",
+"type": "dialog"
+},
+"26": {
+"next_id": "27",
+"next_id_after": "29",
+"parent_id": "23",
+"replacements": [  ],
+"responses": PoolStringArray( "26", "28" ),
+"text": "No, no, we uh, lean more indie.",
+"translation_key": "No, no, we uh, lean more indie.",
+"type": "response"
+},
+"27": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Kat"
+} ], [ {
+"type": "number",
+"value": 1
+} ] ],
+"function": "update_karma"
+},
+"next_id": "29",
+"parent_id": "26",
+"type": "mutation"
+},
+"28": {
+"next_id": "29",
+"next_id_after": "29",
+"parent_id": "23",
+"replacements": [  ],
+"text": "Sometimes yeah!",
+"translation_key": "Sometimes yeah!",
+"type": "response"
+},
+"29": {
+"next_id": "18",
+"parent_id": "23",
+"type": "goto"
+},
+"3": {
+"character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "4",
@@ -231,9 +340,138 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Yo, I'm Kat.",
+"text": "Hi! I think I've seen you around here before!",
 "time": null,
-"translation_key": "Yo, I'm Kat.",
+"translation_key": "Hi! I think I've seen you around here before!",
+"type": "dialog"
+},
+"30": {
+"condition": {
+"expression": [ {
+"function": "is_not_resolved",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "K2"
+} ] ]
+} ]
+},
+"next_id": "31",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "Rock and uh... alternative rock? What are genres anyway?",
+"translation_key": "Rock and uh... alternative rock? What are genres anyway?",
+"type": "response"
+},
+"31": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "K2"
+} ] ],
+"function": "resolve_branch"
+},
+"next_id": "32",
+"parent_id": "30",
+"type": "mutation"
+},
+"32": {
+"character": "Kat",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "33",
+"parent_id": "30",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "That's a deep question, my wife would like you. Cutting edge rock?",
+"time": null,
+"translation_key": "That's a deep question, my wife would like you. Cutting edge rock?",
+"type": "dialog"
+},
+"33": {
+"next_id": "36",
+"next_id_after": "36",
+"parent_id": "30",
+"replacements": [  ],
+"responses": PoolStringArray( "33", "34" ),
+"text": "I... What evin is that? No, I don't think so.",
+"translation_key": "I... What evin is that? No, I don't think so.",
+"type": "response"
+},
+"34": {
+"next_id": "35",
+"next_id_after": "36",
+"parent_id": "30",
+"replacements": [  ],
+"text": "...Yes?",
+"translation_key": "...Yes?",
+"type": "response"
+},
+"35": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Kat"
+} ], [ {
+"type": "number",
+"value": 1
+} ] ],
+"function": "update_karma"
+},
+"next_id": "36",
+"parent_id": "34",
+"type": "mutation"
+},
+"36": {
+"next_id": "18",
+"parent_id": "30",
+"type": "goto"
+},
+"37": {
+"condition": {
+"expression": [ {
+"function": "is_not_resolved",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "K3"
+} ] ]
+} ]
+},
+"next_id": "38",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "Soul, groovy stuff!",
+"translation_key": "Soul, groovy stuff!",
+"type": "response"
+},
+"38": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "K3"
+} ] ],
+"function": "resolve_branch"
+},
+"next_id": "39",
+"parent_id": "37",
+"type": "mutation"
+},
+"39": {
+"character": "Kat",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "40",
+"parent_id": "37",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "...Like a 60s [shake rate=20 level=10]cover band[/shake]?",
+"time": null,
+"translation_key": "...Like a 60s [shake rate=20 level=10]cover band[/shake]?",
 "type": "dialog"
 },
 "4": {
@@ -241,59 +479,596 @@ lines = {
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "5",
+"parent_id": "2",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [ [ 99, 0.2 ], [ 103, 1.0 ] ],
+"text": "Been here long enough to remember when the walls were a groovy blue and the carpet was still shaggy... [wave amp=25 freq=15]good times[/wave].",
+"time": null,
+"translation_key": "Been here long enough to remember when the walls were a groovy blue and the carpet was still shaggy... [wave amp=25 freq=15]good times[/wave].",
+"type": "dialog"
+},
+"40": {
+"next_id": "41",
+"next_id_after": "43",
+"parent_id": "37",
+"replacements": [  ],
+"responses": PoolStringArray( "40", "42" ),
+"text": "No! Like... experimental. Push the boundaries a little bit stuff.",
+"translation_key": "No! Like... experimental. Push the boundaries a little bit stuff.",
+"type": "response"
+},
+"41": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Kat"
+} ], [ {
+"type": "number",
+"value": 1
+} ] ],
+"function": "update_karma"
+},
+"next_id": "43",
+"parent_id": "40",
+"type": "mutation"
+},
+"42": {
+"next_id": "43",
+"next_id_after": "43",
+"parent_id": "37",
+"replacements": [  ],
+"text": "Yeah, love me some Woodstock music.",
+"translation_key": "Yeah, love me some Woodstock music.",
+"type": "response"
+},
+"43": {
+"next_id": "18",
+"parent_id": "37",
+"type": "goto"
+},
+"44": {
+"condition": {
+"expression": [ {
+"function": "is_not_resolved",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "K4"
+} ] ]
+} ]
+},
+"next_id": "45",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "Honestly, whatever you want.",
+"translation_key": "Honestly, whatever you want.",
+"type": "response"
+},
+"45": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "K4"
+} ] ],
+"function": "resolve_branch"
+},
+"next_id": "46",
+"parent_id": "44",
+"type": "mutation"
+},
+"46": {
+"character": "Kat",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "47",
+"parent_id": "44",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "I'm here if you need something.",
+"text": "Whatever [i][shake rate=20 level=10]I[/shake][/i] want? So some jazzy synthy theremin vibes...",
 "time": null,
-"translation_key": "I'm here if you need something.",
+"translation_key": "Whatever [i][shake rate=20 level=10]I[/shake][/i] want? So some jazzy synthy theremin vibes...",
 "type": "dialog"
 },
-"5": {
-"next_id": "end",
-"next_id_after": "end",
+"47": {
+"next_id": "50",
+"next_id_after": "50",
+"parent_id": "44",
 "replacements": [  ],
-"responses": PoolStringArray( "5", "6" ),
-"text": "Nevermind",
-"translation_key": "Nevermind",
+"responses": PoolStringArray( "47", "48" ),
+"text": "Uhh... let's not go that far haha... ha.",
+"translation_key": "Uhh... let's not go that far haha... ha.",
 "type": "response"
 },
-"6": {
+"48": {
+"next_id": "49",
+"next_id_after": "50",
+"parent_id": "44",
+"replacements": [  ],
+"text": "We don't have a theremin, but the keyboard is an old Juno-6 from the 80s.",
+"translation_key": "We don't have a theremin, but the keyboard is an old Juno-6 from the 80s.",
+"type": "response"
+},
+"49": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Kat"
+} ], [ {
+"type": "number",
+"value": 1
+} ] ],
+"function": "update_karma"
+},
+"next_id": "50",
+"parent_id": "48",
+"type": "mutation"
+},
+"5": {
+"character": "Player",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "6",
+"parent_id": "2",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Wow! That's uh- shaggy carpet? Really? In a bar?",
+"time": null,
+"translation_key": "Wow! That's uh- shaggy carpet? Really? In a bar?",
+"type": "dialog"
+},
+"50": {
+"next_id": "18",
+"parent_id": "44",
+"type": "goto"
+},
+"51": {
 "condition": {
 "expression": [ {
-"function": "is_not_assigned",
+"function": "is_not_resolved",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "K5"
+} ] ]
+} ]
+},
+"next_id": "52",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "A Tonight it could be anything!",
+"translation_key": "A Tonight it could be anything!",
+"type": "response"
+},
+"52": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "K5"
+} ] ],
+"function": "resolve_branch"
+},
+"next_id": "53",
+"parent_id": "51",
+"type": "mutation"
+},
+"53": {
+"character": "Kat",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "54",
+"parent_id": "51",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Anything? You ready for an [i][wave amp=30 freq=10]Experience[/wave][/i] buddy?",
+"time": null,
+"translation_key": "Anything? You ready for an [i][wave amp=30 freq=10]Experience[/wave][/i] buddy?",
+"type": "dialog"
+},
+"54": {
+"next_id": "55",
+"next_id_after": "57",
+"parent_id": "51",
+"replacements": [  ],
+"responses": PoolStringArray( "54", "56" ),
+"text": "Yes, help me make an experience!",
+"translation_key": "Yes, help me make an experience!",
+"type": "response"
+},
+"55": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Kat"
+} ], [ {
+"type": "number",
+"value": 1
+} ] ],
+"function": "update_karma"
+},
+"next_id": "57",
+"parent_id": "54",
+"type": "mutation"
+},
+"56": {
+"next_id": "57",
+"next_id_after": "57",
+"parent_id": "51",
+"replacements": [  ],
+"text": "No. The night is chaotic enough as it is thanks.",
+"translation_key": "No. The night is chaotic enough as it is thanks.",
+"type": "response"
+},
+"57": {
+"next_id": "18",
+"parent_id": "51",
+"type": "goto"
+},
+"58": {
+"next_id": "59",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "I'll be back.",
+"translation_key": "I'll be back.",
+"type": "response"
+},
+"59": {
+"character": "Kat",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "60",
+"parent_id": "58",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Take your time.",
+"time": null,
+"translation_key": "Take your time.",
+"type": "dialog"
+},
+"6": {
+"character": "Kat",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "7",
+"parent_id": "2",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Yeah baby, Brook was all about the experimental stuff back in the day. I miss it.",
+"time": null,
+"translation_key": "Yeah baby, Brook was all about the experimental stuff back in the day. I miss it.",
+"type": "dialog"
+},
+"60": {
+"next_id": "end",
+"parent_id": "58",
+"type": "goto"
+},
+"61": {
+"next_id": "62",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "So, are you in?",
+"translation_key": "So, are you in?",
+"type": "response"
+},
+"62": {
+"condition": {
+"expression": [ {
+"function": "karma",
 "type": "function",
 "value": [ [ {
 "type": "string",
 "value": "Kat"
 } ] ]
+}, {
+"type": "comparison",
+"value": ">="
+}, {
+"type": "number",
+"value": 3
 } ]
 },
-"next_id": "9",
+"next_conditional_id": "64",
+"next_id": "63",
 "next_id_after": "end",
-"replacements": [  ],
-"text": "To ask you to band!",
-"translation_key": "To ask you to band!",
-"type": "response"
+"parent_id": "61",
+"type": "condition"
 },
-"8": {
-"next_id": "9",
-"text": "band_questions",
-"type": "title"
+"63": {
+"next_id": "70",
+"parent_id": "62",
+"type": "goto"
 },
-"9": {
+"64": {
+"next_conditional_id": "end",
+"next_id": "65",
+"next_id_after": "end",
+"parent_id": "61",
+"type": "condition"
+},
+"65": {
 "character": "Kat",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "10",
+"next_id": "66",
+"parent_id": "64",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "I play occasionally, what do you need?",
+"text": "Sorry buddy, this doesn't sound like my kinda scene.",
 "time": null,
-"translation_key": "I play occasionally, what do you need?",
+"translation_key": "Sorry buddy, this doesn't sound like my kinda scene.",
+"type": "dialog"
+},
+"66": {
+"character": "Player",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "67",
+"parent_id": "64",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Okay, thanks anyway.",
+"time": null,
+"translation_key": "Okay, thanks anyway.",
+"type": "dialog"
+},
+"67": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Kat"
+} ] ],
+"function": "complete_character"
+},
+"next_id": "end",
+"parent_id": "64",
+"type": "mutation"
+},
+"69": {
+"next_id": "70",
+"text": "band_questions",
+"type": "title"
+},
+"7": {
+"character": "Player",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "8",
+"parent_id": "2",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Huh, that's uh... cool? So, do you, um, happen to play music?",
+"time": null,
+"translation_key": "Huh, that's uh... cool? So, do you, um, happen to play music?",
+"type": "dialog"
+},
+"70": {
+"character": "Kat",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "71",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "This sounds like a groovy time, I'll hel you out man. What kind of instrument do you want me to play?",
+"time": null,
+"translation_key": "This sounds like a groovy time, I'll hel you out man. What kind of instrument do you want me to play?",
+"type": "dialog"
+},
+"71": {
+"condition": {
+"expression": [ {
+"function": "instrument_available",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Guitar"
+} ] ]
+} ]
+},
+"next_id": "72",
+"next_id_after": "end",
+"replacements": [  ],
+"responses": PoolStringArray( "71", "74", "77", "80" ),
+"text": "The Guitar",
+"translation_key": "The Guitar",
+"type": "response"
+},
+"72": {
+"character": "Kat",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "73",
+"parent_id": "71",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Far out, let's play when you're down.",
+"time": null,
+"translation_key": "Far out, let's play when you're down.",
+"type": "dialog"
+},
+"73": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Guitar"
+} ], [ {
+"type": "string",
+"value": "Kat"
+} ] ],
+"function": "assign_instrument"
+},
+"next_id": "end",
+"parent_id": "71",
+"type": "mutation"
+},
+"74": {
+"condition": {
+"expression": [ {
+"function": "instrument_available",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Drums"
+} ] ]
+} ]
+},
+"next_id": "75",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "Drums",
+"translation_key": "Drums",
+"type": "response"
+},
+"75": {
+"character": "Kat",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "76",
+"parent_id": "74",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Far out, let's play when you're down.",
+"time": null,
+"translation_key": "Far out, let's play when you're down.",
+"type": "dialog"
+},
+"76": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Drums"
+} ], [ {
+"type": "string",
+"value": "Kat"
+} ] ],
+"function": "assign_instrument"
+},
+"next_id": "end",
+"parent_id": "74",
+"type": "mutation"
+},
+"77": {
+"condition": {
+"expression": [ {
+"function": "instrument_available",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Keyboard"
+} ] ]
+} ]
+},
+"next_id": "78",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "The keyboard",
+"translation_key": "The keyboard",
+"type": "response"
+},
+"78": {
+"character": "Kat",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "79",
+"parent_id": "77",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Far out, let's play when you're down.",
+"time": null,
+"translation_key": "Far out, let's play when you're down.",
+"type": "dialog"
+},
+"79": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Keyboard"
+} ], [ {
+"type": "string",
+"value": "Kat"
+} ] ],
+"function": "assign_instrument"
+},
+"next_id": "end",
+"parent_id": "77",
+"type": "mutation"
+},
+"8": {
+"character": "Kat",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "9",
+"parent_id": "2",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I play a mean keyboard when the muse gets me.",
+"time": null,
+"translation_key": "I play a mean keyboard when the muse gets me.",
+"type": "dialog"
+},
+"80": {
+"next_id": "81",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "I need to think about it.",
+"translation_key": "I need to think about it.",
+"type": "response"
+},
+"81": {
+"character": "Kat",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "end",
+"parent_id": "80",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I'll be here.",
+"time": null,
+"translation_key": "I'll be here.",
+"type": "dialog"
+},
+"9": {
+"character": "Player",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "10",
+"parent_id": "2",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Really?! Uh, would you like to play keyboard for my band? My usual guy cancelled last second.",
+"time": null,
+"translation_key": "Really?! Uh, would you like to play keyboard for my band? My usual guy cancelled last second.",
 "type": "dialog"
 }
 }
