@@ -98,6 +98,7 @@ func _physics_process(delta):
 	# Don't do any movement while chat overlay is open.
 	if in_dialog():
 		velocity = Vector3()
+		$AnimatedSprite3D.play("default")
 		return
 
 	var dir = Vector3()
@@ -125,6 +126,11 @@ func _physics_process(delta):
 	velocity = move_and_slide(velocity, Vector3.UP)
 
 	if velocity.x > 0.1:
-		$Sprite3D.rotation.y = lerp($Sprite3D.rotation.y, PI, .25)
+		$AnimatedSprite3D.rotation.y = lerp($AnimatedSprite3D.rotation.y, PI, .25)
 	elif velocity.x < -0.1:
-		$Sprite3D.rotation.y = lerp($Sprite3D.rotation.y, 0, .25)
+		$AnimatedSprite3D.rotation.y = lerp($AnimatedSprite3D.rotation.y, 0, .25)
+
+	if velocity.length_squared() > 0.1:
+		$AnimatedSprite3D.play("Walk")
+	else:
+		$AnimatedSprite3D.play("default")

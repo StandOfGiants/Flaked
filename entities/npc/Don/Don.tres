@@ -9,9 +9,27 @@ raw_text = "~ begin
 
 if first_visit(\"Don\")
 	Don: 'Sup. I'm don.
-Don: Need something, Croaks?"
+Don: Need something, Croaks?
+
+- Nevermind => END
+- To ask you to band! [if is_not_assigned(\"Don\")] => band_questions
+
+~ band_questions
+Don: I play occasionally, what do you need?
+- A Guitarist [if instrument_available(\"Guitar\")]
+	Don: I'll do my best!
+	do assign_instrument(\"Guitar\", \"Don\")
+- A Drummer [if instrument_available(\"Drums\")]
+	Don: I'll do my best!
+	do assign_instrument(\"Drums\", \"Don\")
+- A Keyboardist [if instrument_available(\"Keyboard\")]
+	Don: I'll do my best!
+	do assign_instrument(\"Keyboard\", \"Don\")
+- Nevermind.
+	Don: Okay then..."
 errors = [  ]
 titles = {
+"band_questions": "10",
 "begin": "2"
 }
 lines = {
@@ -19,6 +37,165 @@ lines = {
 "next_id": "2",
 "text": "begin",
 "type": "title"
+},
+"10": {
+"character": "Don",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "11",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I play occasionally, what do you need?",
+"time": null,
+"translation_key": "I play occasionally, what do you need?",
+"type": "dialog"
+},
+"11": {
+"condition": {
+"expression": [ {
+"function": "instrument_available",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Guitar"
+} ] ]
+} ]
+},
+"next_id": "12",
+"next_id_after": "end",
+"replacements": [  ],
+"responses": PoolStringArray( "11", "14", "17", "20" ),
+"text": "A Guitarist",
+"translation_key": "A Guitarist",
+"type": "response"
+},
+"12": {
+"character": "Don",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "13",
+"parent_id": "11",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I'll do my best!",
+"time": null,
+"translation_key": "I'll do my best!",
+"type": "dialog"
+},
+"13": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Guitar"
+} ], [ {
+"type": "string",
+"value": "Don"
+} ] ],
+"function": "assign_instrument"
+},
+"next_id": "end",
+"parent_id": "11",
+"type": "mutation"
+},
+"14": {
+"condition": {
+"expression": [ {
+"function": "instrument_available",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Drums"
+} ] ]
+} ]
+},
+"next_id": "15",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "A Drummer",
+"translation_key": "A Drummer",
+"type": "response"
+},
+"15": {
+"character": "Don",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "16",
+"parent_id": "14",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I'll do my best!",
+"time": null,
+"translation_key": "I'll do my best!",
+"type": "dialog"
+},
+"16": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Drums"
+} ], [ {
+"type": "string",
+"value": "Don"
+} ] ],
+"function": "assign_instrument"
+},
+"next_id": "end",
+"parent_id": "14",
+"type": "mutation"
+},
+"17": {
+"condition": {
+"expression": [ {
+"function": "instrument_available",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Keyboard"
+} ] ]
+} ]
+},
+"next_id": "18",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "A Keyboardist",
+"translation_key": "A Keyboardist",
+"type": "response"
+},
+"18": {
+"character": "Don",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "19",
+"parent_id": "17",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I'll do my best!",
+"time": null,
+"translation_key": "I'll do my best!",
+"type": "dialog"
+},
+"19": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Keyboard"
+} ], [ {
+"type": "string",
+"value": "Don"
+} ] ],
+"function": "assign_instrument"
+},
+"next_id": "end",
+"parent_id": "17",
+"type": "mutation"
 },
 "2": {
 "condition": {
@@ -35,6 +212,29 @@ lines = {
 "next_id": "3",
 "next_id_after": "4",
 "type": "condition"
+},
+"20": {
+"next_id": "21",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "Nevermind.",
+"translation_key": "Nevermind.",
+"type": "response"
+},
+"21": {
+"character": "Don",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "end",
+"parent_id": "20",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Okay then...",
+"time": null,
+"translation_key": "Okay then...",
+"type": "dialog"
 },
 "3": {
 "character": "Don",
@@ -55,7 +255,7 @@ lines = {
 "character": "Don",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "",
+"next_id": "6",
 "pauses": {
 },
 "replacements": [  ],
@@ -64,5 +264,37 @@ lines = {
 "time": null,
 "translation_key": "Need something, Croaks?",
 "type": "dialog"
+},
+"6": {
+"next_id": "end",
+"next_id_after": "end",
+"replacements": [  ],
+"responses": PoolStringArray( "6", "7" ),
+"text": "Nevermind",
+"translation_key": "Nevermind",
+"type": "response"
+},
+"7": {
+"condition": {
+"expression": [ {
+"function": "is_not_assigned",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Don"
+} ] ]
+} ]
+},
+"next_id": "10",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "To ask you to band!",
+"translation_key": "To ask you to band!",
+"type": "response"
+},
+"9": {
+"next_id": "10",
+"text": "band_questions",
+"type": "title"
 }
 }

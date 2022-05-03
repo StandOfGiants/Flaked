@@ -1,6 +1,7 @@
 extends Node
 
 var state = {}
+const KEYBOARD = "Keyboard"
 
 
 func _ready():
@@ -65,6 +66,14 @@ func available_instruments():
 	return instruments_available
 
 
+func all_alone():
+	return available_instruments().size() == 3
+
+
+func band_full():
+	return available_instruments().size() == 0
+
+
 func is_not_assigned(character: String) -> bool:
 	for instrument in INSTRUMENTS:
 		if get_state("instruments", instrument, null) == character:
@@ -83,7 +92,7 @@ func assign_instrument(instrument: String, character: String):
 const PREFERRED_INSTRUMENTS = {
 	"Don": "Keyboard",
 	"Troy": "Guitar",
-	"Tony Macaroni": "Drums",
+	"TonyMacaroni": "Drums",
 	"Benny": "Guitar",
 	"Kat": "Keyboard",
 	"Sarah": "Drums",
@@ -105,6 +114,14 @@ func played_well(instrument: String) -> bool:
 
 func look_around():
 	get_tree().call_group("player", "look_around")
+
+
+func go_to_stage():
+	get_tree().call_group("main", "go_to_stage")
+
+
+func play_song():
+	get_tree().call_group("stage", "play_song")
 
 
 func save_data():

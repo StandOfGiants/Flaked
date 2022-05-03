@@ -16,11 +16,19 @@ func _process(_delta):
 		emit_signal("player_enter")
 	if not player_inside and player_was_inside:
 		emit_signal("player_exit")
+	player_was_inside = player_inside
 
 
 func quiet_down():
+	position_guitar()
+	$Performance/Guitarist.who = GameState.who_plays("Guitar")
+	$Performance/Keyboardist.who = GameState.who_plays("Keyboard")
+	$Performance/Drummer.who = GameState.who_plays("Drums")
+
 	var sfx = AudioServer.get_bus_index("SFX")
 	AudioServer.set_bus_volume_db(sfx, -20)
+	var bgm = AudioServer.get_bus_index("BGM")
+	AudioServer.set_bus_volume_db(bgm, -20)
 
 
 func position_guitar():
@@ -36,7 +44,7 @@ func position_guitar():
 			$Performance/Guitar.translation.y = 1.098
 		"Sarah":
 			$Performance/Guitar.translation.y = 0.597
-		"Tony Macaroni":
+		"TonyMacaroni":
 			$Performance/Guitar.translation.y = 0.408
 		"Troy":
 			$Performance/Guitar.translation.y = 1.154
@@ -51,11 +59,6 @@ func position_guitar():
 
 func play_song():
 	if $"Main BG".playing:
-		position_guitar()
-		$Performance/Guitarist.who = GameState.who_plays("Guitar")
-		$Performance/Keyboardist.who = GameState.who_plays("Keyboard")
-		$Performance/Drummer.who = GameState.who_plays("Drums")
-
 		$"Main BG".stop()
 
 		$Performance/Bass.play()

@@ -9,9 +9,26 @@ raw_text = "~ begin
 
 if first_visit(\"Kat\")
 	Kat: Yo, I'm Kat.
-Kat: I'm here if you need something."
+Kat: I'm here if you need something.
+- Nevermind => END
+- To ask you to band! [if is_not_assigned(\"Kat\")] => band_questions
+
+~ band_questions
+Kat: I play occasionally, what do you need?
+- A Guitarist [if instrument_available(\"Guitar\")]
+	Kat: I'll do my best!
+	do assign_instrument(\"Guitar\", \"Kat\")
+- A Drummer [if instrument_available(\"Drums\")]
+	Kat: I'll do my best!
+	do assign_instrument(\"Drums\", \"Kat\")
+- A Keyboardist [if instrument_available(\"Keyboard\")]
+	Kat: I'll do my best!
+	do assign_instrument(\"Keyboard\", \"Kat\")
+- Nevermind.
+	Kat: Okay then..."
 errors = [  ]
 titles = {
+"band_questions": "9",
 "begin": "2"
 }
 lines = {
@@ -19,6 +36,159 @@ lines = {
 "next_id": "2",
 "text": "begin",
 "type": "title"
+},
+"10": {
+"condition": {
+"expression": [ {
+"function": "instrument_available",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Guitar"
+} ] ]
+} ]
+},
+"next_id": "11",
+"next_id_after": "end",
+"replacements": [  ],
+"responses": PoolStringArray( "10", "13", "16", "19" ),
+"text": "A Guitarist",
+"translation_key": "A Guitarist",
+"type": "response"
+},
+"11": {
+"character": "Kat",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "12",
+"parent_id": "10",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I'll do my best!",
+"time": null,
+"translation_key": "I'll do my best!",
+"type": "dialog"
+},
+"12": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Guitar"
+} ], [ {
+"type": "string",
+"value": "Kat"
+} ] ],
+"function": "assign_instrument"
+},
+"next_id": "end",
+"parent_id": "10",
+"type": "mutation"
+},
+"13": {
+"condition": {
+"expression": [ {
+"function": "instrument_available",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Drums"
+} ] ]
+} ]
+},
+"next_id": "14",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "A Drummer",
+"translation_key": "A Drummer",
+"type": "response"
+},
+"14": {
+"character": "Kat",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "15",
+"parent_id": "13",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I'll do my best!",
+"time": null,
+"translation_key": "I'll do my best!",
+"type": "dialog"
+},
+"15": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Drums"
+} ], [ {
+"type": "string",
+"value": "Kat"
+} ] ],
+"function": "assign_instrument"
+},
+"next_id": "end",
+"parent_id": "13",
+"type": "mutation"
+},
+"16": {
+"condition": {
+"expression": [ {
+"function": "instrument_available",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Keyboard"
+} ] ]
+} ]
+},
+"next_id": "17",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "A Keyboardist",
+"translation_key": "A Keyboardist",
+"type": "response"
+},
+"17": {
+"character": "Kat",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "18",
+"parent_id": "16",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I'll do my best!",
+"time": null,
+"translation_key": "I'll do my best!",
+"type": "dialog"
+},
+"18": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Keyboard"
+} ], [ {
+"type": "string",
+"value": "Kat"
+} ] ],
+"function": "assign_instrument"
+},
+"next_id": "end",
+"parent_id": "16",
+"type": "mutation"
+},
+"19": {
+"next_id": "20",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "Nevermind.",
+"translation_key": "Nevermind.",
+"type": "response"
 },
 "2": {
 "condition": {
@@ -35,6 +205,21 @@ lines = {
 "next_id": "3",
 "next_id_after": "4",
 "type": "condition"
+},
+"20": {
+"character": "Kat",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "end",
+"parent_id": "19",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Okay then...",
+"time": null,
+"translation_key": "Okay then...",
+"type": "dialog"
 },
 "3": {
 "character": "Kat",
@@ -55,7 +240,7 @@ lines = {
 "character": "Kat",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "",
+"next_id": "5",
 "pauses": {
 },
 "replacements": [  ],
@@ -63,6 +248,52 @@ lines = {
 "text": "I'm here if you need something.",
 "time": null,
 "translation_key": "I'm here if you need something.",
+"type": "dialog"
+},
+"5": {
+"next_id": "end",
+"next_id_after": "end",
+"replacements": [  ],
+"responses": PoolStringArray( "5", "6" ),
+"text": "Nevermind",
+"translation_key": "Nevermind",
+"type": "response"
+},
+"6": {
+"condition": {
+"expression": [ {
+"function": "is_not_assigned",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Kat"
+} ] ]
+} ]
+},
+"next_id": "9",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "To ask you to band!",
+"translation_key": "To ask you to band!",
+"type": "response"
+},
+"8": {
+"next_id": "9",
+"text": "band_questions",
+"type": "title"
+},
+"9": {
+"character": "Kat",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "10",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I play occasionally, what do you need?",
+"time": null,
+"translation_key": "I play occasionally, what do you need?",
 "type": "dialog"
 }
 }

@@ -37,14 +37,34 @@ Player: Guess I'll try asking some people, I just need a guitarist, a keyboardis
 
 ~ on_stage
 
-if has_run_once(\"OnStage\")
-	Player: I need to make sure I have all my band mates.
+if has_run_once(\"OnStage\") == false
+	Player: This is the stage, I'll need to come back when I'm ready to perform.
+	=> END
+	
+if band_full()
+	Player: I guess I've got all the people I need.
+	- Start Performance => start_performance
+	- I'll come back in a bit. => END
+elif all_alone()
+	Player: I don't have any people to play with me. I guess I could just perform alone.
+	- Perform alone => start_performance
+	- Find people to join you => END
 else
-	Player: This is where I'll be playing later. Hopefully I can find some people to take the slots."
+	Player: Well, I have a few people to play with me. We could just start now.
+	- Perform with incomplete band => start_performance
+	- Find more people to join => END
+	
+~ start_performance
+Player: Well, here goes nothing. [next=1]
+do go_to_stage()
+HIDE: ... [next=1.5]
+Player: Hello, everyone! I hope you enjoy our music!
+do play_song()"
 errors = [  ]
 titles = {
 "begin": "2",
-"on_stage": "32"
+"on_stage": "32",
+"start_performance": "50"
 }
 lines = {
 "0": {
@@ -346,53 +366,240 @@ lines = {
 "type": "string",
 "value": "OnStage"
 } ] ]
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "bool",
+"value": false
 } ]
 },
-"next_conditional_id": "34",
+"next_conditional_id": "36",
 "next_id": "33",
-"next_id_after": "end",
+"next_id_after": "36",
 "type": "condition"
 },
 "33": {
 "character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "end",
+"next_id": "34",
 "parent_id": "32",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "I need to make sure I have all my band mates.",
+"text": "This is the stage, I'll need to come back when I'm ready to perform.",
 "time": null,
-"translation_key": "I need to make sure I have all my band mates.",
+"translation_key": "This is the stage, I'll need to come back when I'm ready to perform.",
 "type": "dialog"
 },
 "34": {
-"next_conditional_id": "end",
-"next_id": "35",
+"next_id": "end",
+"parent_id": "32",
+"type": "goto"
+},
+"36": {
+"condition": {
+"expression": [ {
+"function": "band_full",
+"type": "function",
+"value": [  ]
+} ]
+},
+"next_conditional_id": "40",
+"next_id": "37",
 "next_id_after": "end",
 "type": "condition"
 },
-"35": {
+"37": {
 "character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "end",
-"parent_id": "34",
+"next_id": "38",
+"parent_id": "36",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "This is where I'll be playing later. Hopefully I can find some people to take the slots.",
+"text": "I guess I've got all the people I need.",
 "time": null,
-"translation_key": "This is where I'll be playing later. Hopefully I can find some people to take the slots.",
+"translation_key": "I guess I've got all the people I need.",
 "type": "dialog"
+},
+"38": {
+"next_id": "50",
+"next_id_after": "end",
+"parent_id": "36",
+"replacements": [  ],
+"responses": PoolStringArray( "38", "39" ),
+"text": "Start Performance",
+"translation_key": "Start Performance",
+"type": "response"
+},
+"39": {
+"next_id": "end",
+"next_id_after": "end",
+"parent_id": "36",
+"replacements": [  ],
+"text": "I'll come back in a bit.",
+"translation_key": "I'll come back in a bit.",
+"type": "response"
 },
 "4": {
 "next_id": "end",
 "parent_id": "2",
 "type": "goto"
+},
+"40": {
+"condition": {
+"expression": [ {
+"function": "all_alone",
+"type": "function",
+"value": [  ]
+} ]
+},
+"next_conditional_id": "44",
+"next_id": "41",
+"next_id_after": "end",
+"type": "condition"
+},
+"41": {
+"character": "Player",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "42",
+"parent_id": "40",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I don't have any people to play with me. I guess I could just perform alone.",
+"time": null,
+"translation_key": "I don't have any people to play with me. I guess I could just perform alone.",
+"type": "dialog"
+},
+"42": {
+"next_id": "50",
+"next_id_after": "end",
+"parent_id": "40",
+"replacements": [  ],
+"responses": PoolStringArray( "42", "43" ),
+"text": "Perform alone",
+"translation_key": "Perform alone",
+"type": "response"
+},
+"43": {
+"next_id": "end",
+"next_id_after": "end",
+"parent_id": "40",
+"replacements": [  ],
+"text": "Find people to join you",
+"translation_key": "Find people to join you",
+"type": "response"
+},
+"44": {
+"next_conditional_id": "end",
+"next_id": "45",
+"next_id_after": "end",
+"type": "condition"
+},
+"45": {
+"character": "Player",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "46",
+"parent_id": "44",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Well, I have a few people to play with me. We could just start now.",
+"time": null,
+"translation_key": "Well, I have a few people to play with me. We could just start now.",
+"type": "dialog"
+},
+"46": {
+"next_id": "50",
+"next_id_after": "end",
+"parent_id": "44",
+"replacements": [  ],
+"responses": PoolStringArray( "46", "47" ),
+"text": "Perform with incomplete band",
+"translation_key": "Perform with incomplete band",
+"type": "response"
+},
+"47": {
+"next_id": "end",
+"next_id_after": "end",
+"parent_id": "44",
+"replacements": [  ],
+"text": "Find more people to join",
+"translation_key": "Find more people to join",
+"type": "response"
+},
+"49": {
+"next_id": "50",
+"text": "start_performance",
+"type": "title"
+},
+"50": {
+"character": "Player",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "51",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Well, here goes nothing. ",
+"time": "1",
+"translation_key": "Well, here goes nothing. ",
+"type": "dialog"
+},
+"51": {
+"mutation": {
+"args": [  ],
+"function": "go_to_stage"
+},
+"next_id": "52",
+"type": "mutation"
+},
+"52": {
+"character": "HIDE",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "53",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "... ",
+"time": "1.5",
+"translation_key": "... ",
+"type": "dialog"
+},
+"53": {
+"character": "Player",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "54",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Hello, everyone! I hope you enjoy our music!",
+"time": null,
+"translation_key": "Hello, everyone! I hope you enjoy our music!",
+"type": "dialog"
+},
+"54": {
+"mutation": {
+"args": [  ],
+"function": "play_song"
+},
+"next_id": "",
+"type": "mutation"
 },
 "6": {
 "mutation": {

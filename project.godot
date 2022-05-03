@@ -19,10 +19,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/dialog_manager/dialog_resource.gd"
 }, {
+"base": "TextMenu",
+"class": "MainMenuTextMenu",
+"language": "GDScript",
+"path": "res://MainMenuTextMenu.gd"
+}, {
 "base": "KinematicBody",
 "class": "NPC",
 "language": "GDScript",
 "path": "res://entities/npc/NPC.gd"
+}, {
+"base": "TextMenu",
+"class": "PauseMenu",
+"language": "GDScript",
+"path": "res://PauseTextMenu.gd"
 }, {
 "base": "KinematicBody",
 "class": "Player",
@@ -42,7 +52,9 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "AnyCharacter": "",
 "DialogResource": "",
+"MainMenuTextMenu": "",
 "NPC": "",
+"PauseMenu": "",
 "Player": "",
 "Silhouette": "",
 "TextMenu": ""
@@ -51,7 +63,7 @@ _global_script_class_icons={
 [application]
 
 config/name="FrogBand"
-run/main_scene="res://MainScene.tscn"
+run/main_scene="res://Main Menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]

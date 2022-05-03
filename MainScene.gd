@@ -11,6 +11,11 @@ func _ready():
 	yield($AnimationPlayer, "animation_finished")
 	$AnimationPlayer.play("Entry")
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func go_to_stage():
+	$AnimationPlayer.play("Go To Stage")
