@@ -28,37 +28,37 @@ if first_visit(\"TonyMacaroni main hub\")
 else
 	Tony Macaroni: You you would want me, Tony Macaroni, to join your band?
 
-- Wait, your name is Tony Macaroni? [if is_not_resolved(\"T1\")]
-	do resolve_branch(\"T1\")
+- Wait, your name is Tony Macaroni? [if is_not_resolved(\"TM1\")]
+	do resolve_branch(\"TM1\")
 	Tony Macaroni: ...It's s-short for Antonio Macaronio.
 	- Wow your parents suck huh?
 		do update_karma(\"TonyMacaroni\", 1)
 	- That's uh... cool?
 	=> Hub
-- Yes, please join my band for the night [if is_not_resolved(\"T2\")]
-	do resolve_branch(\"T2\")
+- Yes, please join my band for the night [if is_not_resolved(\"TM2\")]
+	do resolve_branch(\"TM2\")
 	Tony Macaroni: ...On ONE condition. You will be my friend.
 	- Yeah Tony, I'll uh, be your friend.
 		do update_karma(\"TonyMacaroni\", 1)
 	- Friendship usually takes a little longer than that...
 	=> Hub
-- With your instrument prowess, I'd be glad to have you! [if is_not_resolved(\"T5\")]
-	do resolve_branch(\"T5\")
-	Tony Macaroni: Are you positive? This is a [wave amp=25 freq=5]big[/wave] decision. [wait=1][shake rate=25 level=15]HUGE[/shake]. 
+- With your instrument prowess, I'd be glad to have you! [if is_not_resolved(\"TM5\")]
+	do resolve_branch(\"TM5\")
+	Tony Macaroni: Are you positive? This is a [wave amp=25 freq=5]big[/wave] decision. [wait=1][shake rate=25 level=15]HUGE[/shake].
 	- Yes Tony. I would like to play music with you.
 		do update_karma(\"TonyMacaroni\", 1)
 	- It's... just a set, man.
 	=> Hub
-- Get those feelings out with us! [if is_not_resolved(\"T3\")]
+- Get those feelings out with us! [if is_not_resolved(\"TM3\")]
 	Player: *I give him a thumbs up*
-	do resolve_branch(\"T3\")
+	do resolve_branch(\"TM3\")
 	Tony Macaroni: I... this is all I have ever wanted. Oh Mother and Father would never approve.
 	- ...Okay
 	- Yeah, stick it to 'em!
 		do update_karma(\"TonyMacaroni\", 1)
 	=> Hub
-- Just for the night. [if is_not_resolved(\"T4\")]
-	do resolve_branch(\"T4\")
+- Just for the night. [if is_not_resolved(\"TM4\")]
+	do resolve_branch(\"TM4\")
 	Tony Macaroni: A band made once is a band forever!
 	Tony Macaroni: This could be my chance to leave behind my desk job forever!
 	- Um, don't quit your day job.
@@ -256,7 +256,7 @@ lines = {
 "type": "function",
 "value": [ [ {
 "type": "string",
-"value": "T1"
+"value": "TM1"
 } ] ]
 } ]
 },
@@ -272,7 +272,7 @@ lines = {
 "mutation": {
 "args": [ [ {
 "type": "string",
-"value": "T1"
+"value": "TM1"
 } ] ],
 "function": "resolve_branch"
 },
@@ -356,7 +356,7 @@ lines = {
 "type": "function",
 "value": [ [ {
 "type": "string",
-"value": "T2"
+"value": "TM2"
 } ] ]
 } ]
 },
@@ -371,7 +371,7 @@ lines = {
 "mutation": {
 "args": [ [ {
 "type": "string",
-"value": "T2"
+"value": "TM2"
 } ] ],
 "function": "resolve_branch"
 },
@@ -440,7 +440,7 @@ lines = {
 "type": "function",
 "value": [ [ {
 "type": "string",
-"value": "T5"
+"value": "TM5"
 } ] ]
 } ]
 },
@@ -455,7 +455,7 @@ lines = {
 "mutation": {
 "args": [ [ {
 "type": "string",
-"value": "T5"
+"value": "TM5"
 } ] ],
 "function": "resolve_branch"
 },
@@ -540,7 +540,7 @@ lines = {
 "type": "function",
 "value": [ [ {
 "type": "string",
-"value": "T3"
+"value": "TM3"
 } ] ]
 } ]
 },
@@ -570,7 +570,7 @@ lines = {
 "mutation": {
 "args": [ [ {
 "type": "string",
-"value": "T3"
+"value": "TM3"
 } ] ],
 "function": "resolve_branch"
 },
@@ -654,7 +654,7 @@ lines = {
 "type": "function",
 "value": [ [ {
 "type": "string",
-"value": "T4"
+"value": "TM4"
 } ] ]
 } ]
 },
@@ -669,7 +669,7 @@ lines = {
 "mutation": {
 "args": [ [ {
 "type": "string",
-"value": "T4"
+"value": "TM4"
 } ] ],
 "function": "resolve_branch"
 },

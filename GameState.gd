@@ -148,6 +148,32 @@ func resolve_branch(branch: String):
 	set_state("resolved_branches", branch, true)
 
 
+func start_quest(quest_name: String):
+	set_state("quests", quest_name, "started")
+
+
+func on_quest(quest_name: String):
+	return get_state("quests", quest_name, "finished") != "finished"
+
+
+func finish_quest(quest_name: String):
+	set_state("quests", quest_name, "finished")
+
+
+func get_beer():
+	state["beer"] = true
+	save_data()
+
+
+func has_beer():
+	return "beer" in state and state["beer"] == true
+
+
+func lose_beer():
+	state["beer"] = false
+	save_data()
+
+
 func save_data():
 	var save_game = File.new()
 	save_game.open("user://savegame.save", File.WRITE)

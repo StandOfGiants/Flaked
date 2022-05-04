@@ -10,6 +10,14 @@ raw_text = "~ begin
 if first_visit(\"Bartender\")
 	Bartender: Hello there! Welcome to the club!
 Bartender: What can I get you?
+- I need a beer for that guy over there [if on_quest(\"get troy a beer\")]
+	Bartender: Here you are!
+	do get_beer()
+	=> END
+- What do you have?
+	Bartender: Beer mostly.
+	=> begin
+- Nothing => END
 "
 errors = [  ]
 titles = {
@@ -20,6 +28,34 @@ lines = {
 "next_id": "2",
 "text": "begin",
 "type": "title"
+},
+"10": {
+"character": "Bartender",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "11",
+"parent_id": "9",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Beer mostly.",
+"time": null,
+"translation_key": "Beer mostly.",
+"type": "dialog"
+},
+"11": {
+"next_id": "2",
+"parent_id": "9",
+"type": "goto"
+},
+"12": {
+"next_id": "end",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "Nothing",
+"translation_key": "Nothing",
+"type": "response"
 },
 "2": {
 "condition": {
@@ -56,7 +92,7 @@ lines = {
 "character": "Bartender",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "",
+"next_id": "5",
 "pauses": {
 },
 "replacements": [  ],
@@ -65,5 +101,61 @@ lines = {
 "time": null,
 "translation_key": "What can I get you?",
 "type": "dialog"
+},
+"5": {
+"condition": {
+"expression": [ {
+"function": "on_quest",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "get troy a beer"
+} ] ]
+} ]
+},
+"next_id": "6",
+"next_id_after": "end",
+"replacements": [  ],
+"responses": PoolStringArray( "5", "9", "12" ),
+"text": "I need a beer for that guy over there",
+"translation_key": "I need a beer for that guy over there",
+"type": "response"
+},
+"6": {
+"character": "Bartender",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "7",
+"parent_id": "5",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Here you are!",
+"time": null,
+"translation_key": "Here you are!",
+"type": "dialog"
+},
+"7": {
+"mutation": {
+"args": [  ],
+"function": "get_beer"
+},
+"next_id": "8",
+"parent_id": "5",
+"type": "mutation"
+},
+"8": {
+"next_id": "end",
+"parent_id": "5",
+"type": "goto"
+},
+"9": {
+"next_id": "10",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "What do you have?",
+"translation_key": "What do you have?",
+"type": "response"
 }
 }
