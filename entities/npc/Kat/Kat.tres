@@ -38,7 +38,7 @@ else:
 - Rock and uh... alternative rock? What are genres anyway? [if is_not_resolved(\"K2\")]
 	do resolve_branch(\"K2\")
 	Kat: That's a deep question, my wife would like you. Cutting edge rock?
-	- I... What evin is that? No, I don't think so.
+	- I... What even is that? No, I don't think so.
 	- ...Yes?
 		do update_karma(\"Kat\", 1)
 	=> Hub
@@ -396,8 +396,8 @@ lines = {
 "parent_id": "30",
 "replacements": [  ],
 "responses": PoolStringArray( "33", "34" ),
-"text": "I... What evin is that? No, I don't think so.",
-"translation_key": "I... What evin is that? No, I don't think so.",
+"text": "I... What even is that? No, I don't think so.",
+"translation_key": "I... What even is that? No, I don't think so.",
 "type": "response"
 },
 "34": {

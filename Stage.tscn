@@ -152,8 +152,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.735155, 0.178716, 0.779395 )
 who = "Player"
 
 [node name="Keyboardist" parent="Performance" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35308, 0.903369, -0.804183 )
-who = "TonyMacaroni"
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35308, 0.0861664, -0.804183 )
+who = "Kat"
 
 [node name="Drummer" parent="Performance" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.12135, 0.558763, -0.560464 )

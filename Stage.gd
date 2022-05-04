@@ -57,6 +57,7 @@ func position_guitar():
 		"Sarah":
 			$Performance/Drummer.translation.y = 0.5
 
+	$Performance/Keyboardist.translation.y = 0
 	$Performance/Stool.visible = false
 	if GameState.who_plays("Keyboard") == "TonyMacaroni":
 		$Performance/Stool.visible = true
