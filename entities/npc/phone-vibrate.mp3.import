@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/phone-vibrate.mp3-71645ba53df0db4b6d769fe2c7353bd9.mp3str"
+
+[deps]
+
+source_file="res://entities/npc/phone-vibrate.mp3"
+dest_files=[ "res://.import/phone-vibrate.mp3-71645ba53df0db4b6d769fe2c7353bd9.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

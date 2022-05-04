@@ -69,7 +69,7 @@ config/icon="res://icon.png"
 [autoload]
 
 DialogManager="*res://addons/dialog_manager/dialog_manager.gd"
-GameState="*res://GameState.gd"
+GameState="*res://GameState.tscn"
 
 [display]
 

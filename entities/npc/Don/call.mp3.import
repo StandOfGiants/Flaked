@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/call.mp3-085897ce5d4eb1e01eae73eb6fee2b97.mp3str"
+
+[deps]
+
+source_file="res://entities/npc/Don/call.mp3"
+dest_files=[ "res://.import/call.mp3-085897ce5d4eb1e01eae73eb6fee2b97.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

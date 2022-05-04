@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/call.mp3-37392bb84010a8596952b302941e3c1c.mp3str"
+
+[deps]
+
+source_file="res://entities/npc/TonyMacaroni/call.mp3"
+dest_files=[ "res://.import/call.mp3-37392bb84010a8596952b302941e3c1c.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

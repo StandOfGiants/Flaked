@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Good Keys.mp3-801f723bef0adf29fb4ca3057e83eacf.mp3st
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

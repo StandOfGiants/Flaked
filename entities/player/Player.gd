@@ -2,6 +2,8 @@ class_name Player
 
 extends KinematicBody
 
+signal out_of_dialog
+
 const MAX_SPEED = 3
 const JUMP_SPEED = 5
 const ACCELERATION = 2
@@ -71,6 +73,8 @@ func run_dialog(id: String, resource: DialogResource):
 		overlay.dialog = dialog
 		add_child(overlay)
 		run_dialog(yield(overlay, "actioned"), resource)
+	else:
+		emit_signal("out_of_dialog")
 
 
 var no_dialog_frames = 0

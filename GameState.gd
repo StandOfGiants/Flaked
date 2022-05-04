@@ -11,6 +11,11 @@ func _ready():
 	load_data()
 
 
+func sound_fx(name: String):
+	if has_node(name) and get_node(name).has_method("play"):
+		get_node(name).play()
+
+
 func set_name(name: String):
 	state["name"] = name
 

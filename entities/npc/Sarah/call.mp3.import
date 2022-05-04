@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/call.mp3-e6f4bc644dacdfe41cb88b5f5c2b9047.mp3str"
+
+[deps]
+
+source_file="res://entities/npc/Sarah/call.mp3"
+dest_files=[ "res://.import/call.mp3-e6f4bc644dacdfe41cb88b5f5c2b9047.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -518,7 +518,7 @@ directional_shadow_mode = 0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.369, 0.135108, 12.9273 )
 
 [node name="AnimatedSprite3D" parent="Player" index="1"]
-frame = 0
+frame = 2
 
 [node name="Camera" parent="Player" index="3"]
 current = true
@@ -820,6 +820,7 @@ color = Color( 0, 0, 0, 1 )
 [connection signal="music_started" from="Stage" to="." method="_on_Stage_music_started"]
 [connection signal="player_enter" from="Stage" to="Player" method="_on_Stage_player_enter"]
 [connection signal="player_exit" from="Stage" to="Player" method="_on_Stage_player_exit"]
+[connection signal="finished" from="Stage/Music/Bass" to="." method="go_back_to_main"]
 [connection signal="credits_done" from="Credits" to="." method="_on_Credits_credits_done"]
 
 [editable path="Player"]

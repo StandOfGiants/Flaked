@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Good Drums.mp3-0ba11d87ad0dc78c4b4ec3da1e0edb3a.mp3s
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

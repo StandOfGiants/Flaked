@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://entities/npc/Benny/Benny.tres" type="Resource" id=1]
 [ext_resource path="res://entities/npc/NPC.tscn" type="PackedScene" id=2]
 [ext_resource path="res://entities/npc/Benny/Benny.png" type="Texture" id=3]
+[ext_resource path="res://entities/npc/Benny/call.mp3" type="AudioStream" id=4]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.409045, 0.277792, 0.127055 )
@@ -13,6 +14,7 @@ radius = 1.29679
 [node name="Benny" instance=ExtResource( 2 )]
 full_body = ExtResource( 3 )
 dialog = ExtResource( 1 )
+call = ExtResource( 4 )
 
 [node name="Sprite3D" parent="." index="0"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.812198, 0 )
