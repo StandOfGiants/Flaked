@@ -520,7 +520,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.369, 0.135108, 12.9273 )
 
 [node name="AnimatedSprite3D" parent="Player" index="1"]
 animation = "Walk"
-frame = 3
+frame = 5
 playing = true
 
 [node name="Camera" parent="Player" index="3"]

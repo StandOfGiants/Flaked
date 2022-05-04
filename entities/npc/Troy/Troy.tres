@@ -18,7 +18,7 @@ if first_visit(\"Troy\")
 if is_assigned(\"Troy\")
 	Troy: Let's do a killer set man! I see some chicks eyeing me in the corner!
 elif is_complete(\"Troy\")
-	Troy: 
+	Troy: ...
 else
 	=> Hub
 
@@ -155,7 +155,8 @@ lines = {
 "type": "condition"
 },
 "13": {
-"character": "",
+"character": "Troy",
+"character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "end",
 "parent_id": "12",
@@ -163,9 +164,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Troy:",
+"text": "...",
 "time": null,
-"translation_key": "Troy:",
+"translation_key": "...",
 "type": "dialog"
 },
 "14": {
