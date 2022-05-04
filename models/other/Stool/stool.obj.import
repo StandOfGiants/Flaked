@@ -1,0 +1,20 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/stool.obj-ef9fbdd9e33c8db912c49002f8cc9b43.mesh"
+
+[deps]
+
+files=[ "res://.import/stool.obj-ef9fbdd9e33c8db912c49002f8cc9b43.mesh" ]
+
+source_file="res://models/other/Stool/stool.obj"
+dest_files=[ "res://.import/stool.obj-ef9fbdd9e33c8db912c49002f8cc9b43.mesh", "res://.import/stool.obj-ef9fbdd9e33c8db912c49002f8cc9b43.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+octahedral_compression=true
+optimize_mesh_flags=4286

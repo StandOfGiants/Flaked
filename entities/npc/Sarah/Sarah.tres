@@ -80,7 +80,7 @@ else
 		do complete_character(\"Sarah\")
 
 ~ band_questions
-Sarah: Alright, I'll do it! Boy will I have a store for the kids! What instrument do you want me to play?
+Sarah: Alright, I'll do it! Boy will I have a story for the kids! What instrument do you want me to play?
 - A Guitarist [if instrument_available(\"Guitar\")]
 	Sarah: Okay! Let me know when we're ready!
 	do assign_instrument(\"Guitar\", \"Sarah\")
@@ -948,9 +948,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Alright, I'll do it! Boy will I have a store for the kids! What instrument do you want me to play?",
+"text": "Alright, I'll do it! Boy will I have a story for the kids! What instrument do you want me to play?",
 "time": null,
-"translation_key": "Alright, I'll do it! Boy will I have a store for the kids! What instrument do you want me to play?",
+"translation_key": "Alright, I'll do it! Boy will I have a story for the kids! What instrument do you want me to play?",
 "type": "dialog"
 },
 "76": {

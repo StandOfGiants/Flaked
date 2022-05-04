@@ -1,11 +1,24 @@
 extends Node
 
-var state = {}
+signal update_beers(amount)
+signal update_money(amount)
+
+var state = {"money": 30}
 const KEYBOARD = "Keyboard"
 
 
 func _ready():
 	load_data()
+
+
+func set_name(name: String):
+	state["name"] = name
+
+
+func get_name() -> String:
+	if "name" in state:
+		return state["name"]
+	return "Froggit"
 
 
 func get_category(category: String):
@@ -77,6 +90,34 @@ func available_instruments():
 	return instruments_available
 
 
+func name_player(instrument: String) -> String:
+	match instrument:
+		"Guitar":
+			return "a guitar player"
+		"Drums":
+			return "a drummer"
+		"Keyboard":
+			return "a keyboard player"
+	return "SOMETHING"
+
+
+func missing_musicians():
+	var instruments = available_instruments()
+	if instruments.size() == 3:
+		return (
+			"%s, %s, and %s"
+			% [
+				name_player(instruments[0]),
+				name_player(instruments[1]),
+				name_player(instruments[2])
+			]
+		)
+	if instruments.size() == 2:
+		return "%s and %s" % [name_player(instruments[0]), name_player(instruments[1])]
+	else:
+		return name_player(instruments[0])
+
+
 func all_alone():
 	return available_instruments().size() == 3
 
@@ -128,6 +169,17 @@ func played_well(instrument: String) -> bool:
 	return false
 
 
+func performance_rating() -> int:
+	var rating = 0
+	for instrument in INSTRUMENTS:
+		if instrument_available(instrument):
+			continue
+		rating += 1  # One point for getting someone to play
+		if played_well(instrument):
+			rating += 1  # Another point if you picked someone good
+	return rating
+
+
 func look_around():
 	get_tree().call_group("player", "look_around")
 
@@ -162,6 +214,7 @@ func finish_quest(quest_name: String):
 
 func get_beer():
 	state["beer"] = true
+	emit_signal("update_beers", 1)
 	save_data()
 
 
@@ -171,6 +224,27 @@ func has_beer():
 
 func lose_beer():
 	state["beer"] = false
+	emit_signal("update_beers", 0)
+	save_data()
+
+
+func get_beers():
+	if "beer" in state and state["beer"]:
+		return 1
+	return 0
+
+
+func get_money():
+	if not "money" in state:
+		state["money"] = 30
+	return state["money"]
+
+
+func lose_money(amount: int):
+	if not "money" in state:
+		state["money"] = 30
+	state["money"] -= amount
+	emit_signal("update_money", state["money"])
 	save_data()
 
 

@@ -2,6 +2,8 @@ extends TextMenu
 
 class_name MainMenuTextMenu
 
+signal new_game
+
 
 func _ready():
 	if GameState.get_state("actions_run", "Intro", false):
@@ -21,6 +23,6 @@ func handle_option(option, _meta):
 			ensure(get_tree().change_scene("res://MainScene.tscn"))
 		"New Game":
 			GameState.clear_data()
-			ensure(get_tree().change_scene("res://MainScene.tscn"))
+			emit_signal("new_game")
 		"Quit Game":
 			get_tree().quit()

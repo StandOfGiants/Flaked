@@ -1,0 +1,330 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://fonts/BANDEM-REGULER.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://chat_overlay/Open_Sans/OpenSans-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://chat_overlay/Open_Sans/OpenSans-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Credits.gd" type="Script" id=4]
+[ext_resource path="res://Main Menu Blur.tres" type="Material" id=5]
+
+[sub_resource type="Animation" id=4]
+resource_name = "Play Credits"
+length = 30.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Shrink/RichTextLabel:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1, 30 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1944, 32 ), Vector2( -1944, -4804 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Shrink:anchor_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1, 30 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Shrink:anchor_bottom")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1, 30 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Blur:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Darken:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.329412 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Blur:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Shrink/RichTextLabel:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1932, 40 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Shrink/RichTextLabel:anchor_left")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.5 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Shrink/RichTextLabel:anchor_top")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Shrink/RichTextLabel:anchor_right")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.5 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Shrink/RichTextLabel:anchor_bottom")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Shrink:anchor_top")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Shrink:anchor_bottom")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Blur:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Darken:color")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ) ]
+}
+
+[sub_resource type="DynamicFont" id=1]
+size = 73
+extra_spacing_top = 44
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 38
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 22
+use_mipmaps = true
+font_data = ExtResource( 3 )
+
+[node name="Credits" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/Play Credits" = SubResource( 4 )
+anims/RESET = SubResource( 5 )
+
+[node name="Blur" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+material = ExtResource( 5 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Darken" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Shrink" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+rect_scale = Vector2( 0.25, 0.25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Shrink"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -1932.0
+margin_top = 40.0
+margin_right = -956.0
+margin_bottom = 1251.0
+grow_horizontal = 2
+rect_scale = Vector2( 4, 4 )
+custom_fonts/bold_italics_font = SubResource( 1 )
+custom_fonts/bold_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 3 )
+bbcode_enabled = true
+bbcode_text = "[center]
+[b][i]Flaked![/i][/b]
+
+
+
+
+
+
+[b]Developed By[/b]
+Stand of Giants Games (@StandOfGiants)
+
+[b]Developer[/b]
+zipcodeman (@z_inabush)
+
+[b]Character Artist[/b]
+Kirisali (@_kirisali)
+
+[b]Character Writer[/b]
+hamstercheese7 (@buggyisbest)
+
+[b]Music[/b]
+zipcodeman (@z_inabush)
+
+[b]Models[/b]
+Prop Instrument Drum Kit Ultra Low Poly - sketchfab.com/Maxime66410
+Low Poly Piano/Keyboard - sketchfab.com/dpalme
+Low Poly Beer Bottle - sketchfab.com/kenny_pizza
+Wooden Stool Low-poly - sketchfab.com/MaX3Dd
+
+[/center]
+"
+text = "
+Flaked!
+
+
+
+
+
+
+Developed By
+Stand of Giants Games (@StandOfGiants)
+
+Developer
+zipcodeman (@z_inabush)
+
+Character Artist
+Kirisali (@_kirisali)
+
+Character Writer
+hamstercheese7 (@buggyisbest)
+
+Music
+zipcodeman (@z_inabush)
+
+Models
+Prop Instrument Drum Kit Ultra Low Poly - sketchfab.com/Maxime66410
+Low Poly Piano/Keyboard - sketchfab.com/dpalme
+Low Poly Beer Bottle - sketchfab.com/kenny_pizza
+Wooden Stool Low-poly - sketchfab.com/MaX3Dd
+
+
+"
+fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

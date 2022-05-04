@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://TableWithLight.tscn" type="PackedScene" id=2]
@@ -10,7 +10,7 @@
 [ext_resource path="res://Bar Area.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Torch.tscn" type="PackedScene" id=9]
 [ext_resource path="res://models/supportBeam.tscn" type="PackedScene" id=10]
-[ext_resource path="res://skybox.jpg" type="Texture" id=11]
+[ext_resource path="res://Skybox.tres" type="PanoramaSky" id=11]
 [ext_resource path="res://music/243373__johnsonbrandediting__small-crowd-pre-concert-talking-party-bar-walla-talking.mp3" type="AudioStream" id=12]
 [ext_resource path="res://models/firewoodPile.tscn" type="PackedScene" id=13]
 [ext_resource path="res://entities/npc/Don/Don.tscn" type="PackedScene" id=14]
@@ -27,13 +27,12 @@
 [ext_resource path="res://entities/silhouettes/D.tscn" type="PackedScene" id=25]
 [ext_resource path="res://entities/silhouettes/C.tscn" type="PackedScene" id=26]
 [ext_resource path="res://entities/silhouettes/E.tscn" type="PackedScene" id=27]
-
-[sub_resource type="PanoramaSky" id=10]
-panorama = ExtResource( 11 )
+[ext_resource path="res://Credits.tscn" type="PackedScene" id=28]
+[ext_resource path="res://HUD.tscn" type="PackedScene" id=29]
 
 [sub_resource type="Environment" id=5]
 background_mode = 2
-background_sky = SubResource( 10 )
+background_sky = ExtResource( 11 )
 background_sky_custom_fov = 85.2
 background_sky_orientation = Basis( -1, 7.62805e-08, -4.27086e-08, 0, 0.48853, 0.872547, 8.74228e-08, 0.872547, -0.48853 )
 background_energy = 0.18
@@ -81,7 +80,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 tracks/3/type = "bezier"
-tracks/3/path = NodePath("Control/ColorRect:modulate:r")
+tracks/3/path = NodePath("Blacground/ColorRect:modulate:r")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -91,7 +90,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 tracks/4/type = "bezier"
-tracks/4/path = NodePath("Control/ColorRect:modulate:g")
+tracks/4/path = NodePath("Blacground/ColorRect:modulate:g")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -101,7 +100,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 tracks/5/type = "bezier"
-tracks/5/path = NodePath("Control/ColorRect:modulate:b")
+tracks/5/path = NodePath("Blacground/ColorRect:modulate:b")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -111,7 +110,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0, 1 )
 }
 tracks/6/type = "bezier"
-tracks/6/path = NodePath("Control/ColorRect:modulate:a")
+tracks/6/path = NodePath("Blacground/ColorRect:modulate:a")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -188,7 +187,7 @@ tracks/1/keys = {
 } ]
 }
 tracks/2/type = "bezier"
-tracks/2/path = NodePath("Control/ColorRect:modulate:r")
+tracks/2/path = NodePath("Blacground/ColorRect:modulate:r")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -198,7 +197,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.5, 1 )
 }
 tracks/3/type = "bezier"
-tracks/3/path = NodePath("Control/ColorRect:modulate:g")
+tracks/3/path = NodePath("Blacground/ColorRect:modulate:g")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -208,7 +207,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.5, 1 )
 }
 tracks/4/type = "bezier"
-tracks/4/path = NodePath("Control/ColorRect:modulate:b")
+tracks/4/path = NodePath("Blacground/ColorRect:modulate:b")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -218,7 +217,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.5, 1 )
 }
 tracks/5/type = "bezier"
-tracks/5/path = NodePath("Control/ColorRect:modulate:a")
+tracks/5/path = NodePath("Blacground/ColorRect:modulate:a")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -297,7 +296,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/3/type = "bezier"
-tracks/3/path = NodePath("Control/ColorRect:modulate:r")
+tracks/3/path = NodePath("Blacground/ColorRect:modulate:r")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -307,7 +306,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/4/type = "bezier"
-tracks/4/path = NodePath("Control/ColorRect:modulate:g")
+tracks/4/path = NodePath("Blacground/ColorRect:modulate:g")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -317,7 +316,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/5/type = "bezier"
-tracks/5/path = NodePath("Control/ColorRect:modulate:b")
+tracks/5/path = NodePath("Blacground/ColorRect:modulate:b")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -327,7 +326,7 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/6/type = "bezier"
-tracks/6/path = NodePath("Control/ColorRect:modulate:a")
+tracks/6/path = NodePath("Blacground/ColorRect:modulate:a")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -337,7 +336,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/7/type = "bezier"
-tracks/7/path = NodePath("Control:modulate:r")
+tracks/7/path = NodePath("Blacground:modulate:r")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -347,7 +346,7 @@ tracks/7/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/8/type = "bezier"
-tracks/8/path = NodePath("Control:modulate:g")
+tracks/8/path = NodePath("Blacground:modulate:g")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -357,7 +356,7 @@ tracks/8/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/9/type = "bezier"
-tracks/9/path = NodePath("Control:modulate:b")
+tracks/9/path = NodePath("Blacground:modulate:b")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -367,7 +366,7 @@ tracks/9/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/10/type = "bezier"
-tracks/10/path = NodePath("Control:modulate:a")
+tracks/10/path = NodePath("Blacground:modulate:a")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -519,9 +518,7 @@ directional_shadow_mode = 0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.369, 0.135108, 12.9273 )
 
 [node name="AnimatedSprite3D" parent="Player" index="1"]
-animation = "Walk"
-frame = 1
-playing = true
+frame = 0
 
 [node name="Camera" parent="Player" index="3"]
 current = true
@@ -789,7 +786,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.28356, 0.930746, -2.71801 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.41604, 0.0161482, 5.33636 )
 
 [node name="Kat" parent="NPCs" instance=ExtResource( 15 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75782, 3.27826e-07, 6.94716 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.65322, -0.0087879, 7.10613 )
 
 [node name="Troy" parent="NPCs" instance=ExtResource( 20 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.21794, -0.140412, 10.0789 )
@@ -802,23 +799,28 @@ anims/Entry = SubResource( 11 )
 "anims/Go To Stage" = SubResource( 13 )
 anims/RESET = SubResource( 12 )
 
-[node name="Control" type="Control" parent="."]
+[node name="HUD" parent="." instance=ExtResource( 29 )]
+
+[node name="Blacground" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="Blacground"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
 
-[node name="Control2" parent="." instance=ExtResource( 21 )]
+[node name="Credits" parent="." instance=ExtResource( 28 )]
 
+[node name="Pause Menu" parent="." instance=ExtResource( 21 )]
+
+[connection signal="music_started" from="Stage" to="." method="_on_Stage_music_started"]
 [connection signal="player_enter" from="Stage" to="Player" method="_on_Stage_player_enter"]
 [connection signal="player_exit" from="Stage" to="Player" method="_on_Stage_player_exit"]
-[connection signal="finished" from="Stage/Music/Bass" to="." method="_on_BassTrack_finished"]
+[connection signal="credits_done" from="Credits" to="." method="_on_Credits_credits_done"]
 
 [editable path="Player"]
 [editable path="Stage"]

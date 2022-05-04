@@ -8,14 +8,21 @@ syntax_version = 2
 raw_text = "~ begin
 
 if first_visit(\"Bartender\")
-	Bartender: Hello there! Welcome to the club!
-Bartender: What can I get you?
-- I need a beer for that guy over there [if on_quest(\"get troy a beer\")]
-	Bartender: Here you are!
-	do get_beer()
+	Brook: Hey man, welcome to the Twilight Lounge!
+	Player: I'm actually your act this evening.
+	Brook: [wave amp=25 freq=5]Groovy[/wave]. Good luck up there.
+Brook: What can I get you?
+- I need a beer for that guy over there. [if on_quest(\"get troy a beer\")]
+	Brook: That'll be $10
+	- That's a lot for a beer, but ok. [if get_money() >= 10]
+		Brook: Well, we're trying to be upscale. Here you go.
+		do get_beer()
+		do lose_money(10)
+	- That's too expensive!
+		Brook: Tell that to the man.
 	=> END
 - What do you have?
-	Bartender: Beer mostly.
+	Brook: Beer mostly.
 	=> begin
 - Nothing => END
 "
@@ -30,11 +37,84 @@ lines = {
 "type": "title"
 },
 "10": {
-"character": "Bartender",
+"character": "Brook",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "11",
 "parent_id": "9",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Well, we're trying to be upscale. Here you go.",
+"time": null,
+"translation_key": "Well, we're trying to be upscale. Here you go.",
+"type": "dialog"
+},
+"11": {
+"mutation": {
+"args": [  ],
+"function": "get_beer"
+},
+"next_id": "12",
+"parent_id": "9",
+"type": "mutation"
+},
+"12": {
+"mutation": {
+"args": [ [ {
+"type": "number",
+"value": 10
+} ] ],
+"function": "lose_money"
+},
+"next_id": "15",
+"parent_id": "9",
+"type": "mutation"
+},
+"13": {
+"next_id": "14",
+"next_id_after": "15",
+"parent_id": "7",
+"replacements": [  ],
+"text": "That's too expensive!",
+"translation_key": "That's too expensive!",
+"type": "response"
+},
+"14": {
+"character": "Brook",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "15",
+"parent_id": "13",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Tell that to the man.",
+"time": null,
+"translation_key": "Tell that to the man.",
+"type": "dialog"
+},
+"15": {
+"next_id": "end",
+"parent_id": "7",
+"type": "goto"
+},
+"16": {
+"next_id": "17",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "What do you have?",
+"translation_key": "What do you have?",
+"type": "response"
+},
+"17": {
+"character": "Brook",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "18",
+"parent_id": "16",
 "pauses": {
 },
 "replacements": [  ],
@@ -44,12 +124,12 @@ lines = {
 "translation_key": "Beer mostly.",
 "type": "dialog"
 },
-"11": {
+"18": {
 "next_id": "2",
-"parent_id": "9",
+"parent_id": "16",
 "type": "goto"
 },
-"12": {
+"19": {
 "next_id": "end",
 "next_id_after": "end",
 "replacements": [  ],
@@ -68,13 +148,13 @@ lines = {
 } ] ]
 } ]
 },
-"next_conditional_id": "4",
+"next_conditional_id": "6",
 "next_id": "3",
-"next_id_after": "4",
+"next_id_after": "6",
 "type": "condition"
 },
 "3": {
-"character": "Bartender",
+"character": "Brook",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "4",
@@ -83,16 +163,46 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Hello there! Welcome to the club!",
+"text": "Hey man, welcome to the Twilight Lounge!",
 "time": null,
-"translation_key": "Hello there! Welcome to the club!",
+"translation_key": "Hey man, welcome to the Twilight Lounge!",
 "type": "dialog"
 },
 "4": {
-"character": "Bartender",
+"character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "5",
+"parent_id": "2",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I'm actually your act this evening.",
+"time": null,
+"translation_key": "I'm actually your act this evening.",
+"type": "dialog"
+},
+"5": {
+"character": "Brook",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "6",
+"parent_id": "2",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "[wave amp=25 freq=5]Groovy[/wave]. Good luck up there.",
+"time": null,
+"translation_key": "[wave amp=25 freq=5]Groovy[/wave]. Good luck up there.",
+"type": "dialog"
+},
+"6": {
+"character": "Brook",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "7",
 "pauses": {
 },
 "replacements": [  ],
@@ -102,7 +212,7 @@ lines = {
 "translation_key": "What can I get you?",
 "type": "dialog"
 },
-"5": {
+"7": {
 "condition": {
 "expression": [ {
 "function": "on_quest",
@@ -113,49 +223,50 @@ lines = {
 } ] ]
 } ]
 },
-"next_id": "6",
+"next_id": "8",
 "next_id_after": "end",
 "replacements": [  ],
-"responses": PoolStringArray( "5", "9", "12" ),
-"text": "I need a beer for that guy over there",
-"translation_key": "I need a beer for that guy over there",
+"responses": PoolStringArray( "7", "16", "19" ),
+"text": "I need a beer for that guy over there.",
+"translation_key": "I need a beer for that guy over there.",
 "type": "response"
 },
-"6": {
-"character": "Bartender",
+"8": {
+"character": "Brook",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "7",
-"parent_id": "5",
+"next_id": "9",
+"parent_id": "7",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Here you are!",
+"text": "That'll be $10",
 "time": null,
-"translation_key": "Here you are!",
+"translation_key": "That'll be $10",
 "type": "dialog"
 },
-"7": {
-"mutation": {
-"args": [  ],
-"function": "get_beer"
-},
-"next_id": "8",
-"parent_id": "5",
-"type": "mutation"
-},
-"8": {
-"next_id": "end",
-"parent_id": "5",
-"type": "goto"
-},
 "9": {
+"condition": {
+"expression": [ {
+"function": "get_money",
+"type": "function",
+"value": [  ]
+}, {
+"type": "comparison",
+"value": ">="
+}, {
+"type": "number",
+"value": 10
+} ]
+},
 "next_id": "10",
-"next_id_after": "end",
+"next_id_after": "15",
+"parent_id": "7",
 "replacements": [  ],
-"text": "What do you have?",
-"translation_key": "What do you have?",
+"responses": PoolStringArray( "9", "13" ),
+"text": "That's a lot for a beer, but ok.",
+"translation_key": "That's a lot for a beer, but ok.",
 "type": "response"
 }
 }

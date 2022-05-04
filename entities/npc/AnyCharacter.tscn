@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://entities/player/player.png" type="Texture" id=1]
+[ext_resource path="res://entities/player/frogwalsk_0001.png" type="Texture" id=1]
 [ext_resource path="res://entities/npc/Benny/Benny.png" type="Texture" id=2]
 [ext_resource path="res://entities/npc/Don/Don.png" type="Texture" id=3]
 [ext_resource path="res://entities/npc/Troy/Troy.png" type="Texture" id=4]
@@ -79,7 +79,7 @@ tracks/2/keys = {
 
 [node name="AnyCharacter" type="Spatial"]
 script = ExtResource( 8 )
-who = "Don"
+who = "Sarah"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 1 )
@@ -88,35 +88,39 @@ anims/Sway = SubResource( 2 )
 [node name="Sprites" type="Spatial" parent="."]
 
 [node name="Player" type="Sprite3D" parent="Sprites"]
-transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.811775, 0 )
+transform = Transform( 0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0, 0.811, 0 )
+visible = false
 cast_shadow = 2
 shaded = true
 alpha_cut = 2
 texture = ExtResource( 1 )
 
 [node name="Benny" type="Sprite3D" parent="Sprites"]
-transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.0225295, 0.738042, 0 )
+transform = Transform( 0.199849, -0.00776849, 0, 0.00776849, 0.199849, 0, 0, 0, 0.2, -0.0135461, 0.833413, 0 )
+visible = false
 cast_shadow = 2
 shaded = true
 alpha_cut = 2
 texture = ExtResource( 2 )
 
 [node name="Don" type="Sprite3D" parent="Sprites"]
-transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.0225295, 1.6151, 0 )
+transform = Transform( 0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.81, 0.023, 1.6, 0 )
+visible = false
 cast_shadow = 2
 shaded = true
 alpha_cut = 2
 texture = ExtResource( 3 )
 
 [node name="Kat" type="Sprite3D" parent="Sprites"]
-transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.234026, 1.06234, 0 )
+transform = Transform( 0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0.234, 1.127, 0 )
+visible = false
 cast_shadow = 2
 shaded = true
 alpha_cut = 2
 texture = ExtResource( 5 )
 
 [node name="Sarah" type="Sprite3D" parent="Sprites"]
-transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.00135924, 0.658569, 0 )
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.001, 0.927, 0 )
 cast_shadow = 2
 shaded = true
 alpha_cut = 2
@@ -124,13 +128,15 @@ texture = ExtResource( 7 )
 
 [node name="TonyMacaroni" type="Sprite3D" parent="Sprites"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.00135924, 0.451304, 0 )
+visible = false
 cast_shadow = 2
 shaded = true
 alpha_cut = 2
 texture = ExtResource( 6 )
 
 [node name="Troy" type="Sprite3D" parent="Sprites"]
-transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.00135924, 0.941805, 0 )
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.056, 1.064, 0 )
+visible = false
 cast_shadow = 2
 shaded = true
 alpha_cut = 2

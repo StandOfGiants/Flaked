@@ -71,6 +71,12 @@ config/icon="res://icon.png"
 DialogManager="*res://addons/dialog_manager/dialog_manager.gd"
 GameState="*res://GameState.gd"
 
+[display]
+
+window/dpi/allow_hidpi=true
+window/stretch/mode="2d"
+window/stretch/aspect="keep_height"
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/dialog_manager/plugin.cfg" )

@@ -45,7 +45,7 @@ else
 - What if this is the right tune and the right woman is here in the audience? [if is_not_resolved(\"D3\")]
 	do resolve_branch(\"D3\")
 	Don: Been down that road before, three ex wives ain't worth the trouble.
-	- The do say that it's insane to try the same thing over and over and expect different results.
+	- They do say that it's insane to try the same thing and expect different results.
 	- Uh... That's rough buddy => correct_answer
 	=> Hub
 - Please man, I'm desparate here. [if is_not_resolved(\"D4\")]
@@ -464,8 +464,8 @@ lines = {
 "parent_id": "37",
 "replacements": [  ],
 "responses": PoolStringArray( "40", "41" ),
-"text": "The do say that it's insane to try the same thing over and over and expect different results.",
-"translation_key": "The do say that it's insane to try the same thing over and over and expect different results.",
+"text": "They do say that it's insane to try the same thing and expect different results.",
+"translation_key": "They do say that it's insane to try the same thing and expect different results.",
 "type": "response"
 },
 "41": {

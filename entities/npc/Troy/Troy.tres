@@ -49,7 +49,7 @@ else
 	Troy: I know. I'm going to use it for pong, the game of champions.
 	- You sure? Do you want me to get you a refill?
 		do start_quest(\"get troy a beer\")
-		Troy: Sure, I'm not going to say no to free beer!
+		Troy: Sure, bruh. [wave amp=25 freq=5]FREE BEER![/wave]
 		=> END
 	- Is it really the game of champions?
 	=> Hub
@@ -522,9 +522,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Sure, I'm not going to say no to free beer!",
+"text": "Sure, bruh. [wave amp=25 freq=5]FREE BEER![/wave]",
 "time": null,
-"translation_key": "Sure, I'm not going to say no to free beer!",
+"translation_key": "Sure, bruh. [wave amp=25 freq=5]FREE BEER![/wave]",
 "type": "dialog"
 },
 "45": {

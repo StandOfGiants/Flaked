@@ -2,6 +2,7 @@ extends Spatial
 
 signal player_enter
 signal player_exit
+signal music_started
 
 var player_was_inside = false
 
@@ -56,6 +57,11 @@ func position_guitar():
 		"Sarah":
 			$Performance/Drummer.translation.y = 0.5
 
+	$Performance/Stool.visible = false
+	if GameState.who_plays("Keyboard") == "TonyMacaroni":
+		$Performance/Stool.visible = true
+		$Performance/Keyboardist.translation.y = 0.9
+
 
 func play_song():
 	if $"Main BG".playing:
@@ -79,3 +85,5 @@ func play_song():
 				$"Music/Good Guitar".play()
 			else:
 				$"Music/Bad Guitar".play()
+
+		emit_signal("music_started")

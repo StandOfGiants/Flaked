@@ -12,6 +12,7 @@ onready var dialog_label := $Balloon/Margin/VBox/Dialog
 onready var responses_menu := $Balloon/Margin/VBox/Responses/Menu
 onready var npc_portrait := $Balloon/NPCPortrait
 onready var player_portrait := $Balloon/PlayerPortrait
+onready var blur := $BackgroundBlur
 
 const npc_portraits = {
 	# Phone people
@@ -20,6 +21,7 @@ const npc_portraits = {
 	"Miles": preload("res://entities/npc/Hand-Holding-Cell-Phone.png"),
 	"Phone": preload("res://entities/npc/Hand-Holding-Cell-Phone.png"),
 	# Bar patrons
+	"Brook": preload("res://entities/npc/Bartender/Bartender_portrait.png"),
 	"Bartender": preload("res://entities/npc/Bartender/Bartender_portrait.png"),
 	"Benny": preload("res://entities/npc/Benny/Benny_portrait.png"),
 	"Don": preload("res://entities/npc/Don/Don_portrait.png"),
@@ -35,6 +37,7 @@ var dialog: DialogLine
 func _ready() -> void:
 	var do_hide = false
 	balloon.visible = false
+	blur.visible = false
 	responses_menu.is_active = false
 
 	if not dialog:
@@ -47,7 +50,7 @@ func _ready() -> void:
 	if dialog.character != "":
 		character_label.visible = true
 		if dialog.character == "Player":
-			character_label.bbcode_text = "Me"
+			character_label.bbcode_text = GameState.get_name()
 			player_portrait.visible = true
 		elif dialog.character == "HIDE":
 			do_hide = true
@@ -88,6 +91,7 @@ func _ready() -> void:
 	if not do_hide:
 		# Show our box
 		balloon.visible = true
+		blur.visible = true
 
 	dialog_label.type_out()
 	yield(dialog_label, "finished")

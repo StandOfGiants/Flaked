@@ -1,26 +1,21 @@
 extends Spatial
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationPlayer.play("RESET")
 	yield($AnimationPlayer, "animation_finished")
 	$AnimationPlayer.play("Entry")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
 func go_to_stage():
 	$AnimationPlayer.play("Go To Stage")
+	$HUD.visible = false
 
 
-func _on_BassTrack_finished():
-	# Start credits and stuff.
-	pass  # Replace with function body.
+func _on_Stage_music_started():
+	yield(get_tree().create_timer(30.0), "timeout")
+	$Credits.play()
+
+
+func _on_Credits_credits_done():
+	$Player.end_dialog()

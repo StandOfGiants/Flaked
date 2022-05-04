@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://models/table.tscn" type="PackedScene" id=1]
 [ext_resource path="res://music/bg/BG.mp3" type="AudioStream" id=2]
@@ -14,12 +14,17 @@
 [ext_resource path="res://models/BassGuitar.tscn" type="PackedScene" id=12]
 [ext_resource path="res://models/Instruments/Drumkit.tscn" type="PackedScene" id=13]
 [ext_resource path="res://models/Instruments/Keyboard.tscn" type="PackedScene" id=14]
+[ext_resource path="res://models/Stool.tscn" type="PackedScene" id=15]
 [ext_resource path="res://entities/npc/AnyCharacter.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Skybox.tres" type="PanoramaSky" id=17]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 3.07322, 1, 1.07562 )
 
 [sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = ExtResource( 17 )
+background_sky_orientation = Basis( -1, -7.57103e-08, 4.37114e-08, 0, 0.5, 0.866025, -8.74228e-08, 0.866025, -0.5 )
 fog_depth_begin = 0.0
 
 [node name="Stage" type="Spatial"]
@@ -51,7 +56,7 @@ bus = "BGM"
 [node name="OnStage" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="OnStage"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.937967, 0.104218 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.098, 0.104 )
 shape = SubResource( 1 )
 
 [node name="PreShow" type="Spatial" parent="."]
@@ -99,7 +104,7 @@ bus = "Performance"
 [node name="Lights" type="Spatial" parent="Performance"]
 
 [node name="SpotLight" type="SpotLight" parent="Performance/Lights"]
-transform = Transform( 0.965953, -0.132106, 0.222448, 0, 0.859808, 0.510618, -0.258718, -0.493233, 0.830534, 2.49626, 2.27243, 4.167 )
+transform = Transform( 0.965953, -0.0753309, 0.247508, 0, 0.956672, 0.29117, -0.258718, -0.281256, 0.9241, 2.49626, 2.27243, 4.167 )
 light_color = Color( 1, 0.960784, 0.537255, 1 )
 light_energy = 3.151
 shadow_enabled = true
@@ -107,7 +112,7 @@ spot_range = 12.9397
 spot_angle = 32.2018
 
 [node name="SpotLight2" type="SpotLight" parent="Performance/Lights"]
-transform = Transform( 0.965953, 0.132106, -0.222448, 0, 0.859808, 0.510618, 0.258718, -0.493233, 0.830534, -2.59929, 2.27243, 4.167 )
+transform = Transform( 0.965953, 0.0753309, -0.247508, 0, 0.956672, 0.29117, 0.258718, -0.281256, 0.9241, -2.59929, 2.27243, 4.167 )
 light_color = Color( 1, 0.960784, 0.537255, 1 )
 light_energy = 3.151
 shadow_enabled = true
@@ -115,7 +120,7 @@ spot_range = 12.9397
 spot_angle = 32.2018
 
 [node name="SpotLight3" type="SpotLight" parent="Performance/Lights"]
-transform = Transform( 0.746069, 0.340004, -0.572519, 0, 0.859808, 0.510618, 0.665869, -0.380956, 0.641476, -5.18015, 2.27243, 4.167 )
+transform = Transform( 0.746069, 0.193881, -0.637018, 0, 0.956671, 0.29117, 0.665869, -0.217233, 0.713743, -5.18015, 2.27243, 4.167 )
 light_color = Color( 0.572549, 0.537255, 1, 1 )
 light_energy = 3.151
 shadow_enabled = true
@@ -123,7 +128,7 @@ spot_range = 12.9397
 spot_angle = 32.2018
 
 [node name="SpotLight4" type="SpotLight" parent="Performance/Lights"]
-transform = Transform( 0.746069, -0.340005, 0.572519, 0, 0.859808, 0.510618, -0.665869, -0.380956, 0.641476, 5.2826, 2.27243, 4.167 )
+transform = Transform( 0.746069, -0.193881, 0.637018, 0, 0.956672, 0.29117, -0.665869, -0.217233, 0.713743, 5.2826, 2.27243, 4.167 )
 light_color = Color( 0.572549, 0.537255, 1, 1 )
 light_energy = 3.151
 shadow_enabled = true
@@ -140,25 +145,28 @@ near = 0.01
 transform = Transform( 0.630405, 0.776267, 0, -0.776267, 0.630405, 0, 0, 0, 1, 0.596567, 0.857654, 0.861439 )
 
 [node name="Guitar" parent="Performance" instance=ExtResource( 11 )]
-transform = Transform( -0.0290251, 0.89712, -0.440833, 0.0589401, 0.441788, 0.895181, 0.997839, 0, -0.0656992, -0.995309, 1.15367, 0.879045 )
+transform = Transform( -0.0290251, 0.89712, -0.440833, 0.0589401, 0.441788, 0.895181, 0.997839, 0, -0.0656992, -0.995, 1.098, 0.879 )
 
 [node name="BassGuitarist" parent="Performance" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.735155, 0.178716, 0.779395 )
 who = "Player"
 
 [node name="Keyboardist" parent="Performance" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35308, 0.119561, -0.804183 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35308, 0.903369, -0.804183 )
+who = "TonyMacaroni"
 
 [node name="Drummer" parent="Performance" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77776, 0.558763, -0.560464 )
-who = "Sarah"
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.12135, 0.558763, -0.560464 )
 
 [node name="Guitarist" parent="Performance" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.780529, 0.215636, 0.725302 )
-who = "Troy"
+who = "Kat"
+
+[node name="Stool" parent="Performance" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.36908, 0.161141, -0.827544 )
 
 [node name="Drums" parent="." instance=ExtResource( 13 )]
-transform = Transform( 0.971155, 0, 0.238449, 0, 1, 0, -0.238449, 0, 0.971155, 2.38868, 0.174886, -0.318846 )
+transform = Transform( 0.971155, 0, 0.238449, 0, 1, 0, -0.238449, 0, 0.971155, 1.97327, 0.174886, -0.318846 )
 
 [node name="Keyboard" parent="." instance=ExtResource( 14 )]
 transform = Transform( 0.264479, 0, 0.964391, 0, 1, 0, -0.964391, 0, 0.264479, -2.28627, 1.05705, -0.413745 )

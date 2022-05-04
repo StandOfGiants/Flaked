@@ -11,7 +11,7 @@ if first_visit(\"TonyMacaroni\")
 	Player: Hey there, what a night huh?
 	Tony Macaroni: Yes indeed. What a night indeed. Yes.
 	Player: Uh... so... Can you play music?
-	Tony Macaroni: Yes. I can play approximately 15 instruments. Mostly woodwind, but I do dabble in the occasional stringed instrument.. Perhaps even the wild drums when... When I must get the [shake rate=20 level=15]FEELINGS[/shake] out.
+	Tony Macaroni: Yes. I can play approximately 15 instruments. Mostly woodwind, but I do dabble in the occasional brass instrument... Perhaps even the wild drums when... When I must get the [shake rate=20 level=15]FEELINGS[/shake] out.
 	Player: ...
 	Player: Most of my band cancelled on me for tonight and I need someone to fill in. Would you be... uh... interested?
 if is_assigned(\"TonyMacaroni\")
@@ -756,9 +756,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Yes. I can play approximately 15 instruments. Mostly woodwind, but I do dabble in the occasional stringed instrument.. Perhaps even the wild drums when... When I must get the [shake rate=20 level=15]FEELINGS[/shake] out.",
+"text": "Yes. I can play approximately 15 instruments. Mostly woodwind, but I do dabble in the occasional brass instrument... Perhaps even the wild drums when... When I must get the [shake rate=20 level=15]FEELINGS[/shake] out.",
 "time": null,
-"translation_key": "Yes. I can play approximately 15 instruments. Mostly woodwind, but I do dabble in the occasional stringed instrument.. Perhaps even the wild drums when... When I must get the [shake rate=20 level=15]FEELINGS[/shake] out.",
+"translation_key": "Yes. I can play approximately 15 instruments. Mostly woodwind, but I do dabble in the occasional brass instrument... Perhaps even the wild drums when... When I must get the [shake rate=20 level=15]FEELINGS[/shake] out.",
 "type": "dialog"
 },
 "60": {

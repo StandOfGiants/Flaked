@@ -56,7 +56,7 @@ else:
 	- We don't have a theremin, but the keyboard is an old Juno-6 from the 80s.
 		do update_karma(\"Kat\", 1)
 	=> Hub
-- A Tonight it could be anything! [if is_not_resolved(\"K5\")]
+- Tonight it could be anything! [if is_not_resolved(\"K5\")]
 	do resolve_branch(\"K5\")
 	Kat: Anything? You ready for an [i][wave amp=30 freq=10]Experience[/wave][/i] buddy?
 	- Yes, help me make an experience!
@@ -75,7 +75,7 @@ else:
 		do complete_character(\"Kat\")
 
 ~ band_questions
-Kat: This sounds like a groovy time, I'll hel you out man. What kind of instrument do you want me to play?
+Kat: This sounds like a groovy time, I'll help you out man. What kind of instrument do you want me to play?
 - The Guitar [if instrument_available(\"Guitar\")]
 	Kat: Far out, let's play when you're down.
 	do assign_instrument(\"Guitar\", \"Kat\")
@@ -641,8 +641,8 @@ lines = {
 "next_id": "52",
 "next_id_after": "end",
 "replacements": [  ],
-"text": "A Tonight it could be anything!",
-"translation_key": "A Tonight it could be anything!",
+"text": "Tonight it could be anything!",
+"translation_key": "Tonight it could be anything!",
 "type": "response"
 },
 "52": {
@@ -868,9 +868,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "This sounds like a groovy time, I'll hel you out man. What kind of instrument do you want me to play?",
+"text": "This sounds like a groovy time, I'll help you out man. What kind of instrument do you want me to play?",
 "time": null,
-"translation_key": "This sounds like a groovy time, I'll hel you out man. What kind of instrument do you want me to play?",
+"translation_key": "This sounds like a groovy time, I'll help you out man. What kind of instrument do you want me to play?",
 "type": "dialog"
 },
 "71": {

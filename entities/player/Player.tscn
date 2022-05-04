@@ -18,7 +18,7 @@ animations = [ {
 "frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "Walk",
-"speed": 15.0
+"speed": 10.0
 } ]
 
 [sub_resource type="BoxShape" id=2]
@@ -81,6 +81,9 @@ bus = "SFX"
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform( 0.18, 0, 0, 0, 0.18, 0, 0, 0, 0.18, 0.020815, 0.841079, -0.25 )
 frames = SubResource( 6 )
+animation = "Walk"
+frame = 3
+playing = true
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0242949, 0.12108, -0.369716 )

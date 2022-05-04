@@ -19,6 +19,10 @@ func start_intro():
 	run_dialog("begin", general_text)
 
 
+func end_dialog():
+	run_dialog("ending", general_text)
+
+
 func look_around():
 	$AnimationPlayer.play("LookRight")
 	yield($AnimationPlayer, "animation_finished")
