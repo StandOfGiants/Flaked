@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://models/other/beerBottle.obj" type="ArrayMesh" id=1]
+
+[node name="Beer Bottle" type="Spatial"]
+
+[node name="beerBottle" type="MeshInstance" parent="."]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.013289, 0.0898476, 0.023684 )
+mesh = ExtResource( 1 )
+material/0 = null
+material/1 = null

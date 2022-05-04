@@ -123,7 +123,7 @@ alpha_cut = 2
 texture = ExtResource( 7 )
 
 [node name="TonyMacaroni" type="Sprite3D" parent="Sprites"]
-transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.00135924, 0.408228, 0 )
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.00135924, 0.451304, 0 )
 cast_shadow = 2
 shaded = true
 alpha_cut = 2

@@ -37,7 +37,7 @@ Player: Guess I'll try asking some people, I just need a guitarist, a keyboardis
 
 ~ on_stage
 
-if has_run_once(\"OnStage\") == false
+if first_visit(\"OnStage\") and band_full() == false 
 	Player: This is the stage, I'll need to come back when I'm ready to perform.
 	=> END
 	
@@ -360,12 +360,19 @@ lines = {
 "32": {
 "condition": {
 "expression": [ {
-"function": "has_run_once",
+"function": "first_visit",
 "type": "function",
 "value": [ [ {
 "type": "string",
 "value": "OnStage"
 } ] ]
+}, {
+"type": "and_or",
+"value": "and"
+}, {
+"function": "band_full",
+"type": "function",
+"value": [  ]
 }, {
 "type": "comparison",
 "value": "=="

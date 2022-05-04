@@ -520,7 +520,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.369, 0.135108, 12.9273 )
 
 [node name="AnimatedSprite3D" parent="Player" index="1"]
 animation = "Walk"
-frame = 5
+frame = 1
 playing = true
 
 [node name="Camera" parent="Player" index="3"]
@@ -609,19 +609,19 @@ bus = "SFX"
 
 [node name="TableWithLight4" parent="Decor" instance=ExtResource( 2 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.38392, 0.140412, 2.15248 )
-seed_value = 29
+seed_value = 31
 
 [node name="TableWithLight5" parent="Decor" instance=ExtResource( 2 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.46738, 0.140412, 6.00909 )
-seed_value = 12
+seed_value = 13
 
 [node name="TableWithLight6" parent="Decor" instance=ExtResource( 2 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.789, 0.140412, 9.61603 )
-seed_value = 30
+seed_value = 26
 
 [node name="TableWithLight7" parent="Decor" instance=ExtResource( 2 )]
 transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.76922, 0.140412, 12.2683 )
-seed_value = 12
+seed_value = 23
 
 [node name="TableWithLight" parent="Decor" instance=ExtResource( 2 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -14.5379, 0, 12.614 )
@@ -629,7 +629,7 @@ seed_value = 24
 
 [node name="TableWithLight2" parent="Decor" instance=ExtResource( 2 )]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -10.6711, 0, 16.9643 )
-seed_value = 15
+seed_value = 21
 
 [node name="TableWithLight3" parent="Decor" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.76233, 0, 16.9652 )
@@ -818,6 +818,7 @@ color = Color( 0, 0, 0, 1 )
 
 [connection signal="player_enter" from="Stage" to="Player" method="_on_Stage_player_enter"]
 [connection signal="player_exit" from="Stage" to="Player" method="_on_Stage_player_exit"]
+[connection signal="finished" from="Stage/Music/Bass" to="." method="_on_BassTrack_finished"]
 
 [editable path="Player"]
 [editable path="Stage"]

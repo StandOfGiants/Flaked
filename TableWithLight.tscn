@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Torch.tscn" type="PackedScene" id=1]
 [ext_resource path="res://models/nordictavern/table.fbx" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://RandomizedDecor.gd" type="Script" id=6]
 [ext_resource path="res://models/bread.tscn" type="PackedScene" id=7]
 [ext_resource path="res://models/bench.tscn" type="PackedScene" id=8]
+[ext_resource path="res://models/beer bottle.tscn" type="PackedScene" id=9]
 
 [sub_resource type="BoxShape" id=9]
 extents = Vector3( 0.815081, 0.435644, 1.62192 )
@@ -42,28 +43,44 @@ transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 1.06299, 0, -1.60656 )
 
 [node name="bread" parent="decor" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 0.974327, 0.225138, 0, -0.225138, 0.974327, -4.235, -5.03, 0.658 )
-visible = false
 
 [node name="bread2" parent="decor" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 0.974327, 0.225138, 0, -0.225138, 0.974327, -4.09498, -5.03, 2.2103 )
-visible = false
 
 [node name="bread3" parent="decor/bread2" instance=ExtResource( 7 )]
 transform = Transform( 0.937258, -0.348637, 0, 0.339687, 0.913195, -0.225138, 0.0784915, 0.211012, 0.974327, 3.88829, 5.98094, -0.107233 )
 
 [node name="pitcher" parent="decor" instance=ExtResource( 4 )]
 transform = Transform( 0.488042, 0, 0.87282, 0, 1, 0, -0.87282, 0, 0.488042, -1.50672, -0.207756, -3.21708 )
-visible = false
 
 [node name="pitcher2" parent="decor" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.02141, -0.223823, -3.00228 )
 
 [node name="cup" parent="decor" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36458, -0.19195, -2.14049 )
-visible = false
 
 [node name="cup2" parent="decor" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.32989, -0.207545, -3.06944 )
-visible = false
+
+[node name="Beer Bottle" parent="decor" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3322, 0.742851, 0.402367 )
+
+[node name="Beer Bottle2" parent="decor" instance=ExtResource( 9 )]
+transform = Transform( 0.0392773, 0.999228, 0, -0.373266, 0.0146722, 0.927608, 0.926892, -0.0364339, 0.373554, -0.000259459, 0.784646, -0.27881 )
+
+[node name="Beer Bottle3" parent="decor" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.413368, 0.742851, 0.142987 )
+
+[node name="Beer Bottle4" parent="decor" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.413368, 0.742851, 1.07837 )
+
+[node name="Beer Bottle5" parent="decor/Beer Bottle4" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.107285 )
+
+[node name="Beer Bottle7" parent="decor/Beer Bottle4" instance=ExtResource( 9 )]
+transform = Transform( -0.0501222, -0.998743, -8.48555e-05, 0.998742, -0.0501223, 0.00169084, -0.00169297, 0, 0.999999, -0.0719132, 0.0626689, 0.0712429 )
+
+[node name="Beer Bottle6" parent="decor/Beer Bottle4" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.105318, 0, -0.0466962 )
 
 [editable path="table2"]

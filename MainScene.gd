@@ -19,3 +19,8 @@ func _ready():
 
 func go_to_stage():
 	$AnimationPlayer.play("Go To Stage")
+
+
+func _on_BassTrack_finished():
+	# Start credits and stuff.
+	pass  # Replace with function body.
