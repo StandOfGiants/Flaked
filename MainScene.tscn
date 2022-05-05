@@ -518,7 +518,7 @@ directional_shadow_mode = 0
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.369, 0.135108, 12.9273 )
 
 [node name="AnimatedSprite3D" parent="Player" index="3"]
-frame = 2
+frame = 1
 
 [node name="Camera" parent="Player" index="5"]
 current = true
