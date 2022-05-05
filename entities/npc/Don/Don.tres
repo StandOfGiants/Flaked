@@ -33,9 +33,9 @@ else
 - $50!?! We're musicians, not exactly pulling in the big bucks here. [if is_not_resolved(\"D1\")]
 	do resolve_branch(\"D1\")
 	Don: If you want this buck, you gotta be willing to put somethin' in the pot. Life ain't free.
-	- How about $10
-		Don: C'mon man, my time is worth more than that.
-	- How about $20
+	- How about $10?
+		Don: That's not enough to gas up my bike, bud.
+	- How about $20?
 		Don: Hmm... Maybe...
 		=> correct_answer
 	=> Hub
@@ -46,16 +46,17 @@ else
 		Don: Don't we all? Money is what makes the world move.
 		=> correct_answer
 	- Capitalism has chains even here it seems.
-		Don: That hippie nonsense is great until you need food.
+		Don: That hippie nonsense is great until you need to eat.
 	=> Hub
 - What if this is the right tune and the right woman is here in the audience? [if is_not_resolved(\"D3\")]
 	do resolve_branch(\"D3\")
 	Don: Been down that road before, three ex wives ain't worth the trouble.
 	- They do say that it's insane to try the same thing and expect different results.
-		Don: So you think I'm insane?
+		Don: So you think I'm crazy?
 		Don: Not selling me on the whole \"joining your band\" thing.
 	- Uh... That's rough buddy
 		Don: Truer words have never been spoken.
+		Don: Women, huh?
 		=> correct_answer
 	=> Hub
 - Please man, I'm desparate here. [if is_not_resolved(\"D4\")]
@@ -63,9 +64,9 @@ else
 	Don: That's what all my clients say, and you know what I tell 'em?
 	Don: We all got dues buddy, that's the price of living [wave amp=25 freq=5]The Good Life[/wave].
 	- Your clients ever take their business elsewhere?
-		Don: They sure try. Don't think it works out for them.
+		Don: It's a free market, they can try.
 	- Yeah but don't some things go beyond price? Like... the open road? Music? Beauty?
-		Don: Some things, sure. But is this one of them?
+		Don: It's true you can't put a price on the open road.
 		=> correct_answer
 	=> Hub
 - Wait you distressed the leather yourself? [if is_not_resolved(\"D5\")]
@@ -76,7 +77,11 @@ else
 		=> correct_answer
 	- ... Where did the leather come from.
 		Don: ...
-		Don: Where do you think?
+		Don: Are you man enough to handle the answer?
+		- I think so?
+			Don: No you're not.
+		- Probably not.
+			Don: I thought so.
 	=> Hub
 - I'll be right back.
 	Don: Whatever, buddy.
@@ -113,7 +118,7 @@ Don: What tune do you need me to play?
 errors = [  ]
 titles = {
 "Hub": "20",
-"band_questions": "85",
+"band_questions": "90",
 "begin": "2",
 "correct_answer": "16"
 }
@@ -140,6 +145,84 @@ lines = {
 "type": "condition"
 },
 "100": {
+"character": "Don",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "101",
+"parent_id": "99",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Call my name when you're ready.",
+"time": null,
+"translation_key": "Call my name when you're ready.",
+"type": "dialog"
+},
+"101": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Guitar"
+} ], [ {
+"type": "string",
+"value": "Don"
+} ] ],
+"function": "assign_instrument"
+},
+"next_id": "end",
+"parent_id": "99",
+"type": "mutation"
+},
+"102": {
+"condition": {
+"expression": [ {
+"function": "instrument_available",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Drums"
+} ] ]
+} ]
+},
+"next_id": "103",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "I need a drummer.",
+"translation_key": "I need a drummer.",
+"type": "response"
+},
+"103": {
+"character": "Don",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "104",
+"parent_id": "102",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Call my name when you're ready.",
+"time": null,
+"translation_key": "Call my name when you're ready.",
+"type": "dialog"
+},
+"104": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Drums"
+} ], [ {
+"type": "string",
+"value": "Don"
+} ] ],
+"function": "assign_instrument"
+},
+"next_id": "end",
+"parent_id": "102",
+"type": "mutation"
+},
+"105": {
 "condition": {
 "expression": [ {
 "function": "instrument_available",
@@ -150,19 +233,19 @@ lines = {
 } ] ]
 } ]
 },
-"next_id": "101",
+"next_id": "106",
 "next_id_after": "end",
 "replacements": [  ],
 "text": "I need someone on the keyboard.",
 "translation_key": "I need someone on the keyboard.",
 "type": "response"
 },
-"101": {
+"106": {
 "character": "Don",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "102",
-"parent_id": "100",
+"next_id": "107",
+"parent_id": "105",
 "pauses": {
 },
 "replacements": [  ],
@@ -172,7 +255,7 @@ lines = {
 "translation_key": "Call my name when you're ready.",
 "type": "dialog"
 },
-"102": {
+"107": {
 "mutation": {
 "args": [ [ {
 "type": "string",
@@ -184,23 +267,23 @@ lines = {
 "function": "assign_instrument"
 },
 "next_id": "end",
-"parent_id": "100",
+"parent_id": "105",
 "type": "mutation"
 },
-"103": {
-"next_id": "104",
+"108": {
+"next_id": "109",
 "next_id_after": "end",
 "replacements": [  ],
 "text": "I need to think about it.",
 "translation_key": "I need to think about it.",
 "type": "response"
 },
-"104": {
+"109": {
 "character": "Don",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "end",
-"parent_id": "103",
+"parent_id": "108",
 "pauses": {
 },
 "replacements": [  ],
@@ -346,7 +429,7 @@ lines = {
 "next_id": "26",
 "next_id_after": "end",
 "replacements": [  ],
-"responses": PoolStringArray( "25", "34", "43", "53", "63", "73", "76" ),
+"responses": PoolStringArray( "25", "34", "43", "54", "64", "78", "81" ),
 "text": "$50!?! We're musicians, not exactly pulling in the big bucks here.",
 "translation_key": "$50!?! We're musicians, not exactly pulling in the big bucks here.",
 "type": "response"
@@ -384,8 +467,8 @@ lines = {
 "parent_id": "25",
 "replacements": [  ],
 "responses": PoolStringArray( "28", "30" ),
-"text": "How about $10",
-"translation_key": "How about $10",
+"text": "How about $10?",
+"translation_key": "How about $10?",
 "type": "response"
 },
 "29": {
@@ -398,9 +481,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "C'mon man, my time is worth more than that.",
+"text": "That's not enough to gas up my bike, bud.",
 "time": null,
-"translation_key": "C'mon man, my time is worth more than that.",
+"translation_key": "That's not enough to gas up my bike, bud.",
 "type": "dialog"
 },
 "3": {
@@ -423,8 +506,8 @@ lines = {
 "next_id_after": "33",
 "parent_id": "25",
 "replacements": [  ],
-"text": "How about $20",
-"translation_key": "How about $20",
+"text": "How about $20?",
+"translation_key": "How about $20?",
 "type": "response"
 },
 "31": {
@@ -561,9 +644,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "That hippie nonsense is great until you need food.",
+"text": "That hippie nonsense is great until you need to eat.",
 "time": null,
-"translation_key": "That hippie nonsense is great until you need food.",
+"translation_key": "That hippie nonsense is great until you need to eat.",
 "type": "dialog"
 },
 "42": {
@@ -618,7 +701,7 @@ lines = {
 },
 "46": {
 "next_id": "47",
-"next_id_after": "52",
+"next_id_after": "53",
 "parent_id": "43",
 "replacements": [  ],
 "responses": PoolStringArray( "46", "49" ),
@@ -636,16 +719,16 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "So you think I'm insane?",
+"text": "So you think I'm crazy?",
 "time": null,
-"translation_key": "So you think I'm insane?",
+"translation_key": "So you think I'm crazy?",
 "type": "dialog"
 },
 "48": {
 "character": "Don",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "52",
+"next_id": "53",
 "parent_id": "46",
 "pauses": {
 },
@@ -658,7 +741,7 @@ lines = {
 },
 "49": {
 "next_id": "50",
-"next_id_after": "52",
+"next_id_after": "53",
 "parent_id": "43",
 "replacements": [  ],
 "text": "Uh... That's rough buddy",
@@ -696,16 +779,31 @@ lines = {
 "type": "dialog"
 },
 "51": {
+"character": "Don",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "52",
+"parent_id": "49",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Women, huh?",
+"time": null,
+"translation_key": "Women, huh?",
+"type": "dialog"
+},
+"52": {
 "next_id": "16",
 "parent_id": "49",
 "type": "goto"
 },
-"52": {
+"53": {
 "next_id": "20",
 "parent_id": "43",
 "type": "goto"
 },
-"53": {
+"54": {
 "condition": {
 "expression": [ {
 "function": "is_not_resolved",
@@ -716,14 +814,14 @@ lines = {
 } ] ]
 } ]
 },
-"next_id": "54",
+"next_id": "55",
 "next_id_after": "end",
 "replacements": [  ],
 "text": "Please man, I'm desparate here.",
 "translation_key": "Please man, I'm desparate here.",
 "type": "response"
 },
-"54": {
+"55": {
 "mutation": {
 "args": [ [ {
 "type": "string",
@@ -731,16 +829,16 @@ lines = {
 } ] ],
 "function": "resolve_branch"
 },
-"next_id": "55",
-"parent_id": "53",
+"next_id": "56",
+"parent_id": "54",
 "type": "mutation"
 },
-"55": {
+"56": {
 "character": "Don",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "56",
-"parent_id": "53",
+"next_id": "57",
+"parent_id": "54",
 "pauses": {
 },
 "replacements": [  ],
@@ -750,12 +848,12 @@ lines = {
 "translation_key": "That's what all my clients say, and you know what I tell 'em?",
 "type": "dialog"
 },
-"56": {
+"57": {
 "character": "Don",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "57",
-"parent_id": "53",
+"next_id": "58",
+"parent_id": "54",
 "pauses": {
 },
 "replacements": [  ],
@@ -765,39 +863,30 @@ lines = {
 "translation_key": "We all got dues buddy, that's the price of living [wave amp=25 freq=5]The Good Life[/wave].",
 "type": "dialog"
 },
-"57": {
-"next_id": "58",
-"next_id_after": "62",
-"parent_id": "53",
+"58": {
+"next_id": "59",
+"next_id_after": "63",
+"parent_id": "54",
 "replacements": [  ],
-"responses": PoolStringArray( "57", "59" ),
+"responses": PoolStringArray( "58", "60" ),
 "text": "Your clients ever take their business elsewhere?",
 "translation_key": "Your clients ever take their business elsewhere?",
 "type": "response"
 },
-"58": {
+"59": {
 "character": "Don",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "62",
-"parent_id": "57",
+"next_id": "63",
+"parent_id": "58",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "They sure try. Don't think it works out for them.",
+"text": "It's a free market, they can try.",
 "time": null,
-"translation_key": "They sure try. Don't think it works out for them.",
+"translation_key": "It's a free market, they can try.",
 "type": "dialog"
-},
-"59": {
-"next_id": "60",
-"next_id_after": "62",
-"parent_id": "53",
-"replacements": [  ],
-"text": "Yeah but don't some things go beyond price? Like... the open road? Music? Beauty?",
-"translation_key": "Yeah but don't some things go beyond price? Like... the open road? Music? Beauty?",
-"type": "response"
 },
 "6": {
 "character": "Don",
@@ -815,31 +904,40 @@ lines = {
 "type": "dialog"
 },
 "60": {
+"next_id": "61",
+"next_id_after": "63",
+"parent_id": "54",
+"replacements": [  ],
+"text": "Yeah but don't some things go beyond price? Like... the open road? Music? Beauty?",
+"translation_key": "Yeah but don't some things go beyond price? Like... the open road? Music? Beauty?",
+"type": "response"
+},
+"61": {
 "character": "Don",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "61",
-"parent_id": "59",
+"next_id": "62",
+"parent_id": "60",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Some things, sure. But is this one of them?",
+"text": "It's true you can't put a price on the open road.",
 "time": null,
-"translation_key": "Some things, sure. But is this one of them?",
+"translation_key": "It's true you can't put a price on the open road.",
 "type": "dialog"
 },
-"61": {
-"next_id": "16",
-"parent_id": "59",
-"type": "goto"
-},
 "62": {
-"next_id": "20",
-"parent_id": "53",
+"next_id": "16",
+"parent_id": "60",
 "type": "goto"
 },
 "63": {
+"next_id": "20",
+"parent_id": "54",
+"type": "goto"
+},
+"64": {
 "condition": {
 "expression": [ {
 "function": "is_not_resolved",
@@ -850,14 +948,14 @@ lines = {
 } ] ]
 } ]
 },
-"next_id": "64",
+"next_id": "65",
 "next_id_after": "end",
 "replacements": [  ],
 "text": "Wait you distressed the leather yourself?",
 "translation_key": "Wait you distressed the leather yourself?",
 "type": "response"
 },
-"64": {
+"65": {
 "mutation": {
 "args": [ [ {
 "type": "string",
@@ -865,16 +963,16 @@ lines = {
 } ] ],
 "function": "resolve_branch"
 },
-"next_id": "65",
-"parent_id": "63",
+"next_id": "66",
+"parent_id": "64",
 "type": "mutation"
 },
-"65": {
+"66": {
 "character": "Don",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "66",
-"parent_id": "63",
+"next_id": "67",
+"parent_id": "64",
 "pauses": {
 },
 "replacements": [  ],
@@ -884,22 +982,22 @@ lines = {
 "translation_key": "Yeah, wear it on my boat for crab season, the salt really gives it a distinctive look.",
 "type": "dialog"
 },
-"66": {
-"next_id": "67",
-"next_id_after": "72",
-"parent_id": "63",
+"67": {
+"next_id": "68",
+"next_id_after": "77",
+"parent_id": "64",
 "replacements": [  ],
-"responses": PoolStringArray( "66", "69" ),
+"responses": PoolStringArray( "67", "70" ),
 "text": "Sounds rugged man.",
 "translation_key": "Sounds rugged man.",
 "type": "response"
 },
-"67": {
+"68": {
 "character": "Don",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "68",
-"parent_id": "66",
+"next_id": "69",
+"parent_id": "67",
 "pauses": {
 },
 "replacements": [  ],
@@ -909,19 +1007,10 @@ lines = {
 "translation_key": "It was.",
 "type": "dialog"
 },
-"68": {
-"next_id": "16",
-"parent_id": "66",
-"type": "goto"
-},
 "69": {
-"next_id": "70",
-"next_id_after": "72",
-"parent_id": "63",
-"replacements": [  ],
-"text": "... Where did the leather come from.",
-"translation_key": "... Where did the leather come from.",
-"type": "response"
+"next_id": "16",
+"parent_id": "67",
+"type": "goto"
 },
 "7": {
 "character": "Player",
@@ -939,11 +1028,20 @@ lines = {
 "type": "dialog"
 },
 "70": {
+"next_id": "71",
+"next_id_after": "77",
+"parent_id": "64",
+"replacements": [  ],
+"text": "... Where did the leather come from.",
+"translation_key": "... Where did the leather come from.",
+"type": "response"
+},
+"71": {
 "character": "Don",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "71",
-"parent_id": "69",
+"next_id": "72",
+"parent_id": "70",
 "pauses": {
 },
 "replacements": [  ],
@@ -953,40 +1051,89 @@ lines = {
 "translation_key": "...",
 "type": "dialog"
 },
-"71": {
+"72": {
 "character": "Don",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "72",
-"parent_id": "69",
+"next_id": "73",
+"parent_id": "70",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Where do you think?",
+"text": "Are you man enough to handle the answer?",
 "time": null,
-"translation_key": "Where do you think?",
+"translation_key": "Are you man enough to handle the answer?",
 "type": "dialog"
-},
-"72": {
-"next_id": "20",
-"parent_id": "63",
-"type": "goto"
 },
 "73": {
 "next_id": "74",
-"next_id_after": "end",
+"next_id_after": "77",
+"parent_id": "70",
 "replacements": [  ],
-"text": "I'll be right back.",
-"translation_key": "I'll be right back.",
+"responses": PoolStringArray( "73", "75" ),
+"text": "I think so?",
+"translation_key": "I think so?",
 "type": "response"
 },
 "74": {
 "character": "Don",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "75",
+"next_id": "77",
 "parent_id": "73",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "No you're not.",
+"time": null,
+"translation_key": "No you're not.",
+"type": "dialog"
+},
+"75": {
+"next_id": "76",
+"next_id_after": "77",
+"parent_id": "70",
+"replacements": [  ],
+"text": "Probably not.",
+"translation_key": "Probably not.",
+"type": "response"
+},
+"76": {
+"character": "Don",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "77",
+"parent_id": "75",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I thought so.",
+"time": null,
+"translation_key": "I thought so.",
+"type": "dialog"
+},
+"77": {
+"next_id": "20",
+"parent_id": "64",
+"type": "goto"
+},
+"78": {
+"next_id": "79",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "I'll be right back.",
+"translation_key": "I'll be right back.",
+"type": "response"
+},
+"79": {
+"character": "Don",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "80",
+"parent_id": "78",
 "pauses": {
 },
 "replacements": [  ],
@@ -995,54 +1142,6 @@ lines = {
 "time": null,
 "translation_key": "Whatever, buddy.",
 "type": "dialog"
-},
-"75": {
-"next_id": "end",
-"parent_id": "73",
-"type": "goto"
-},
-"76": {
-"next_id": "77",
-"next_id_after": "end",
-"replacements": [  ],
-"text": "So will you do it?",
-"translation_key": "So will you do it?",
-"type": "response"
-},
-"77": {
-"condition": {
-"expression": [ {
-"function": "karma",
-"type": "function",
-"value": [ [ {
-"type": "string",
-"value": "Don"
-} ] ]
-}, {
-"type": "comparison",
-"value": ">="
-}, {
-"type": "number",
-"value": 3
-} ]
-},
-"next_conditional_id": "79",
-"next_id": "78",
-"next_id_after": "end",
-"parent_id": "76",
-"type": "condition"
-},
-"78": {
-"next_id": "85",
-"parent_id": "77",
-"type": "goto"
-},
-"79": {
-"next_conditional_id": "end",
-"next_id": "80",
-"next_id_after": "end",
-"parent_id": "76",
-"type": "condition"
 },
 "8": {
 "condition": {
@@ -1061,11 +1160,59 @@ lines = {
 "type": "condition"
 },
 "80": {
+"next_id": "end",
+"parent_id": "78",
+"type": "goto"
+},
+"81": {
+"next_id": "82",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "So will you do it?",
+"translation_key": "So will you do it?",
+"type": "response"
+},
+"82": {
+"condition": {
+"expression": [ {
+"function": "karma",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Don"
+} ] ]
+}, {
+"type": "comparison",
+"value": ">="
+}, {
+"type": "number",
+"value": 3
+} ]
+},
+"next_conditional_id": "84",
+"next_id": "83",
+"next_id_after": "end",
+"parent_id": "81",
+"type": "condition"
+},
+"83": {
+"next_id": "90",
+"parent_id": "82",
+"type": "goto"
+},
+"84": {
+"next_conditional_id": "end",
+"next_id": "85",
+"next_id_after": "end",
+"parent_id": "81",
+"type": "condition"
+},
+"85": {
 "character": "Don",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "81",
-"parent_id": "79",
+"next_id": "86",
+"parent_id": "84",
 "pauses": {
 },
 "replacements": [  ],
@@ -1075,12 +1222,12 @@ lines = {
 "translation_key": "Sorry buddy, but nothing in life is free. Can't help you.",
 "type": "dialog"
 },
-"81": {
+"86": {
 "character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "82",
-"parent_id": "79",
+"next_id": "87",
+"parent_id": "84",
 "pauses": {
 },
 "replacements": [  ],
@@ -1090,7 +1237,7 @@ lines = {
 "translation_key": "Thanks anyway.",
 "type": "dialog"
 },
-"82": {
+"87": {
 "mutation": {
 "args": [ [ {
 "type": "string",
@@ -1099,84 +1246,13 @@ lines = {
 "function": "complete_character"
 },
 "next_id": "end",
-"parent_id": "79",
+"parent_id": "84",
 "type": "mutation"
 },
-"84": {
-"next_id": "85",
+"89": {
+"next_id": "90",
 "text": "band_questions",
 "type": "title"
-},
-"85": {
-"condition": {
-"expression": [ {
-"function": "first_visit",
-"type": "function",
-"value": [ [ {
-"type": "string",
-"value": "Don's offer"
-} ] ]
-} ]
-},
-"next_conditional_id": "93",
-"next_id": "86",
-"next_id_after": "93",
-"type": "condition"
-},
-"86": {
-"character": "Don",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "87",
-"parent_id": "85",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "You know what? I see a little bit of myself in you.",
-"time": null,
-"translation_key": "You know what? I see a little bit of myself in you.",
-"type": "dialog"
-},
-"87": {
-"character": "Don",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "88",
-"parent_id": "85",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "For $20, I'll give you the Don special, what do you say?",
-"time": null,
-"translation_key": "For $20, I'll give you the Don special, what do you say?",
-"type": "dialog"
-},
-"88": {
-"next_id": "89",
-"next_id_after": "93",
-"parent_id": "85",
-"replacements": [  ],
-"responses": PoolStringArray( "88", "92" ),
-"text": "I can't afford that!",
-"translation_key": "I can't afford that!",
-"type": "response"
-},
-"89": {
-"character": "Don",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "90",
-"parent_id": "88",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Alright then. Good luck finding someone else.",
-"time": null,
-"translation_key": "Alright then. Good luck finding someone else.",
-"type": "dialog"
 },
 "9": {
 "character": "Don",
@@ -1194,6 +1270,77 @@ lines = {
 "type": "dialog"
 },
 "90": {
+"condition": {
+"expression": [ {
+"function": "first_visit",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Don's offer"
+} ] ]
+} ]
+},
+"next_conditional_id": "98",
+"next_id": "91",
+"next_id_after": "98",
+"type": "condition"
+},
+"91": {
+"character": "Don",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "92",
+"parent_id": "90",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "You know what? I see a little bit of myself in you.",
+"time": null,
+"translation_key": "You know what? I see a little bit of myself in you.",
+"type": "dialog"
+},
+"92": {
+"character": "Don",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "93",
+"parent_id": "90",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "For $20, I'll give you the Don special, what do you say?",
+"time": null,
+"translation_key": "For $20, I'll give you the Don special, what do you say?",
+"type": "dialog"
+},
+"93": {
+"next_id": "94",
+"next_id_after": "98",
+"parent_id": "90",
+"replacements": [  ],
+"responses": PoolStringArray( "93", "97" ),
+"text": "I can't afford that!",
+"translation_key": "I can't afford that!",
+"type": "response"
+},
+"94": {
+"character": "Don",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "95",
+"parent_id": "93",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Alright then. Good luck finding someone else.",
+"time": null,
+"translation_key": "Alright then. Good luck finding someone else.",
+"type": "dialog"
+},
+"95": {
 "mutation": {
 "args": [ [ {
 "type": "string",
@@ -1201,29 +1348,29 @@ lines = {
 } ] ],
 "function": "complete_character"
 },
-"next_id": "91",
-"parent_id": "88",
+"next_id": "96",
+"parent_id": "93",
 "type": "mutation"
 },
-"91": {
+"96": {
 "next_id": "end",
-"parent_id": "88",
+"parent_id": "93",
 "type": "goto"
 },
-"92": {
-"next_id": "93",
-"next_id_after": "93",
-"parent_id": "85",
+"97": {
+"next_id": "98",
+"next_id_after": "98",
+"parent_id": "90",
 "replacements": [  ],
 "text": "Deal!",
 "translation_key": "Deal!",
 "type": "response"
 },
-"93": {
+"98": {
 "character": "Don",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "94",
+"next_id": "99",
 "pauses": {
 },
 "replacements": [  ],
@@ -1233,7 +1380,7 @@ lines = {
 "translation_key": "What tune do you need me to play?",
 "type": "dialog"
 },
-"94": {
+"99": {
 "condition": {
 "expression": [ {
 "function": "instrument_available",
@@ -1244,90 +1391,12 @@ lines = {
 } ] ]
 } ]
 },
-"next_id": "95",
+"next_id": "100",
 "next_id_after": "end",
 "replacements": [  ],
-"responses": PoolStringArray( "94", "97", "100", "103" ),
+"responses": PoolStringArray( "99", "102", "105", "108" ),
 "text": "I need a guitarist.",
 "translation_key": "I need a guitarist.",
 "type": "response"
-},
-"95": {
-"character": "Don",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "96",
-"parent_id": "94",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Call my name when you're ready.",
-"time": null,
-"translation_key": "Call my name when you're ready.",
-"type": "dialog"
-},
-"96": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "Guitar"
-} ], [ {
-"type": "string",
-"value": "Don"
-} ] ],
-"function": "assign_instrument"
-},
-"next_id": "end",
-"parent_id": "94",
-"type": "mutation"
-},
-"97": {
-"condition": {
-"expression": [ {
-"function": "instrument_available",
-"type": "function",
-"value": [ [ {
-"type": "string",
-"value": "Drums"
-} ] ]
-} ]
-},
-"next_id": "98",
-"next_id_after": "end",
-"replacements": [  ],
-"text": "I need a drummer.",
-"translation_key": "I need a drummer.",
-"type": "response"
-},
-"98": {
-"character": "Don",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "99",
-"parent_id": "97",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Call my name when you're ready.",
-"time": null,
-"translation_key": "Call my name when you're ready.",
-"type": "dialog"
-},
-"99": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "Drums"
-} ], [ {
-"type": "string",
-"value": "Don"
-} ] ],
-"function": "assign_instrument"
-},
-"next_id": "end",
-"parent_id": "97",
-"type": "mutation"
 }
 }

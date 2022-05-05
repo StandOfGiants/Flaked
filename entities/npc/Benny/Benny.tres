@@ -23,7 +23,7 @@ elif is_complete(\"Benny\")
 	Benny: Good luck with your song.
 else
 	=> Hub
-	
+
 ~ correct_answer
 do update_karma(\"Benny\", 1)
 => Hub
@@ -80,7 +80,7 @@ else
 	do resolve_branch(\"B5\")
 	Benny: Wait, really?!
 	- Well, we could, couldn't hurt, right?
-		Benny: That would be excellent! She loves music!
+		Benny: That's such a good idea! She loves music!
 		=> correct_answer
 	- Hm, no, you shouldn't reward her for being mad at you...
 		Benny: Yeah, I guess that's true.
@@ -1023,9 +1023,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "That would be excellent! She loves music!",
+"text": "That's such a good idea! She loves music!",
 "time": null,
-"translation_key": "That would be excellent! She loves music!",
+"translation_key": "That's such a good idea! She loves music!",
 "type": "dialog"
 },
 "76": {

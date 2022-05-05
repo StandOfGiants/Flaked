@@ -70,13 +70,12 @@ Player: Hello, everyone! I hope you enjoy our music!
 do play_song()
 
 ~ ending
-DEBUG: I got {{performance_rating()}}
 if performance_rating() == 6
 	Player: That was amazing! I can't believe all these random strangers were so good!
 elif performance_rating() >= 3
 	Player: Well, that went okay. Could've been better.
 elif performance_rating() >= 1
-	Player: Oof, that was pretty bad. I hope they let me come back
+	Player: Oof, that was pretty bad. I hope they let me come back.
 else
 	Player: I'm not even sure why I got up on stage. That was terrible!
 if performance_rating() == 6
@@ -782,27 +781,6 @@ lines = {
 "type": "title"
 },
 "65": {
-"character": "DEBUG",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "66",
-"pauses": {
-},
-"replacements": [ {
-"expression": [ {
-"function": "performance_rating",
-"type": "function",
-"value": [  ]
-} ],
-"value_in_text": "{{performance_rating()}}"
-} ],
-"speeds": [  ],
-"text": "I got {{performance_rating()}}",
-"time": null,
-"translation_key": "I got {{performance_rating()}}",
-"type": "dialog"
-},
-"66": {
 "condition": {
 "expression": [ {
 "function": "performance_rating",
@@ -816,17 +794,17 @@ lines = {
 "value": 6
 } ]
 },
-"next_conditional_id": "68",
-"next_id": "67",
-"next_id_after": "74",
+"next_conditional_id": "67",
+"next_id": "66",
+"next_id_after": "73",
 "type": "condition"
 },
-"67": {
+"66": {
 "character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "74",
-"parent_id": "66",
+"next_id": "73",
+"parent_id": "65",
 "pauses": {
 },
 "replacements": [  ],
@@ -836,7 +814,7 @@ lines = {
 "translation_key": "That was amazing! I can't believe all these random strangers were so good!",
 "type": "dialog"
 },
-"68": {
+"67": {
 "condition": {
 "expression": [ {
 "function": "performance_rating",
@@ -850,17 +828,17 @@ lines = {
 "value": 3
 } ]
 },
-"next_conditional_id": "70",
-"next_id": "69",
-"next_id_after": "74",
+"next_conditional_id": "69",
+"next_id": "68",
+"next_id_after": "73",
 "type": "condition"
 },
-"69": {
+"68": {
 "character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "74",
-"parent_id": "68",
+"next_id": "73",
+"parent_id": "67",
 "pauses": {
 },
 "replacements": [  ],
@@ -870,12 +848,7 @@ lines = {
 "translation_key": "Well, that went okay. Could've been better.",
 "type": "dialog"
 },
-"7": {
-"next_id": "end",
-"parent_id": "2",
-"type": "goto"
-},
-"70": {
+"69": {
 "condition": {
 "expression": [ {
 "function": "performance_rating",
@@ -889,38 +862,43 @@ lines = {
 "value": 1
 } ]
 },
-"next_conditional_id": "72",
-"next_id": "71",
-"next_id_after": "74",
+"next_conditional_id": "71",
+"next_id": "70",
+"next_id_after": "73",
 "type": "condition"
 },
-"71": {
+"7": {
+"next_id": "end",
+"parent_id": "2",
+"type": "goto"
+},
+"70": {
 "character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "74",
-"parent_id": "70",
+"next_id": "73",
+"parent_id": "69",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Oof, that was pretty bad. I hope they let me come back",
+"text": "Oof, that was pretty bad. I hope they let me come back.",
 "time": null,
-"translation_key": "Oof, that was pretty bad. I hope they let me come back",
+"translation_key": "Oof, that was pretty bad. I hope they let me come back.",
 "type": "dialog"
 },
-"72": {
-"next_conditional_id": "74",
-"next_id": "73",
-"next_id_after": "74",
+"71": {
+"next_conditional_id": "73",
+"next_id": "72",
+"next_id_after": "73",
 "type": "condition"
 },
-"73": {
+"72": {
 "character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "74",
-"parent_id": "72",
+"next_id": "73",
+"parent_id": "71",
 "pauses": {
 },
 "replacements": [  ],
@@ -930,7 +908,7 @@ lines = {
 "translation_key": "I'm not even sure why I got up on stage. That was terrible!",
 "type": "dialog"
 },
-"74": {
+"73": {
 "condition": {
 "expression": [ {
 "function": "performance_rating",
@@ -944,17 +922,17 @@ lines = {
 "value": 6
 } ]
 },
-"next_conditional_id": "76",
-"next_id": "75",
-"next_id_after": "80",
+"next_conditional_id": "75",
+"next_id": "74",
+"next_id_after": "79",
 "type": "condition"
 },
-"75": {
+"74": {
 "character": "Brook",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "80",
-"parent_id": "74",
+"next_id": "79",
+"parent_id": "73",
 "pauses": {
 },
 "replacements": [  ],
@@ -964,7 +942,7 @@ lines = {
 "translation_key": "Great job kid, here's your payment!",
 "type": "dialog"
 },
-"76": {
+"75": {
 "condition": {
 "expression": [ {
 "function": "performance_rating",
@@ -978,17 +956,17 @@ lines = {
 "value": 2
 } ]
 },
-"next_conditional_id": "78",
-"next_id": "77",
-"next_id_after": "80",
+"next_conditional_id": "77",
+"next_id": "76",
+"next_id_after": "79",
 "type": "condition"
 },
-"77": {
+"76": {
 "character": "Brook",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "80",
-"parent_id": "76",
+"next_id": "79",
+"parent_id": "75",
 "pauses": {
 },
 "replacements": [  ],
@@ -998,18 +976,18 @@ lines = {
 "translation_key": "I thought you guys were better. Make sure you practice before I schedule you again.",
 "type": "dialog"
 },
-"78": {
-"next_conditional_id": "80",
-"next_id": "79",
-"next_id_after": "80",
+"77": {
+"next_conditional_id": "79",
+"next_id": "78",
+"next_id_after": "79",
 "type": "condition"
 },
-"79": {
+"78": {
 "character": "Brook",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "80",
-"parent_id": "78",
+"next_id": "79",
+"parent_id": "77",
 "pauses": {
 },
 "replacements": [  ],
@@ -1019,11 +997,11 @@ lines = {
 "translation_key": "I can't remember why I hired you. You're going to have to practice a lot if you ever want to play here again.",
 "type": "dialog"
 },
-"80": {
+"79": {
 "character": "Brook",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "81",
+"next_id": "80",
 "pauses": {
 },
 "replacements": [ {
@@ -1040,11 +1018,11 @@ lines = {
 "translation_key": "If I had to rate you, I'd give you {{performance_rating()}} out of 6.",
 "type": "dialog"
 },
-"81": {
+"80": {
 "character": "Brook",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "82",
+"next_id": "81",
 "pauses": {
 },
 "replacements": [  ],
@@ -1054,11 +1032,11 @@ lines = {
 "translation_key": "I know, a 6 point scale, who does that?",
 "type": "dialog"
 },
-"82": {
+"81": {
 "character": "Brook",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "83",
+"next_id": "82",
 "pauses": {
 },
 "replacements": [  ],
@@ -1066,6 +1044,20 @@ lines = {
 "text": "Well, it's just an artifact of the way the scoring system was implemented, so blame the developer.",
 "time": null,
 "translation_key": "Well, it's just an artifact of the way the scoring system was implemented, so blame the developer.",
+"type": "dialog"
+},
+"82": {
+"character": "Player",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "83",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "...",
+"time": null,
+"translation_key": "...",
 "type": "dialog"
 },
 "83": {
@@ -1091,26 +1083,12 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "...",
-"time": null,
-"translation_key": "...",
-"type": "dialog"
-},
-"85": {
-"character": "Player",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "86",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
 "text": "That was a stressful evening.",
 "time": null,
 "translation_key": "That was a stressful evening.",
 "type": "dialog"
 },
-"86": {
+"85": {
 "character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],

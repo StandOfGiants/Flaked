@@ -9,7 +9,7 @@ raw_text = "~ begin
 
 if first_visit(\"Troy\")
 	Player: Hey, uh, bro. Cool hoodie.
-	Troy: Yo man, yeah I bought it with [wave amp=25 freq=5]ether[/wave], have you heard of [shake rate=20 level=10]etherium[/shake]? 
+	Troy: Yo man, yeah I bought it with [wave amp=25 freq=5]ether[/wave], have you heard of [shake rate=20 level=10]etherium[/shake]?
 	Player: Uh…
 	Troy: Yeah man crypto is the new thing, it’s free money and gonna totally [wave amp=25 freq=5]change the world[/wave].
 	Player: Um, okay. Do you happen to play music?
@@ -38,7 +38,7 @@ else
 	- Yeah... True...
 		Troy: So you do suck, huh?
 	- But risks are pretty sexy or whatever to right? You know, \"buy the dip\" right?
-		Troy: See these hands? They're diamond hands. I'm gonna HODL this opportunity for all its worth!
+		Troy: See these hands? They're diamond hands. I'm gonna HODL this opportunity for all it's worth!
 		=> correct_answer
 	=> Hub
 - So wait, back to the crypto thing? [if is_not_resolved(\"T2\")]
@@ -417,9 +417,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "See these hands? They're diamond hands. I'm gonna HODL this opportunity for all its worth!",
+"text": "See these hands? They're diamond hands. I'm gonna HODL this opportunity for all it's worth!",
 "time": null,
-"translation_key": "See these hands? They're diamond hands. I'm gonna HODL this opportunity for all its worth!",
+"translation_key": "See these hands? They're diamond hands. I'm gonna HODL this opportunity for all it's worth!",
 "type": "dialog"
 },
 "34": {

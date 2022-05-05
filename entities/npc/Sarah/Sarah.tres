@@ -41,9 +41,9 @@ else
 	do resolve_branch(\"S1\")
 	Sarah: I don't know... It's been so long since I played the drums...
 	- Hm, that could be a problem.
-		Sarah: Oh, okay.
+		Sarah: Yeah, I don't have much time to practice anymore with three kids...
 	- I'm sure you'll be fantastic.
-		Sarah: Really? You think so? 
+		Sarah: Really? You think so?
 		=> correct_answer
 	=> Hub
 - It'll be fun! [if is_not_resolved(\"S2\")]
@@ -68,7 +68,7 @@ else
 	do resolve_branch(\"S3\")
 	Sarah: Well, we could be awful.
 	- Probably.
-		Sarah: So why even try?
+		Sarah: Yeah I'm not sure if I want to make a fool of myself.
 	- Nah, can't be awful with you up there!
 		Sarah: You really think so?
 		=> correct_answer
@@ -459,9 +459,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Oh, okay.",
+"text": "Yeah, I don't have much time to practice anymore with three kids...",
 "time": null,
-"translation_key": "Oh, okay.",
+"translation_key": "Yeah, I don't have much time to practice anymore with three kids...",
 "type": "dialog"
 },
 "37": {
@@ -816,9 +816,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "So why even try?",
+"text": "Yeah I'm not sure if I want to make a fool of myself.",
 "time": null,
-"translation_key": "So why even try?",
+"translation_key": "Yeah I'm not sure if I want to make a fool of myself.",
 "type": "dialog"
 },
 "64": {

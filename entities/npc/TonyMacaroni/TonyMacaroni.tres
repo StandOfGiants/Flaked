@@ -35,7 +35,7 @@ else
 - Wait, your name is Tony Macaroni? [if is_not_resolved(\"TM1\")]
 	do resolve_branch(\"TM1\")
 	Tony Macaroni: ...It's s-short for Antonio Macaronio.
-	- Wow your parents suck huh? 
+	- Wow your parents suck huh?
 		Tony Macaroni: You don't know the half of it.
 		=> correct_answer
 	- That's uh... cool?
@@ -49,7 +49,7 @@ else
 		Tony Macaroni: Thank you!
 		=> correct_answer
 	- Friendship usually takes a little longer than that...
-		Tony Macaroni: That's what everyone says. 
+		Tony Macaroni: That's what everyone says.
 	=> Hub
 - With your instrument prowess, I'd be glad to have you! [if is_not_resolved(\"TM5\")]
 	do resolve_branch(\"TM5\")

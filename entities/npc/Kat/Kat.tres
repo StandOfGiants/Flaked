@@ -21,11 +21,11 @@ elif is_complete(\"Kat\")
 	Kat: Good luck baby.
 else
 	=> Hub
-	
+
 ~ correct_answer
 do update_karma(\"Kat\", 1)
 => Hub
-	
+
 ~ Hub
 if first_visit(\"Kat main hub\")
 	Kat: Hmmm, maybe, what kinda music you play?
@@ -39,7 +39,7 @@ else:
 		Kat: Groovy.
 		=> correct_answer
 	- Sometimes yeah!
-		Kat: Not really my scene, but ok.
+		Kat: Pop culture aint really my thing.
 	=> Hub
 - Rock and uh... alternative rock? What are genres anyway? [if is_not_resolved(\"K2\")]
 	do resolve_branch(\"K2\")
@@ -54,7 +54,7 @@ else:
 	do resolve_branch(\"K3\")
 	Kat: ...Like a 60s [shake rate=20 level=10]cover band[/shake]?
 	- No! Like... experimental. Push the boundaries a little bit stuff.
-		Kat: That's what I like to hear.
+		Kat: That's the good stuff, man.
 		=> correct_answer
 	- Yeah, love me some Woodstock music.
 		Kat: I left the Woodstock music behind [i]at[/i] Woodstock.
@@ -63,7 +63,7 @@ else:
 	do resolve_branch(\"K4\")
 	Kat: Whatever [i][shake rate=20 level=10]I[/shake][/i] want? So some jazzy synthy theremin vibes...
 	- Uhh... let's not go that far haha... ha.
-		Kat: It's your band I suppose.
+		Kat: You scared little boy?
 	- We don't have a theremin, but the keyboard is an old Juno-6 from the 80s.
 		Kat: I haven't touched one of those in years, baby. Sounds like a plan.
 		=> correct_answer
@@ -72,10 +72,10 @@ else:
 	do resolve_branch(\"K5\")
 	Kat: Anything? You ready for an [i][wave amp=30 freq=10]Experience[/wave][/i] buddy?
 	- Yes, help me make an experience!
-		Kat: It's what I do.
+		Kat: That's the plan, man.
 		=> correct_answer
 	- No. The night is chaotic enough as it is thanks.
-		Kat: Fair enough.
+		Kat: You must be a blast at parties.
 	=> Hub
 - I'll be back.
 	Kat: Take your time.
@@ -393,9 +393,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Not really my scene, but ok.",
+"text": "Pop culture aint really my thing.",
 "time": null,
-"translation_key": "Not really my scene, but ok.",
+"translation_key": "Pop culture aint really my thing.",
 "type": "dialog"
 },
 "35": {
@@ -587,9 +587,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "That's what I like to hear.",
+"text": "That's the good stuff, man.",
 "time": null,
-"translation_key": "That's what I like to hear.",
+"translation_key": "That's the good stuff, man.",
 "type": "dialog"
 },
 "5": {
@@ -706,9 +706,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "It's your band I suppose.",
+"text": "You scared little boy?",
 "time": null,
-"translation_key": "It's your band I suppose.",
+"translation_key": "You scared little boy?",
 "type": "dialog"
 },
 "59": {
@@ -825,9 +825,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "It's what I do.",
+"text": "That's the plan, man.",
 "time": null,
-"translation_key": "It's what I do.",
+"translation_key": "That's the plan, man.",
 "type": "dialog"
 },
 "68": {
@@ -869,9 +869,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Fair enough.",
+"text": "You must be a blast at parties.",
 "time": null,
-"translation_key": "Fair enough.",
+"translation_key": "You must be a blast at parties.",
 "type": "dialog"
 },
 "71": {
