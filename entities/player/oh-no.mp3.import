@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/oh-no.mp3-d233502da9ddceb21bca2fb84a02bc9d.mp3str"
+
+[deps]
+
+source_file="res://entities/player/oh-no.mp3"
+dest_files=[ "res://.import/oh-no.mp3-d233502da9ddceb21bca2fb84a02bc9d.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

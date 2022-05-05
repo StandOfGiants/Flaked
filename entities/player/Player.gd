@@ -142,3 +142,8 @@ func _physics_process(delta):
 		$AnimatedSprite3D.play("Walk")
 	else:
 		$AnimatedSprite3D.play("default")
+
+
+func _on_Footstep_Timer_timeout():
+	if velocity.length_squared() > 0.1:
+		$WalkingSound.play()

@@ -2,21 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Don.png-b087aefd800c7d83ea3137a66d9b9025.s3tc.stex"
-path.etc2="res://.import/Don.png-b087aefd800c7d83ea3137a66d9b9025.etc2.stex"
+path="res://.import/Don.png-b087aefd800c7d83ea3137a66d9b9025.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://entities/npc/Don/Don.png"
-dest_files=[ "res://.import/Don.png-b087aefd800c7d83ea3137a66d9b9025.s3tc.stex", "res://.import/Don.png-b087aefd800c7d83ea3137a66d9b9025.etc2.stex" ]
+dest_files=[ "res://.import/Don.png-b087aefd800c7d83ea3137a66d9b9025.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

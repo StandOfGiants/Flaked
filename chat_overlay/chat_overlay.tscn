@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://chat_overlay/chat_overlay.gd" type="Script" id=1]
 [ext_resource path="res://chat_overlay/menu.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://entities/npc/Hand-Holding-Cell-Phone.png" type="Texture" id=9]
 [ext_resource path="res://entities/player/froggyman_portrait.png" type="Texture" id=10]
 [ext_resource path="res://Main Menu Blur.tres" type="Material" id=11]
+[ext_resource path="res://chat_overlay/selection-boop.wav" type="AudioStream" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 25
@@ -33,10 +34,66 @@ font_data = ExtResource( 4 )
 layer = 128
 script = ExtResource( 1 )
 
+[node name="ActionedBoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+
+[node name="MenuBoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -12.667
+pitch_scale = 1.57
+bus = "SFX"
+
 [node name="BackgroundBlur" type="ColorRect" parent="."]
 material = ExtResource( 11 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Portraits" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = -40.0
+margin_right = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NPCPortrait" type="TextureRect" parent="Portraits"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 415.0
+margin_right = 1202.0
+margin_bottom = 503.0
+rect_rotation = 180.0
+rect_scale = Vector2( 0.997393, 1.02386 )
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 5
+flip_h = true
+flip_v = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerPortrait" type="TextureRect" parent="Portraits"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -516.0
+margin_top = -505.0
+margin_right = -27.0
+margin_bottom = -1.0
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 5
+flip_h = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -49,42 +106,6 @@ anchor_bottom = 0.97
 margin_left = -409.6
 margin_top = -120.0
 margin_right = 409.6
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NPCPortrait" type="TextureRect" parent="Balloon"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 25.4
-margin_top = 18.0
-margin_right = 812.4
-margin_bottom = 521.0
-rect_rotation = 180.0
-rect_scale = Vector2( 0.997393, 1.02386 )
-texture = ExtResource( 9 )
-expand = true
-stretch_mode = 5
-flip_h = true
-flip_v = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PlayerPortrait" type="TextureRect" parent="Balloon"]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -126.4
-margin_top = -487.0
-margin_right = -126.6
-margin_bottom = 17.0
-texture = ExtResource( 10 )
-expand = true
-stretch_mode = 5
-flip_h = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -122,14 +143,13 @@ custom_constants/separation = 5
 [node name="Character" type="RichTextLabel" parent="Balloon/Margin/VBox"]
 modulate = Color( 1, 1, 1, 0.470588 )
 margin_right = 759.0
-margin_bottom = 33.121
+margin_bottom = 30.0
 rect_min_size = Vector2( 0, 30 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "Character"
-text = "Froggit
-"
+text = "Character"
 scroll_active = false
 
 [node name="Dialog" parent="Balloon/Margin/VBox" instance=ExtResource( 7 )]
@@ -163,3 +183,5 @@ position = Vector2( 29.6, 13 )
 texture = ExtResource( 3 )
 centered = false
 offset = Vector2( -20, -10 )
+
+[connection signal="selection_changed" from="Balloon/Margin/VBox/Responses/Menu" to="." method="_on_Menu_selection_changed"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ungh.mp3-2bbee076659b0a22a708ea77e41dda4e.mp3str"
+
+[deps]
+
+source_file="res://entities/player/ungh.mp3"
+dest_files=[ "res://.import/ungh.mp3-2bbee076659b0a22a708ea77e41dda4e.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

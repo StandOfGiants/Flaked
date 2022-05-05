@@ -120,7 +120,7 @@ alpha_cut = 2
 texture = ExtResource( 5 )
 
 [node name="Sarah" type="Sprite3D" parent="Sprites"]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.001, 0.927, 0 )
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.101, 0.999, 0 )
 cast_shadow = 2
 shaded = true
 alpha_cut = 2

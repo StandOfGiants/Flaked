@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/aww.mp3-3e354fe29093bdc6157ec469291ef80b.mp3str"
+
+[deps]
+
+source_file="res://entities/player/aww.mp3"
+dest_files=[ "res://.import/aww.mp3-3e354fe29093bdc6157ec469291ef80b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

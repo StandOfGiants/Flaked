@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/glad.mp3-90265af9492e4f3782941630fa50f8e0.mp3str"
+
+[deps]
+
+source_file="res://entities/player/glad.mp3"
+dest_files=[ "res://.import/glad.mp3-90265af9492e4f3782941630fa50f8e0.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

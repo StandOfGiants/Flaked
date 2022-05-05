@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/sad accept.mp3-2e851fddee48ea79abe4cdc2458fe7f7.mp3str"
+
+[deps]
+
+source_file="res://entities/player/sad accept.mp3"
+dest_files=[ "res://.import/sad accept.mp3-2e851fddee48ea79abe4cdc2458fe7f7.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

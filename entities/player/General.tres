@@ -17,20 +17,23 @@ if has_run_once(\"Intro\")
 do look_around()
 HIDE: ... [next=1.5]
 
+do sound_fx(\"OhNo\")
 Player: Where are they? We're supposed to perform in [shake rate=25 level=10]half an hour![/shake]
 do sound_fx(\"PhoneVibe\")
 Phone: [wave amp=25 freq=15]Bzzt! Bzzt! Bzzt![/wave]
-Cal: Hey brobro, [wait=1]my car broke down, [wait=1]not going to make it!
+Cal: Hey brobro, [wait=1]my car broke down,[do sound_fx(\"SmallSigh\")] [wait=1]not going to make it!
 do sound_fx(\"PhoneVibe\")
 Phone: [wave amp=25 freq=15]Bzzt! Bzzt! Bzzt![/wave]
 Miles: Sally won't stop barfing, Can't make it sorry haha [wave amp=35 freq=10]#parenting[/wave]
+do sound_fx(\"BigSigh\")
 Player: ...
 Player: What about Aaron? [speed=0.2][i]Where are you?[/i]
 Aaron: [i]New fone who dis[i]
+do sound_fx(\"Ungh\")
 Player: [speed=0.2][i]aaron i s2g[/i]
 Aaron: [i]sry wrong nmbr[i]
 
-Player: [speed=0.2]...[speed=1]They all bailed on me.
+Player: [speed=0.2]...[speed=1]They all bailed[do sound_fx(\"SadAccept\")] on me.
 Player: If I don't perform, this place will never let us perform here again!
 Player: [shake rate=20 level=10]Ugh what do I do?![/shake]
 do look_around()
@@ -94,9 +97,9 @@ Player: I need to get some less flaky band mates.
 errors = [  ]
 titles = {
 "begin": "2",
-"ending": "62",
-"on_stage": "37",
-"start_performance": "55"
+"ending": "65",
+"on_stage": "40",
+"start_performance": "58"
 }
 lines = {
 "0": {
@@ -119,10 +122,21 @@ lines = {
 "type": "dialog"
 },
 "12": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "OhNo"
+} ] ],
+"function": "sound_fx"
+},
+"next_id": "13",
+"type": "mutation"
+},
+"13": {
 "character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "13",
+"next_id": "14",
 "pauses": {
 },
 "replacements": [  ],
@@ -132,7 +146,7 @@ lines = {
 "translation_key": "Where are they? We're supposed to perform in [shake rate=25 level=10]half an hour![/shake]",
 "type": "dialog"
 },
-"13": {
+"14": {
 "mutation": {
 "args": [ [ {
 "type": "string",
@@ -140,14 +154,14 @@ lines = {
 } ] ],
 "function": "sound_fx"
 },
-"next_id": "14",
+"next_id": "15",
 "type": "mutation"
 },
-"14": {
+"15": {
 "character": "Phone",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "15",
+"next_id": "16",
 "pauses": {
 },
 "replacements": [  ],
@@ -157,11 +171,17 @@ lines = {
 "translation_key": "[wave amp=25 freq=15]Bzzt! Bzzt! Bzzt![/wave]",
 "type": "dialog"
 },
-"15": {
+"16": {
 "character": "Cal",
 "character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "16",
+"inline_mutations": [ [ 30, {
+"args": [ [ {
+"type": "string",
+"value": "SmallSigh"
+} ] ],
+"function": "sound_fx"
+} ] ],
+"next_id": "17",
 "pauses": {
 12: 1.0,
 31: 1.0
@@ -173,7 +193,7 @@ lines = {
 "translation_key": "Hey brobro, my car broke down, not going to make it!",
 "type": "dialog"
 },
-"16": {
+"17": {
 "mutation": {
 "args": [ [ {
 "type": "string",
@@ -181,14 +201,14 @@ lines = {
 } ] ],
 "function": "sound_fx"
 },
-"next_id": "17",
+"next_id": "18",
 "type": "mutation"
 },
-"17": {
+"18": {
 "character": "Phone",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "18",
+"next_id": "19",
 "pauses": {
 },
 "replacements": [  ],
@@ -198,22 +218,8 @@ lines = {
 "translation_key": "[wave amp=25 freq=15]Bzzt! Bzzt! Bzzt![/wave]",
 "type": "dialog"
 },
-"18": {
-"character": "Miles",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "19",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Sally won't stop barfing, Can't make it sorry haha [wave amp=35 freq=10]#parenting[/wave]",
-"time": null,
-"translation_key": "Sally won't stop barfing, Can't make it sorry haha [wave amp=35 freq=10]#parenting[/wave]",
-"type": "dialog"
-},
 "19": {
-"character": "Player",
+"character": "Miles",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "20",
@@ -221,9 +227,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "...",
+"text": "Sally won't stop barfing, Can't make it sorry haha [wave amp=35 freq=10]#parenting[/wave]",
 "time": null,
-"translation_key": "...",
+"translation_key": "Sally won't stop barfing, Can't make it sorry haha [wave amp=35 freq=10]#parenting[/wave]",
 "type": "dialog"
 },
 "2": {
@@ -243,21 +249,18 @@ lines = {
 "type": "condition"
 },
 "20": {
-"character": "Player",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "21",
-"pauses": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "BigSigh"
+} ] ],
+"function": "sound_fx"
 },
-"replacements": [  ],
-"speeds": [ [ 18, 0.2 ] ],
-"text": "What about Aaron? [i]Where are you?[/i]",
-"time": null,
-"translation_key": "What about Aaron? [i]Where are you?[/i]",
-"type": "dialog"
+"next_id": "21",
+"type": "mutation"
 },
 "21": {
-"character": "Aaron",
+"character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "22",
@@ -265,9 +268,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "[i]New fone who dis[i]",
+"text": "...",
 "time": null,
-"translation_key": "[i]New fone who dis[i]",
+"translation_key": "...",
 "type": "dialog"
 },
 "22": {
@@ -278,25 +281,36 @@ lines = {
 "pauses": {
 },
 "replacements": [  ],
-"speeds": [ [ 0, 0.2 ] ],
-"text": "[i]aaron i s2g[/i]",
+"speeds": [ [ 18, 0.2 ] ],
+"text": "What about Aaron? [i]Where are you?[/i]",
 "time": null,
-"translation_key": "[i]aaron i s2g[/i]",
+"translation_key": "What about Aaron? [i]Where are you?[/i]",
 "type": "dialog"
 },
 "23": {
 "character": "Aaron",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "25",
+"next_id": "24",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "[i]sry wrong nmbr[i]",
+"text": "[i]New fone who dis[i]",
 "time": null,
-"translation_key": "[i]sry wrong nmbr[i]",
+"translation_key": "[i]New fone who dis[i]",
 "type": "dialog"
+},
+"24": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Ungh"
+} ] ],
+"function": "sound_fx"
+},
+"next_id": "25",
+"type": "mutation"
 },
 "25": {
 "character": "Player",
@@ -306,28 +320,14 @@ lines = {
 "pauses": {
 },
 "replacements": [  ],
-"speeds": [ [ 0, 0.2 ], [ 3, 1.0 ] ],
-"text": "...They all bailed on me.",
+"speeds": [ [ 0, 0.2 ] ],
+"text": "[i]aaron i s2g[/i]",
 "time": null,
-"translation_key": "...They all bailed on me.",
+"translation_key": "[i]aaron i s2g[/i]",
 "type": "dialog"
 },
 "26": {
-"character": "Player",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "27",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "If I don't perform, this place will never let us perform here again!",
-"time": null,
-"translation_key": "If I don't perform, this place will never let us perform here again!",
-"type": "dialog"
-},
-"27": {
-"character": "Player",
+"character": "Aaron",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "28",
@@ -335,21 +335,33 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "[shake rate=20 level=10]Ugh what do I do?![/shake]",
+"text": "[i]sry wrong nmbr[i]",
 "time": null,
-"translation_key": "[shake rate=20 level=10]Ugh what do I do?![/shake]",
+"translation_key": "[i]sry wrong nmbr[i]",
 "type": "dialog"
 },
 "28": {
-"mutation": {
-"args": [  ],
-"function": "look_around"
-},
+"character": "Player",
+"character_replacements": [  ],
+"inline_mutations": [ [ 18, {
+"args": [ [ {
+"type": "string",
+"value": "SadAccept"
+} ] ],
+"function": "sound_fx"
+} ] ],
 "next_id": "29",
-"type": "mutation"
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [ [ 0, 0.2 ], [ 3, 1.0 ] ],
+"text": "...They all bailed on me.",
+"time": null,
+"translation_key": "...They all bailed on me.",
+"type": "dialog"
 },
 "29": {
-"character": "HIDE",
+"character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "30",
@@ -357,9 +369,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "... ",
-"time": "1.5",
-"translation_key": "... ",
+"text": "If I don't perform, this place will never let us perform here again!",
+"time": null,
+"translation_key": "If I don't perform, this place will never let us perform here again!",
 "type": "dialog"
 },
 "3": {
@@ -382,6 +394,42 @@ lines = {
 "inline_mutations": [  ],
 "next_id": "31",
 "pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "[shake rate=20 level=10]Ugh what do I do?![/shake]",
+"time": null,
+"translation_key": "[shake rate=20 level=10]Ugh what do I do?![/shake]",
+"type": "dialog"
+},
+"31": {
+"mutation": {
+"args": [  ],
+"function": "look_around"
+},
+"next_id": "32",
+"type": "mutation"
+},
+"32": {
+"character": "HIDE",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "33",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "... ",
+"time": "1.5",
+"translation_key": "... ",
+"type": "dialog"
+},
+"33": {
+"character": "Player",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "34",
+"pauses": {
 40: 1.0
 },
 "replacements": [  ],
@@ -391,11 +439,11 @@ lines = {
 "translation_key": "Maybe there are other musicians here... Hmm...",
 "type": "dialog"
 },
-"31": {
+"34": {
 "character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "32",
+"next_id": "35",
 "pauses": {
 },
 "replacements": [  ],
@@ -405,11 +453,11 @@ lines = {
 "translation_key": "God I'm going to look like such a weirdo. Maybe I can say it's avant garde or something.",
 "type": "dialog"
 },
-"32": {
+"35": {
 "character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "33",
+"next_id": "36",
 "pauses": {
 },
 "replacements": [  ],
@@ -419,7 +467,7 @@ lines = {
 "translation_key": "Better to suck than to never come back. This is the only place with a stage in town.",
 "type": "dialog"
 },
-"33": {
+"36": {
 "character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],
@@ -433,12 +481,27 @@ lines = {
 "translation_key": "Guess I'll try asking some people, I just need a guitarist, a keyboardist, and a drummer.",
 "type": "dialog"
 },
-"35": {
-"next_id": "37",
+"38": {
+"next_id": "40",
 "text": "on_stage",
 "type": "title"
 },
-"37": {
+"4": {
+"character": "Player",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "7",
+"parent_id": "3",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I have everyone I need, now I just need to perform.",
+"time": null,
+"translation_key": "I have everyone I need, now I just need to perform.",
+"type": "dialog"
+},
+"40": {
 "condition": {
 "expression": [ {
 "function": "first_visit",
@@ -462,17 +525,17 @@ lines = {
 "value": false
 } ]
 },
-"next_conditional_id": "41",
-"next_id": "38",
-"next_id_after": "41",
+"next_conditional_id": "44",
+"next_id": "41",
+"next_id_after": "44",
 "type": "condition"
 },
-"38": {
+"41": {
 "character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "39",
-"parent_id": "37",
+"next_id": "42",
+"parent_id": "40",
 "pauses": {
 },
 "replacements": [  ],
@@ -482,27 +545,12 @@ lines = {
 "translation_key": "This is the stage, I'll need to come back when I'm ready to perform.",
 "type": "dialog"
 },
-"39": {
+"42": {
 "next_id": "end",
-"parent_id": "37",
+"parent_id": "40",
 "type": "goto"
 },
-"4": {
-"character": "Player",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "7",
-"parent_id": "3",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "I have everyone I need, now I just need to perform.",
-"time": null,
-"translation_key": "I have everyone I need, now I just need to perform.",
-"type": "dialog"
-},
-"41": {
+"44": {
 "condition": {
 "expression": [ {
 "function": "band_full",
@@ -510,17 +558,17 @@ lines = {
 "value": [  ]
 } ]
 },
-"next_conditional_id": "45",
-"next_id": "42",
+"next_conditional_id": "48",
+"next_id": "45",
 "next_id_after": "end",
 "type": "condition"
 },
-"42": {
+"45": {
 "character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "43",
-"parent_id": "41",
+"next_id": "46",
+"parent_id": "44",
 "pauses": {
 },
 "replacements": [  ],
@@ -530,26 +578,26 @@ lines = {
 "translation_key": "I guess I've got all the people I need.",
 "type": "dialog"
 },
-"43": {
-"next_id": "55",
+"46": {
+"next_id": "58",
 "next_id_after": "end",
-"parent_id": "41",
+"parent_id": "44",
 "replacements": [  ],
-"responses": PoolStringArray( "43", "44" ),
+"responses": PoolStringArray( "46", "47" ),
 "text": "Start Performance",
 "translation_key": "Start Performance",
 "type": "response"
 },
-"44": {
+"47": {
 "next_id": "end",
 "next_id_after": "end",
-"parent_id": "41",
+"parent_id": "44",
 "replacements": [  ],
 "text": "I'll come back in a bit.",
 "translation_key": "I'll come back in a bit.",
 "type": "response"
 },
-"45": {
+"48": {
 "condition": {
 "expression": [ {
 "function": "all_alone",
@@ -557,17 +605,17 @@ lines = {
 "value": [  ]
 } ]
 },
-"next_conditional_id": "49",
-"next_id": "46",
+"next_conditional_id": "52",
+"next_id": "49",
 "next_id_after": "end",
 "type": "condition"
 },
-"46": {
+"49": {
 "character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "47",
-"parent_id": "45",
+"next_id": "50",
+"parent_id": "48",
 "pauses": {
 },
 "replacements": [  ],
@@ -577,31 +625,6 @@ lines = {
 "translation_key": "I don't have any people to play with me. I guess I could just perform alone.",
 "type": "dialog"
 },
-"47": {
-"next_id": "55",
-"next_id_after": "end",
-"parent_id": "45",
-"replacements": [  ],
-"responses": PoolStringArray( "47", "48" ),
-"text": "Perform alone",
-"translation_key": "Perform alone",
-"type": "response"
-},
-"48": {
-"next_id": "end",
-"next_id_after": "end",
-"parent_id": "45",
-"replacements": [  ],
-"text": "Find people to join you",
-"translation_key": "Find people to join you",
-"type": "response"
-},
-"49": {
-"next_conditional_id": "end",
-"next_id": "50",
-"next_id_after": "end",
-"type": "condition"
-},
 "5": {
 "next_conditional_id": "7",
 "next_id": "6",
@@ -610,11 +633,36 @@ lines = {
 "type": "condition"
 },
 "50": {
+"next_id": "58",
+"next_id_after": "end",
+"parent_id": "48",
+"replacements": [  ],
+"responses": PoolStringArray( "50", "51" ),
+"text": "Perform alone",
+"translation_key": "Perform alone",
+"type": "response"
+},
+"51": {
+"next_id": "end",
+"next_id_after": "end",
+"parent_id": "48",
+"replacements": [  ],
+"text": "Find people to join you",
+"translation_key": "Find people to join you",
+"type": "response"
+},
+"52": {
+"next_conditional_id": "end",
+"next_id": "53",
+"next_id_after": "end",
+"type": "condition"
+},
+"53": {
 "character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "51",
-"parent_id": "49",
+"next_id": "54",
+"parent_id": "52",
 "pauses": {
 },
 "replacements": [  ],
@@ -624,65 +672,29 @@ lines = {
 "translation_key": "Well, I have a few people to play with me. We could just start now.",
 "type": "dialog"
 },
-"51": {
-"next_id": "55",
+"54": {
+"next_id": "58",
 "next_id_after": "end",
-"parent_id": "49",
+"parent_id": "52",
 "replacements": [  ],
-"responses": PoolStringArray( "51", "52" ),
+"responses": PoolStringArray( "54", "55" ),
 "text": "Perform with incomplete band",
 "translation_key": "Perform with incomplete band",
 "type": "response"
 },
-"52": {
+"55": {
 "next_id": "end",
 "next_id_after": "end",
-"parent_id": "49",
+"parent_id": "52",
 "replacements": [  ],
 "text": "Find more people to join",
 "translation_key": "Find more people to join",
 "type": "response"
 },
-"54": {
-"next_id": "55",
+"57": {
+"next_id": "58",
 "text": "start_performance",
 "type": "title"
-},
-"55": {
-"character": "Player",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "56",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Well, here goes nothing. ",
-"time": "1",
-"translation_key": "Well, here goes nothing. ",
-"type": "dialog"
-},
-"56": {
-"mutation": {
-"args": [  ],
-"function": "go_to_stage"
-},
-"next_id": "57",
-"type": "mutation"
-},
-"57": {
-"character": "HIDE",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "58",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "... ",
-"time": "1.5",
-"translation_key": "... ",
-"type": "dialog"
 },
 "58": {
 "character": "Player",
@@ -693,17 +705,17 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Hello, everyone! I hope you enjoy our music!",
-"time": null,
-"translation_key": "Hello, everyone! I hope you enjoy our music!",
+"text": "Well, here goes nothing. ",
+"time": "1",
+"translation_key": "Well, here goes nothing. ",
 "type": "dialog"
 },
 "59": {
 "mutation": {
 "args": [  ],
-"function": "play_song"
+"function": "go_to_stage"
 },
-"next_id": "end",
+"next_id": "60",
 "type": "mutation"
 },
 "6": {
@@ -728,16 +740,52 @@ lines = {
 "translation_key": "I still need to find some musicians. I need {{missing_musicians()}}.",
 "type": "dialog"
 },
+"60": {
+"character": "HIDE",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "61",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "... ",
+"time": "1.5",
+"translation_key": "... ",
+"type": "dialog"
+},
 "61": {
+"character": "Player",
+"character_replacements": [  ],
+"inline_mutations": [  ],
 "next_id": "62",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Hello, everyone! I hope you enjoy our music!",
+"time": null,
+"translation_key": "Hello, everyone! I hope you enjoy our music!",
+"type": "dialog"
+},
+"62": {
+"mutation": {
+"args": [  ],
+"function": "play_song"
+},
+"next_id": "end",
+"type": "mutation"
+},
+"64": {
+"next_id": "65",
 "text": "ending",
 "type": "title"
 },
-"62": {
+"65": {
 "character": "DEBUG",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "63",
+"next_id": "66",
 "pauses": {
 },
 "replacements": [ {
@@ -754,7 +802,7 @@ lines = {
 "translation_key": "I got {{performance_rating()}}",
 "type": "dialog"
 },
-"63": {
+"66": {
 "condition": {
 "expression": [ {
 "function": "performance_rating",
@@ -768,17 +816,17 @@ lines = {
 "value": 6
 } ]
 },
-"next_conditional_id": "65",
-"next_id": "64",
-"next_id_after": "71",
+"next_conditional_id": "68",
+"next_id": "67",
+"next_id_after": "74",
 "type": "condition"
 },
-"64": {
+"67": {
 "character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "71",
-"parent_id": "63",
+"next_id": "74",
+"parent_id": "66",
 "pauses": {
 },
 "replacements": [  ],
@@ -788,7 +836,7 @@ lines = {
 "translation_key": "That was amazing! I can't believe all these random strangers were so good!",
 "type": "dialog"
 },
-"65": {
+"68": {
 "condition": {
 "expression": [ {
 "function": "performance_rating",
@@ -802,17 +850,17 @@ lines = {
 "value": 3
 } ]
 },
-"next_conditional_id": "67",
-"next_id": "66",
-"next_id_after": "71",
+"next_conditional_id": "70",
+"next_id": "69",
+"next_id_after": "74",
 "type": "condition"
 },
-"66": {
+"69": {
 "character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "71",
-"parent_id": "65",
+"next_id": "74",
+"parent_id": "68",
 "pauses": {
 },
 "replacements": [  ],
@@ -822,7 +870,12 @@ lines = {
 "translation_key": "Well, that went okay. Could've been better.",
 "type": "dialog"
 },
-"67": {
+"7": {
+"next_id": "end",
+"parent_id": "2",
+"type": "goto"
+},
+"70": {
 "condition": {
 "expression": [ {
 "function": "performance_rating",
@@ -836,17 +889,17 @@ lines = {
 "value": 1
 } ]
 },
-"next_conditional_id": "69",
-"next_id": "68",
-"next_id_after": "71",
+"next_conditional_id": "72",
+"next_id": "71",
+"next_id_after": "74",
 "type": "condition"
 },
-"68": {
+"71": {
 "character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "71",
-"parent_id": "67",
+"next_id": "74",
+"parent_id": "70",
 "pauses": {
 },
 "replacements": [  ],
@@ -856,23 +909,18 @@ lines = {
 "translation_key": "Oof, that was pretty bad. I hope they let me come back",
 "type": "dialog"
 },
-"69": {
-"next_conditional_id": "71",
-"next_id": "70",
-"next_id_after": "71",
+"72": {
+"next_conditional_id": "74",
+"next_id": "73",
+"next_id_after": "74",
 "type": "condition"
 },
-"7": {
-"next_id": "end",
-"parent_id": "2",
-"type": "goto"
-},
-"70": {
+"73": {
 "character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "71",
-"parent_id": "69",
+"next_id": "74",
+"parent_id": "72",
 "pauses": {
 },
 "replacements": [  ],
@@ -882,7 +930,7 @@ lines = {
 "translation_key": "I'm not even sure why I got up on stage. That was terrible!",
 "type": "dialog"
 },
-"71": {
+"74": {
 "condition": {
 "expression": [ {
 "function": "performance_rating",
@@ -896,17 +944,17 @@ lines = {
 "value": 6
 } ]
 },
-"next_conditional_id": "73",
-"next_id": "72",
-"next_id_after": "77",
+"next_conditional_id": "76",
+"next_id": "75",
+"next_id_after": "80",
 "type": "condition"
 },
-"72": {
+"75": {
 "character": "Brook",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "77",
-"parent_id": "71",
+"next_id": "80",
+"parent_id": "74",
 "pauses": {
 },
 "replacements": [  ],
@@ -916,7 +964,7 @@ lines = {
 "translation_key": "Great job kid, here's your payment!",
 "type": "dialog"
 },
-"73": {
+"76": {
 "condition": {
 "expression": [ {
 "function": "performance_rating",
@@ -930,17 +978,17 @@ lines = {
 "value": 2
 } ]
 },
-"next_conditional_id": "75",
-"next_id": "74",
-"next_id_after": "77",
+"next_conditional_id": "78",
+"next_id": "77",
+"next_id_after": "80",
 "type": "condition"
 },
-"74": {
+"77": {
 "character": "Brook",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "77",
-"parent_id": "73",
+"next_id": "80",
+"parent_id": "76",
 "pauses": {
 },
 "replacements": [  ],
@@ -950,18 +998,18 @@ lines = {
 "translation_key": "I thought you guys were better. Make sure you practice before I schedule you again.",
 "type": "dialog"
 },
-"75": {
-"next_conditional_id": "77",
-"next_id": "76",
-"next_id_after": "77",
+"78": {
+"next_conditional_id": "80",
+"next_id": "79",
+"next_id_after": "80",
 "type": "condition"
 },
-"76": {
+"79": {
 "character": "Brook",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "77",
-"parent_id": "75",
+"next_id": "80",
+"parent_id": "78",
 "pauses": {
 },
 "replacements": [  ],
@@ -971,11 +1019,11 @@ lines = {
 "translation_key": "I can't remember why I hired you. You're going to have to practice a lot if you ever want to play here again.",
 "type": "dialog"
 },
-"77": {
+"80": {
 "character": "Brook",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "78",
+"next_id": "81",
 "pauses": {
 },
 "replacements": [ {
@@ -992,11 +1040,11 @@ lines = {
 "translation_key": "If I had to rate you, I'd give you {{performance_rating()}} out of 6.",
 "type": "dialog"
 },
-"78": {
+"81": {
 "character": "Brook",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "79",
+"next_id": "82",
 "pauses": {
 },
 "replacements": [  ],
@@ -1006,11 +1054,11 @@ lines = {
 "translation_key": "I know, a 6 point scale, who does that?",
 "type": "dialog"
 },
-"79": {
+"82": {
 "character": "Brook",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "80",
+"next_id": "83",
 "pauses": {
 },
 "replacements": [  ],
@@ -1020,11 +1068,11 @@ lines = {
 "translation_key": "Well, it's just an artifact of the way the scoring system was implemented, so blame the developer.",
 "type": "dialog"
 },
-"80": {
+"83": {
 "character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "81",
+"next_id": "84",
 "pauses": {
 },
 "replacements": [  ],
@@ -1034,11 +1082,11 @@ lines = {
 "translation_key": "...",
 "type": "dialog"
 },
-"81": {
+"84": {
 "character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "82",
+"next_id": "85",
 "pauses": {
 },
 "replacements": [  ],
@@ -1048,11 +1096,11 @@ lines = {
 "translation_key": "...",
 "type": "dialog"
 },
-"82": {
+"85": {
 "character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "83",
+"next_id": "86",
 "pauses": {
 },
 "replacements": [  ],
@@ -1062,7 +1110,7 @@ lines = {
 "translation_key": "That was a stressful evening.",
 "type": "dialog"
 },
-"83": {
+"86": {
 "character": "Player",
 "character_replacements": [  ],
 "inline_mutations": [  ],

@@ -2,21 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/frogwalsk_0002.png-eeb67af6faf9adf5c0325057d13111f7.s3tc.stex"
-path.etc2="res://.import/frogwalsk_0002.png-eeb67af6faf9adf5c0325057d13111f7.etc2.stex"
+path="res://.import/frogwalsk_0002.png-eeb67af6faf9adf5c0325057d13111f7.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://entities/player/frogwalsk_0002.png"
-dest_files=[ "res://.import/frogwalsk_0002.png-eeb67af6faf9adf5c0325057d13111f7.s3tc.stex", "res://.import/frogwalsk_0002.png-eeb67af6faf9adf5c0325057d13111f7.etc2.stex" ]
+dest_files=[ "res://.import/frogwalsk_0002.png-eeb67af6faf9adf5c0325057d13111f7.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

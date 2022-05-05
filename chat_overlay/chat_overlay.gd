@@ -10,8 +10,9 @@ onready var margin := $Balloon/Margin
 onready var character_label := $Balloon/Margin/VBox/Character
 onready var dialog_label := $Balloon/Margin/VBox/Dialog
 onready var responses_menu := $Balloon/Margin/VBox/Responses/Menu
-onready var npc_portrait := $Balloon/NPCPortrait
-onready var player_portrait := $Balloon/PlayerPortrait
+onready var portraits := $Portraits
+onready var npc_portrait := $Portraits/NPCPortrait
+onready var player_portrait := $Portraits/PlayerPortrait
 onready var blur := $BackgroundBlur
 
 const npc_portraits = {
@@ -39,6 +40,7 @@ func _ready() -> void:
 	balloon.visible = false
 	blur.visible = false
 	responses_menu.is_active = false
+	portraits.visible = true
 
 	if not dialog:
 		queue_free()
@@ -61,6 +63,11 @@ func _ready() -> void:
 			npc_portrait.visible = true
 
 	dialog_label.dialog = dialog
+
+	if not do_hide:
+		blur.visible = true
+	else:
+		portraits.visible = false
 
 	yield(dialog_label.reset_height(), "completed")
 
@@ -91,7 +98,6 @@ func _ready() -> void:
 	if not do_hide:
 		# Show our box
 		balloon.visible = true
-		blur.visible = true
 
 	dialog_label.type_out()
 	yield(dialog_label, "finished")
@@ -103,6 +109,8 @@ func _ready() -> void:
 		responses_menu.visible = true
 		responses_menu.index = 0
 		var response = yield(responses_menu, "actioned")
+		$ActionedBoop.play()
+		yield($ActionedBoop, "finished")
 		next_id = dialog.responses[response[0]].next_id
 	elif dialog.time != null:
 		var time = (
@@ -122,3 +130,13 @@ func _ready() -> void:
 	# Send back input
 	emit_signal("actioned", next_id)
 	queue_free()
+
+
+var ignore_first_boop = 1
+
+
+func _on_Menu_selection_changed(_index):
+	if dialog.responses.size() > 0 and responses_menu.visible and responses_menu.is_active:
+		if ignore_first_boop <= 0:
+			$MenuBoop.play()
+		ignore_first_boop -= 1

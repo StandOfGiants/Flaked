@@ -12,8 +12,16 @@ func _ready():
 
 
 func sound_fx(name: String):
-	if has_node(name) and get_node(name).has_method("play"):
-		get_node(name).play()
+	print("PLAYING SOUND: ", name)
+	if not has_node(name):
+		print("NO FX NODE NAMED: ", name)
+		return
+
+	if not get_node(name).has_method("play"):
+		print("FX NODE HAS NO PLAY: ", name)
+		return
+
+	get_node(name).play()
 
 
 func set_name(name: String):

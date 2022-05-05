@@ -8,6 +8,8 @@ const DialogLine = preload("res://addons/dialog_manager/dialog_line.gd")
 
 export var skip_action: String = "ui_cancel"
 export var seconds_per_step: float = 0.02
+export var speed_up_action: String = "ui_accept"
+export var speed_up_factor: float = 4.0
 
 var dialog: DialogLine
 
@@ -24,6 +26,9 @@ func _process(delta: float) -> void:
 	if is_typing:
 		# Type out text
 		if percent_visible < 1:
+			if Input.is_action_pressed(speed_up_action):
+				delta *= speed_up_factor
+
 			# If cancel is pressed then skip typing it out
 			if Input.is_action_just_pressed(skip_action):
 				percent_visible = 1

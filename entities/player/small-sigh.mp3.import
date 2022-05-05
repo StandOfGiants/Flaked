@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/small-sigh.mp3-f41f1444693888c0ade46d798c050860.mp3str"
+
+[deps]
+
+source_file="res://entities/player/small-sigh.mp3"
+dest_files=[ "res://.import/small-sigh.mp3-f41f1444693888c0ade46d798c050860.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

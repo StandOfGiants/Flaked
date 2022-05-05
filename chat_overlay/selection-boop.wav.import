@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/selection-boop.wav-092e5873fd8544110ff2ea7e0200927f.sample"
+
+[deps]
+
+source_file="res://chat_overlay/selection-boop.wav"
+dest_files=[ "res://.import/selection-boop.wav-092e5873fd8544110ff2ea7e0200927f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=1
