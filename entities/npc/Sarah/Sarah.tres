@@ -53,7 +53,7 @@ else
 		Sarah: You know, you're right!
 		=> correct_answer
 	- Well it's night, alright.
-		Sarah: Sssssssigh
+		Sarah: [wave amp=25 freq=5]Sssssssigh[/wave]
 	- This might be a bit too different.
 		Sarah: I guess so.
 	=> Hub
@@ -699,9 +699,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Sssssssigh",
+"text": "[wave amp=25 freq=5]Sssssssigh[/wave]",
 "time": null,
-"translation_key": "Sssssssigh",
+"translation_key": "[wave amp=25 freq=5]Sssssssigh[/wave]",
 "type": "dialog"
 },
 "49": {
