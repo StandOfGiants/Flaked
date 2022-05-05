@@ -22,6 +22,10 @@ elif is_complete(\"TonyMacaroni\")
 else
 	=> Hub
 
+~ correct_answer
+do update_karma(\"TonyMacaroni\", 1)
+=> Hub
+
 ~ Hub
 if first_visit(\"TonyMacaroni main hub\")
 	Tony Macaroni: ME? ME?! !?! You you would want me, Tony Macaroni, to join your band?
@@ -31,39 +35,51 @@ else
 - Wait, your name is Tony Macaroni? [if is_not_resolved(\"TM1\")]
 	do resolve_branch(\"TM1\")
 	Tony Macaroni: ...It's s-short for Antonio Macaronio.
-	- Wow your parents suck huh?
-		do update_karma(\"TonyMacaroni\", 1)
+	- Wow your parents suck huh? 
+		Tony Macaroni: You don't know the half of it.
+		=> correct_answer
 	- That's uh... cool?
+		Tony Macaroni: I guess so.
 	=> Hub
 - Yes, please join my band for the night [if is_not_resolved(\"TM2\")]
 	do resolve_branch(\"TM2\")
 	Tony Macaroni: ...On ONE condition. You will be my friend.
 	- Yeah Tony, I'll uh, be your friend.
-		do update_karma(\"TonyMacaroni\", 1)
+		Tony Macaroni: Really! I have such a hard time making friends!
+		Tony Macaroni: Thank you!
+		=> correct_answer
 	- Friendship usually takes a little longer than that...
+		Tony Macaroni: That's what everyone says. 
 	=> Hub
 - With your instrument prowess, I'd be glad to have you! [if is_not_resolved(\"TM5\")]
 	do resolve_branch(\"TM5\")
 	Tony Macaroni: Are you positive? This is a [wave amp=25 freq=5]big[/wave] decision. [wait=1][shake rate=25 level=15]HUGE[/shake].
 	- Yes Tony. I would like to play music with you.
-		do update_karma(\"TonyMacaroni\", 1)
+		Tony Macaroni: That's all you had to say!
+		=> correct_answer
 	- It's... just a set, man.
+		Tony Macaroni: It's [shake rate=20 level=10]music[/shake]. Nothing is 'just a set'.
 	=> Hub
 - Get those feelings out with us! [if is_not_resolved(\"TM3\")]
 	Player: *I give him a thumbs up*
 	do resolve_branch(\"TM3\")
 	Tony Macaroni: I... this is all I have ever wanted. Oh Mother and Father would never approve.
 	- ...Okay
+		Tony Macaroni: I need someone that will support me...
 	- Yeah, stick it to 'em!
-		do update_karma(\"TonyMacaroni\", 1)
+		Tony Macaroni: It's so great to have your support!
+		=> correct_answer
 	=> Hub
 - Just for the night. [if is_not_resolved(\"TM4\")]
 	do resolve_branch(\"TM4\")
 	Tony Macaroni: A band made once is a band forever!
 	Tony Macaroni: This could be my chance to leave behind my desk job forever!
 	- Um, don't quit your day job.
+		Tony Macaroni: But I [shake rate=20 level=10]HATE[/shake] my day job!
 	- Follow your passion!
-		do update_karma(\"TonyMacaroni\", 1)
+		Tony Macaroni: I will.
+		Tony Macaroni: I always wait for life to happen at me, but not tonight!
+		=> correct_answer
 	=> Hub
 - I'll be right back.
 	Tony Macaroni: O-okay... see you.
@@ -94,9 +110,10 @@ Tony Macaroni: What instrument do you need me to play?
 	Tony Macaroni: Oh. Okay. Hurry back!"
 errors = [  ]
 titles = {
-"Hub": "18",
-"band_questions": "72",
-"begin": "2"
+"Hub": "22",
+"band_questions": "88",
+"begin": "2",
+"correct_answer": "18"
 }
 lines = {
 "0": {
@@ -117,6 +134,44 @@ lines = {
 "text": "[wave amp=35 freq=10]IS IT TIME?????[/wave]",
 "time": null,
 "translation_key": "[wave amp=35 freq=10]IS IT TIME?????[/wave]",
+"type": "dialog"
+},
+"100": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Keyboard"
+} ], [ {
+"type": "string",
+"value": "TonyMacaroni"
+} ] ],
+"function": "assign_instrument"
+},
+"next_id": "end",
+"parent_id": "98",
+"type": "mutation"
+},
+"101": {
+"next_id": "102",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "I need to think about it.",
+"translation_key": "I need to think about it.",
+"type": "response"
+},
+"102": {
+"character": "Tony Macaroni",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "end",
+"parent_id": "101",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Oh. Okay. Hurry back!",
+"time": null,
+"translation_key": "Oh. Okay. Hurry back!",
 "type": "dialog"
 },
 "11": {
@@ -172,45 +227,32 @@ lines = {
 "type": "condition"
 },
 "15": {
-"next_id": "18",
+"next_id": "22",
 "parent_id": "14",
 "type": "goto"
 },
 "17": {
 "next_id": "18",
-"text": "Hub",
+"text": "correct_answer",
 "type": "title"
 },
 "18": {
-"condition": {
-"expression": [ {
-"function": "first_visit",
-"type": "function",
-"value": [ [ {
+"mutation": {
+"args": [ [ {
 "type": "string",
-"value": "TonyMacaroni main hub"
-} ] ]
-} ]
+"value": "TonyMacaroni"
+} ], [ {
+"type": "number",
+"value": 1
+} ] ],
+"function": "update_karma"
 },
-"next_conditional_id": "20",
 "next_id": "19",
-"next_id_after": "23",
-"type": "condition"
+"type": "mutation"
 },
 "19": {
-"character": "Tony Macaroni",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "23",
-"parent_id": "18",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "ME? ME?! !?! You you would want me, Tony Macaroni, to join your band?",
-"time": null,
-"translation_key": "ME? ME?! !?! You you would want me, Tony Macaroni, to join your band?",
-"type": "dialog"
+"next_id": "22",
+"type": "goto"
 },
 "2": {
 "condition": {
@@ -228,18 +270,54 @@ lines = {
 "next_id_after": "9",
 "type": "condition"
 },
-"20": {
-"next_conditional_id": "23",
-"next_id": "21",
-"next_id_after": "23",
+"21": {
+"next_id": "22",
+"text": "Hub",
+"type": "title"
+},
+"22": {
+"condition": {
+"expression": [ {
+"function": "first_visit",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "TonyMacaroni main hub"
+} ] ]
+} ]
+},
+"next_conditional_id": "24",
+"next_id": "23",
+"next_id_after": "27",
 "type": "condition"
 },
-"21": {
+"23": {
 "character": "Tony Macaroni",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "23",
-"parent_id": "20",
+"next_id": "27",
+"parent_id": "22",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "ME? ME?! !?! You you would want me, Tony Macaroni, to join your band?",
+"time": null,
+"translation_key": "ME? ME?! !?! You you would want me, Tony Macaroni, to join your band?",
+"type": "dialog"
+},
+"24": {
+"next_conditional_id": "27",
+"next_id": "25",
+"next_id_after": "27",
+"type": "condition"
+},
+"25": {
+"character": "Tony Macaroni",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "27",
+"parent_id": "24",
 "pauses": {
 },
 "replacements": [  ],
@@ -249,7 +327,7 @@ lines = {
 "translation_key": "You you would want me, Tony Macaroni, to join your band?",
 "type": "dialog"
 },
-"23": {
+"27": {
 "condition": {
 "expression": [ {
 "function": "is_not_resolved",
@@ -260,15 +338,15 @@ lines = {
 } ] ]
 } ]
 },
-"next_id": "24",
+"next_id": "28",
 "next_id_after": "end",
 "replacements": [  ],
-"responses": PoolStringArray( "23", "30", "37", "44", "52", "60", "63" ),
+"responses": PoolStringArray( "27", "36", "46", "55", "65", "76", "79" ),
 "text": "Wait, your name is Tony Macaroni?",
 "translation_key": "Wait, your name is Tony Macaroni?",
 "type": "response"
 },
-"24": {
+"28": {
 "mutation": {
 "args": [ [ {
 "type": "string",
@@ -276,16 +354,16 @@ lines = {
 } ] ],
 "function": "resolve_branch"
 },
-"next_id": "25",
-"parent_id": "23",
+"next_id": "29",
+"parent_id": "27",
 "type": "mutation"
 },
-"25": {
+"29": {
 "character": "Tony Macaroni",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "26",
-"parent_id": "23",
+"next_id": "30",
+"parent_id": "27",
 "pauses": {
 },
 "replacements": [  ],
@@ -294,45 +372,6 @@ lines = {
 "time": null,
 "translation_key": "...It's s-short for Antonio Macaronio.",
 "type": "dialog"
-},
-"26": {
-"next_id": "27",
-"next_id_after": "29",
-"parent_id": "23",
-"replacements": [  ],
-"responses": PoolStringArray( "26", "28" ),
-"text": "Wow your parents suck huh?",
-"translation_key": "Wow your parents suck huh?",
-"type": "response"
-},
-"27": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "TonyMacaroni"
-} ], [ {
-"type": "number",
-"value": 1
-} ] ],
-"function": "update_karma"
-},
-"next_id": "29",
-"parent_id": "26",
-"type": "mutation"
-},
-"28": {
-"next_id": "29",
-"next_id_after": "29",
-"parent_id": "23",
-"replacements": [  ],
-"text": "That's uh... cool?",
-"translation_key": "That's uh... cool?",
-"type": "response"
-},
-"29": {
-"next_id": "18",
-"parent_id": "23",
-"type": "goto"
 },
 "3": {
 "character": "Player",
@@ -350,6 +389,65 @@ lines = {
 "type": "dialog"
 },
 "30": {
+"next_id": "31",
+"next_id_after": "35",
+"parent_id": "27",
+"replacements": [  ],
+"responses": PoolStringArray( "30", "33" ),
+"text": "Wow your parents suck huh?",
+"translation_key": "Wow your parents suck huh?",
+"type": "response"
+},
+"31": {
+"character": "Tony Macaroni",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "32",
+"parent_id": "30",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "You don't know the half of it.",
+"time": null,
+"translation_key": "You don't know the half of it.",
+"type": "dialog"
+},
+"32": {
+"next_id": "18",
+"parent_id": "30",
+"type": "goto"
+},
+"33": {
+"next_id": "34",
+"next_id_after": "35",
+"parent_id": "27",
+"replacements": [  ],
+"text": "That's uh... cool?",
+"translation_key": "That's uh... cool?",
+"type": "response"
+},
+"34": {
+"character": "Tony Macaroni",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "35",
+"parent_id": "33",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I guess so.",
+"time": null,
+"translation_key": "I guess so.",
+"type": "dialog"
+},
+"35": {
+"next_id": "22",
+"parent_id": "27",
+"type": "goto"
+},
+"36": {
 "condition": {
 "expression": [ {
 "function": "is_not_resolved",
@@ -360,14 +458,14 @@ lines = {
 } ] ]
 } ]
 },
-"next_id": "31",
+"next_id": "37",
 "next_id_after": "end",
 "replacements": [  ],
 "text": "Yes, please join my band for the night",
 "translation_key": "Yes, please join my band for the night",
 "type": "response"
 },
-"31": {
+"37": {
 "mutation": {
 "args": [ [ {
 "type": "string",
@@ -375,16 +473,16 @@ lines = {
 } ] ],
 "function": "resolve_branch"
 },
-"next_id": "32",
-"parent_id": "30",
+"next_id": "38",
+"parent_id": "36",
 "type": "mutation"
 },
-"32": {
+"38": {
 "character": "Tony Macaroni",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "33",
-"parent_id": "30",
+"next_id": "39",
+"parent_id": "36",
 "pauses": {
 },
 "replacements": [  ],
@@ -394,90 +492,15 @@ lines = {
 "translation_key": "...On ONE condition. You will be my friend.",
 "type": "dialog"
 },
-"33": {
-"next_id": "34",
-"next_id_after": "36",
-"parent_id": "30",
+"39": {
+"next_id": "40",
+"next_id_after": "45",
+"parent_id": "36",
 "replacements": [  ],
-"responses": PoolStringArray( "33", "35" ),
+"responses": PoolStringArray( "39", "43" ),
 "text": "Yeah Tony, I'll uh, be your friend.",
 "translation_key": "Yeah Tony, I'll uh, be your friend.",
 "type": "response"
-},
-"34": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "TonyMacaroni"
-} ], [ {
-"type": "number",
-"value": 1
-} ] ],
-"function": "update_karma"
-},
-"next_id": "36",
-"parent_id": "33",
-"type": "mutation"
-},
-"35": {
-"next_id": "36",
-"next_id_after": "36",
-"parent_id": "30",
-"replacements": [  ],
-"text": "Friendship usually takes a little longer than that...",
-"translation_key": "Friendship usually takes a little longer than that...",
-"type": "response"
-},
-"36": {
-"next_id": "18",
-"parent_id": "30",
-"type": "goto"
-},
-"37": {
-"condition": {
-"expression": [ {
-"function": "is_not_resolved",
-"type": "function",
-"value": [ [ {
-"type": "string",
-"value": "TM5"
-} ] ]
-} ]
-},
-"next_id": "38",
-"next_id_after": "end",
-"replacements": [  ],
-"text": "With your instrument prowess, I'd be glad to have you!",
-"translation_key": "With your instrument prowess, I'd be glad to have you!",
-"type": "response"
-},
-"38": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "TM5"
-} ] ],
-"function": "resolve_branch"
-},
-"next_id": "39",
-"parent_id": "37",
-"type": "mutation"
-},
-"39": {
-"character": "Tony Macaroni",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "40",
-"parent_id": "37",
-"pauses": {
-42: 1.0
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Are you positive? This is a [wave amp=25 freq=5]big[/wave] decision. [shake rate=25 level=15]HUGE[/shake].",
-"time": null,
-"translation_key": "Are you positive? This is a [wave amp=25 freq=5]big[/wave] decision. [shake rate=25 level=15]HUGE[/shake].",
-"type": "dialog"
 },
 "4": {
 "character": "Tony Macaroni",
@@ -495,121 +518,123 @@ lines = {
 "type": "dialog"
 },
 "40": {
+"character": "Tony Macaroni",
+"character_replacements": [  ],
+"inline_mutations": [  ],
 "next_id": "41",
-"next_id_after": "43",
-"parent_id": "37",
+"parent_id": "39",
+"pauses": {
+},
 "replacements": [  ],
-"responses": PoolStringArray( "40", "42" ),
-"text": "Yes Tony. I would like to play music with you.",
-"translation_key": "Yes Tony. I would like to play music with you.",
-"type": "response"
+"speeds": [  ],
+"text": "Really! I have such a hard time making friends!",
+"time": null,
+"translation_key": "Really! I have such a hard time making friends!",
+"type": "dialog"
 },
 "41": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "TonyMacaroni"
-} ], [ {
-"type": "number",
-"value": 1
-} ] ],
-"function": "update_karma"
+"character": "Tony Macaroni",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "42",
+"parent_id": "39",
+"pauses": {
 },
-"next_id": "43",
-"parent_id": "40",
-"type": "mutation"
+"replacements": [  ],
+"speeds": [  ],
+"text": "Thank you!",
+"time": null,
+"translation_key": "Thank you!",
+"type": "dialog"
 },
 "42": {
-"next_id": "43",
-"next_id_after": "43",
-"parent_id": "37",
-"replacements": [  ],
-"text": "It's... just a set, man.",
-"translation_key": "It's... just a set, man.",
-"type": "response"
-},
-"43": {
 "next_id": "18",
-"parent_id": "37",
+"parent_id": "39",
 "type": "goto"
 },
+"43": {
+"next_id": "44",
+"next_id_after": "45",
+"parent_id": "36",
+"replacements": [  ],
+"text": "Friendship usually takes a little longer than that...",
+"translation_key": "Friendship usually takes a little longer than that...",
+"type": "response"
+},
 "44": {
+"character": "Tony Macaroni",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "45",
+"parent_id": "43",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "That's what everyone says.",
+"time": null,
+"translation_key": "That's what everyone says.",
+"type": "dialog"
+},
+"45": {
+"next_id": "22",
+"parent_id": "36",
+"type": "goto"
+},
+"46": {
 "condition": {
 "expression": [ {
 "function": "is_not_resolved",
 "type": "function",
 "value": [ [ {
 "type": "string",
-"value": "TM3"
+"value": "TM5"
 } ] ]
 } ]
 },
-"next_id": "45",
+"next_id": "47",
 "next_id_after": "end",
 "replacements": [  ],
-"text": "Get those feelings out with us!",
-"translation_key": "Get those feelings out with us!",
+"text": "With your instrument prowess, I'd be glad to have you!",
+"translation_key": "With your instrument prowess, I'd be glad to have you!",
 "type": "response"
 },
-"45": {
-"character": "Player",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "46",
-"parent_id": "44",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "*I give him a thumbs up*",
-"time": null,
-"translation_key": "*I give him a thumbs up*",
-"type": "dialog"
-},
-"46": {
+"47": {
 "mutation": {
 "args": [ [ {
 "type": "string",
-"value": "TM3"
+"value": "TM5"
 } ] ],
 "function": "resolve_branch"
 },
-"next_id": "47",
-"parent_id": "44",
+"next_id": "48",
+"parent_id": "46",
 "type": "mutation"
 },
-"47": {
+"48": {
 "character": "Tony Macaroni",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "48",
-"parent_id": "44",
+"next_id": "49",
+"parent_id": "46",
 "pauses": {
+42: 1.0
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "I... this is all I have ever wanted. Oh Mother and Father would never approve.",
+"text": "Are you positive? This is a [wave amp=25 freq=5]big[/wave] decision. [shake rate=25 level=15]HUGE[/shake].",
 "time": null,
-"translation_key": "I... this is all I have ever wanted. Oh Mother and Father would never approve.",
+"translation_key": "Are you positive? This is a [wave amp=25 freq=5]big[/wave] decision. [shake rate=25 level=15]HUGE[/shake].",
 "type": "dialog"
-},
-"48": {
-"next_id": "51",
-"next_id_after": "51",
-"parent_id": "44",
-"replacements": [  ],
-"responses": PoolStringArray( "48", "49" ),
-"text": "...Okay",
-"translation_key": "...Okay",
-"type": "response"
 },
 "49": {
 "next_id": "50",
-"next_id_after": "51",
-"parent_id": "44",
+"next_id_after": "54",
+"parent_id": "46",
 "replacements": [  ],
-"text": "Yeah, stick it to 'em!",
-"translation_key": "Yeah, stick it to 'em!",
+"responses": PoolStringArray( "49", "52" ),
+"text": "Yes Tony. I would like to play music with you.",
+"translation_key": "Yes Tony. I would like to play music with you.",
 "type": "response"
 },
 "5": {
@@ -628,123 +653,123 @@ lines = {
 "type": "dialog"
 },
 "50": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "TonyMacaroni"
-} ], [ {
-"type": "number",
-"value": 1
-} ] ],
-"function": "update_karma"
-},
+"character": "Tony Macaroni",
+"character_replacements": [  ],
+"inline_mutations": [  ],
 "next_id": "51",
 "parent_id": "49",
-"type": "mutation"
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "That's all you had to say!",
+"time": null,
+"translation_key": "That's all you had to say!",
+"type": "dialog"
 },
 "51": {
 "next_id": "18",
-"parent_id": "44",
+"parent_id": "49",
 "type": "goto"
 },
 "52": {
+"next_id": "53",
+"next_id_after": "54",
+"parent_id": "46",
+"replacements": [  ],
+"text": "It's... just a set, man.",
+"translation_key": "It's... just a set, man.",
+"type": "response"
+},
+"53": {
+"character": "Tony Macaroni",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "54",
+"parent_id": "52",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "It's [shake rate=20 level=10]music[/shake]. Nothing is 'just a set'.",
+"time": null,
+"translation_key": "It's [shake rate=20 level=10]music[/shake]. Nothing is 'just a set'.",
+"type": "dialog"
+},
+"54": {
+"next_id": "22",
+"parent_id": "46",
+"type": "goto"
+},
+"55": {
 "condition": {
 "expression": [ {
 "function": "is_not_resolved",
 "type": "function",
 "value": [ [ {
 "type": "string",
-"value": "TM4"
+"value": "TM3"
 } ] ]
 } ]
 },
-"next_id": "53",
+"next_id": "56",
 "next_id_after": "end",
 "replacements": [  ],
-"text": "Just for the night.",
-"translation_key": "Just for the night.",
+"text": "Get those feelings out with us!",
+"translation_key": "Get those feelings out with us!",
 "type": "response"
 },
-"53": {
+"56": {
+"character": "Player",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "57",
+"parent_id": "55",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "*I give him a thumbs up*",
+"time": null,
+"translation_key": "*I give him a thumbs up*",
+"type": "dialog"
+},
+"57": {
 "mutation": {
 "args": [ [ {
 "type": "string",
-"value": "TM4"
+"value": "TM3"
 } ] ],
 "function": "resolve_branch"
 },
-"next_id": "54",
-"parent_id": "52",
-"type": "mutation"
-},
-"54": {
-"character": "Tony Macaroni",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "55",
-"parent_id": "52",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "A band made once is a band forever!",
-"time": null,
-"translation_key": "A band made once is a band forever!",
-"type": "dialog"
-},
-"55": {
-"character": "Tony Macaroni",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "56",
-"parent_id": "52",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "This could be my chance to leave behind my desk job forever!",
-"time": null,
-"translation_key": "This could be my chance to leave behind my desk job forever!",
-"type": "dialog"
-},
-"56": {
-"next_id": "59",
-"next_id_after": "59",
-"parent_id": "52",
-"replacements": [  ],
-"responses": PoolStringArray( "56", "57" ),
-"text": "Um, don't quit your day job.",
-"translation_key": "Um, don't quit your day job.",
-"type": "response"
-},
-"57": {
 "next_id": "58",
-"next_id_after": "59",
-"parent_id": "52",
-"replacements": [  ],
-"text": "Follow your passion!",
-"translation_key": "Follow your passion!",
-"type": "response"
+"parent_id": "55",
+"type": "mutation"
 },
 "58": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "TonyMacaroni"
-} ], [ {
-"type": "number",
-"value": 1
-} ] ],
-"function": "update_karma"
-},
+"character": "Tony Macaroni",
+"character_replacements": [  ],
+"inline_mutations": [  ],
 "next_id": "59",
-"parent_id": "57",
-"type": "mutation"
+"parent_id": "55",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I... this is all I have ever wanted. Oh Mother and Father would never approve.",
+"time": null,
+"translation_key": "I... this is all I have ever wanted. Oh Mother and Father would never approve.",
+"type": "dialog"
 },
 "59": {
-"next_id": "18",
-"parent_id": "52",
-"type": "goto"
+"next_id": "60",
+"next_id_after": "64",
+"parent_id": "55",
+"replacements": [  ],
+"responses": PoolStringArray( "59", "61" ),
+"text": "...Okay",
+"translation_key": "...Okay",
+"type": "response"
 },
 "6": {
 "character": "Tony Macaroni",
@@ -762,117 +787,123 @@ lines = {
 "type": "dialog"
 },
 "60": {
-"next_id": "61",
-"next_id_after": "end",
-"replacements": [  ],
-"text": "I'll be right back.",
-"translation_key": "I'll be right back.",
-"type": "response"
-},
-"61": {
 "character": "Tony Macaroni",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "62",
-"parent_id": "60",
+"next_id": "64",
+"parent_id": "59",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "O-okay... see you.",
+"text": "I need someone that will support me...",
 "time": null,
-"translation_key": "O-okay... see you.",
+"translation_key": "I need someone that will support me...",
 "type": "dialog"
 },
-"62": {
-"next_id": "end",
-"parent_id": "60",
-"type": "goto"
-},
-"63": {
-"next_id": "64",
-"next_id_after": "end",
+"61": {
+"next_id": "62",
+"next_id_after": "64",
+"parent_id": "55",
 "replacements": [  ],
-"text": "So will you do it?",
-"translation_key": "So will you do it?",
+"text": "Yeah, stick it to 'em!",
+"translation_key": "Yeah, stick it to 'em!",
 "type": "response"
 },
+"62": {
+"character": "Tony Macaroni",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "63",
+"parent_id": "61",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "It's so great to have your support!",
+"time": null,
+"translation_key": "It's so great to have your support!",
+"type": "dialog"
+},
+"63": {
+"next_id": "18",
+"parent_id": "61",
+"type": "goto"
+},
 "64": {
+"next_id": "22",
+"parent_id": "55",
+"type": "goto"
+},
+"65": {
 "condition": {
 "expression": [ {
-"function": "karma",
+"function": "is_not_resolved",
 "type": "function",
 "value": [ [ {
 "type": "string",
-"value": "TonyMacaroni"
+"value": "TM4"
 } ] ]
-}, {
-"type": "comparison",
-"value": ">="
-}, {
-"type": "number",
-"value": 3
 } ]
 },
-"next_conditional_id": "66",
-"next_id": "65",
+"next_id": "66",
 "next_id_after": "end",
-"parent_id": "63",
-"type": "condition"
-},
-"65": {
-"next_id": "72",
-"parent_id": "64",
-"type": "goto"
+"replacements": [  ],
+"text": "Just for the night.",
+"translation_key": "Just for the night.",
+"type": "response"
 },
 "66": {
-"next_conditional_id": "end",
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "TM4"
+} ] ],
+"function": "resolve_branch"
+},
 "next_id": "67",
-"next_id_after": "end",
-"parent_id": "63",
-"type": "condition"
+"parent_id": "65",
+"type": "mutation"
 },
 "67": {
 "character": "Tony Macaroni",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "68",
-"parent_id": "66",
+"parent_id": "65",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "I don't think I'm ready for this level of commitment.",
+"text": "A band made once is a band forever!",
 "time": null,
-"translation_key": "I don't think I'm ready for this level of commitment.",
+"translation_key": "A band made once is a band forever!",
 "type": "dialog"
 },
 "68": {
-"character": "Player",
+"character": "Tony Macaroni",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "69",
-"parent_id": "66",
+"parent_id": "65",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Uhh... Okay. Thanks anyway.",
+"text": "This could be my chance to leave behind my desk job forever!",
 "time": null,
-"translation_key": "Uhh... Okay. Thanks anyway.",
+"translation_key": "This could be my chance to leave behind my desk job forever!",
 "type": "dialog"
 },
 "69": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "TonyMacaroni"
-} ] ],
-"function": "complete_character"
-},
-"next_id": "end",
-"parent_id": "66",
-"type": "mutation"
+"next_id": "70",
+"next_id_after": "75",
+"parent_id": "65",
+"replacements": [  ],
+"responses": PoolStringArray( "69", "71" ),
+"text": "Um, don't quit your day job.",
+"translation_key": "Um, don't quit your day job.",
+"type": "response"
 },
 "7": {
 "character": "Player",
@@ -889,23 +920,43 @@ lines = {
 "translation_key": "...",
 "type": "dialog"
 },
+"70": {
+"character": "Tony Macaroni",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "75",
+"parent_id": "69",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "But I [shake rate=20 level=10]HATE[/shake] my day job!",
+"time": null,
+"translation_key": "But I [shake rate=20 level=10]HATE[/shake] my day job!",
+"type": "dialog"
+},
 "71": {
 "next_id": "72",
-"text": "band_questions",
-"type": "title"
+"next_id_after": "75",
+"parent_id": "65",
+"replacements": [  ],
+"text": "Follow your passion!",
+"translation_key": "Follow your passion!",
+"type": "response"
 },
 "72": {
 "character": "Tony Macaroni",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "73",
+"parent_id": "71",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "*starts crying*",
+"text": "I will.",
 "time": null,
-"translation_key": "*starts crying*",
+"translation_key": "I will.",
 "type": "dialog"
 },
 "73": {
@@ -913,60 +964,32 @@ lines = {
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "74",
+"parent_id": "71",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "I promise I won't let you down.",
+"text": "I always wait for life to happen at me, but not tonight!",
 "time": null,
-"translation_key": "I promise I won't let you down.",
+"translation_key": "I always wait for life to happen at me, but not tonight!",
 "type": "dialog"
 },
 "74": {
-"character": "Tony Macaroni",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "75",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Thank you for this opportunity!",
-"time": null,
-"translation_key": "Thank you for this opportunity!",
-"type": "dialog"
+"next_id": "18",
+"parent_id": "71",
+"type": "goto"
 },
 "75": {
-"character": "Tony Macaroni",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "76",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "What instrument do you need me to play?",
-"time": null,
-"translation_key": "What instrument do you need me to play?",
-"type": "dialog"
+"next_id": "22",
+"parent_id": "65",
+"type": "goto"
 },
 "76": {
-"condition": {
-"expression": [ {
-"function": "instrument_available",
-"type": "function",
-"value": [ [ {
-"type": "string",
-"value": "Guitar"
-} ] ]
-} ]
-},
 "next_id": "77",
 "next_id_after": "end",
 "replacements": [  ],
-"responses": PoolStringArray( "76", "79", "82", "85" ),
-"text": "Guitar",
-"translation_key": "Guitar",
+"text": "I'll be right back.",
+"translation_key": "I'll be right back.",
 "type": "response"
 },
 "77": {
@@ -979,42 +1002,22 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "I LOVE YOU",
+"text": "O-okay... see you.",
 "time": null,
-"translation_key": "I LOVE YOU",
+"translation_key": "O-okay... see you.",
 "type": "dialog"
 },
 "78": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "Guitar"
-} ], [ {
-"type": "string",
-"value": "TonyMacaroni"
-} ] ],
-"function": "assign_instrument"
-},
 "next_id": "end",
 "parent_id": "76",
-"type": "mutation"
+"type": "goto"
 },
 "79": {
-"condition": {
-"expression": [ {
-"function": "instrument_available",
-"type": "function",
-"value": [ [ {
-"type": "string",
-"value": "Drums"
-} ] ]
-} ]
-},
 "next_id": "80",
 "next_id_after": "end",
 "replacements": [  ],
-"text": "Drums",
-"translation_key": "Drums",
+"text": "So will you do it?",
+"translation_key": "So will you do it?",
 "type": "response"
 },
 "8": {
@@ -1033,52 +1036,39 @@ lines = {
 "type": "dialog"
 },
 "80": {
-"character": "Tony Macaroni",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "81",
-"parent_id": "79",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "I LOVE YOU",
-"time": null,
-"translation_key": "I LOVE YOU",
-"type": "dialog"
-},
-"81": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "Drums"
-} ], [ {
-"type": "string",
-"value": "TonyMacaroni"
-} ] ],
-"function": "assign_instrument"
-},
-"next_id": "end",
-"parent_id": "79",
-"type": "mutation"
-},
-"82": {
 "condition": {
 "expression": [ {
-"function": "instrument_available",
+"function": "karma",
 "type": "function",
 "value": [ [ {
 "type": "string",
-"value": "Keyboard"
+"value": "TonyMacaroni"
 } ] ]
+}, {
+"type": "comparison",
+"value": ">="
+}, {
+"type": "number",
+"value": 3
 } ]
 },
+"next_conditional_id": "82",
+"next_id": "81",
+"next_id_after": "end",
+"parent_id": "79",
+"type": "condition"
+},
+"81": {
+"next_id": "88",
+"parent_id": "80",
+"type": "goto"
+},
+"82": {
+"next_conditional_id": "end",
 "next_id": "83",
 "next_id_after": "end",
-"replacements": [  ],
-"text": "Keyboard",
-"translation_key": "Keyboard",
-"type": "response"
+"parent_id": "79",
+"type": "condition"
 },
 "83": {
 "character": "Tony Macaroni",
@@ -1090,47 +1080,69 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "I LOVE YOU",
+"text": "I don't think I'm ready for this level of commitment.",
 "time": null,
-"translation_key": "I LOVE YOU",
+"translation_key": "I don't think I'm ready for this level of commitment.",
 "type": "dialog"
 },
 "84": {
+"character": "Player",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "85",
+"parent_id": "82",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Uhh... Okay. Thanks anyway.",
+"time": null,
+"translation_key": "Uhh... Okay. Thanks anyway.",
+"type": "dialog"
+},
+"85": {
 "mutation": {
 "args": [ [ {
 "type": "string",
-"value": "Keyboard"
-} ], [ {
-"type": "string",
 "value": "TonyMacaroni"
 } ] ],
-"function": "assign_instrument"
+"function": "complete_character"
 },
 "next_id": "end",
 "parent_id": "82",
 "type": "mutation"
 },
-"85": {
-"next_id": "86",
-"next_id_after": "end",
-"replacements": [  ],
-"text": "I need to think about it.",
-"translation_key": "I need to think about it.",
-"type": "response"
+"87": {
+"next_id": "88",
+"text": "band_questions",
+"type": "title"
 },
-"86": {
+"88": {
 "character": "Tony Macaroni",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "end",
-"parent_id": "85",
+"next_id": "89",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Oh. Okay. Hurry back!",
+"text": "*starts crying*",
 "time": null,
-"translation_key": "Oh. Okay. Hurry back!",
+"translation_key": "*starts crying*",
+"type": "dialog"
+},
+"89": {
+"character": "Tony Macaroni",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "90",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I promise I won't let you down.",
+"time": null,
+"translation_key": "I promise I won't let you down.",
 "type": "dialog"
 },
 "9": {
@@ -1148,5 +1160,163 @@ lines = {
 "next_id": "10",
 "next_id_after": "end",
 "type": "condition"
+},
+"90": {
+"character": "Tony Macaroni",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "91",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Thank you for this opportunity!",
+"time": null,
+"translation_key": "Thank you for this opportunity!",
+"type": "dialog"
+},
+"91": {
+"character": "Tony Macaroni",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "92",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "What instrument do you need me to play?",
+"time": null,
+"translation_key": "What instrument do you need me to play?",
+"type": "dialog"
+},
+"92": {
+"condition": {
+"expression": [ {
+"function": "instrument_available",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Guitar"
+} ] ]
+} ]
+},
+"next_id": "93",
+"next_id_after": "end",
+"replacements": [  ],
+"responses": PoolStringArray( "92", "95", "98", "101" ),
+"text": "Guitar",
+"translation_key": "Guitar",
+"type": "response"
+},
+"93": {
+"character": "Tony Macaroni",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "94",
+"parent_id": "92",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I LOVE YOU",
+"time": null,
+"translation_key": "I LOVE YOU",
+"type": "dialog"
+},
+"94": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Guitar"
+} ], [ {
+"type": "string",
+"value": "TonyMacaroni"
+} ] ],
+"function": "assign_instrument"
+},
+"next_id": "end",
+"parent_id": "92",
+"type": "mutation"
+},
+"95": {
+"condition": {
+"expression": [ {
+"function": "instrument_available",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Drums"
+} ] ]
+} ]
+},
+"next_id": "96",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "Drums",
+"translation_key": "Drums",
+"type": "response"
+},
+"96": {
+"character": "Tony Macaroni",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "97",
+"parent_id": "95",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I LOVE YOU",
+"time": null,
+"translation_key": "I LOVE YOU",
+"type": "dialog"
+},
+"97": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Drums"
+} ], [ {
+"type": "string",
+"value": "TonyMacaroni"
+} ] ],
+"function": "assign_instrument"
+},
+"next_id": "end",
+"parent_id": "95",
+"type": "mutation"
+},
+"98": {
+"condition": {
+"expression": [ {
+"function": "instrument_available",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Keyboard"
+} ] ]
+} ]
+},
+"next_id": "99",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "Keyboard",
+"translation_key": "Keyboard",
+"type": "response"
+},
+"99": {
+"character": "Tony Macaroni",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "100",
+"parent_id": "98",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I LOVE YOU",
+"time": null,
+"translation_key": "I LOVE YOU",
+"type": "dialog"
 }
 }

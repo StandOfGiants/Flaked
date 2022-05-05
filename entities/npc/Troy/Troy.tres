@@ -36,13 +36,19 @@ else
 	do resolve_branch(\"T1\")
 	Troy: Yeah, but only if you don't suck, bruh.
 	- Yeah... True...
-	- But risks are pretty sexy or whatever to right? You know, \"buy the dip\" right? => correct_answer
+		Troy: So you do suck, huh?
+	- But risks are pretty sexy or whatever to right? You know, \"buy the dip\" right?
+		Troy: See these hands? They're diamond hands. I'm gonna HODL this opportunity for all its worth!
+		=> correct_answer
 	=> Hub
 - So wait, back to the crypto thing? [if is_not_resolved(\"T2\")]
 	do resolve_branch(\"T2\")
 	Troy: Wanna see my apes? Oh, and check out my cryptopunk! It's my twitter profile pic!
-	- Uh, sure. Show me your... apes. => correct_answer
+	- Uh, sure. Show me your... apes.
+		Troy: *proceeds to show you his various NFTs and talks at length about how valuable they're going to be*
+		=> correct_answer
 	- No, I'm good.
+		Troy: Suit yourself. Have fun staying poor.
 	=> Hub
 - Your beer cup is empty by the way. [if is_not_resolved(\"T3\")]
 	do resolve_branch(\"T3\")
@@ -52,6 +58,7 @@ else
 		Troy: Sure, bruh. [wave amp=25 freq=5]FREE BEER![/wave]
 		=> END
 	- Is it really the game of champions?
+		Troy: It would be if I could get some action in here!
 	=> Hub
 - Here's your beer. [if on_quest(\"get troy a beer\") and has_beer()]
 	do finish_quest(\"get troy a beer\")
@@ -62,13 +69,19 @@ else
 	do resolve_branch(\"T4\")
 	Troy: I don't like the karma vibes of that bro.
 	- I mean in like a [wave amp=25 freq=5]cosmic[/wave] brotherly way. You know, we uh, support each other?
-	- But you like the karma vibes of crypto? => correct_answer
+		Troy: I'm not into you like that, man.
+	- But you like the karma vibes of crypto?
+		Troy: Crypto is the future!
+		=> correct_answer
 	=> Hub
 - C'mon it'll be fun. We could be the start of something rad and, uh, new! [if is_not_resolved(\"T5\")]
 	do resolve_branch(\"T5\")
 	Troy: That is my eternal white whale my dude.
 	- What?
-	- Yeah, always gotta chase that dream right? => correct_answer
+		Troy: You know, like the book guy? [wait=1]Jack Sparrow?
+	- Yeah, always gotta chase that dream right?
+		Troy: You know it, man.
+		=> correct_answer
 	=> Hub
 - I'll be right back.
 	Troy: Sure, man.
@@ -97,7 +110,7 @@ Troy: Alright man let's do this! What do you need me to play?
 errors = [  ]
 titles = {
 "Hub": "22",
-"band_questions": "77",
+"band_questions": "90",
 "begin": "2",
 "correct_answer": "18"
 }
@@ -122,6 +135,29 @@ lines = {
 "next_id": "11",
 "next_id_after": "end",
 "type": "condition"
+},
+"100": {
+"next_id": "101",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "I need to think about it.",
+"translation_key": "I need to think about it.",
+"type": "response"
+},
+"101": {
+"character": "Troy",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "end",
+"parent_id": "100",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "No worries, man.",
+"time": null,
+"translation_key": "No worries, man.",
+"type": "dialog"
 },
 "11": {
 "character": "Troy",
@@ -290,7 +326,7 @@ lines = {
 "next_id": "28",
 "next_id_after": "end",
 "replacements": [  ],
-"responses": PoolStringArray( "27", "33", "39", "48", "53", "59", "65", "68" ),
+"responses": PoolStringArray( "27", "36", "45", "55", "60", "69", "78", "81" ),
 "text": "Music picks up chicks, you, uh, said it yourself!",
 "translation_key": "Music picks up chicks, you, uh, said it yourself!",
 "type": "response"
@@ -338,30 +374,65 @@ lines = {
 "type": "dialog"
 },
 "30": {
-"next_id": "32",
-"next_id_after": "32",
+"next_id": "31",
+"next_id_after": "35",
 "parent_id": "27",
 "replacements": [  ],
-"responses": PoolStringArray( "30", "31" ),
+"responses": PoolStringArray( "30", "32" ),
 "text": "Yeah... True...",
 "translation_key": "Yeah... True...",
 "type": "response"
 },
 "31": {
-"next_id": "18",
-"next_id_after": "32",
+"character": "Troy",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "35",
+"parent_id": "30",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "So you do suck, huh?",
+"time": null,
+"translation_key": "So you do suck, huh?",
+"type": "dialog"
+},
+"32": {
+"next_id": "33",
+"next_id_after": "35",
 "parent_id": "27",
 "replacements": [  ],
 "text": "But risks are pretty sexy or whatever to right? You know, \"buy the dip\" right?",
 "translation_key": "But risks are pretty sexy or whatever to right? You know, \"buy the dip\" right?",
 "type": "response"
 },
-"32": {
+"33": {
+"character": "Troy",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "34",
+"parent_id": "32",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "See these hands? They're diamond hands. I'm gonna HODL this opportunity for all its worth!",
+"time": null,
+"translation_key": "See these hands? They're diamond hands. I'm gonna HODL this opportunity for all its worth!",
+"type": "dialog"
+},
+"34": {
+"next_id": "18",
+"parent_id": "32",
+"type": "goto"
+},
+"35": {
 "next_id": "22",
 "parent_id": "27",
 "type": "goto"
 },
-"33": {
+"36": {
 "condition": {
 "expression": [ {
 "function": "is_not_resolved",
@@ -372,14 +443,14 @@ lines = {
 } ] ]
 } ]
 },
-"next_id": "34",
+"next_id": "37",
 "next_id_after": "end",
 "replacements": [  ],
 "text": "So wait, back to the crypto thing?",
 "translation_key": "So wait, back to the crypto thing?",
 "type": "response"
 },
-"34": {
+"37": {
 "mutation": {
 "args": [ [ {
 "type": "string",
@@ -387,16 +458,16 @@ lines = {
 } ] ],
 "function": "resolve_branch"
 },
-"next_id": "35",
-"parent_id": "33",
+"next_id": "38",
+"parent_id": "36",
 "type": "mutation"
 },
-"35": {
+"38": {
 "character": "Troy",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "36",
-"parent_id": "33",
+"next_id": "39",
+"parent_id": "36",
 "pauses": {
 },
 "replacements": [  ],
@@ -406,46 +477,14 @@ lines = {
 "translation_key": "Wanna see my apes? Oh, and check out my cryptopunk! It's my twitter profile pic!",
 "type": "dialog"
 },
-"36": {
-"next_id": "18",
-"next_id_after": "38",
-"parent_id": "33",
+"39": {
+"next_id": "40",
+"next_id_after": "44",
+"parent_id": "36",
 "replacements": [  ],
-"responses": PoolStringArray( "36", "37" ),
+"responses": PoolStringArray( "39", "42" ),
 "text": "Uh, sure. Show me your... apes.",
 "translation_key": "Uh, sure. Show me your... apes.",
-"type": "response"
-},
-"37": {
-"next_id": "38",
-"next_id_after": "38",
-"parent_id": "33",
-"replacements": [  ],
-"text": "No, I'm good.",
-"translation_key": "No, I'm good.",
-"type": "response"
-},
-"38": {
-"next_id": "22",
-"parent_id": "33",
-"type": "goto"
-},
-"39": {
-"condition": {
-"expression": [ {
-"function": "is_not_resolved",
-"type": "function",
-"value": [ [ {
-"type": "string",
-"value": "T3"
-} ] ]
-} ]
-},
-"next_id": "40",
-"next_id_after": "end",
-"replacements": [  ],
-"text": "Your beer cup is empty by the way.",
-"translation_key": "Your beer cup is empty by the way.",
 "type": "response"
 },
 "4": {
@@ -464,6 +503,73 @@ lines = {
 "type": "dialog"
 },
 "40": {
+"character": "Troy",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "41",
+"parent_id": "39",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "*proceeds to show you his various NFTs and talks at length about how valuable they're going to be*",
+"time": null,
+"translation_key": "*proceeds to show you his various NFTs and talks at length about how valuable they're going to be*",
+"type": "dialog"
+},
+"41": {
+"next_id": "18",
+"parent_id": "39",
+"type": "goto"
+},
+"42": {
+"next_id": "43",
+"next_id_after": "44",
+"parent_id": "36",
+"replacements": [  ],
+"text": "No, I'm good.",
+"translation_key": "No, I'm good.",
+"type": "response"
+},
+"43": {
+"character": "Troy",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "44",
+"parent_id": "42",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Suit yourself. Have fun staying poor.",
+"time": null,
+"translation_key": "Suit yourself. Have fun staying poor.",
+"type": "dialog"
+},
+"44": {
+"next_id": "22",
+"parent_id": "36",
+"type": "goto"
+},
+"45": {
+"condition": {
+"expression": [ {
+"function": "is_not_resolved",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "T3"
+} ] ]
+} ]
+},
+"next_id": "46",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "Your beer cup is empty by the way.",
+"translation_key": "Your beer cup is empty by the way.",
+"type": "response"
+},
+"46": {
 "mutation": {
 "args": [ [ {
 "type": "string",
@@ -471,16 +577,16 @@ lines = {
 } ] ],
 "function": "resolve_branch"
 },
-"next_id": "41",
-"parent_id": "39",
+"next_id": "47",
+"parent_id": "45",
 "type": "mutation"
 },
-"41": {
+"47": {
 "character": "Troy",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "42",
-"parent_id": "39",
+"next_id": "48",
+"parent_id": "45",
 "pauses": {
 },
 "replacements": [  ],
@@ -490,85 +596,14 @@ lines = {
 "translation_key": "I know. I'm going to use it for pong, the game of champions.",
 "type": "dialog"
 },
-"42": {
-"next_id": "43",
-"next_id_after": "47",
-"parent_id": "39",
+"48": {
+"next_id": "49",
+"next_id_after": "54",
+"parent_id": "45",
 "replacements": [  ],
-"responses": PoolStringArray( "42", "46" ),
+"responses": PoolStringArray( "48", "52" ),
 "text": "You sure? Do you want me to get you a refill?",
 "translation_key": "You sure? Do you want me to get you a refill?",
-"type": "response"
-},
-"43": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "get troy a beer"
-} ] ],
-"function": "start_quest"
-},
-"next_id": "44",
-"parent_id": "42",
-"type": "mutation"
-},
-"44": {
-"character": "Troy",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "45",
-"parent_id": "42",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Sure, bruh. [wave amp=25 freq=5]FREE BEER![/wave]",
-"time": null,
-"translation_key": "Sure, bruh. [wave amp=25 freq=5]FREE BEER![/wave]",
-"type": "dialog"
-},
-"45": {
-"next_id": "end",
-"parent_id": "42",
-"type": "goto"
-},
-"46": {
-"next_id": "47",
-"next_id_after": "47",
-"parent_id": "39",
-"replacements": [  ],
-"text": "Is it really the game of champions?",
-"translation_key": "Is it really the game of champions?",
-"type": "response"
-},
-"47": {
-"next_id": "22",
-"parent_id": "39",
-"type": "goto"
-},
-"48": {
-"condition": {
-"expression": [ {
-"function": "on_quest",
-"type": "function",
-"value": [ [ {
-"type": "string",
-"value": "get troy a beer"
-} ] ]
-}, {
-"type": "and_or",
-"value": "and"
-}, {
-"function": "has_beer",
-"type": "function",
-"value": [  ]
-} ]
-},
-"next_id": "49",
-"next_id_after": "end",
-"replacements": [  ],
-"text": "Here's your beer.",
-"translation_key": "Here's your beer.",
 "type": "response"
 },
 "49": {
@@ -577,7 +612,7 @@ lines = {
 "type": "string",
 "value": "get troy a beer"
 } ] ],
-"function": "finish_quest"
+"function": "start_quest"
 },
 "next_id": "50",
 "parent_id": "48",
@@ -599,20 +634,106 @@ lines = {
 "type": "dialog"
 },
 "50": {
+"character": "Troy",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "51",
+"parent_id": "48",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Sure, bruh. [wave amp=25 freq=5]FREE BEER![/wave]",
+"time": null,
+"translation_key": "Sure, bruh. [wave amp=25 freq=5]FREE BEER![/wave]",
+"type": "dialog"
+},
+"51": {
+"next_id": "end",
+"parent_id": "48",
+"type": "goto"
+},
+"52": {
+"next_id": "53",
+"next_id_after": "54",
+"parent_id": "45",
+"replacements": [  ],
+"text": "Is it really the game of champions?",
+"translation_key": "Is it really the game of champions?",
+"type": "response"
+},
+"53": {
+"character": "Troy",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "54",
+"parent_id": "52",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "It would be if I could get some action in here!",
+"time": null,
+"translation_key": "It would be if I could get some action in here!",
+"type": "dialog"
+},
+"54": {
+"next_id": "22",
+"parent_id": "45",
+"type": "goto"
+},
+"55": {
+"condition": {
+"expression": [ {
+"function": "on_quest",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "get troy a beer"
+} ] ]
+}, {
+"type": "and_or",
+"value": "and"
+}, {
+"function": "has_beer",
+"type": "function",
+"value": [  ]
+} ]
+},
+"next_id": "56",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "Here's your beer.",
+"translation_key": "Here's your beer.",
+"type": "response"
+},
+"56": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "get troy a beer"
+} ] ],
+"function": "finish_quest"
+},
+"next_id": "57",
+"parent_id": "55",
+"type": "mutation"
+},
+"57": {
 "mutation": {
 "args": [  ],
 "function": "lose_beer"
 },
-"next_id": "51",
-"parent_id": "48",
+"next_id": "58",
+"parent_id": "55",
 "type": "mutation"
 },
-"51": {
+"58": {
 "character": "Troy",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "52",
-"parent_id": "48",
+"next_id": "59",
+"parent_id": "55",
 "pauses": {
 },
 "replacements": [  ],
@@ -622,97 +743,10 @@ lines = {
 "translation_key": "Dope man, thanks.",
 "type": "dialog"
 },
-"52": {
-"next_id": "18",
-"parent_id": "48",
-"type": "goto"
-},
-"53": {
-"condition": {
-"expression": [ {
-"function": "is_not_resolved",
-"type": "function",
-"value": [ [ {
-"type": "string",
-"value": "T4"
-} ] ]
-} ]
-},
-"next_id": "54",
-"next_id_after": "end",
-"replacements": [  ],
-"text": "I'd super owe you one.",
-"translation_key": "I'd super owe you one.",
-"type": "response"
-},
-"54": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "T4"
-} ] ],
-"function": "resolve_branch"
-},
-"next_id": "55",
-"parent_id": "53",
-"type": "mutation"
-},
-"55": {
-"character": "Troy",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "56",
-"parent_id": "53",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "I don't like the karma vibes of that bro.",
-"time": null,
-"translation_key": "I don't like the karma vibes of that bro.",
-"type": "dialog"
-},
-"56": {
-"next_id": "58",
-"next_id_after": "58",
-"parent_id": "53",
-"replacements": [  ],
-"responses": PoolStringArray( "56", "57" ),
-"text": "I mean in like a [wave amp=25 freq=5]cosmic[/wave] brotherly way. You know, we uh, support each other?",
-"translation_key": "I mean in like a [wave amp=25 freq=5]cosmic[/wave] brotherly way. You know, we uh, support each other?",
-"type": "response"
-},
-"57": {
-"next_id": "18",
-"next_id_after": "58",
-"parent_id": "53",
-"replacements": [  ],
-"text": "But you like the karma vibes of crypto?",
-"translation_key": "But you like the karma vibes of crypto?",
-"type": "response"
-},
-"58": {
-"next_id": "22",
-"parent_id": "53",
-"type": "goto"
-},
 "59": {
-"condition": {
-"expression": [ {
-"function": "is_not_resolved",
-"type": "function",
-"value": [ [ {
-"type": "string",
-"value": "T5"
-} ] ]
-} ]
-},
-"next_id": "60",
-"next_id_after": "end",
-"replacements": [  ],
-"text": "C'mon it'll be fun. We could be the start of something rad and, uh, new!",
-"translation_key": "C'mon it'll be fun. We could be the start of something rad and, uh, new!",
-"type": "response"
+"next_id": "18",
+"parent_id": "55",
+"type": "goto"
 },
 "6": {
 "character": "Troy",
@@ -730,62 +764,82 @@ lines = {
 "type": "dialog"
 },
 "60": {
+"condition": {
+"expression": [ {
+"function": "is_not_resolved",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "T4"
+} ] ]
+} ]
+},
+"next_id": "61",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "I'd super owe you one.",
+"translation_key": "I'd super owe you one.",
+"type": "response"
+},
+"61": {
 "mutation": {
 "args": [ [ {
 "type": "string",
-"value": "T5"
+"value": "T4"
 } ] ],
 "function": "resolve_branch"
 },
-"next_id": "61",
-"parent_id": "59",
+"next_id": "62",
+"parent_id": "60",
 "type": "mutation"
 },
-"61": {
+"62": {
 "character": "Troy",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "62",
-"parent_id": "59",
+"next_id": "63",
+"parent_id": "60",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "That is my eternal white whale my dude.",
+"text": "I don't like the karma vibes of that bro.",
 "time": null,
-"translation_key": "That is my eternal white whale my dude.",
+"translation_key": "I don't like the karma vibes of that bro.",
 "type": "dialog"
 },
-"62": {
-"next_id": "64",
-"next_id_after": "64",
-"parent_id": "59",
-"replacements": [  ],
-"responses": PoolStringArray( "62", "63" ),
-"text": "What?",
-"translation_key": "What?",
-"type": "response"
-},
 "63": {
-"next_id": "18",
-"next_id_after": "64",
-"parent_id": "59",
+"next_id": "64",
+"next_id_after": "68",
+"parent_id": "60",
 "replacements": [  ],
-"text": "Yeah, always gotta chase that dream right?",
-"translation_key": "Yeah, always gotta chase that dream right?",
+"responses": PoolStringArray( "63", "65" ),
+"text": "I mean in like a [wave amp=25 freq=5]cosmic[/wave] brotherly way. You know, we uh, support each other?",
+"translation_key": "I mean in like a [wave amp=25 freq=5]cosmic[/wave] brotherly way. You know, we uh, support each other?",
 "type": "response"
 },
 "64": {
-"next_id": "22",
-"parent_id": "59",
-"type": "goto"
+"character": "Troy",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "68",
+"parent_id": "63",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I'm not into you like that, man.",
+"time": null,
+"translation_key": "I'm not into you like that, man.",
+"type": "dialog"
 },
 "65": {
 "next_id": "66",
-"next_id_after": "end",
+"next_id_after": "68",
+"parent_id": "60",
 "replacements": [  ],
-"text": "I'll be right back.",
-"translation_key": "I'll be right back.",
+"text": "But you like the karma vibes of crypto?",
+"translation_key": "But you like the karma vibes of crypto?",
 "type": "response"
 },
 "66": {
@@ -798,46 +852,38 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Sure, man.",
+"text": "Crypto is the future!",
 "time": null,
-"translation_key": "Sure, man.",
+"translation_key": "Crypto is the future!",
 "type": "dialog"
 },
 "67": {
-"next_id": "end",
+"next_id": "18",
 "parent_id": "65",
 "type": "goto"
 },
 "68": {
-"next_id": "69",
-"next_id_after": "end",
-"replacements": [  ],
-"text": "So will you do it?",
-"translation_key": "So will you do it?",
-"type": "response"
+"next_id": "22",
+"parent_id": "60",
+"type": "goto"
 },
 "69": {
 "condition": {
 "expression": [ {
-"function": "karma",
+"function": "is_not_resolved",
 "type": "function",
 "value": [ [ {
 "type": "string",
-"value": "Troy"
+"value": "T5"
 } ] ]
-}, {
-"type": "comparison",
-"value": ">="
-}, {
-"type": "number",
-"value": 3
 } ]
 },
-"next_conditional_id": "71",
 "next_id": "70",
 "next_id_after": "end",
-"parent_id": "68",
-"type": "condition"
+"replacements": [  ],
+"text": "C'mon it'll be fun. We could be the start of something rad and, uh, new!",
+"translation_key": "C'mon it'll be fun. We could be the start of something rad and, uh, new!",
+"type": "response"
 },
 "7": {
 "character": "Player",
@@ -855,95 +901,98 @@ lines = {
 "type": "dialog"
 },
 "70": {
-"next_id": "77",
-"parent_id": "69",
-"type": "goto"
-},
-"71": {
-"next_conditional_id": "end",
-"next_id": "72",
-"next_id_after": "end",
-"parent_id": "68",
-"type": "condition"
-},
-"72": {
-"character": "Troy",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "73",
-"parent_id": "71",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Sorry dude, but I'm busy.",
-"time": null,
-"translation_key": "Sorry dude, but I'm busy.",
-"type": "dialog"
-},
-"73": {
-"character": "Player",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "74",
-"parent_id": "71",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Okay. Thanks for your time.",
-"time": null,
-"translation_key": "Okay. Thanks for your time.",
-"type": "dialog"
-},
-"74": {
 "mutation": {
 "args": [ [ {
 "type": "string",
-"value": "Troy"
+"value": "T5"
 } ] ],
-"function": "complete_character"
+"function": "resolve_branch"
 },
-"next_id": "end",
-"parent_id": "71",
+"next_id": "71",
+"parent_id": "69",
 "type": "mutation"
 },
-"76": {
-"next_id": "77",
-"text": "band_questions",
-"type": "title"
-},
-"77": {
+"71": {
 "character": "Troy",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "78",
+"next_id": "72",
+"parent_id": "69",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Alright man let's do this! What do you need me to play?",
+"text": "That is my eternal white whale my dude.",
 "time": null,
-"translation_key": "Alright man let's do this! What do you need me to play?",
+"translation_key": "That is my eternal white whale my dude.",
 "type": "dialog"
 },
-"78": {
-"condition": {
-"expression": [ {
-"function": "instrument_available",
-"type": "function",
-"value": [ [ {
-"type": "string",
-"value": "Guitar"
-} ] ]
-} ]
+"72": {
+"next_id": "73",
+"next_id_after": "77",
+"parent_id": "69",
+"replacements": [  ],
+"responses": PoolStringArray( "72", "74" ),
+"text": "What?",
+"translation_key": "What?",
+"type": "response"
 },
+"73": {
+"character": "Troy",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "77",
+"parent_id": "72",
+"pauses": {
+29: 1.0
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "You know, like the book guy? Jack Sparrow?",
+"time": null,
+"translation_key": "You know, like the book guy? Jack Sparrow?",
+"type": "dialog"
+},
+"74": {
+"next_id": "75",
+"next_id_after": "77",
+"parent_id": "69",
+"replacements": [  ],
+"text": "Yeah, always gotta chase that dream right?",
+"translation_key": "Yeah, always gotta chase that dream right?",
+"type": "response"
+},
+"75": {
+"character": "Troy",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "76",
+"parent_id": "74",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "You know it, man.",
+"time": null,
+"translation_key": "You know it, man.",
+"type": "dialog"
+},
+"76": {
+"next_id": "18",
+"parent_id": "74",
+"type": "goto"
+},
+"77": {
+"next_id": "22",
+"parent_id": "69",
+"type": "goto"
+},
+"78": {
 "next_id": "79",
 "next_id_after": "end",
 "replacements": [  ],
-"responses": PoolStringArray( "78", "81", "84", "87" ),
-"text": "Guitar",
-"translation_key": "Guitar",
+"text": "I'll be right back.",
+"translation_key": "I'll be right back.",
 "type": "response"
 },
 "79": {
@@ -956,9 +1005,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "WHOOO let's PARTY!",
+"text": "Sure, man.",
 "time": null,
-"translation_key": "WHOOO let's PARTY!",
+"translation_key": "Sure, man.",
 "type": "dialog"
 },
 "8": {
@@ -977,85 +1026,52 @@ lines = {
 "type": "dialog"
 },
 "80": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "Guitar"
-} ], [ {
-"type": "string",
-"value": "Troy"
-} ] ],
-"function": "assign_instrument"
-},
 "next_id": "end",
 "parent_id": "78",
-"type": "mutation"
+"type": "goto"
 },
 "81": {
-"condition": {
-"expression": [ {
-"function": "instrument_available",
-"type": "function",
-"value": [ [ {
-"type": "string",
-"value": "Drums"
-} ] ]
-} ]
-},
 "next_id": "82",
 "next_id_after": "end",
 "replacements": [  ],
-"text": "Drums",
-"translation_key": "Drums",
+"text": "So will you do it?",
+"translation_key": "So will you do it?",
 "type": "response"
 },
 "82": {
-"character": "Troy",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "83",
-"parent_id": "81",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "WHOOO let's PARTY!",
-"time": null,
-"translation_key": "WHOOO let's PARTY!",
-"type": "dialog"
-},
-"83": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "Drums"
-} ], [ {
-"type": "string",
-"value": "Troy"
-} ] ],
-"function": "assign_instrument"
-},
-"next_id": "end",
-"parent_id": "81",
-"type": "mutation"
-},
-"84": {
 "condition": {
 "expression": [ {
-"function": "instrument_available",
+"function": "karma",
 "type": "function",
 "value": [ [ {
 "type": "string",
-"value": "Keyboard"
+"value": "Troy"
 } ] ]
+}, {
+"type": "comparison",
+"value": ">="
+}, {
+"type": "number",
+"value": 3
 } ]
 },
+"next_conditional_id": "84",
+"next_id": "83",
+"next_id_after": "end",
+"parent_id": "81",
+"type": "condition"
+},
+"83": {
+"next_id": "90",
+"parent_id": "82",
+"type": "goto"
+},
+"84": {
+"next_conditional_id": "end",
 "next_id": "85",
 "next_id_after": "end",
-"replacements": [  ],
-"text": "Keyboard",
-"translation_key": "Keyboard",
-"type": "response"
+"parent_id": "81",
+"type": "condition"
 },
 "85": {
 "character": "Troy",
@@ -1067,48 +1083,42 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "WHOOO let's PARTY!",
+"text": "Sorry dude, but I'm busy.",
 "time": null,
-"translation_key": "WHOOO let's PARTY!",
+"translation_key": "Sorry dude, but I'm busy.",
 "type": "dialog"
 },
 "86": {
+"character": "Player",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "87",
+"parent_id": "84",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Okay. Thanks for your time.",
+"time": null,
+"translation_key": "Okay. Thanks for your time.",
+"type": "dialog"
+},
+"87": {
 "mutation": {
 "args": [ [ {
 "type": "string",
-"value": "Keyboard"
-} ], [ {
-"type": "string",
 "value": "Troy"
 } ] ],
-"function": "assign_instrument"
+"function": "complete_character"
 },
 "next_id": "end",
 "parent_id": "84",
 "type": "mutation"
 },
-"87": {
-"next_id": "88",
-"next_id_after": "end",
-"replacements": [  ],
-"text": "I need to think about it.",
-"translation_key": "I need to think about it.",
-"type": "response"
-},
-"88": {
-"character": "Troy",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "end",
-"parent_id": "87",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "No worries, man.",
-"time": null,
-"translation_key": "No worries, man.",
-"type": "dialog"
+"89": {
+"next_id": "90",
+"text": "band_questions",
+"type": "title"
 },
 "9": {
 "character": "Player",
@@ -1124,5 +1134,164 @@ lines = {
 "time": null,
 "translation_key": "Yeah cool, listen I need help, my band mates bailed and I need someone to fill in. Can you help me out?",
 "type": "dialog"
+},
+"90": {
+"character": "Troy",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "91",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Alright man let's do this! What do you need me to play?",
+"time": null,
+"translation_key": "Alright man let's do this! What do you need me to play?",
+"type": "dialog"
+},
+"91": {
+"condition": {
+"expression": [ {
+"function": "instrument_available",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Guitar"
+} ] ]
+} ]
+},
+"next_id": "92",
+"next_id_after": "end",
+"replacements": [  ],
+"responses": PoolStringArray( "91", "94", "97", "100" ),
+"text": "Guitar",
+"translation_key": "Guitar",
+"type": "response"
+},
+"92": {
+"character": "Troy",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "93",
+"parent_id": "91",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "WHOOO let's PARTY!",
+"time": null,
+"translation_key": "WHOOO let's PARTY!",
+"type": "dialog"
+},
+"93": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Guitar"
+} ], [ {
+"type": "string",
+"value": "Troy"
+} ] ],
+"function": "assign_instrument"
+},
+"next_id": "end",
+"parent_id": "91",
+"type": "mutation"
+},
+"94": {
+"condition": {
+"expression": [ {
+"function": "instrument_available",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Drums"
+} ] ]
+} ]
+},
+"next_id": "95",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "Drums",
+"translation_key": "Drums",
+"type": "response"
+},
+"95": {
+"character": "Troy",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "96",
+"parent_id": "94",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "WHOOO let's PARTY!",
+"time": null,
+"translation_key": "WHOOO let's PARTY!",
+"type": "dialog"
+},
+"96": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Drums"
+} ], [ {
+"type": "string",
+"value": "Troy"
+} ] ],
+"function": "assign_instrument"
+},
+"next_id": "end",
+"parent_id": "94",
+"type": "mutation"
+},
+"97": {
+"condition": {
+"expression": [ {
+"function": "instrument_available",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Keyboard"
+} ] ]
+} ]
+},
+"next_id": "98",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "Keyboard",
+"translation_key": "Keyboard",
+"type": "response"
+},
+"98": {
+"character": "Troy",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "99",
+"parent_id": "97",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "WHOOO let's PARTY!",
+"time": null,
+"translation_key": "WHOOO let's PARTY!",
+"type": "dialog"
+},
+"99": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Keyboard"
+} ], [ {
+"type": "string",
+"value": "Troy"
+} ] ],
+"function": "assign_instrument"
+},
+"next_id": "end",
+"parent_id": "97",
+"type": "mutation"
 }
 }

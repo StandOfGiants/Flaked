@@ -37,32 +37,53 @@ else
 - Why is she mad at you? [if is_not_resolved(\"B1\")]
 	do resolve_branch(\"B1\")
 	Benny: I forgot her birthday! [wait=1]I swear I didn't mean to! [wait=1]I just forget things sometimes.
-	- Tell her you're sorry and that you'll make it up to her. => correct_answer
+	- Tell her you're sorry and that you'll make it up to her.
+		Benny: Uhh... she replied \"you'd better\"
+		=> correct_answer
 	- Everyone forgets things sometimes, tell her to let it go!
+		Benny: Hmm. She didn't seem to like that
 	=> Hub
 - You should tell her you love her. [if is_not_resolved(\"B2\")]
 	do resolve_branch(\"B2\")
 	Benny: I do! Maybe I'm not saying it right?
 	- Tell her \"Hey you know I love you, let's stop fighting\"
-	- Say \"Hey, I love you a lot and you have every right to be mad at me.\" => correct_answer
+		Benny: Oh no, that just made her more angry!
+	- Say \"Hey, I love you a lot and you have every right to be mad at me.\"
+		Benny: ... She says she loves me too. That's good, right?
+		=> correct_answer
 	=> Hub
 - Send her a meme! [if is_not_resolved(\"B3\")]
 	do resolve_branch(\"B3\")
 	Benny: Oh yeah, she loves those! Which one should I send?
 	- Something that says \"Don't be angry with me\".
-	- A silly one that you know she likes. Say you thought of her. => correct_answer
+		Benny: Uhh, okay.
+		Benny: ...
+		Benny: She's not responding...
+	- A silly one that you know she likes. Say you thought of her.
+		Benny: Oh, I've got the perfect one!
+		Benny: ...
+		Benny: She sent me a laughing emoji!
+		=> correct_answer
 	=> Hub
 - Just go radio silent for a while. [if is_not_resolved(\"B4\")]
 	do resolve_branch(\"B4\")
 	Benny: Are you sure? I dunno, what if that makes things worse?
 	- She needs to cool off, talking will just make it worse
-	- Hm, maybe say that you need some time to think first. => correct_answer
+		Benny: You think so? I guess I can try that.
+	- Hm, maybe say that you need some time to think first.
+		Benny: I guess it's better than being yelled at more.
+		Benny: ...
+		Benny: She says she understands.
+		=> correct_answer
 	=> Hub
 - Dedicate the song to her. [if is_not_resolved(\"B5\")]
 	do resolve_branch(\"B5\")
 	Benny: Wait, really?!
-	- Well, we could, couldn't hurt, right? => correct_answer
+	- Well, we could, couldn't hurt, right?
+		Benny: That would be excellent! She loves music!
+		=> correct_answer
 	- Hm, no, you shouldn't reward her for being mad at you...
+		Benny: Yeah, I guess that's true.
 	=> Hub
 - I'll be right back.
 	Benny: Hurry back, I still don't know what to say to her!
@@ -91,7 +112,7 @@ Benny: She doesn't seem as mad anywore! Thanks for your help! What did you want 
 errors = [  ]
 titles = {
 "Hub": "24",
-"band_questions": "71",
+"band_questions": "92",
 "begin": "2",
 "correct_answer": "20"
 }
@@ -116,6 +137,59 @@ lines = {
 "next_id": "11",
 "next_id_after": "end",
 "type": "condition"
+},
+"100": {
+"character": "Benny",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "101",
+"parent_id": "99",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Okay! Let me know when you're ready!",
+"time": null,
+"translation_key": "Okay! Let me know when you're ready!",
+"type": "dialog"
+},
+"101": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Keyboard"
+} ], [ {
+"type": "string",
+"value": "Benny"
+} ] ],
+"function": "assign_instrument"
+},
+"next_id": "end",
+"parent_id": "99",
+"type": "mutation"
+},
+"102": {
+"next_id": "103",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "I need to think about it.",
+"translation_key": "I need to think about it.",
+"type": "response"
+},
+"103": {
+"character": "Benny",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "end",
+"parent_id": "102",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Okay, let me know when you've made up your mind.",
+"time": null,
+"translation_key": "Okay, let me know when you've made up your mind.",
+"type": "dialog"
 },
 "11": {
 "character": "Benny",
@@ -314,7 +388,7 @@ lines = {
 "next_id": "30",
 "next_id_after": "end",
 "replacements": [  ],
-"responses": PoolStringArray( "29", "35", "41", "47", "53", "59", "62" ),
+"responses": PoolStringArray( "29", "38", "47", "60", "71", "80", "83" ),
 "text": "Why is she mad at you?",
 "translation_key": "Why is she mad at you?",
 "type": "response"
@@ -364,30 +438,65 @@ lines = {
 "type": "dialog"
 },
 "32": {
-"next_id": "20",
-"next_id_after": "34",
+"next_id": "33",
+"next_id_after": "37",
 "parent_id": "29",
 "replacements": [  ],
-"responses": PoolStringArray( "32", "33" ),
+"responses": PoolStringArray( "32", "35" ),
 "text": "Tell her you're sorry and that you'll make it up to her.",
 "translation_key": "Tell her you're sorry and that you'll make it up to her.",
 "type": "response"
 },
 "33": {
+"character": "Benny",
+"character_replacements": [  ],
+"inline_mutations": [  ],
 "next_id": "34",
-"next_id_after": "34",
+"parent_id": "32",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Uhh... she replied \"you'd better\"",
+"time": null,
+"translation_key": "Uhh... she replied \"you'd better\"",
+"type": "dialog"
+},
+"34": {
+"next_id": "20",
+"parent_id": "32",
+"type": "goto"
+},
+"35": {
+"next_id": "36",
+"next_id_after": "37",
 "parent_id": "29",
 "replacements": [  ],
 "text": "Everyone forgets things sometimes, tell her to let it go!",
 "translation_key": "Everyone forgets things sometimes, tell her to let it go!",
 "type": "response"
 },
-"34": {
+"36": {
+"character": "Benny",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "37",
+"parent_id": "35",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Hmm. She didn't seem to like that",
+"time": null,
+"translation_key": "Hmm. She didn't seem to like that",
+"type": "dialog"
+},
+"37": {
 "next_id": "24",
 "parent_id": "29",
 "type": "goto"
 },
-"35": {
+"38": {
 "condition": {
 "expression": [ {
 "function": "is_not_resolved",
@@ -398,14 +507,14 @@ lines = {
 } ] ]
 } ]
 },
-"next_id": "36",
+"next_id": "39",
 "next_id_after": "end",
 "replacements": [  ],
 "text": "You should tell her you love her.",
 "translation_key": "You should tell her you love her.",
 "type": "response"
 },
-"36": {
+"39": {
 "mutation": {
 "args": [ [ {
 "type": "string",
@@ -413,43 +522,9 @@ lines = {
 } ] ],
 "function": "resolve_branch"
 },
-"next_id": "37",
-"parent_id": "35",
-"type": "mutation"
-},
-"37": {
-"character": "Benny",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "38",
-"parent_id": "35",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "I do! Maybe I'm not saying it right?",
-"time": null,
-"translation_key": "I do! Maybe I'm not saying it right?",
-"type": "dialog"
-},
-"38": {
 "next_id": "40",
-"next_id_after": "40",
-"parent_id": "35",
-"replacements": [  ],
-"responses": PoolStringArray( "38", "39" ),
-"text": "Tell her \"Hey you know I love you, let's stop fighting\"",
-"translation_key": "Tell her \"Hey you know I love you, let's stop fighting\"",
-"type": "response"
-},
-"39": {
-"next_id": "20",
-"next_id_after": "40",
-"parent_id": "35",
-"replacements": [  ],
-"text": "Say \"Hey, I love you a lot and you have every right to be mad at me.\"",
-"translation_key": "Say \"Hey, I love you a lot and you have every right to be mad at me.\"",
-"type": "response"
+"parent_id": "38",
+"type": "mutation"
 },
 "4": {
 "character": "Benny",
@@ -467,77 +542,77 @@ lines = {
 "type": "dialog"
 },
 "40": {
-"next_id": "24",
-"parent_id": "35",
-"type": "goto"
-},
-"41": {
-"condition": {
-"expression": [ {
-"function": "is_not_resolved",
-"type": "function",
-"value": [ [ {
-"type": "string",
-"value": "B3"
-} ] ]
-} ]
-},
-"next_id": "42",
-"next_id_after": "end",
-"replacements": [  ],
-"text": "Send her a meme!",
-"translation_key": "Send her a meme!",
-"type": "response"
-},
-"42": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "B3"
-} ] ],
-"function": "resolve_branch"
-},
-"next_id": "43",
-"parent_id": "41",
-"type": "mutation"
-},
-"43": {
 "character": "Benny",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "44",
+"next_id": "41",
+"parent_id": "38",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I do! Maybe I'm not saying it right?",
+"time": null,
+"translation_key": "I do! Maybe I'm not saying it right?",
+"type": "dialog"
+},
+"41": {
+"next_id": "42",
+"next_id_after": "46",
+"parent_id": "38",
+"replacements": [  ],
+"responses": PoolStringArray( "41", "43" ),
+"text": "Tell her \"Hey you know I love you, let's stop fighting\"",
+"translation_key": "Tell her \"Hey you know I love you, let's stop fighting\"",
+"type": "response"
+},
+"42": {
+"character": "Benny",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "46",
 "parent_id": "41",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Oh yeah, she loves those! Which one should I send?",
+"text": "Oh no, that just made her more angry!",
 "time": null,
-"translation_key": "Oh yeah, she loves those! Which one should I send?",
+"translation_key": "Oh no, that just made her more angry!",
 "type": "dialog"
 },
-"44": {
-"next_id": "46",
+"43": {
+"next_id": "44",
 "next_id_after": "46",
-"parent_id": "41",
+"parent_id": "38",
 "replacements": [  ],
-"responses": PoolStringArray( "44", "45" ),
-"text": "Something that says \"Don't be angry with me\".",
-"translation_key": "Something that says \"Don't be angry with me\".",
+"text": "Say \"Hey, I love you a lot and you have every right to be mad at me.\"",
+"translation_key": "Say \"Hey, I love you a lot and you have every right to be mad at me.\"",
 "type": "response"
+},
+"44": {
+"character": "Benny",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "45",
+"parent_id": "43",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "... She says she loves me too. That's good, right?",
+"time": null,
+"translation_key": "... She says she loves me too. That's good, right?",
+"type": "dialog"
 },
 "45": {
 "next_id": "20",
-"next_id_after": "46",
-"parent_id": "41",
-"replacements": [  ],
-"text": "A silly one that you know she likes. Say you thought of her.",
-"translation_key": "A silly one that you know she likes. Say you thought of her.",
-"type": "response"
+"parent_id": "43",
+"type": "goto"
 },
 "46": {
 "next_id": "24",
-"parent_id": "41",
+"parent_id": "38",
 "type": "goto"
 },
 "47": {
@@ -547,22 +622,22 @@ lines = {
 "type": "function",
 "value": [ [ {
 "type": "string",
-"value": "B4"
+"value": "B3"
 } ] ]
 } ]
 },
 "next_id": "48",
 "next_id_after": "end",
 "replacements": [  ],
-"text": "Just go radio silent for a while.",
-"translation_key": "Just go radio silent for a while.",
+"text": "Send her a meme!",
+"translation_key": "Send her a meme!",
 "type": "response"
 },
 "48": {
 "mutation": {
 "args": [ [ {
 "type": "string",
-"value": "B4"
+"value": "B3"
 } ] ],
 "function": "resolve_branch"
 },
@@ -580,9 +655,9 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Are you sure? I dunno, what if that makes things worse?",
+"text": "Oh yeah, she loves those! Which one should I send?",
 "time": null,
-"translation_key": "Are you sure? I dunno, what if that makes things worse?",
+"translation_key": "Oh yeah, she loves those! Which one should I send?",
 "type": "dialog"
 },
 "5": {
@@ -601,105 +676,123 @@ lines = {
 "type": "dialog"
 },
 "50": {
-"next_id": "52",
-"next_id_after": "52",
+"next_id": "51",
+"next_id_after": "59",
 "parent_id": "47",
 "replacements": [  ],
-"responses": PoolStringArray( "50", "51" ),
-"text": "She needs to cool off, talking will just make it worse",
-"translation_key": "She needs to cool off, talking will just make it worse",
+"responses": PoolStringArray( "50", "54" ),
+"text": "Something that says \"Don't be angry with me\".",
+"translation_key": "Something that says \"Don't be angry with me\".",
 "type": "response"
 },
 "51": {
-"next_id": "20",
-"next_id_after": "52",
-"parent_id": "47",
+"character": "Benny",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "52",
+"parent_id": "50",
+"pauses": {
+},
 "replacements": [  ],
-"text": "Hm, maybe say that you need some time to think first.",
-"translation_key": "Hm, maybe say that you need some time to think first.",
-"type": "response"
+"speeds": [  ],
+"text": "Uhh, okay.",
+"time": null,
+"translation_key": "Uhh, okay.",
+"type": "dialog"
 },
 "52": {
-"next_id": "24",
-"parent_id": "47",
-"type": "goto"
+"character": "Benny",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "53",
+"parent_id": "50",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "...",
+"time": null,
+"translation_key": "...",
+"type": "dialog"
 },
 "53": {
-"condition": {
-"expression": [ {
-"function": "is_not_resolved",
-"type": "function",
-"value": [ [ {
-"type": "string",
-"value": "B5"
-} ] ]
-} ]
+"character": "Benny",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "59",
+"parent_id": "50",
+"pauses": {
 },
-"next_id": "54",
-"next_id_after": "end",
 "replacements": [  ],
-"text": "Dedicate the song to her.",
-"translation_key": "Dedicate the song to her.",
-"type": "response"
+"speeds": [  ],
+"text": "She's not responding...",
+"time": null,
+"translation_key": "She's not responding...",
+"type": "dialog"
 },
 "54": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "B5"
-} ] ],
-"function": "resolve_branch"
-},
 "next_id": "55",
-"parent_id": "53",
-"type": "mutation"
+"next_id_after": "59",
+"parent_id": "47",
+"replacements": [  ],
+"text": "A silly one that you know she likes. Say you thought of her.",
+"translation_key": "A silly one that you know she likes. Say you thought of her.",
+"type": "response"
 },
 "55": {
 "character": "Benny",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "56",
-"parent_id": "53",
+"parent_id": "54",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Wait, really?!",
+"text": "Oh, I've got the perfect one!",
 "time": null,
-"translation_key": "Wait, really?!",
+"translation_key": "Oh, I've got the perfect one!",
 "type": "dialog"
 },
 "56": {
-"next_id": "20",
-"next_id_after": "58",
-"parent_id": "53",
+"character": "Benny",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "57",
+"parent_id": "54",
+"pauses": {
+},
 "replacements": [  ],
-"responses": PoolStringArray( "56", "57" ),
-"text": "Well, we could, couldn't hurt, right?",
-"translation_key": "Well, we could, couldn't hurt, right?",
-"type": "response"
+"speeds": [  ],
+"text": "...",
+"time": null,
+"translation_key": "...",
+"type": "dialog"
 },
 "57": {
+"character": "Benny",
+"character_replacements": [  ],
+"inline_mutations": [  ],
 "next_id": "58",
-"next_id_after": "58",
-"parent_id": "53",
+"parent_id": "54",
+"pauses": {
+},
 "replacements": [  ],
-"text": "Hm, no, you shouldn't reward her for being mad at you...",
-"translation_key": "Hm, no, you shouldn't reward her for being mad at you...",
-"type": "response"
+"speeds": [  ],
+"text": "She sent me a laughing emoji!",
+"time": null,
+"translation_key": "She sent me a laughing emoji!",
+"type": "dialog"
 },
 "58": {
-"next_id": "24",
-"parent_id": "53",
+"next_id": "20",
+"parent_id": "54",
 "type": "goto"
 },
 "59": {
-"next_id": "60",
-"next_id_after": "end",
-"replacements": [  ],
-"text": "I'll be right back.",
-"translation_key": "I'll be right back.",
-"type": "response"
+"next_id": "24",
+"parent_id": "47",
+"type": "goto"
 },
 "6": {
 "character": "Benny",
@@ -717,67 +810,83 @@ lines = {
 "type": "dialog"
 },
 "60": {
+"condition": {
+"expression": [ {
+"function": "is_not_resolved",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "B4"
+} ] ]
+} ]
+},
+"next_id": "61",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "Just go radio silent for a while.",
+"translation_key": "Just go radio silent for a while.",
+"type": "response"
+},
+"61": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "B4"
+} ] ],
+"function": "resolve_branch"
+},
+"next_id": "62",
+"parent_id": "60",
+"type": "mutation"
+},
+"62": {
 "character": "Benny",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "61",
-"parent_id": "59",
+"next_id": "63",
+"parent_id": "60",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Hurry back, I still don't know what to say to her!",
+"text": "Are you sure? I dunno, what if that makes things worse?",
 "time": null,
-"translation_key": "Hurry back, I still don't know what to say to her!",
+"translation_key": "Are you sure? I dunno, what if that makes things worse?",
 "type": "dialog"
 },
-"61": {
-"next_id": "end",
-"parent_id": "59",
-"type": "goto"
-},
-"62": {
-"next_id": "63",
-"next_id_after": "end",
+"63": {
+"next_id": "64",
+"next_id_after": "70",
+"parent_id": "60",
 "replacements": [  ],
-"text": "So will you do it?",
-"translation_key": "So will you do it?",
+"responses": PoolStringArray( "63", "65" ),
+"text": "She needs to cool off, talking will just make it worse",
+"translation_key": "She needs to cool off, talking will just make it worse",
 "type": "response"
 },
-"63": {
-"condition": {
-"expression": [ {
-"function": "karma",
-"type": "function",
-"value": [ [ {
-"type": "string",
-"value": "Benny"
-} ] ]
-}, {
-"type": "comparison",
-"value": ">="
-}, {
-"type": "number",
-"value": 3
-} ]
-},
-"next_conditional_id": "65",
-"next_id": "64",
-"next_id_after": "end",
-"parent_id": "62",
-"type": "condition"
-},
 "64": {
-"next_id": "71",
+"character": "Benny",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "70",
 "parent_id": "63",
-"type": "goto"
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "You think so? I guess I can try that.",
+"time": null,
+"translation_key": "You think so? I guess I can try that.",
+"type": "dialog"
 },
 "65": {
-"next_conditional_id": "end",
 "next_id": "66",
-"next_id_after": "end",
-"parent_id": "62",
-"type": "condition"
+"next_id_after": "70",
+"parent_id": "60",
+"replacements": [  ],
+"text": "Hm, maybe say that you need some time to think first.",
+"translation_key": "Hm, maybe say that you need some time to think first.",
+"type": "response"
 },
 "66": {
 "character": "Benny",
@@ -789,13 +898,13 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "She's still pretty mad at me, I better go call her. Bye!",
+"text": "I guess it's better than being yelled at more.",
 "time": null,
-"translation_key": "She's still pretty mad at me, I better go call her. Bye!",
+"translation_key": "I guess it's better than being yelled at more.",
 "type": "dialog"
 },
 "67": {
-"character": "Player",
+"character": "Benny",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "68",
@@ -804,22 +913,30 @@ lines = {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Good luck.",
+"text": "...",
 "time": null,
-"translation_key": "Good luck.",
+"translation_key": "...",
 "type": "dialog"
 },
 "68": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "Benny"
-} ] ],
-"function": "complete_character"
-},
-"next_id": "end",
+"character": "Benny",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "69",
 "parent_id": "65",
-"type": "mutation"
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "She says she understands.",
+"time": null,
+"translation_key": "She says she understands.",
+"type": "dialog"
+},
+"69": {
+"next_id": "20",
+"parent_id": "65",
+"type": "goto"
 },
 "7": {
 "character": "Player",
@@ -837,153 +954,113 @@ lines = {
 "type": "dialog"
 },
 "70": {
-"next_id": "71",
-"text": "band_questions",
-"type": "title"
+"next_id": "24",
+"parent_id": "60",
+"type": "goto"
 },
 "71": {
-"character": "Benny",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "72",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "She doesn't seem as mad anywore! Thanks for your help! What did you want me to play?",
-"time": null,
-"translation_key": "She doesn't seem as mad anywore! Thanks for your help! What did you want me to play?",
-"type": "dialog"
-},
-"72": {
 "condition": {
 "expression": [ {
-"function": "instrument_available",
+"function": "is_not_resolved",
 "type": "function",
 "value": [ [ {
 "type": "string",
-"value": "Guitar"
+"value": "B5"
 } ] ]
 } ]
 },
-"next_id": "73",
+"next_id": "72",
 "next_id_after": "end",
 "replacements": [  ],
-"responses": PoolStringArray( "72", "75", "78", "81" ),
-"text": "Guitar",
-"translation_key": "Guitar",
+"text": "Dedicate the song to her.",
+"translation_key": "Dedicate the song to her.",
 "type": "response"
+},
+"72": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "B5"
+} ] ],
+"function": "resolve_branch"
+},
+"next_id": "73",
+"parent_id": "71",
+"type": "mutation"
 },
 "73": {
 "character": "Benny",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "74",
-"parent_id": "72",
+"parent_id": "71",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Okay! Let me know when you're ready!",
+"text": "Wait, really?!",
 "time": null,
-"translation_key": "Okay! Let me know when you're ready!",
+"translation_key": "Wait, really?!",
 "type": "dialog"
 },
 "74": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "Guitar"
-} ], [ {
-"type": "string",
-"value": "Benny"
-} ] ],
-"function": "assign_instrument"
-},
-"next_id": "end",
-"parent_id": "72",
-"type": "mutation"
+"next_id": "75",
+"next_id_after": "79",
+"parent_id": "71",
+"replacements": [  ],
+"responses": PoolStringArray( "74", "77" ),
+"text": "Well, we could, couldn't hurt, right?",
+"translation_key": "Well, we could, couldn't hurt, right?",
+"type": "response"
 },
 "75": {
-"condition": {
-"expression": [ {
-"function": "instrument_available",
-"type": "function",
-"value": [ [ {
-"type": "string",
-"value": "Drums"
-} ] ]
-} ]
-},
+"character": "Benny",
+"character_replacements": [  ],
+"inline_mutations": [  ],
 "next_id": "76",
-"next_id_after": "end",
+"parent_id": "74",
+"pauses": {
+},
 "replacements": [  ],
-"text": "Drums",
-"translation_key": "Drums",
-"type": "response"
+"speeds": [  ],
+"text": "That would be excellent! She loves music!",
+"time": null,
+"translation_key": "That would be excellent! She loves music!",
+"type": "dialog"
 },
 "76": {
-"character": "Benny",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "77",
-"parent_id": "75",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Okay! Let me know when you're ready!",
-"time": null,
-"translation_key": "Okay! Let me know when you're ready!",
-"type": "dialog"
+"next_id": "20",
+"parent_id": "74",
+"type": "goto"
 },
 "77": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "Drums"
-} ], [ {
-"type": "string",
-"value": "Benny"
-} ] ],
-"function": "assign_instrument"
-},
-"next_id": "end",
-"parent_id": "75",
-"type": "mutation"
-},
-"78": {
-"condition": {
-"expression": [ {
-"function": "instrument_available",
-"type": "function",
-"value": [ [ {
-"type": "string",
-"value": "Keyboard"
-} ] ]
-} ]
-},
-"next_id": "79",
-"next_id_after": "end",
+"next_id": "78",
+"next_id_after": "79",
+"parent_id": "71",
 "replacements": [  ],
-"text": "Keyboard",
-"translation_key": "Keyboard",
+"text": "Hm, no, you shouldn't reward her for being mad at you...",
+"translation_key": "Hm, no, you shouldn't reward her for being mad at you...",
 "type": "response"
 },
-"79": {
+"78": {
 "character": "Benny",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "80",
-"parent_id": "78",
+"next_id": "79",
+"parent_id": "77",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Okay! Let me know when you're ready!",
+"text": "Yeah, I guess that's true.",
 "time": null,
-"translation_key": "Okay! Let me know when you're ready!",
+"translation_key": "Yeah, I guess that's true.",
 "type": "dialog"
+},
+"79": {
+"next_id": "24",
+"parent_id": "71",
+"type": "goto"
 },
 "8": {
 "character": "Benny",
@@ -1001,42 +1078,117 @@ lines = {
 "type": "dialog"
 },
 "80": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "Keyboard"
-} ], [ {
-"type": "string",
-"value": "Benny"
-} ] ],
-"function": "assign_instrument"
-},
-"next_id": "end",
-"parent_id": "78",
-"type": "mutation"
-},
-"81": {
-"next_id": "82",
+"next_id": "81",
 "next_id_after": "end",
 "replacements": [  ],
-"text": "I need to think about it.",
-"translation_key": "I need to think about it.",
+"text": "I'll be right back.",
+"translation_key": "I'll be right back.",
 "type": "response"
 },
-"82": {
+"81": {
 "character": "Benny",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "end",
-"parent_id": "81",
+"next_id": "82",
+"parent_id": "80",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Okay, let me know when you've made up your mind.",
+"text": "Hurry back, I still don't know what to say to her!",
 "time": null,
-"translation_key": "Okay, let me know when you've made up your mind.",
+"translation_key": "Hurry back, I still don't know what to say to her!",
 "type": "dialog"
+},
+"82": {
+"next_id": "end",
+"parent_id": "80",
+"type": "goto"
+},
+"83": {
+"next_id": "84",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "So will you do it?",
+"translation_key": "So will you do it?",
+"type": "response"
+},
+"84": {
+"condition": {
+"expression": [ {
+"function": "karma",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Benny"
+} ] ]
+}, {
+"type": "comparison",
+"value": ">="
+}, {
+"type": "number",
+"value": 3
+} ]
+},
+"next_conditional_id": "86",
+"next_id": "85",
+"next_id_after": "end",
+"parent_id": "83",
+"type": "condition"
+},
+"85": {
+"next_id": "92",
+"parent_id": "84",
+"type": "goto"
+},
+"86": {
+"next_conditional_id": "end",
+"next_id": "87",
+"next_id_after": "end",
+"parent_id": "83",
+"type": "condition"
+},
+"87": {
+"character": "Benny",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "88",
+"parent_id": "86",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "She's still pretty mad at me, I better go call her. Bye!",
+"time": null,
+"translation_key": "She's still pretty mad at me, I better go call her. Bye!",
+"type": "dialog"
+},
+"88": {
+"character": "Player",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "89",
+"parent_id": "86",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Good luck.",
+"time": null,
+"translation_key": "Good luck.",
+"type": "dialog"
+},
+"89": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Benny"
+} ] ],
+"function": "complete_character"
+},
+"next_id": "end",
+"parent_id": "86",
+"type": "mutation"
 },
 "9": {
 "character": "Player",
@@ -1052,5 +1204,139 @@ lines = {
 "time": null,
 "translation_key": "If I help you with your girlfriend, will you help me out?",
 "type": "dialog"
+},
+"91": {
+"next_id": "92",
+"text": "band_questions",
+"type": "title"
+},
+"92": {
+"character": "Benny",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "93",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "She doesn't seem as mad anywore! Thanks for your help! What did you want me to play?",
+"time": null,
+"translation_key": "She doesn't seem as mad anywore! Thanks for your help! What did you want me to play?",
+"type": "dialog"
+},
+"93": {
+"condition": {
+"expression": [ {
+"function": "instrument_available",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Guitar"
+} ] ]
+} ]
+},
+"next_id": "94",
+"next_id_after": "end",
+"replacements": [  ],
+"responses": PoolStringArray( "93", "96", "99", "102" ),
+"text": "Guitar",
+"translation_key": "Guitar",
+"type": "response"
+},
+"94": {
+"character": "Benny",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "95",
+"parent_id": "93",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Okay! Let me know when you're ready!",
+"time": null,
+"translation_key": "Okay! Let me know when you're ready!",
+"type": "dialog"
+},
+"95": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Guitar"
+} ], [ {
+"type": "string",
+"value": "Benny"
+} ] ],
+"function": "assign_instrument"
+},
+"next_id": "end",
+"parent_id": "93",
+"type": "mutation"
+},
+"96": {
+"condition": {
+"expression": [ {
+"function": "instrument_available",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Drums"
+} ] ]
+} ]
+},
+"next_id": "97",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "Drums",
+"translation_key": "Drums",
+"type": "response"
+},
+"97": {
+"character": "Benny",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "98",
+"parent_id": "96",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Okay! Let me know when you're ready!",
+"time": null,
+"translation_key": "Okay! Let me know when you're ready!",
+"type": "dialog"
+},
+"98": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Drums"
+} ], [ {
+"type": "string",
+"value": "Benny"
+} ] ],
+"function": "assign_instrument"
+},
+"next_id": "end",
+"parent_id": "96",
+"type": "mutation"
+},
+"99": {
+"condition": {
+"expression": [ {
+"function": "instrument_available",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Keyboard"
+} ] ]
+} ]
+},
+"next_id": "100",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "Keyboard",
+"translation_key": "Keyboard",
+"type": "response"
 }
 }

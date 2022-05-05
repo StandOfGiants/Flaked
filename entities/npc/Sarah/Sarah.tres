@@ -27,6 +27,10 @@ elif is_complete(\"Sarah\")
 else
 	=> Hub
 
+~ correct_answer
+do update_karma(\"Sarah\", 1)
+=> Hub
+
 ~ Hub
 if first_visit(\"Sarah main hub\")
 	Sarah: Oooooh, I'd love to say yes, but I don't know...
@@ -37,36 +41,46 @@ else
 	do resolve_branch(\"S1\")
 	Sarah: I don't know... It's been so long since I played the drums...
 	- Hm, that could be a problem.
+		Sarah: Oh, okay.
 	- I'm sure you'll be fantastic.
-		do update_karma(\"Sarah\", 1)
+		Sarah: Really? You think so? 
+		=> correct_answer
 	=> Hub
 - It'll be fun! [if is_not_resolved(\"S2\")]
 	do resolve_branch(\"S2\")
 	Sarah: ...I did want a night out to do something different.
 	- Yeah! What's more unexpected than getting up on stage and performing?!
-		do update_karma(\"Sarah\", 1)
+		Sarah: You know, you're right!
+		=> correct_answer
 	- This might be a bit too different.
+		Sarah: I guess so.
 	=> Hub
 - You can do this! It'll be great! [if is_not_resolved(\"S5\")]
 	do resolve_branch(\"S5\")
 	Sarah: ... You think I look okay enough to be on ssssstage?
 	- Of course! You look great and that's NOT a pick-up line!
-		do update_karma(\"Sarah\", 1)
+		Sarah: Oh, thank you!
+		=> correct_answer
 	- ...At least we'll match in terribleness.
+		Sarah: Wow... Thanks.
 	=> Hub
 - C'mon, what's the worst that could happen? [if is_not_resolved(\"S3\")]
 	do resolve_branch(\"S3\")
 	Sarah: Well, we could be awful.
 	- Probably.
+		Sarah: So why even try?
 	- Nah, can't be awful with you up there!
-		do update_karma(\"Sarah\", 1)
+		Sarah: You really think so?
+		=> correct_answer
 	=> Hub
 - There won't be music without you, and what's this place without music?! [if is_not_resolved(\"S4\")]
 	do resolve_branch(\"S4\")
 	Sarah: ...Boring might be better than terrible.
 	- You're probably right.
+		Sarah: I'd hate to look like a fool up there.
 	- All press is good press!
-		do update_karma(\"Sarah\", 1)
+		Sarah: You know what, yeah! Nothing ventured, nothing gained!
+		=> correct_answer
 	=> Hub
 - I'll be right back.
 	Sarah: I'll be right here.
@@ -94,9 +108,10 @@ Sarah: Alright, I'll do it! Boy will I have a story for the kids! What instrumen
 	Sarah: Okay, let me know when you've made up your mind."
 errors = [  ]
 titles = {
-"Hub": "23",
-"band_questions": "75",
-"begin": "2"
+"Hub": "27",
+"band_questions": "89",
+"begin": "2",
+"correct_answer": "23"
 }
 lines = {
 "0": {
@@ -117,6 +132,21 @@ lines = {
 "text": "...",
 "time": null,
 "translation_key": "...",
+"type": "dialog"
+},
+"100": {
+"character": "Sarah",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "end",
+"parent_id": "99",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Okay, let me know when you've made up your mind.",
+"time": null,
+"translation_key": "Okay, let me know when you've made up your mind.",
 "type": "dialog"
 },
 "11": {
@@ -264,16 +294,39 @@ lines = {
 "type": "condition"
 },
 "20": {
-"next_id": "23",
+"next_id": "27",
 "parent_id": "19",
 "type": "goto"
 },
 "22": {
 "next_id": "23",
-"text": "Hub",
+"text": "correct_answer",
 "type": "title"
 },
 "23": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Sarah"
+} ], [ {
+"type": "number",
+"value": 1
+} ] ],
+"function": "update_karma"
+},
+"next_id": "24",
+"type": "mutation"
+},
+"24": {
+"next_id": "27",
+"type": "goto"
+},
+"26": {
+"next_id": "27",
+"text": "Hub",
+"type": "title"
+},
+"27": {
 "condition": {
 "expression": [ {
 "function": "first_visit",
@@ -284,17 +337,17 @@ lines = {
 } ] ]
 } ]
 },
-"next_conditional_id": "25",
-"next_id": "24",
-"next_id_after": "28",
+"next_conditional_id": "29",
+"next_id": "28",
+"next_id_after": "32",
 "type": "condition"
 },
-"24": {
+"28": {
 "character": "Sarah",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "28",
-"parent_id": "23",
+"next_id": "32",
+"parent_id": "27",
 "pauses": {
 },
 "replacements": [  ],
@@ -304,57 +357,11 @@ lines = {
 "translation_key": "Oooooh, I'd love to say yes, but I don't know...",
 "type": "dialog"
 },
-"25": {
-"next_conditional_id": "28",
-"next_id": "26",
-"next_id_after": "28",
-"type": "condition"
-},
-"26": {
-"character": "Sarah",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "28",
-"parent_id": "25",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "I'd love to say yes, but I don't know...",
-"time": null,
-"translation_key": "I'd love to say yes, but I don't know...",
-"type": "dialog"
-},
-"28": {
-"condition": {
-"expression": [ {
-"function": "is_not_resolved",
-"type": "function",
-"value": [ [ {
-"type": "string",
-"value": "S1"
-} ] ]
-} ]
-},
-"next_id": "29",
-"next_id_after": "end",
-"replacements": [  ],
-"responses": PoolStringArray( "28", "35", "42", "49", "56", "63", "66" ),
-"text": "Wait really?! I could really use the help!",
-"translation_key": "Wait really?! I could really use the help!",
-"type": "response"
-},
 "29": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "S1"
-} ] ],
-"function": "resolve_branch"
-},
+"next_conditional_id": "32",
 "next_id": "30",
-"parent_id": "28",
-"type": "mutation"
+"next_id_after": "32",
+"type": "condition"
 },
 "3": {
 "character": "Player",
@@ -375,8 +382,54 @@ lines = {
 "character": "Sarah",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "31",
-"parent_id": "28",
+"next_id": "32",
+"parent_id": "29",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I'd love to say yes, but I don't know...",
+"time": null,
+"translation_key": "I'd love to say yes, but I don't know...",
+"type": "dialog"
+},
+"32": {
+"condition": {
+"expression": [ {
+"function": "is_not_resolved",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "S1"
+} ] ]
+} ]
+},
+"next_id": "33",
+"next_id_after": "end",
+"replacements": [  ],
+"responses": PoolStringArray( "32", "41", "50", "59", "68", "77", "80" ),
+"text": "Wait really?! I could really use the help!",
+"translation_key": "Wait really?! I could really use the help!",
+"type": "response"
+},
+"33": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "S1"
+} ] ],
+"function": "resolve_branch"
+},
+"next_id": "34",
+"parent_id": "32",
+"type": "mutation"
+},
+"34": {
+"character": "Sarah",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "35",
+"parent_id": "32",
 "pauses": {
 },
 "replacements": [  ],
@@ -386,114 +439,59 @@ lines = {
 "translation_key": "I don't know... It's been so long since I played the drums...",
 "type": "dialog"
 },
-"31": {
-"next_id": "34",
-"next_id_after": "34",
-"parent_id": "28",
+"35": {
+"next_id": "36",
+"next_id_after": "40",
+"parent_id": "32",
 "replacements": [  ],
-"responses": PoolStringArray( "31", "32" ),
+"responses": PoolStringArray( "35", "37" ),
 "text": "Hm, that could be a problem.",
 "translation_key": "Hm, that could be a problem.",
 "type": "response"
 },
-"32": {
-"next_id": "33",
-"next_id_after": "34",
-"parent_id": "28",
-"replacements": [  ],
-"text": "I'm sure you'll be fantastic.",
-"translation_key": "I'm sure you'll be fantastic.",
-"type": "response"
-},
-"33": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "Sarah"
-} ], [ {
-"type": "number",
-"value": 1
-} ] ],
-"function": "update_karma"
-},
-"next_id": "34",
-"parent_id": "32",
-"type": "mutation"
-},
-"34": {
-"next_id": "23",
-"parent_id": "28",
-"type": "goto"
-},
-"35": {
-"condition": {
-"expression": [ {
-"function": "is_not_resolved",
-"type": "function",
-"value": [ [ {
-"type": "string",
-"value": "S2"
-} ] ]
-} ]
-},
-"next_id": "36",
-"next_id_after": "end",
-"replacements": [  ],
-"text": "It'll be fun!",
-"translation_key": "It'll be fun!",
-"type": "response"
-},
 "36": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "S2"
-} ] ],
-"function": "resolve_branch"
-},
-"next_id": "37",
-"parent_id": "35",
-"type": "mutation"
-},
-"37": {
 "character": "Sarah",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "38",
+"next_id": "40",
 "parent_id": "35",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "...I did want a night out to do something different.",
+"text": "Oh, okay.",
 "time": null,
-"translation_key": "...I did want a night out to do something different.",
+"translation_key": "Oh, okay.",
 "type": "dialog"
 },
-"38": {
-"next_id": "39",
-"next_id_after": "41",
-"parent_id": "35",
+"37": {
+"next_id": "38",
+"next_id_after": "40",
+"parent_id": "32",
 "replacements": [  ],
-"responses": PoolStringArray( "38", "40" ),
-"text": "Yeah! What's more unexpected than getting up on stage and performing?!",
-"translation_key": "Yeah! What's more unexpected than getting up on stage and performing?!",
+"text": "I'm sure you'll be fantastic.",
+"translation_key": "I'm sure you'll be fantastic.",
 "type": "response"
 },
-"39": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "Sarah"
-} ], [ {
-"type": "number",
-"value": 1
-} ] ],
-"function": "update_karma"
+"38": {
+"character": "Sarah",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "39",
+"parent_id": "37",
+"pauses": {
 },
-"next_id": "41",
-"parent_id": "38",
-"type": "mutation"
+"replacements": [  ],
+"speeds": [  ],
+"text": "Really? You think so?",
+"time": null,
+"translation_key": "Really? You think so?",
+"type": "dialog"
+},
+"39": {
+"next_id": "23",
+"parent_id": "37",
+"type": "goto"
 },
 "4": {
 "character": "Sarah",
@@ -511,120 +509,113 @@ lines = {
 "type": "dialog"
 },
 "40": {
-"next_id": "41",
-"next_id_after": "41",
-"parent_id": "35",
+"next_id": "27",
+"parent_id": "32",
+"type": "goto"
+},
+"41": {
+"condition": {
+"expression": [ {
+"function": "is_not_resolved",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "S2"
+} ] ]
+} ]
+},
+"next_id": "42",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "It'll be fun!",
+"translation_key": "It'll be fun!",
+"type": "response"
+},
+"42": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "S2"
+} ] ],
+"function": "resolve_branch"
+},
+"next_id": "43",
+"parent_id": "41",
+"type": "mutation"
+},
+"43": {
+"character": "Sarah",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "44",
+"parent_id": "41",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "...I did want a night out to do something different.",
+"time": null,
+"translation_key": "...I did want a night out to do something different.",
+"type": "dialog"
+},
+"44": {
+"next_id": "45",
+"next_id_after": "49",
+"parent_id": "41",
+"replacements": [  ],
+"responses": PoolStringArray( "44", "47" ),
+"text": "Yeah! What's more unexpected than getting up on stage and performing?!",
+"translation_key": "Yeah! What's more unexpected than getting up on stage and performing?!",
+"type": "response"
+},
+"45": {
+"character": "Sarah",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "46",
+"parent_id": "44",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "You know, you're right!",
+"time": null,
+"translation_key": "You know, you're right!",
+"type": "dialog"
+},
+"46": {
+"next_id": "23",
+"parent_id": "44",
+"type": "goto"
+},
+"47": {
+"next_id": "48",
+"next_id_after": "49",
+"parent_id": "41",
 "replacements": [  ],
 "text": "This might be a bit too different.",
 "translation_key": "This might be a bit too different.",
 "type": "response"
 },
-"41": {
-"next_id": "23",
-"parent_id": "35",
-"type": "goto"
-},
-"42": {
-"condition": {
-"expression": [ {
-"function": "is_not_resolved",
-"type": "function",
-"value": [ [ {
-"type": "string",
-"value": "S5"
-} ] ]
-} ]
-},
-"next_id": "43",
-"next_id_after": "end",
-"replacements": [  ],
-"text": "You can do this! It'll be great!",
-"translation_key": "You can do this! It'll be great!",
-"type": "response"
-},
-"43": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "S5"
-} ] ],
-"function": "resolve_branch"
-},
-"next_id": "44",
-"parent_id": "42",
-"type": "mutation"
-},
-"44": {
+"48": {
 "character": "Sarah",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "45",
-"parent_id": "42",
+"next_id": "49",
+"parent_id": "47",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "... You think I look okay enough to be on ssssstage?",
+"text": "I guess so.",
 "time": null,
-"translation_key": "... You think I look okay enough to be on ssssstage?",
+"translation_key": "I guess so.",
 "type": "dialog"
 },
-"45": {
-"next_id": "46",
-"next_id_after": "48",
-"parent_id": "42",
-"replacements": [  ],
-"responses": PoolStringArray( "45", "47" ),
-"text": "Of course! You look great and that's NOT a pick-up line!",
-"translation_key": "Of course! You look great and that's NOT a pick-up line!",
-"type": "response"
-},
-"46": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "Sarah"
-} ], [ {
-"type": "number",
-"value": 1
-} ] ],
-"function": "update_karma"
-},
-"next_id": "48",
-"parent_id": "45",
-"type": "mutation"
-},
-"47": {
-"next_id": "48",
-"next_id_after": "48",
-"parent_id": "42",
-"replacements": [  ],
-"text": "...At least we'll match in terribleness.",
-"translation_key": "...At least we'll match in terribleness.",
-"type": "response"
-},
-"48": {
-"next_id": "23",
-"parent_id": "42",
-"type": "goto"
-},
 "49": {
-"condition": {
-"expression": [ {
-"function": "is_not_resolved",
-"type": "function",
-"value": [ [ {
-"type": "string",
-"value": "S3"
-} ] ]
-} ]
-},
-"next_id": "50",
-"next_id_after": "end",
-"replacements": [  ],
-"text": "C'mon, what's the worst that could happen?",
-"translation_key": "C'mon, what's the worst that could happen?",
-"type": "response"
+"next_id": "27",
+"parent_id": "41",
+"type": "goto"
 },
 "5": {
 "character": "Player",
@@ -642,124 +633,125 @@ lines = {
 "type": "dialog"
 },
 "50": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "S3"
-} ] ],
-"function": "resolve_branch"
-},
-"next_id": "51",
-"parent_id": "49",
-"type": "mutation"
-},
-"51": {
-"character": "Sarah",
-"character_replacements": [  ],
-"inline_mutations": [  ],
-"next_id": "52",
-"parent_id": "49",
-"pauses": {
-},
-"replacements": [  ],
-"speeds": [  ],
-"text": "Well, we could be awful.",
-"time": null,
-"translation_key": "Well, we could be awful.",
-"type": "dialog"
-},
-"52": {
-"next_id": "55",
-"next_id_after": "55",
-"parent_id": "49",
-"replacements": [  ],
-"responses": PoolStringArray( "52", "53" ),
-"text": "Probably.",
-"translation_key": "Probably.",
-"type": "response"
-},
-"53": {
-"next_id": "54",
-"next_id_after": "55",
-"parent_id": "49",
-"replacements": [  ],
-"text": "Nah, can't be awful with you up there!",
-"translation_key": "Nah, can't be awful with you up there!",
-"type": "response"
-},
-"54": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "Sarah"
-} ], [ {
-"type": "number",
-"value": 1
-} ] ],
-"function": "update_karma"
-},
-"next_id": "55",
-"parent_id": "53",
-"type": "mutation"
-},
-"55": {
-"next_id": "23",
-"parent_id": "49",
-"type": "goto"
-},
-"56": {
 "condition": {
 "expression": [ {
 "function": "is_not_resolved",
 "type": "function",
 "value": [ [ {
 "type": "string",
-"value": "S4"
+"value": "S5"
 } ] ]
 } ]
 },
-"next_id": "57",
+"next_id": "51",
 "next_id_after": "end",
 "replacements": [  ],
-"text": "There won't be music without you, and what's this place without music?!",
-"translation_key": "There won't be music without you, and what's this place without music?!",
+"text": "You can do this! It'll be great!",
+"translation_key": "You can do this! It'll be great!",
 "type": "response"
 },
-"57": {
+"51": {
 "mutation": {
 "args": [ [ {
 "type": "string",
-"value": "S4"
+"value": "S5"
 } ] ],
 "function": "resolve_branch"
 },
-"next_id": "58",
-"parent_id": "56",
+"next_id": "52",
+"parent_id": "50",
 "type": "mutation"
 },
-"58": {
+"52": {
 "character": "Sarah",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "59",
+"next_id": "53",
+"parent_id": "50",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "... You think I look okay enough to be on ssssstage?",
+"time": null,
+"translation_key": "... You think I look okay enough to be on ssssstage?",
+"type": "dialog"
+},
+"53": {
+"next_id": "54",
+"next_id_after": "58",
+"parent_id": "50",
+"replacements": [  ],
+"responses": PoolStringArray( "53", "56" ),
+"text": "Of course! You look great and that's NOT a pick-up line!",
+"translation_key": "Of course! You look great and that's NOT a pick-up line!",
+"type": "response"
+},
+"54": {
+"character": "Sarah",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "55",
+"parent_id": "53",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Oh, thank you!",
+"time": null,
+"translation_key": "Oh, thank you!",
+"type": "dialog"
+},
+"55": {
+"next_id": "23",
+"parent_id": "53",
+"type": "goto"
+},
+"56": {
+"next_id": "57",
+"next_id_after": "58",
+"parent_id": "50",
+"replacements": [  ],
+"text": "...At least we'll match in terribleness.",
+"translation_key": "...At least we'll match in terribleness.",
+"type": "response"
+},
+"57": {
+"character": "Sarah",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "58",
 "parent_id": "56",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "...Boring might be better than terrible.",
+"text": "Wow... Thanks.",
 "time": null,
-"translation_key": "...Boring might be better than terrible.",
+"translation_key": "Wow... Thanks.",
 "type": "dialog"
 },
+"58": {
+"next_id": "27",
+"parent_id": "50",
+"type": "goto"
+},
 "59": {
-"next_id": "62",
-"next_id_after": "62",
-"parent_id": "56",
+"condition": {
+"expression": [ {
+"function": "is_not_resolved",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "S3"
+} ] ]
+} ]
+},
+"next_id": "60",
+"next_id_after": "end",
 "replacements": [  ],
-"responses": PoolStringArray( "59", "60" ),
-"text": "You're probably right.",
-"translation_key": "You're probably right.",
+"text": "C'mon, what's the worst that could happen?",
+"translation_key": "C'mon, what's the worst that could happen?",
 "type": "response"
 },
 "6": {
@@ -778,104 +770,120 @@ lines = {
 "type": "dialog"
 },
 "60": {
-"next_id": "61",
-"next_id_after": "62",
-"parent_id": "56",
-"replacements": [  ],
-"text": "All press is good press!",
-"translation_key": "All press is good press!",
-"type": "response"
-},
-"61": {
 "mutation": {
 "args": [ [ {
 "type": "string",
-"value": "Sarah"
-} ], [ {
-"type": "number",
-"value": 1
+"value": "S3"
 } ] ],
-"function": "update_karma"
+"function": "resolve_branch"
 },
-"next_id": "62",
-"parent_id": "60",
+"next_id": "61",
+"parent_id": "59",
 "type": "mutation"
 },
-"62": {
-"next_id": "23",
-"parent_id": "56",
-"type": "goto"
-},
-"63": {
-"next_id": "64",
-"next_id_after": "end",
-"replacements": [  ],
-"text": "I'll be right back.",
-"translation_key": "I'll be right back.",
-"type": "response"
-},
-"64": {
+"61": {
 "character": "Sarah",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "65",
-"parent_id": "63",
+"next_id": "62",
+"parent_id": "59",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "I'll be right here.",
+"text": "Well, we could be awful.",
 "time": null,
-"translation_key": "I'll be right here.",
+"translation_key": "Well, we could be awful.",
 "type": "dialog"
 },
-"65": {
-"next_id": "end",
-"parent_id": "63",
-"type": "goto"
-},
-"66": {
-"next_id": "67",
-"next_id_after": "end",
+"62": {
+"next_id": "63",
+"next_id_after": "67",
+"parent_id": "59",
 "replacements": [  ],
-"text": "So will you do it?",
-"translation_key": "So will you do it?",
+"responses": PoolStringArray( "62", "64" ),
+"text": "Probably.",
+"translation_key": "Probably.",
 "type": "response"
 },
+"63": {
+"character": "Sarah",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "67",
+"parent_id": "62",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "So why even try?",
+"time": null,
+"translation_key": "So why even try?",
+"type": "dialog"
+},
+"64": {
+"next_id": "65",
+"next_id_after": "67",
+"parent_id": "59",
+"replacements": [  ],
+"text": "Nah, can't be awful with you up there!",
+"translation_key": "Nah, can't be awful with you up there!",
+"type": "response"
+},
+"65": {
+"character": "Sarah",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "66",
+"parent_id": "64",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "You really think so?",
+"time": null,
+"translation_key": "You really think so?",
+"type": "dialog"
+},
+"66": {
+"next_id": "23",
+"parent_id": "64",
+"type": "goto"
+},
 "67": {
+"next_id": "27",
+"parent_id": "59",
+"type": "goto"
+},
+"68": {
 "condition": {
 "expression": [ {
-"function": "karma",
+"function": "is_not_resolved",
 "type": "function",
 "value": [ [ {
 "type": "string",
-"value": "Sarah"
+"value": "S4"
 } ] ]
-}, {
-"type": "comparison",
-"value": ">="
-}, {
-"type": "number",
-"value": 3
 } ]
 },
-"next_conditional_id": "69",
-"next_id": "68",
+"next_id": "69",
 "next_id_after": "end",
-"parent_id": "66",
-"type": "condition"
-},
-"68": {
-"next_id": "75",
-"parent_id": "67",
-"type": "goto"
+"replacements": [  ],
+"text": "There won't be music without you, and what's this place without music?!",
+"translation_key": "There won't be music without you, and what's this place without music?!",
+"type": "response"
 },
 "69": {
-"next_conditional_id": "end",
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "S4"
+} ] ],
+"function": "resolve_branch"
+},
 "next_id": "70",
-"next_id_after": "end",
-"parent_id": "66",
-"type": "condition"
+"parent_id": "68",
+"type": "mutation"
 },
 "7": {
 "character": "Sarah",
@@ -897,128 +905,102 @@ lines = {
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "71",
-"parent_id": "69",
+"parent_id": "68",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "I think I'll sit thissssss one out sssssorry.",
+"text": "...Boring might be better than terrible.",
 "time": null,
-"translation_key": "I think I'll sit thissssss one out sssssorry.",
+"translation_key": "...Boring might be better than terrible.",
 "type": "dialog"
 },
 "71": {
-"character": "Player",
-"character_replacements": [  ],
-"inline_mutations": [  ],
 "next_id": "72",
-"parent_id": "69",
-"pauses": {
-},
+"next_id_after": "76",
+"parent_id": "68",
 "replacements": [  ],
-"speeds": [  ],
-"text": "Alright, thanks.",
-"time": null,
-"translation_key": "Alright, thanks.",
-"type": "dialog"
+"responses": PoolStringArray( "71", "73" ),
+"text": "You're probably right.",
+"translation_key": "You're probably right.",
+"type": "response"
 },
 "72": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "Sarah"
-} ] ],
-"function": "complete_character"
-},
-"next_id": "end",
-"parent_id": "69",
-"type": "mutation"
-},
-"74": {
-"next_id": "75",
-"text": "band_questions",
-"type": "title"
-},
-"75": {
 "character": "Sarah",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "76",
+"parent_id": "71",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Alright, I'll do it! Boy will I have a story for the kids! What instrument do you want me to play?",
+"text": "I'd hate to look like a fool up there.",
 "time": null,
-"translation_key": "Alright, I'll do it! Boy will I have a story for the kids! What instrument do you want me to play?",
+"translation_key": "I'd hate to look like a fool up there.",
 "type": "dialog"
 },
-"76": {
-"condition": {
-"expression": [ {
-"function": "instrument_available",
-"type": "function",
-"value": [ [ {
-"type": "string",
-"value": "Guitar"
-} ] ]
-} ]
-},
-"next_id": "77",
-"next_id_after": "end",
+"73": {
+"next_id": "74",
+"next_id_after": "76",
+"parent_id": "68",
 "replacements": [  ],
-"responses": PoolStringArray( "76", "79", "82", "85" ),
-"text": "A Guitarist",
-"translation_key": "A Guitarist",
+"text": "All press is good press!",
+"translation_key": "All press is good press!",
 "type": "response"
 },
-"77": {
+"74": {
 "character": "Sarah",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "78",
-"parent_id": "76",
+"next_id": "75",
+"parent_id": "73",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Okay! Let me know when we're ready!",
+"text": "You know what, yeah! Nothing ventured, nothing gained!",
 "time": null,
-"translation_key": "Okay! Let me know when we're ready!",
+"translation_key": "You know what, yeah! Nothing ventured, nothing gained!",
 "type": "dialog"
 },
-"78": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "Guitar"
-} ], [ {
-"type": "string",
-"value": "Sarah"
-} ] ],
-"function": "assign_instrument"
+"75": {
+"next_id": "23",
+"parent_id": "73",
+"type": "goto"
 },
-"next_id": "end",
-"parent_id": "76",
-"type": "mutation"
+"76": {
+"next_id": "27",
+"parent_id": "68",
+"type": "goto"
 },
-"79": {
-"condition": {
-"expression": [ {
-"function": "instrument_available",
-"type": "function",
-"value": [ [ {
-"type": "string",
-"value": "Drums"
-} ] ]
-} ]
-},
-"next_id": "80",
+"77": {
+"next_id": "78",
 "next_id_after": "end",
 "replacements": [  ],
-"text": "A Drummer",
-"translation_key": "A Drummer",
+"text": "I'll be right back.",
+"translation_key": "I'll be right back.",
 "type": "response"
+},
+"78": {
+"character": "Sarah",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "79",
+"parent_id": "77",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "I'll be right here.",
+"time": null,
+"translation_key": "I'll be right here.",
+"type": "dialog"
+},
+"79": {
+"next_id": "end",
+"parent_id": "77",
+"type": "goto"
 },
 "8": {
 "character": "Player",
@@ -1037,104 +1019,107 @@ lines = {
 "type": "dialog"
 },
 "80": {
-"character": "Sarah",
-"character_replacements": [  ],
-"inline_mutations": [  ],
 "next_id": "81",
-"parent_id": "79",
-"pauses": {
-},
+"next_id_after": "end",
 "replacements": [  ],
-"speeds": [  ],
-"text": "Okay! Let me know when we're ready!",
-"time": null,
-"translation_key": "Okay! Let me know when we're ready!",
-"type": "dialog"
+"text": "So will you do it?",
+"translation_key": "So will you do it?",
+"type": "response"
 },
 "81": {
-"mutation": {
-"args": [ [ {
-"type": "string",
-"value": "Drums"
-} ], [ {
-"type": "string",
-"value": "Sarah"
-} ] ],
-"function": "assign_instrument"
-},
-"next_id": "end",
-"parent_id": "79",
-"type": "mutation"
-},
-"82": {
 "condition": {
 "expression": [ {
-"function": "instrument_available",
+"function": "karma",
 "type": "function",
 "value": [ [ {
 "type": "string",
-"value": "Keyboard"
+"value": "Sarah"
 } ] ]
+}, {
+"type": "comparison",
+"value": ">="
+}, {
+"type": "number",
+"value": 3
 } ]
 },
-"next_id": "83",
+"next_conditional_id": "83",
+"next_id": "82",
 "next_id_after": "end",
-"replacements": [  ],
-"text": "A Keyboardist",
-"translation_key": "A Keyboardist",
-"type": "response"
+"parent_id": "80",
+"type": "condition"
+},
+"82": {
+"next_id": "89",
+"parent_id": "81",
+"type": "goto"
 },
 "83": {
+"next_conditional_id": "end",
+"next_id": "84",
+"next_id_after": "end",
+"parent_id": "80",
+"type": "condition"
+},
+"84": {
 "character": "Sarah",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "84",
-"parent_id": "82",
+"next_id": "85",
+"parent_id": "83",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Okay! Let me know when we're ready!",
+"text": "I think I'll sit thissssss one out sssssorry.",
 "time": null,
-"translation_key": "Okay! Let me know when we're ready!",
+"translation_key": "I think I'll sit thissssss one out sssssorry.",
 "type": "dialog"
 },
-"84": {
+"85": {
+"character": "Player",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "86",
+"parent_id": "83",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Alright, thanks.",
+"time": null,
+"translation_key": "Alright, thanks.",
+"type": "dialog"
+},
+"86": {
 "mutation": {
 "args": [ [ {
 "type": "string",
-"value": "Keyboard"
-} ], [ {
-"type": "string",
 "value": "Sarah"
 } ] ],
-"function": "assign_instrument"
+"function": "complete_character"
 },
 "next_id": "end",
-"parent_id": "82",
+"parent_id": "83",
 "type": "mutation"
 },
-"85": {
-"next_id": "86",
-"next_id_after": "end",
-"replacements": [  ],
-"text": "I need to think about it.",
-"translation_key": "I need to think about it.",
-"type": "response"
+"88": {
+"next_id": "89",
+"text": "band_questions",
+"type": "title"
 },
-"86": {
+"89": {
 "character": "Sarah",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "end",
-"parent_id": "85",
+"next_id": "90",
 "pauses": {
 },
 "replacements": [  ],
 "speeds": [  ],
-"text": "Okay, let me know when you've made up your mind.",
+"text": "Alright, I'll do it! Boy will I have a story for the kids! What instrument do you want me to play?",
 "time": null,
-"translation_key": "Okay, let me know when you've made up your mind.",
+"translation_key": "Alright, I'll do it! Boy will I have a story for the kids! What instrument do you want me to play?",
 "type": "dialog"
 },
 "9": {
@@ -1151,5 +1136,158 @@ lines = {
 "time": null,
 "translation_key": "...",
 "type": "dialog"
+},
+"90": {
+"condition": {
+"expression": [ {
+"function": "instrument_available",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Guitar"
+} ] ]
+} ]
+},
+"next_id": "91",
+"next_id_after": "end",
+"replacements": [  ],
+"responses": PoolStringArray( "90", "93", "96", "99" ),
+"text": "A Guitarist",
+"translation_key": "A Guitarist",
+"type": "response"
+},
+"91": {
+"character": "Sarah",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "92",
+"parent_id": "90",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Okay! Let me know when we're ready!",
+"time": null,
+"translation_key": "Okay! Let me know when we're ready!",
+"type": "dialog"
+},
+"92": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Guitar"
+} ], [ {
+"type": "string",
+"value": "Sarah"
+} ] ],
+"function": "assign_instrument"
+},
+"next_id": "end",
+"parent_id": "90",
+"type": "mutation"
+},
+"93": {
+"condition": {
+"expression": [ {
+"function": "instrument_available",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Drums"
+} ] ]
+} ]
+},
+"next_id": "94",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "A Drummer",
+"translation_key": "A Drummer",
+"type": "response"
+},
+"94": {
+"character": "Sarah",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "95",
+"parent_id": "93",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Okay! Let me know when we're ready!",
+"time": null,
+"translation_key": "Okay! Let me know when we're ready!",
+"type": "dialog"
+},
+"95": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Drums"
+} ], [ {
+"type": "string",
+"value": "Sarah"
+} ] ],
+"function": "assign_instrument"
+},
+"next_id": "end",
+"parent_id": "93",
+"type": "mutation"
+},
+"96": {
+"condition": {
+"expression": [ {
+"function": "instrument_available",
+"type": "function",
+"value": [ [ {
+"type": "string",
+"value": "Keyboard"
+} ] ]
+} ]
+},
+"next_id": "97",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "A Keyboardist",
+"translation_key": "A Keyboardist",
+"type": "response"
+},
+"97": {
+"character": "Sarah",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "98",
+"parent_id": "96",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Okay! Let me know when we're ready!",
+"time": null,
+"translation_key": "Okay! Let me know when we're ready!",
+"type": "dialog"
+},
+"98": {
+"mutation": {
+"args": [ [ {
+"type": "string",
+"value": "Keyboard"
+} ], [ {
+"type": "string",
+"value": "Sarah"
+} ] ],
+"function": "assign_instrument"
+},
+"next_id": "end",
+"parent_id": "96",
+"type": "mutation"
+},
+"99": {
+"next_id": "100",
+"next_id_after": "end",
+"replacements": [  ],
+"text": "I need to think about it.",
+"translation_key": "I need to think about it.",
+"type": "response"
 }
 }
