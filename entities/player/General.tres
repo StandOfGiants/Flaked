@@ -18,7 +18,7 @@ do look_around()
 HIDE: ... [next=1.5]
 
 do sound_fx(\"OhNo\")
-Player: Where are they? We're supposed to perform in [shake rate=25 level=10]half an hour![/shake]
+Player SAD: Where are they? We're supposed to perform in [shake rate=25 level=10]half an hour![/shake]
 do sound_fx(\"PhoneVibe\")
 Phone: [wave amp=25 freq=15]Bzzt! Bzzt! Bzzt![/wave]
 Cal: Hey brobro, [wait=1]my car broke down,[do sound_fx(\"SmallSigh\")] [wait=1]not going to make it!
@@ -33,7 +33,7 @@ do sound_fx(\"Ungh\")
 Player: [speed=0.2][i]aaron i s2g[/i]
 Aaron: [i]sry wrong nmbr[i]
 
-Player: [speed=0.2]...[speed=1]They all bailed[do sound_fx(\"SadAccept\")] on me.
+Player SAD: [speed=0.2]...[speed=1]They all bailed[do sound_fx(\"SadAccept\")] on me.
 Player: If I don't perform, this place will never let us perform here again!
 Player: [shake rate=20 level=10]Ugh what do I do?![/shake]
 do look_around()
@@ -132,7 +132,7 @@ lines = {
 "type": "mutation"
 },
 "13": {
-"character": "Player",
+"character": "Player SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "14",
@@ -340,7 +340,7 @@ lines = {
 "type": "dialog"
 },
 "28": {
-"character": "Player",
+"character": "Player SAD",
 "character_replacements": [  ],
 "inline_mutations": [ [ 18, {
 "args": [ [ {

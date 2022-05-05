@@ -16,7 +16,7 @@ if first_visit(\"Troy\")
 	Troy: Yeah bro, I can shred it! It picks up hella chicks!
 	Player: Yeah cool, listen I need help, my band mates bailed and I need someone to fill in. Can you help me out?
 if is_assigned(\"Troy\")
-	Troy: Let's do a killer set man! I see some chicks eyeing me in the corner!
+	Troy HAPPY: Let's do a killer set man! I see some chicks eyeing me in the corner!
 elif is_complete(\"Troy\")
 	Troy: ...
 else
@@ -36,21 +36,21 @@ else
 	do resolve_branch(\"T1\")
 	Troy: Yeah, but only if you don't suck, bruh.
 	- Yeah... True...
-		Troy: So you do suck, huh?
+		Troy SAD: So you do suck, huh?
 	- But risks are pretty sexy or whatever to right? You know, \"buy the dip\" right?
-		Troy: See these hands? They're diamond hands. I'm gonna HODL this opportunity for all it's worth!
+		Troy HAPPY: See these hands? They're diamond hands. I'm gonna HODL this opportunity for all it's worth!
 		=> correct_answer
 	=> Hub
 - So wait, back to the crypto thing? [if is_not_resolved(\"T2\")]
 	do resolve_branch(\"T2\")
 	Troy: Wanna see my apes? Oh, and check out my cryptopunk! It's my twitter profile pic!
 	- Uh, sure. Show me your... apes.
-		Troy: *proceeds to show you his various NFTs and talks at length about how valuable they're going to be*
+		Troy HAPPY: *proceeds to show you his various NFTs and talks at length about how valuable they're going to be*
 		=> correct_answer
 	- No, I'm good.
-		Troy: Suit yourself. Have fun staying poor.
+		Troy SAD: Suit yourself. Have fun staying poor.
 	- What are apes?
-		Troy: How do you not know about apes? Here. Let me enlighten you.
+		Troy SAD: How do you not know about apes? Here. Let me enlighten you.
 		Troy: *proceeds to show you his various NFTs and talks at length about how valuable they're going to be*
 	=> Hub
 - Your beer cup is empty by the way. [if is_not_resolved(\"T3\")]
@@ -58,34 +58,34 @@ else
 	Troy: I know. I'm going to use it for pong, the game of champions.
 	- You sure? Do you want me to get you a refill?
 		do start_quest(\"get troy a beer\")
-		Troy: Sure, bruh. [wave amp=25 freq=5]FREE BEER![/wave]
+		Troy HAPPY: Sure, bruh. [wave amp=25 freq=5]FREE BEER![/wave]
 		=> END
 	- Is it really the game of champions?
-		Troy: It would be if I could get some action in here!
+		Troy SAD: It would be if I could get some action in here!
 	=> Hub
 - Here's your beer. [if on_quest(\"get troy a beer\") and has_beer()]
 	do finish_quest(\"get troy a beer\")
 	do lose_beer()
-	Troy: Dope man, thanks.
+	Troy HAPPY: Dope man, thanks.
 	=> correct_answer
 - I'd super owe you one. [if is_not_resolved(\"T4\")]
 	do resolve_branch(\"T4\")
 	Troy: I don't like the karma vibes of that bro.
 	- I mean in like a [wave amp=25 freq=5]cosmic[/wave] brotherly way. You know, we uh, support each other?
-		Troy: I'm not into you like that, man.
+		Troy SAD: I'm not into you like that, man.
 	- But you like the karma vibes of crypto?
-		Troy: Crypto is the future!
+		Troy HAPPY: Crypto is the future!
 		=> correct_answer
 	=> Hub
 - C'mon it'll be fun. We could be the start of something rad and, uh, new! [if is_not_resolved(\"T5\")]
 	do resolve_branch(\"T5\")
 	Troy: That is my eternal white whale my dude.
 	- What?
-		Troy: You know, like the book guy? [wait=1]Jack Sparrow?
+		Troy SAD: You know, like the book guy? [wait=1]Jack Sparrow?
 	- Like, drugs?
-		Troy: No,[wait=1] like,[wait=1] you know. [wait=1]Culture?
+		Troy SAD: No,[wait=1] like,[wait=1] you know. [wait=1]Culture?
 	- Yeah, always gotta chase that dream right?
-		Troy: You know it, man.
+		Troy HAPPY: You know it, man.
 		=> correct_answer
 	=> Hub
 - I'll be right back.
@@ -96,22 +96,24 @@ else
 		=> band_questions
 	else
 		Troy: Sorry dude, but I'm busy.
-		Player: Okay. Thanks for your time.
+		Player SAD: Okay. Thanks for your time.
 		do complete_character(\"Troy\")
 
 ~ band_questions
 Troy: Alright man let's do this! What do you need me to play?
 - Guitar [if instrument_available(\"Guitar\")]
-	Troy: WHOOO let's PARTY!
+	Troy HAPPY: WHOOO let's PARTY!
 	do assign_instrument(\"Guitar\", \"Troy\")
 - Drums [if instrument_available(\"Drums\")]
-	Troy: WHOOO let's PARTY!
+	Troy HAPPY: WHOOO let's PARTY!
 	do assign_instrument(\"Drums\", \"Troy\")
 - Keyboard [if instrument_available(\"Keyboard\")]
-	Troy: WHOOO let's PARTY!
+	Troy HAPPY: WHOOO let's PARTY!
 	do assign_instrument(\"Keyboard\", \"Troy\")
 - I need to think about it.
-	Troy: No worries, man."
+	Troy: No worries, man.
+	=> END
+Player HAPPY: Looking forward to playing with you!"
 errors = [  ]
 titles = {
 "Hub": "22",
@@ -142,7 +144,7 @@ lines = {
 "type": "condition"
 },
 "100": {
-"character": "Troy",
+"character": "Troy HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "101",
@@ -167,7 +169,7 @@ lines = {
 } ] ],
 "function": "assign_instrument"
 },
-"next_id": "end",
+"next_id": "108",
 "parent_id": "99",
 "type": "mutation"
 },
@@ -183,14 +185,14 @@ lines = {
 } ]
 },
 "next_id": "103",
-"next_id_after": "end",
+"next_id_after": "108",
 "replacements": [  ],
 "text": "Keyboard",
 "translation_key": "Keyboard",
 "type": "response"
 },
 "103": {
-"character": "Troy",
+"character": "Troy HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "104",
@@ -215,13 +217,13 @@ lines = {
 } ] ],
 "function": "assign_instrument"
 },
-"next_id": "end",
+"next_id": "108",
 "parent_id": "102",
 "type": "mutation"
 },
 "105": {
 "next_id": "106",
-"next_id_after": "end",
+"next_id_after": "108",
 "replacements": [  ],
 "text": "I need to think about it.",
 "translation_key": "I need to think about it.",
@@ -231,7 +233,7 @@ lines = {
 "character": "Troy",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "end",
+"next_id": "107",
 "parent_id": "105",
 "pauses": {
 },
@@ -242,8 +244,27 @@ lines = {
 "translation_key": "No worries, man.",
 "type": "dialog"
 },
+"107": {
+"next_id": "end",
+"parent_id": "105",
+"type": "goto"
+},
+"108": {
+"character": "Player HAPPY",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Looking forward to playing with you!",
+"time": null,
+"translation_key": "Looking forward to playing with you!",
+"type": "dialog"
+},
 "11": {
-"character": "Troy",
+"character": "Troy HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "end",
@@ -467,7 +488,7 @@ lines = {
 "type": "response"
 },
 "31": {
-"character": "Troy",
+"character": "Troy SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "35",
@@ -491,7 +512,7 @@ lines = {
 "type": "response"
 },
 "33": {
-"character": "Troy",
+"character": "Troy HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "34",
@@ -586,7 +607,7 @@ lines = {
 "type": "dialog"
 },
 "40": {
-"character": "Troy",
+"character": "Troy HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "41",
@@ -615,7 +636,7 @@ lines = {
 "type": "response"
 },
 "43": {
-"character": "Troy",
+"character": "Troy SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "47",
@@ -639,7 +660,7 @@ lines = {
 "type": "response"
 },
 "45": {
-"character": "Troy",
+"character": "Troy SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "46",
@@ -756,7 +777,7 @@ lines = {
 "type": "mutation"
 },
 "53": {
-"character": "Troy",
+"character": "Troy HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "54",
@@ -785,7 +806,7 @@ lines = {
 "type": "response"
 },
 "56": {
-"character": "Troy",
+"character": "Troy SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "57",
@@ -866,7 +887,7 @@ lines = {
 "type": "mutation"
 },
 "61": {
-"character": "Troy",
+"character": "Troy HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "62",
@@ -941,7 +962,7 @@ lines = {
 "type": "response"
 },
 "67": {
-"character": "Troy",
+"character": "Troy SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "71",
@@ -965,7 +986,7 @@ lines = {
 "type": "response"
 },
 "69": {
-"character": "Troy",
+"character": "Troy HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "70",
@@ -1060,7 +1081,7 @@ lines = {
 "type": "response"
 },
 "76": {
-"character": "Troy",
+"character": "Troy SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "82",
@@ -1085,7 +1106,7 @@ lines = {
 "type": "response"
 },
 "78": {
-"character": "Troy",
+"character": "Troy SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "82",
@@ -1127,7 +1148,7 @@ lines = {
 "type": "dialog"
 },
 "80": {
-"character": "Troy",
+"character": "Troy HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "81",
@@ -1253,7 +1274,7 @@ lines = {
 "type": "dialog"
 },
 "91": {
-"character": "Player",
+"character": "Player SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "92",
@@ -1310,7 +1331,7 @@ lines = {
 } ]
 },
 "next_id": "97",
-"next_id_after": "end",
+"next_id_after": "108",
 "replacements": [  ],
 "responses": PoolStringArray( "96", "99", "102", "105" ),
 "text": "Guitar",
@@ -1318,7 +1339,7 @@ lines = {
 "type": "response"
 },
 "97": {
-"character": "Troy",
+"character": "Troy HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "98",
@@ -1343,7 +1364,7 @@ lines = {
 } ] ],
 "function": "assign_instrument"
 },
-"next_id": "end",
+"next_id": "108",
 "parent_id": "96",
 "type": "mutation"
 },
@@ -1359,7 +1380,7 @@ lines = {
 } ]
 },
 "next_id": "100",
-"next_id_after": "end",
+"next_id_after": "108",
 "replacements": [  ],
 "text": "Drums",
 "translation_key": "Drums",

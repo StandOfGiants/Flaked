@@ -16,10 +16,10 @@ if first_visit(\"Benny\")
 	Benny: Oh! Yeah I play guitar but I dunno if I can help out, I’m fighting with my girlfriend right now. I don’t know how to fix it!
 	Player: If I help you with your girlfriend, will you help me out?
 if is_assigned(\"Benny\")
-	Benny: Thank you for your help! Let's do this!
+	Benny HAPPY: Thank you for your help! Let's do this!
 elif is_complete(\"Benny\")
-	Benny: She's still super mad at me.
-	Benny: Thanks for trying.
+	Benny SAD: She's still super mad at me.
+	Benny SAD: Thanks for trying.
 	Benny: Good luck with your song.
 else
 	=> Hub
@@ -38,18 +38,18 @@ else
 	do resolve_branch(\"B1\")
 	Benny: I forgot her birthday! [wait=1]I swear I didn't mean to! [wait=1]I just forget things sometimes.
 	- Tell her you're sorry and that you'll make it up to her.
-		Benny: Uhh... she replied \"you'd better\"
+		Benny HAPPY: Uhh... she replied \"you'd better\"
 		=> correct_answer
 	- Everyone forgets things sometimes, tell her to let it go!
-		Benny: Hmm. She didn't seem to like that
+		Benny SAD: Hmm. She didn't seem to like that
 	=> Hub
 - You should tell her you love her. [if is_not_resolved(\"B2\")]
 	do resolve_branch(\"B2\")
 	Benny: I do! Maybe I'm not saying it right?
 	- Tell her \"Hey you know I love you, let's stop fighting\"
-		Benny: Oh no, that just made her more angry!
+		Benny SAD: Oh no, that just made her more angry!
 	- Say \"Hey, I love you a lot and you have every right to be mad at me.\"
-		Benny: ... She says she loves me too. That's good, right?
+		Benny HAPPY: ... She says she loves me too. That's good, right?
 		=> correct_answer
 	=> Hub
 - Send her a meme! [if is_not_resolved(\"B3\")]
@@ -58,32 +58,32 @@ else
 	- Something that says \"Don't be angry with me\".
 		Benny: Uhh, okay.
 		Benny: ...
-		Benny: She's not responding...
+		Benny SAD: She's not responding...
 	- A silly one that you know she likes. Say you thought of her.
 		Benny: Oh, I've got the perfect one!
 		Benny: ...
-		Benny: She sent me a laughing emoji!
+		Benny HAPPY: She sent me a laughing emoji!
 		=> correct_answer
 	=> Hub
 - Just go radio silent for a while. [if is_not_resolved(\"B4\")]
 	do resolve_branch(\"B4\")
 	Benny: Are you sure? I dunno, what if that makes things worse?
 	- She needs to cool off, talking will just make it worse
-		Benny: You think so? I guess I can try that.
+		Benny SAD: You think so? I guess I can try that.
 	- Hm, maybe say that you need some time to think first.
 		Benny: I guess it's better than being yelled at more.
 		Benny: ...
-		Benny: She says she understands.
+		Benny HAPPY: She says she understands.
 		=> correct_answer
 	=> Hub
 - Dedicate the song to her. [if is_not_resolved(\"B5\")]
 	do resolve_branch(\"B5\")
 	Benny: Wait, really?!
 	- Well, we could, couldn't hurt, right?
-		Benny: That's such a good idea! She loves music!
+		Benny HAPPY: That's such a good idea! She loves music!
 		=> correct_answer
 	- Hm, no, you shouldn't reward her for being mad at you...
-		Benny: Yeah, I guess that's true.
+		Benny SAD: Yeah, I guess that's true.
 	=> Hub
 - I'll be right back.
 	Benny: Hurry back, I still don't know what to say to her!
@@ -93,22 +93,24 @@ else
 		=> band_questions
 	else
 		Benny: She's still pretty mad at me, I better go call her. Bye!
-		Player: Good luck.
+		Player SAD: Good luck.
 		do complete_character(\"Benny\")
 
 ~ band_questions
 Benny: She doesn't seem as mad anywore! Thanks for your help! What did you want me to play?
 - Guitar [if instrument_available(\"Guitar\")]
-	Benny: Okay! Let me know when you're ready!
+	Benny HAPPY: Okay! Let me know when you're ready!
 	do assign_instrument(\"Guitar\", \"Benny\")
 - Drums [if instrument_available(\"Drums\")]
-	Benny: Okay! Let me know when you're ready!
+	Benny HAPPY: Okay! Let me know when you're ready!
 	do assign_instrument(\"Drums\", \"Benny\")
 - Keyboard [if instrument_available(\"Keyboard\")]
-	Benny: Okay! Let me know when you're ready!
+	Benny HAPPY: Okay! Let me know when you're ready!
 	do assign_instrument(\"Keyboard\", \"Benny\")
 - I need to think about it.
-	Benny: Okay, let me know when you've made up your mind."
+	Benny: Okay, let me know when you've made up your mind.
+	=> END
+Player HAPPY: Looking forward to playing with you!"
 errors = [  ]
 titles = {
 "Hub": "24",
@@ -139,7 +141,7 @@ lines = {
 "type": "condition"
 },
 "100": {
-"character": "Benny",
+"character": "Benny HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "101",
@@ -164,13 +166,13 @@ lines = {
 } ] ],
 "function": "assign_instrument"
 },
-"next_id": "end",
+"next_id": "105",
 "parent_id": "99",
 "type": "mutation"
 },
 "102": {
 "next_id": "103",
-"next_id_after": "end",
+"next_id_after": "105",
 "replacements": [  ],
 "text": "I need to think about it.",
 "translation_key": "I need to think about it.",
@@ -180,7 +182,7 @@ lines = {
 "character": "Benny",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "end",
+"next_id": "104",
 "parent_id": "102",
 "pauses": {
 },
@@ -191,8 +193,27 @@ lines = {
 "translation_key": "Okay, let me know when you've made up your mind.",
 "type": "dialog"
 },
+"104": {
+"next_id": "end",
+"parent_id": "102",
+"type": "goto"
+},
+"105": {
+"character": "Player HAPPY",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Looking forward to playing with you!",
+"time": null,
+"translation_key": "Looking forward to playing with you!",
+"type": "dialog"
+},
 "11": {
-"character": "Benny",
+"character": "Benny HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "end",
@@ -223,7 +244,7 @@ lines = {
 "type": "condition"
 },
 "13": {
-"character": "Benny",
+"character": "Benny SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "14",
@@ -238,7 +259,7 @@ lines = {
 "type": "dialog"
 },
 "14": {
-"character": "Benny",
+"character": "Benny SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "15",
@@ -448,7 +469,7 @@ lines = {
 "type": "response"
 },
 "33": {
-"character": "Benny",
+"character": "Benny HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "34",
@@ -477,7 +498,7 @@ lines = {
 "type": "response"
 },
 "36": {
-"character": "Benny",
+"character": "Benny SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "37",
@@ -567,7 +588,7 @@ lines = {
 "type": "response"
 },
 "42": {
-"character": "Benny",
+"character": "Benny SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "46",
@@ -591,7 +612,7 @@ lines = {
 "type": "response"
 },
 "44": {
-"character": "Benny",
+"character": "Benny HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "45",
@@ -716,7 +737,7 @@ lines = {
 "type": "dialog"
 },
 "53": {
-"character": "Benny",
+"character": "Benny SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "59",
@@ -770,7 +791,7 @@ lines = {
 "type": "dialog"
 },
 "57": {
-"character": "Benny",
+"character": "Benny HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "58",
@@ -865,7 +886,7 @@ lines = {
 "type": "response"
 },
 "64": {
-"character": "Benny",
+"character": "Benny SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "70",
@@ -919,7 +940,7 @@ lines = {
 "type": "dialog"
 },
 "68": {
-"character": "Benny",
+"character": "Benny HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "69",
@@ -1014,7 +1035,7 @@ lines = {
 "type": "response"
 },
 "75": {
-"character": "Benny",
+"character": "Benny HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "76",
@@ -1043,7 +1064,7 @@ lines = {
 "type": "response"
 },
 "78": {
-"character": "Benny",
+"character": "Benny SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "79",
@@ -1164,7 +1185,7 @@ lines = {
 "type": "dialog"
 },
 "88": {
-"character": "Player",
+"character": "Player SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "89",
@@ -1236,7 +1257,7 @@ lines = {
 } ]
 },
 "next_id": "94",
-"next_id_after": "end",
+"next_id_after": "105",
 "replacements": [  ],
 "responses": PoolStringArray( "93", "96", "99", "102" ),
 "text": "Guitar",
@@ -1244,7 +1265,7 @@ lines = {
 "type": "response"
 },
 "94": {
-"character": "Benny",
+"character": "Benny HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "95",
@@ -1269,7 +1290,7 @@ lines = {
 } ] ],
 "function": "assign_instrument"
 },
-"next_id": "end",
+"next_id": "105",
 "parent_id": "93",
 "type": "mutation"
 },
@@ -1285,14 +1306,14 @@ lines = {
 } ]
 },
 "next_id": "97",
-"next_id_after": "end",
+"next_id_after": "105",
 "replacements": [  ],
 "text": "Drums",
 "translation_key": "Drums",
 "type": "response"
 },
 "97": {
-"character": "Benny",
+"character": "Benny HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "98",
@@ -1317,7 +1338,7 @@ lines = {
 } ] ],
 "function": "assign_instrument"
 },
-"next_id": "end",
+"next_id": "105",
 "parent_id": "96",
 "type": "mutation"
 },
@@ -1333,7 +1354,7 @@ lines = {
 } ]
 },
 "next_id": "100",
-"next_id_after": "end",
+"next_id_after": "105",
 "replacements": [  ],
 "text": "Keyboard",
 "translation_key": "Keyboard",

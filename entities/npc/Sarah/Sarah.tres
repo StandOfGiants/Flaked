@@ -21,7 +21,7 @@ if first_visit(\"Sarah\")
 	Sarah: Wait are you ssssseriousssss?!
 	Player: Yes!
 if is_assigned(\"Sarah\")
-	Sarah: Just let me know when it's time to perform!
+	Sarah HAPPY: Just let me know when it's time to perform!
 elif is_complete(\"Sarah\")
 	Sarah: Hope your performance goes well.
 else
@@ -41,51 +41,51 @@ else
 	do resolve_branch(\"S1\")
 	Sarah: I don't know... It's been so long since I played the drums...
 	- Hm, that could be a problem.
-		Sarah: Yeah, I don't have much time to practice anymore with three kids...
+		Sarah SAD: Yeah, I don't have much time to practice anymore with three kids...
 	- I'm sure you'll be fantastic.
-		Sarah: Really? You think so?
+		Sarah HAPPY: Really? You think so?
 		=> correct_answer
 	=> Hub
 - It'll be fun! [if is_not_resolved(\"S2\")]
 	do resolve_branch(\"S2\")
 	Sarah: ...I did want a night out to do something different.
 	- Yeah! What's more unexpected than getting up on stage and performing?!
-		Sarah: You know, you're right!
+		Sarah HAPPY: You know, you're right!
 		=> correct_answer
 	- Well it's night, alright.
-		Sarah: [wave amp=25 freq=5]Sssssssigh[/wave]
+		Sarah SAD: [wave amp=25 freq=5]Sssssssigh[/wave]
 	- This might be a bit too different.
-		Sarah: I guess so.
+		Sarah SAD: I guess so.
 	=> Hub
 - You can do this! It'll be great! [if is_not_resolved(\"S5\")]
 	do resolve_branch(\"S5\")
 	Sarah: ... You think I look okay enough to be on ssssstage?
 	- Of course! You look great and that's NOT a pick-up line!
-		Sarah: Oh, thank you!
+		Sarah HAPPY: Oh, thank you!
 		=> correct_answer
 	- Better than me, I guess.
-		Sarah: That's a low bar.
+		Sarah SAD: That's a low bar.
 		Sarah: Sssssorry, that was mean.
-		Sarah: I've had a few.
+		Sarah HAPPY: I've had a few.
 	- ...At least we'll match in terribleness.
-		Sarah: Wow... Thanks.
+		Sarah SAD: Wow... Thanks.
 	=> Hub
 - C'mon, what's the worst that could happen? [if is_not_resolved(\"S3\")]
 	do resolve_branch(\"S3\")
 	Sarah: Well, we could be awful.
 	- Probably.
-		Sarah: Yeah I'm not sure if I want to make a fool of myself.
+		Sarah SAD: Yeah I'm not sure if I want to make a fool of myself.
 	- Nah, can't be awful with you up there!
-		Sarah: You really think so?
+		Sarah HAPPY: You really think so?
 		=> correct_answer
 	=> Hub
 - There won't be music without you, and what's this place without music?! [if is_not_resolved(\"S4\")]
 	do resolve_branch(\"S4\")
 	Sarah: ...Boring might be better than terrible.
 	- You're probably right.
-		Sarah: I'd hate to look like a fool up there.
+		Sarah SAD: I'd hate to look like a fool up there.
 	- All press is good press!
-		Sarah: You know what, yeah! Nothing ventured, nothing gained!
+		Sarah HAPPY: You know what, yeah! Nothing ventured, nothing gained!
 		=> correct_answer
 	=> Hub
 - I'll be right back.
@@ -96,22 +96,24 @@ else
 		=> band_questions
 	else
 		Sarah: I think I'll sit thissssss one out sssssorry.
-		Player: Alright, thanks.
+		Player SAD: Alright, thanks.
 		do complete_character(\"Sarah\")
 
 ~ band_questions
 Sarah: Alright, I'll do it! Boy will I have a story for the kids! What instrument do you want me to play?
 - A Guitarist [if instrument_available(\"Guitar\")]
-	Sarah: Okay! Let me know when we're ready!
+	Sarah HAPPY: Okay! Let me know when we're ready!
 	do assign_instrument(\"Guitar\", \"Sarah\")
 - A Drummer [if instrument_available(\"Drums\")]
-	Sarah: Okay! Let me know when we're ready!
+	Sarah HAPPY: Okay! Let me know when we're ready!
 	do assign_instrument(\"Drums\", \"Sarah\")
 - A Keyboardist [if instrument_available(\"Keyboard\")]
-	Sarah: Okay! Let me know when we're ready!
+	Sarah HAPPY: Okay! Let me know when we're ready!
 	do assign_instrument(\"Keyboard\", \"Sarah\")
 - I need to think about it.
-	Sarah: Okay, let me know when you've made up your mind."
+	Sarah: Okay, let me know when you've made up your mind.
+	=> END
+Player HAPPY: Looking forward to playing with you!"
 errors = [  ]
 titles = {
 "Hub": "27",
@@ -141,7 +143,7 @@ lines = {
 "type": "dialog"
 },
 "100": {
-"character": "Sarah",
+"character": "Sarah HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "101",
@@ -166,7 +168,7 @@ lines = {
 } ] ],
 "function": "assign_instrument"
 },
-"next_id": "end",
+"next_id": "108",
 "parent_id": "99",
 "type": "mutation"
 },
@@ -182,14 +184,14 @@ lines = {
 } ]
 },
 "next_id": "103",
-"next_id_after": "end",
+"next_id_after": "108",
 "replacements": [  ],
 "text": "A Keyboardist",
 "translation_key": "A Keyboardist",
 "type": "response"
 },
 "103": {
-"character": "Sarah",
+"character": "Sarah HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "104",
@@ -214,13 +216,13 @@ lines = {
 } ] ],
 "function": "assign_instrument"
 },
-"next_id": "end",
+"next_id": "108",
 "parent_id": "102",
 "type": "mutation"
 },
 "105": {
 "next_id": "106",
-"next_id_after": "end",
+"next_id_after": "108",
 "replacements": [  ],
 "text": "I need to think about it.",
 "translation_key": "I need to think about it.",
@@ -230,7 +232,7 @@ lines = {
 "character": "Sarah",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "end",
+"next_id": "107",
 "parent_id": "105",
 "pauses": {
 },
@@ -239,6 +241,25 @@ lines = {
 "text": "Okay, let me know when you've made up your mind.",
 "time": null,
 "translation_key": "Okay, let me know when you've made up your mind.",
+"type": "dialog"
+},
+"107": {
+"next_id": "end",
+"parent_id": "105",
+"type": "goto"
+},
+"108": {
+"character": "Player HAPPY",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Looking forward to playing with you!",
+"time": null,
+"translation_key": "Looking forward to playing with you!",
 "type": "dialog"
 },
 "11": {
@@ -318,7 +339,7 @@ lines = {
 "type": "condition"
 },
 "16": {
-"character": "Sarah",
+"character": "Sarah HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "end",
@@ -542,7 +563,7 @@ lines = {
 "type": "response"
 },
 "36": {
-"character": "Sarah",
+"character": "Sarah SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "40",
@@ -566,7 +587,7 @@ lines = {
 "type": "response"
 },
 "38": {
-"character": "Sarah",
+"character": "Sarah HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "39",
@@ -661,7 +682,7 @@ lines = {
 "type": "response"
 },
 "45": {
-"character": "Sarah",
+"character": "Sarah HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "46",
@@ -690,7 +711,7 @@ lines = {
 "type": "response"
 },
 "48": {
-"character": "Sarah",
+"character": "Sarah SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "51",
@@ -729,7 +750,7 @@ lines = {
 "type": "dialog"
 },
 "50": {
-"character": "Sarah",
+"character": "Sarah SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "51",
@@ -804,7 +825,7 @@ lines = {
 "type": "response"
 },
 "56": {
-"character": "Sarah",
+"character": "Sarah HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "57",
@@ -833,7 +854,7 @@ lines = {
 "type": "response"
 },
 "59": {
-"character": "Sarah",
+"character": "Sarah SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "60",
@@ -878,7 +899,7 @@ lines = {
 "type": "dialog"
 },
 "61": {
-"character": "Sarah",
+"character": "Sarah HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "64",
@@ -902,7 +923,7 @@ lines = {
 "type": "response"
 },
 "63": {
-"character": "Sarah",
+"character": "Sarah SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "64",
@@ -977,7 +998,7 @@ lines = {
 "type": "response"
 },
 "69": {
-"character": "Sarah",
+"character": "Sarah SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "73",
@@ -1016,7 +1037,7 @@ lines = {
 "type": "response"
 },
 "71": {
-"character": "Sarah",
+"character": "Sarah HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "72",
@@ -1096,7 +1117,7 @@ lines = {
 "type": "response"
 },
 "78": {
-"character": "Sarah",
+"character": "Sarah SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "82",
@@ -1136,7 +1157,7 @@ lines = {
 "type": "dialog"
 },
 "80": {
-"character": "Sarah",
+"character": "Sarah HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "81",
@@ -1262,7 +1283,7 @@ lines = {
 "type": "dialog"
 },
 "91": {
-"character": "Player",
+"character": "Player SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "92",
@@ -1319,7 +1340,7 @@ lines = {
 } ]
 },
 "next_id": "97",
-"next_id_after": "end",
+"next_id_after": "108",
 "replacements": [  ],
 "responses": PoolStringArray( "96", "99", "102", "105" ),
 "text": "A Guitarist",
@@ -1327,7 +1348,7 @@ lines = {
 "type": "response"
 },
 "97": {
-"character": "Sarah",
+"character": "Sarah HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "98",
@@ -1352,7 +1373,7 @@ lines = {
 } ] ],
 "function": "assign_instrument"
 },
-"next_id": "end",
+"next_id": "108",
 "parent_id": "96",
 "type": "mutation"
 },
@@ -1368,7 +1389,7 @@ lines = {
 } ]
 },
 "next_id": "100",
-"next_id_after": "end",
+"next_id_after": "108",
 "replacements": [  ],
 "text": "A Drummer",
 "translation_key": "A Drummer",

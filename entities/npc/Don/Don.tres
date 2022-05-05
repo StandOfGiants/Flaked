@@ -14,7 +14,7 @@ if first_visit(\"Don\")
 	Don: Yeah, I would. The keyboard is like a woman. You have to press the right keys to get the right melody. Gotta know the right tunes to get the right woman. Right woman and life is easy. Me though? I prefer the open road.
 	Player: I-is that so? Listen, I had a cancellation with my band and need someone to fill in? Could you help me out?
 if is_assigned(\"Don\")
-	Don: Let's do a killer set man! I see some chicks eyeing me in the corner!
+	Don HAPPY: Let's do a killer set man! I see some chicks eyeing me in the corner!
 elif is_complete(\"Don\")
 	Don: Hey, I'm busy. If you aren't willing to pay, I don't have time for you.
 else
@@ -34,7 +34,7 @@ else
 	do resolve_branch(\"D1\")
 	Don: If you want this buck, you gotta be willing to put somethin' in the pot. Life ain't free.
 	- How about $10?
-		Don: That's not enough to gas up my bike, bud.
+		Don SAD: That's not enough to gas up my bike, bud.
 	- How about $20?
 		Don: Hmm... Maybe...
 		=> correct_answer
@@ -46,20 +46,20 @@ else
 		Don: Don't we all? Money is what makes the world move.
 		=> correct_answer
 	- But I need your jam to be my jam, you know?
-		Don: What?
-		Don: Did I sell you something earlier?
+		Don SAD: What?
+		Don SAD: Did I sell you something earlier?
 	- Capitalism has chains even here it seems.
-		Don: That hippie nonsense is great until you need to eat.
+		Don SAD: That hippie nonsense is great until you need to eat.
 	=> Hub
 - What if this is the right tune and the right woman is here in the audience? [if is_not_resolved(\"D3\")]
 	do resolve_branch(\"D3\")
 	Don: Been down that road before, three ex wives ain't worth the trouble.
 	- Wow, what did you do to piss them all off?
-		Don: They were crazy.
-		Don: Every. Single. One.
+		Don SAD: They were crazy.
+		Don SAD: Every. Single. One.
 	- They do say that it's insane to try the same thing and expect different results.
-		Don: So you think I'm crazy?
-		Don: Not selling me on the whole \"joining your band\" thing.
+		Don SAD: So you think I'm crazy?
+		Don SAD: Not selling me on the whole \"joining your band\" thing.
 	- Uh... That's rough buddy
 		Don: Truer words have never been spoken.
 		Don: Women, huh?
@@ -70,7 +70,7 @@ else
 	Don: That's what all my clients say, and you know what I tell 'em?
 	Don: We all got dues buddy, that's the price of living [wave amp=25 freq=5]The Good Life[/wave].
 	- Your clients ever take their business elsewhere?
-		Don: It's a free market, they can try.
+		Don SAD: It's a free market, they can try.
 	- Yeah but don't some things go beyond price? Like... the open road? Music? Beauty?
 		Don: It's true you can't put a price on the open road.
 		=> correct_answer
@@ -85,11 +85,11 @@ else
 		Don: ...
 		Don: Are you man enough to handle the answer?
 		- I think so?
-			Don: No you're not.
+			Don SAD: No you're not.
 		- Probably not.
-			Don: I thought so.
+			Don SAD: I thought so.
 	- I ate crabs once. They were pretty good.
-		Don: Yeah. You can thank guys like me for that.
+		Don SAD: Yeah. You can thank guys like me for that.
 	=> Hub
 - I'll be right back.
 	Don: Whatever, buddy.
@@ -99,7 +99,7 @@ else
 		=> band_questions
 	else
 		Don: Sorry buddy, but nothing in life is free. Can't help you.
-		Player: Thanks anyway.
+		Player SAD: Thanks anyway.
 		do complete_character(\"Don\")
 
 ~ band_questions
@@ -107,22 +107,24 @@ if first_visit(\"Don's offer\")
 	Don: You know what? I see a little bit of myself in you.
 	Don: For $20, I'll give you the Don special, what do you say?
 	- I can't afford that!
-		Don: Alright then. Good luck finding someone else.
+		Don SAD: Alright then. Good luck finding someone else.
 		do complete_character(\"Don\")
 		=> END
 	- Deal!
-Don: What tune do you need me to play?
+Don HAPPY: What tune do you need me to play?
 - I need a guitarist. [if instrument_available(\"Guitar\")]
-	Don: Call my name when you're ready.
+	Don HAPPY: Call my name when you're ready.
 	do assign_instrument(\"Guitar\", \"Don\")
 - I need a drummer. [if instrument_available(\"Drums\")]
-	Don: Call my name when you're ready.
+	Don HAPPY: Call my name when you're ready.
 	do assign_instrument(\"Drums\", \"Don\")
 - I need someone on the keyboard. [if instrument_available(\"Keyboard\")]
-	Don: Call my name when you're ready.
+	Don HAPPY: Call my name when you're ready.
 	do assign_instrument(\"Keyboard\", \"Don\")
 - I need to think about it.
-	Don: cool."
+	Don: cool.
+	=> END
+Player HAPPY: Looking forward to playing with you!"
 errors = [  ]
 titles = {
 "Hub": "20",
@@ -178,7 +180,7 @@ lines = {
 "type": "response"
 },
 "102": {
-"character": "Don",
+"character": "Don SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "103",
@@ -219,7 +221,7 @@ lines = {
 "type": "response"
 },
 "106": {
-"character": "Don",
+"character": "Don HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "107",
@@ -244,7 +246,7 @@ lines = {
 } ]
 },
 "next_id": "108",
-"next_id_after": "end",
+"next_id_after": "119",
 "replacements": [  ],
 "responses": PoolStringArray( "107", "110", "113", "116" ),
 "text": "I need a guitarist.",
@@ -252,7 +254,7 @@ lines = {
 "type": "response"
 },
 "108": {
-"character": "Don",
+"character": "Don HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "109",
@@ -277,7 +279,7 @@ lines = {
 } ] ],
 "function": "assign_instrument"
 },
-"next_id": "end",
+"next_id": "119",
 "parent_id": "107",
 "type": "mutation"
 },
@@ -308,14 +310,14 @@ lines = {
 } ]
 },
 "next_id": "111",
-"next_id_after": "end",
+"next_id_after": "119",
 "replacements": [  ],
 "text": "I need a drummer.",
 "translation_key": "I need a drummer.",
 "type": "response"
 },
 "111": {
-"character": "Don",
+"character": "Don HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "112",
@@ -340,7 +342,7 @@ lines = {
 } ] ],
 "function": "assign_instrument"
 },
-"next_id": "end",
+"next_id": "119",
 "parent_id": "110",
 "type": "mutation"
 },
@@ -356,14 +358,14 @@ lines = {
 } ]
 },
 "next_id": "114",
-"next_id_after": "end",
+"next_id_after": "119",
 "replacements": [  ],
 "text": "I need someone on the keyboard.",
 "translation_key": "I need someone on the keyboard.",
 "type": "response"
 },
 "114": {
-"character": "Don",
+"character": "Don HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "115",
@@ -388,13 +390,13 @@ lines = {
 } ] ],
 "function": "assign_instrument"
 },
-"next_id": "end",
+"next_id": "119",
 "parent_id": "113",
 "type": "mutation"
 },
 "116": {
 "next_id": "117",
-"next_id_after": "end",
+"next_id_after": "119",
 "replacements": [  ],
 "text": "I need to think about it.",
 "translation_key": "I need to think about it.",
@@ -404,7 +406,7 @@ lines = {
 "character": "Don",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "end",
+"next_id": "118",
 "parent_id": "116",
 "pauses": {
 },
@@ -413,6 +415,25 @@ lines = {
 "text": "cool.",
 "time": null,
 "translation_key": "cool.",
+"type": "dialog"
+},
+"118": {
+"next_id": "end",
+"parent_id": "116",
+"type": "goto"
+},
+"119": {
+"character": "Player HAPPY",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Looking forward to playing with you!",
+"time": null,
+"translation_key": "Looking forward to playing with you!",
 "type": "dialog"
 },
 "12": {
@@ -579,7 +600,7 @@ lines = {
 "type": "response"
 },
 "29": {
-"character": "Don",
+"character": "Don SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "33",
@@ -742,7 +763,7 @@ lines = {
 "type": "response"
 },
 "41": {
-"character": "Don",
+"character": "Don SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "42",
@@ -757,7 +778,7 @@ lines = {
 "type": "dialog"
 },
 "42": {
-"character": "Don",
+"character": "Don SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "45",
@@ -781,7 +802,7 @@ lines = {
 "type": "response"
 },
 "44": {
-"character": "Don",
+"character": "Don SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "45",
@@ -871,7 +892,7 @@ lines = {
 "type": "dialog"
 },
 "50": {
-"character": "Don",
+"character": "Don SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "51",
@@ -886,7 +907,7 @@ lines = {
 "type": "dialog"
 },
 "51": {
-"character": "Don",
+"character": "Don SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "59",
@@ -910,7 +931,7 @@ lines = {
 "type": "response"
 },
 "53": {
-"character": "Don",
+"character": "Don SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "54",
@@ -925,7 +946,7 @@ lines = {
 "type": "dialog"
 },
 "54": {
-"character": "Don",
+"character": "Don SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "59",
@@ -1074,7 +1095,7 @@ lines = {
 "type": "response"
 },
 "65": {
-"character": "Don",
+"character": "Don SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "69",
@@ -1278,7 +1299,7 @@ lines = {
 "type": "condition"
 },
 "80": {
-"character": "Don",
+"character": "Don SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "85",
@@ -1302,7 +1323,7 @@ lines = {
 "type": "response"
 },
 "82": {
-"character": "Don",
+"character": "Don SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "85",
@@ -1326,7 +1347,7 @@ lines = {
 "type": "response"
 },
 "84": {
-"character": "Don",
+"character": "Don SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "85",
@@ -1382,7 +1403,7 @@ lines = {
 "type": "response"
 },
 "9": {
-"character": "Don",
+"character": "Don HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "end",
@@ -1447,7 +1468,7 @@ lines = {
 "type": "dialog"
 },
 "94": {
-"character": "Player",
+"character": "Player SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "95",

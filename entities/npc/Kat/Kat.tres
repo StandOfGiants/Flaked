@@ -16,7 +16,7 @@ if first_visit(\"Kat\")
 	Kat: I play a mean keyboard when the muse gets me.
 	Player: Really?! Uh, would you like to play keyboard for my band? My usual guy cancelled last second.
 if is_assigned(\"Kat\")
-	Kat: I'll be here until your set starts.
+	Kat HAPPY: I'll be here until your set starts.
 elif is_complete(\"Kat\")
 	Kat: Good luck baby.
 else
@@ -36,46 +36,46 @@ else:
 	do resolve_branch(\"K1\")
 	Kat: Radio top 40 [speed=0.2][shake rate=20 level=10]stuff[/shake]?
 	- No, no, we uh, lean more indie.
-		Kat: Groovy.
+		Kat HAPPY: Groovy.
 		=> correct_answer
 	- Sometimes yeah!
-		Kat: Pop culture aint really my thing.
+		Kat SAD: Pop culture aint really my thing.
 	=> Hub
 - Rock and uh... alternative rock? What are genres anyway? [if is_not_resolved(\"K2\")]
 	do resolve_branch(\"K2\")
 	Kat: That's a deep question, my wife would like you. Cutting edge rock?
 	- I... What even is that? No, I don't think so.
-		Kat: The bleeding edge is too much for most.
+		Kat SAD: The bleeding edge is too much for most.
 	- ...Yes?
-		Kat: Life on the edge is always worth it.
+		Kat HAPPY: Life on the edge is always worth it.
 		=> correct_answer
 	=> Hub
 - Soul, groovy stuff! [if is_not_resolved(\"K3\")]
 	do resolve_branch(\"K3\")
 	Kat: ...Like a 60s [shake rate=20 level=10]cover band[/shake]?
 	- No! Like... experimental. Push the boundaries a little bit stuff.
-		Kat: That's the good stuff, man.
+		Kat HAPPY: That's the good stuff, man.
 		=> correct_answer
 	- Yeah, love me some Woodstock music.
-		Kat: I left the Woodstock music behind [i]at[/i] Woodstock.
+		Kat SAD: I left the Woodstock music behind [i]at[/i] Woodstock.
 	=> Hub
 - Honestly, whatever you want. [if is_not_resolved(\"K4\")]
 	do resolve_branch(\"K4\")
 	Kat: Whatever [i][shake rate=20 level=10]I[/shake][/i] want? So some jazzy synthy theremin vibes...
 	- Uhh... let's not go that far haha... ha.
-		Kat: You scared little boy?
+		Kat SAD: You scared little boy?
 	- We don't have a theremin, but the keyboard is an old Juno-6 from the 80s.
-		Kat: I haven't touched one of those in years, baby. Sounds like a plan.
+		Kat HAPPY: I haven't touched one of those in years, baby. Sounds like a plan.
 		=> correct_answer
 	=> Hub
 - Tonight it could be anything! [if is_not_resolved(\"K5\")]
 	do resolve_branch(\"K5\")
 	Kat: Anything? You ready for an [i][wave amp=30 freq=10]Experience[/wave][/i] buddy?
 	- Yes, help me make an experience!
-		Kat: That's the plan, man.
+		Kat HAPPY: That's the plan, man.
 		=> correct_answer
 	- No. The night is chaotic enough as it is thanks.
-		Kat: You must be a blast at parties.
+		Kat SAD: You must be a blast at parties.
 	=> Hub
 - I'll be back.
 	Kat: Take your time.
@@ -85,22 +85,24 @@ else:
 		=> band_questions
 	else:
 		Kat: Sorry buddy, this doesn't sound like my kinda scene.
-		Player: Okay, thanks anyway.
+		Player SAD: Okay, thanks anyway.
 		do complete_character(\"Kat\")
 
 ~ band_questions
-Kat: This sounds like a groovy time, I'll help you out man. What kind of instrument do you want me to play?
+Kat HAPPY: This sounds like a groovy time, I'll help you out man. What kind of instrument do you want me to play?
 - The Guitar [if instrument_available(\"Guitar\")]
-	Kat: Far out, let's play when you're down.
+	Kat HAPPY: Far out, let's play when you're down.
 	do assign_instrument(\"Guitar\", \"Kat\")
 - Drums [if instrument_available(\"Drums\")]
-	Kat: Far out, let's play when you're down.
+	Kat HAPPY: Far out, let's play when you're down.
 	do assign_instrument(\"Drums\", \"Kat\")
 - The keyboard [if instrument_available(\"Keyboard\")]
-	Kat: Far out, let's play when you're down.
+	Kat HAPPY: Far out, let's play when you're down.
 	do assign_instrument(\"Keyboard\", \"Kat\")
 - I need to think about it.
-	Kat: I'll be here."
+	Kat: I'll be here.
+	=> END
+Player HAPPY: Looking forward to playing with you!"
 errors = [  ]
 titles = {
 "Hub": "22",
@@ -131,7 +133,7 @@ lines = {
 "type": "condition"
 },
 "11": {
-"character": "Kat",
+"character": "Kat HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "end",
@@ -355,7 +357,7 @@ lines = {
 "type": "response"
 },
 "31": {
-"character": "Kat",
+"character": "Kat HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "32",
@@ -384,7 +386,7 @@ lines = {
 "type": "response"
 },
 "34": {
-"character": "Kat",
+"character": "Kat SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "35",
@@ -474,7 +476,7 @@ lines = {
 "type": "dialog"
 },
 "40": {
-"character": "Kat",
+"character": "Kat SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "44",
@@ -498,7 +500,7 @@ lines = {
 "type": "response"
 },
 "42": {
-"character": "Kat",
+"character": "Kat HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "43",
@@ -578,7 +580,7 @@ lines = {
 "type": "response"
 },
 "49": {
-"character": "Kat",
+"character": "Kat HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "50",
@@ -622,7 +624,7 @@ lines = {
 "type": "response"
 },
 "52": {
-"character": "Kat",
+"character": "Kat SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "53",
@@ -697,7 +699,7 @@ lines = {
 "type": "response"
 },
 "58": {
-"character": "Kat",
+"character": "Kat SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "62",
@@ -736,7 +738,7 @@ lines = {
 "type": "dialog"
 },
 "60": {
-"character": "Kat",
+"character": "Kat HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "61",
@@ -816,7 +818,7 @@ lines = {
 "type": "response"
 },
 "67": {
-"character": "Kat",
+"character": "Kat HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "68",
@@ -860,7 +862,7 @@ lines = {
 "type": "dialog"
 },
 "70": {
-"character": "Kat",
+"character": "Kat SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "71",
@@ -981,7 +983,7 @@ lines = {
 "type": "dialog"
 },
 "80": {
-"character": "Player",
+"character": "Player SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "81",
@@ -1013,7 +1015,7 @@ lines = {
 "type": "title"
 },
 "84": {
-"character": "Kat",
+"character": "Kat HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "85",
@@ -1038,7 +1040,7 @@ lines = {
 } ]
 },
 "next_id": "86",
-"next_id_after": "end",
+"next_id_after": "97",
 "replacements": [  ],
 "responses": PoolStringArray( "85", "88", "91", "94" ),
 "text": "The Guitar",
@@ -1046,7 +1048,7 @@ lines = {
 "type": "response"
 },
 "86": {
-"character": "Kat",
+"character": "Kat HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "87",
@@ -1071,7 +1073,7 @@ lines = {
 } ] ],
 "function": "assign_instrument"
 },
-"next_id": "end",
+"next_id": "97",
 "parent_id": "85",
 "type": "mutation"
 },
@@ -1087,14 +1089,14 @@ lines = {
 } ]
 },
 "next_id": "89",
-"next_id_after": "end",
+"next_id_after": "97",
 "replacements": [  ],
 "text": "Drums",
 "translation_key": "Drums",
 "type": "response"
 },
 "89": {
-"character": "Kat",
+"character": "Kat HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "90",
@@ -1134,7 +1136,7 @@ lines = {
 } ] ],
 "function": "assign_instrument"
 },
-"next_id": "end",
+"next_id": "97",
 "parent_id": "88",
 "type": "mutation"
 },
@@ -1150,14 +1152,14 @@ lines = {
 } ]
 },
 "next_id": "92",
-"next_id_after": "end",
+"next_id_after": "97",
 "replacements": [  ],
 "text": "The keyboard",
 "translation_key": "The keyboard",
 "type": "response"
 },
 "92": {
-"character": "Kat",
+"character": "Kat HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "93",
@@ -1182,13 +1184,13 @@ lines = {
 } ] ],
 "function": "assign_instrument"
 },
-"next_id": "end",
+"next_id": "97",
 "parent_id": "91",
 "type": "mutation"
 },
 "94": {
 "next_id": "95",
-"next_id_after": "end",
+"next_id_after": "97",
 "replacements": [  ],
 "text": "I need to think about it.",
 "translation_key": "I need to think about it.",
@@ -1198,7 +1200,7 @@ lines = {
 "character": "Kat",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "end",
+"next_id": "96",
 "parent_id": "94",
 "pauses": {
 },
@@ -1207,6 +1209,25 @@ lines = {
 "text": "I'll be here.",
 "time": null,
 "translation_key": "I'll be here.",
+"type": "dialog"
+},
+"96": {
+"next_id": "end",
+"parent_id": "94",
+"type": "goto"
+},
+"97": {
+"character": "Player HAPPY",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Looking forward to playing with you!",
+"time": null,
+"translation_key": "Looking forward to playing with you!",
 "type": "dialog"
 }
 }

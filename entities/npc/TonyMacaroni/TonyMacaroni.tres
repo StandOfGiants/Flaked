@@ -15,7 +15,7 @@ if first_visit(\"TonyMacaroni\")
 	Player: ...
 	Player: Most of my band cancelled on me for tonight and I need someone to fill in. Would you be... uh... interested?
 if is_assigned(\"TonyMacaroni\")
-	Tony Macaroni: [wave amp=35 freq=10]IS IT TIME?????[/wave]
+	Tony Macaroni HAPPY: [wave amp=35 freq=10]IS IT TIME?????[/wave]
 elif is_complete(\"TonyMacaroni\")
 	Tony Macaroni: ...Hi
 	Tony Macaroni: Good luck
@@ -36,52 +36,52 @@ else
 	do resolve_branch(\"TM1\")
 	Tony Macaroni: ...It's s-short for Antonio Macaronio.
 	- Wow your parents suck huh?
-		Tony Macaroni: You don't know the half of it.
+		Tony Macaroni HAPPY: You don't know the half of it.
 		=> correct_answer
 	- That's uh... cool?
-		Tony Macaroni: I guess so.
+		Tony Macaroni SAD: I guess so.
 	=> Hub
 - Yes, please join my band for the night [if is_not_resolved(\"TM2\")]
 	do resolve_branch(\"TM2\")
 	Tony Macaroni: ...On ONE condition. You will be my friend.
 	- Are you that starved for friends?
 		Tony Macaroni: ...
-		Tony Macaroni: Yes.
+		Tony Macaroni SAD: Yes.
 	- Yeah Tony, I'll uh, be your friend.
-		Tony Macaroni: Really! I have such a hard time making friends!
-		Tony Macaroni: Thank you!
+		Tony Macaroni HAPPY: Really! I have such a hard time making friends!
+		Tony Macaroni HAPPY: Thank you!
 		=> correct_answer
 	- Friendship usually takes a little longer than that...
-		Tony Macaroni: That's what everyone says.
+		Tony Macaroni SAD: That's what everyone says.
 	=> Hub
 - With your instrument prowess, I'd be glad to have you! [if is_not_resolved(\"TM5\")]
 	do resolve_branch(\"TM5\")
 	Tony Macaroni: Are you positive? This is a [wave amp=25 freq=5]big[/wave] decision. [wait=1][shake rate=25 level=15]HUGE[/shake].
 	- Yes Tony. I would like to play music with you.
-		Tony Macaroni: That's all you had to say!
+		Tony Macaroni HAPPY: That's all you had to say!
 		=> correct_answer
 	- It's... just a set, man.
-		Tony Macaroni: It's [shake rate=20 level=10]music[/shake]. Nothing is 'just a set'.
+		Tony Macaroni SAD: It's [shake rate=20 level=10]music[/shake]. Nothing is 'just a set'.
 	=> Hub
 - Get those feelings out with us! [if is_not_resolved(\"TM3\")]
 	Player: *I give him a thumbs up*
 	do resolve_branch(\"TM3\")
 	Tony Macaroni: I... this is all I have ever wanted. Oh Mother and Father would never approve.
 	- ...Okay
-		Tony Macaroni: I need someone that will support me...
+		Tony Macaroni SAD: I need someone that will support me...
 	- Yeah, stick it to 'em!
-		Tony Macaroni: It's so great to have your support!
+		Tony Macaroni HAPPY: It's so great to have your support!
 		=> correct_answer
 	=> Hub
 - Just for the night. [if is_not_resolved(\"TM4\")]
 	do resolve_branch(\"TM4\")
 	Tony Macaroni: A band made once is a band forever!
-	Tony Macaroni: This could be my chance to leave behind my desk job forever!
+	Tony Macaroni HAPPY: This could be my chance to leave behind my desk job forever!
 	- Um, don't quit your day job.
-		Tony Macaroni: But I [shake rate=20 level=10]HATE[/shake] my day job!
+		Tony Macaroni SAD: But I [shake rate=20 level=10]HATE[/shake] my day job!
 	- Follow your passion!
-		Tony Macaroni: I will.
-		Tony Macaroni: I always wait for life to happen at me, but not tonight!
+		Tony Macaroni HAPPY: I will.
+		Tony Macaroni HAPPY: I always wait for life to happen at me, but not tonight!
 		=> correct_answer
 	=> Hub
 - I'll be right back.
@@ -92,25 +92,27 @@ else
 		=> band_questions
 	else
 		Tony Macaroni: I don't think I'm ready for this level of commitment.
-		Player: Uhh... Okay. Thanks anyway.
+		Player SAD: Uhh... Okay. Thanks anyway.
 		do complete_character(\"TonyMacaroni\")
 
 ~ band_questions
-Tony Macaroni: *starts crying*
-Tony Macaroni: I promise I won't let you down.
-Tony Macaroni: Thank you for this opportunity!
-Tony Macaroni: What instrument do you need me to play?
+Tony Macaroni SAD: *starts crying*
+Tony Macaroni SAD: I promise I won't let you down.
+Tony Macaroni HAPPY: Thank you for this opportunity!
+Tony Macaroni HAPPY: What instrument do you need me to play?
 - Guitar [if instrument_available(\"Guitar\")]
-	Tony Macaroni: I LOVE YOU
+	Tony Macaroni HAPPY: I LOVE YOU
 	do assign_instrument(\"Guitar\", \"TonyMacaroni\")
 - Drums [if instrument_available(\"Drums\")]
-	Tony Macaroni: I LOVE YOU
+	Tony Macaroni HAPPY: I LOVE YOU
 	do assign_instrument(\"Drums\", \"TonyMacaroni\")
 - Keyboard [if instrument_available(\"Keyboard\")]
-	Tony Macaroni: I LOVE YOU
+	Tony Macaroni HAPPY: I LOVE YOU
 	do assign_instrument(\"Keyboard\", \"TonyMacaroni\")
 - I need to think about it.
-	Tony Macaroni: Oh. Okay. Hurry back!"
+	Tony Macaroni SAD: Oh. Okay. Hurry back!
+	=> END
+Player HAPPY: Looking forward to playing with you!"
 errors = [  ]
 titles = {
 "Hub": "22",
@@ -125,7 +127,7 @@ lines = {
 "type": "title"
 },
 "10": {
-"character": "Tony Macaroni",
+"character": "Tony Macaroni HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "end",
@@ -150,7 +152,7 @@ lines = {
 } ] ],
 "function": "assign_instrument"
 },
-"next_id": "end",
+"next_id": "107",
 "parent_id": "98",
 "type": "mutation"
 },
@@ -166,14 +168,14 @@ lines = {
 } ]
 },
 "next_id": "102",
-"next_id_after": "end",
+"next_id_after": "107",
 "replacements": [  ],
 "text": "Keyboard",
 "translation_key": "Keyboard",
 "type": "response"
 },
 "102": {
-"character": "Tony Macaroni",
+"character": "Tony Macaroni HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "103",
@@ -198,23 +200,23 @@ lines = {
 } ] ],
 "function": "assign_instrument"
 },
-"next_id": "end",
+"next_id": "107",
 "parent_id": "101",
 "type": "mutation"
 },
 "104": {
 "next_id": "105",
-"next_id_after": "end",
+"next_id_after": "107",
 "replacements": [  ],
 "text": "I need to think about it.",
 "translation_key": "I need to think about it.",
 "type": "response"
 },
 "105": {
-"character": "Tony Macaroni",
+"character": "Tony Macaroni SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
-"next_id": "end",
+"next_id": "106",
 "parent_id": "104",
 "pauses": {
 },
@@ -223,6 +225,25 @@ lines = {
 "text": "Oh. Okay. Hurry back!",
 "time": null,
 "translation_key": "Oh. Okay. Hurry back!",
+"type": "dialog"
+},
+"106": {
+"next_id": "end",
+"parent_id": "104",
+"type": "goto"
+},
+"107": {
+"character": "Player HAPPY",
+"character_replacements": [  ],
+"inline_mutations": [  ],
+"next_id": "",
+"pauses": {
+},
+"replacements": [  ],
+"speeds": [  ],
+"text": "Looking forward to playing with you!",
+"time": null,
+"translation_key": "Looking forward to playing with you!",
 "type": "dialog"
 },
 "11": {
@@ -450,7 +471,7 @@ lines = {
 "type": "response"
 },
 "31": {
-"character": "Tony Macaroni",
+"character": "Tony Macaroni HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "32",
@@ -479,7 +500,7 @@ lines = {
 "type": "response"
 },
 "34": {
-"character": "Tony Macaroni",
+"character": "Tony Macaroni SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "35",
@@ -584,7 +605,7 @@ lines = {
 "type": "dialog"
 },
 "41": {
-"character": "Tony Macaroni",
+"character": "Tony Macaroni SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "48",
@@ -608,7 +629,7 @@ lines = {
 "type": "response"
 },
 "43": {
-"character": "Tony Macaroni",
+"character": "Tony Macaroni HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "44",
@@ -623,7 +644,7 @@ lines = {
 "type": "dialog"
 },
 "44": {
-"character": "Tony Macaroni",
+"character": "Tony Macaroni HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "45",
@@ -652,7 +673,7 @@ lines = {
 "type": "response"
 },
 "47": {
-"character": "Tony Macaroni",
+"character": "Tony Macaroni SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "48",
@@ -743,7 +764,7 @@ lines = {
 "type": "response"
 },
 "53": {
-"character": "Tony Macaroni",
+"character": "Tony Macaroni HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "54",
@@ -772,7 +793,7 @@ lines = {
 "type": "response"
 },
 "56": {
-"character": "Tony Macaroni",
+"character": "Tony Macaroni SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "57",
@@ -877,7 +898,7 @@ lines = {
 "type": "response"
 },
 "63": {
-"character": "Tony Macaroni",
+"character": "Tony Macaroni SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "67",
@@ -901,7 +922,7 @@ lines = {
 "type": "response"
 },
 "65": {
-"character": "Tony Macaroni",
+"character": "Tony Macaroni HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "66",
@@ -986,7 +1007,7 @@ lines = {
 "type": "dialog"
 },
 "71": {
-"character": "Tony Macaroni",
+"character": "Tony Macaroni HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "72",
@@ -1011,7 +1032,7 @@ lines = {
 "type": "response"
 },
 "73": {
-"character": "Tony Macaroni",
+"character": "Tony Macaroni SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "78",
@@ -1035,7 +1056,7 @@ lines = {
 "type": "response"
 },
 "75": {
-"character": "Tony Macaroni",
+"character": "Tony Macaroni HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "76",
@@ -1050,7 +1071,7 @@ lines = {
 "type": "dialog"
 },
 "76": {
-"character": "Tony Macaroni",
+"character": "Tony Macaroni HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "77",
@@ -1176,7 +1197,7 @@ lines = {
 "type": "dialog"
 },
 "87": {
-"character": "Player",
+"character": "Player SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "88",
@@ -1224,7 +1245,7 @@ lines = {
 "type": "title"
 },
 "91": {
-"character": "Tony Macaroni",
+"character": "Tony Macaroni SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "92",
@@ -1238,7 +1259,7 @@ lines = {
 "type": "dialog"
 },
 "92": {
-"character": "Tony Macaroni",
+"character": "Tony Macaroni SAD",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "93",
@@ -1252,7 +1273,7 @@ lines = {
 "type": "dialog"
 },
 "93": {
-"character": "Tony Macaroni",
+"character": "Tony Macaroni HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "94",
@@ -1266,7 +1287,7 @@ lines = {
 "type": "dialog"
 },
 "94": {
-"character": "Tony Macaroni",
+"character": "Tony Macaroni HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "95",
@@ -1291,7 +1312,7 @@ lines = {
 } ]
 },
 "next_id": "96",
-"next_id_after": "end",
+"next_id_after": "107",
 "replacements": [  ],
 "responses": PoolStringArray( "95", "98", "101", "104" ),
 "text": "Guitar",
@@ -1299,7 +1320,7 @@ lines = {
 "type": "response"
 },
 "96": {
-"character": "Tony Macaroni",
+"character": "Tony Macaroni HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "97",
@@ -1324,7 +1345,7 @@ lines = {
 } ] ],
 "function": "assign_instrument"
 },
-"next_id": "end",
+"next_id": "107",
 "parent_id": "95",
 "type": "mutation"
 },
@@ -1340,14 +1361,14 @@ lines = {
 } ]
 },
 "next_id": "99",
-"next_id_after": "end",
+"next_id_after": "107",
 "replacements": [  ],
 "text": "Drums",
 "translation_key": "Drums",
 "type": "response"
 },
 "99": {
-"character": "Tony Macaroni",
+"character": "Tony Macaroni HAPPY",
 "character_replacements": [  ],
 "inline_mutations": [  ],
 "next_id": "100",
