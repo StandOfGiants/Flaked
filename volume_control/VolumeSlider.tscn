@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://volume_control/VolumeSlider.gd" type="Script" id=1]
+[ext_resource path="res://volume_control/VolumeSliderGrabber.tres" type="Texture" id=2]
+[ext_resource path="res://fonts/BANDEM-BOLD.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://chat_overlay/selection-boop.wav" type="AudioStream" id=4]
+
+[sub_resource type="StyleBoxLine" id=2]
+color = Color( 0.466667, 0.623529, 0.639216, 1 )
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 10
+
+[sub_resource type="StyleBoxLine" id=4]
+color = Color( 0.380392, 0.894118, 0.713726, 1 )
+thickness = 10
+
+[sub_resource type="StyleBoxLine" id=3]
+color = Color( 0.380392, 0.894118, 0.858824, 1 )
+thickness = 10
+
+[sub_resource type="DynamicFont" id=5]
+size = 40
+extra_spacing_top = 16
+font_data = ExtResource( 3 )
+
+[node name="VolumeSlider" type="HSlider"]
+margin_left = -129.0
+margin_top = -7.0
+margin_right = 129.0
+margin_bottom = 18.0
+rect_pivot_offset = Vector2( 60, -39 )
+custom_icons/grabber_disabled = ExtResource( 2 )
+custom_icons/grabber_highlight = ExtResource( 2 )
+custom_icons/grabber = ExtResource( 2 )
+custom_styles/slider = SubResource( 2 )
+custom_styles/grabber_area_highlight = SubResource( 4 )
+custom_styles/grabber_area = SubResource( 3 )
+min_value = -20.0
+max_value = 0.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -26.0
+margin_top = -27.5
+margin_right = -12.0
+margin_bottom = 28.5
+grow_horizontal = 0
+custom_fonts/font = SubResource( 5 )
+text = "Global"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TestSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[connection signal="value_changed" from="." to="." method="_on_value_changed"]

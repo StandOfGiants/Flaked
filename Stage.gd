@@ -53,9 +53,13 @@ func position_guitar():
 			$Performance/Guitar.visible = false
 
 	$Performance/Drummer.translation.y = 0.12
+	$Performance/DrumStool.visible = false
 	match GameState.who_plays("Drums"):
 		"Sarah":
 			$Performance/Drummer.translation.y = 0.5
+		"TonyMacaroni":
+			$Performance/Drummer.translation.y = 0.92
+			$Performance/DrumStool.visible = true
 
 	$Performance/Keyboardist.translation.y = 0
 	$Performance/Stool.visible = false

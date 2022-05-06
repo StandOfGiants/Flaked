@@ -4,10 +4,16 @@ extends Control
 # var a = 2
 # var b = "text"
 
+onready var main_menu = $Main
+onready var text_menu = $Main/TextMenu
+onready var volume_sliders = $VolumeSliders
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass  # Replace with function body.
+	main_menu.visible = true
+	volume_sliders.visible = false
+	volume_sliders.active = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,6 +24,7 @@ func _process(_delta):
 
 func _on_TextMenu_new_game():
 	$Main.visible = false
+	text_menu.active = false
 	$EnterName.visible = true
 	$EnterName/TextEdit.grab_focus()
 
@@ -37,3 +44,19 @@ func _on_TextEdit_text_entered(new_text: String):
 
 func _on_Button_pressed():
 	start($EnterName/TextEdit.text)
+
+
+func _on_TextMenu_go_to(screen: String):
+	match screen:
+		"volume":
+			text_menu.active = false
+			main_menu.visible = false
+			volume_sliders.active = true
+			volume_sliders.visible = true
+
+
+func _on_VolumeSliders_exit():
+	text_menu.active = true
+	main_menu.visible = true
+	volume_sliders.active = false
+	volume_sliders.visible = false

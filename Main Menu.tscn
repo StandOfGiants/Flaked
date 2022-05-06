@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://fonts/BANDEM-BOLD.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://MainMenuBg.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://MainMenuTextMenu.gd" type="Script" id=5]
 [ext_resource path="res://Main Menu.gd" type="Script" id=6]
 [ext_resource path="res://chat_overlay/Open_Sans/OpenSans-Regular.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://volume_control/VolumeSliders.tscn" type="PackedScene" id=8]
 
 [sub_resource type="DynamicFont" id=4]
 size = 23
@@ -26,6 +27,10 @@ font_data = ExtResource( 1 )
 [sub_resource type="DynamicFont" id=3]
 size = 35
 extra_spacing_top = 10
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 88
 font_data = ExtResource( 1 )
 
 [node name="Main Menu" type="Control"]
@@ -104,9 +109,9 @@ __meta__ = {
 
 [node name="TextMenu" type="GridContainer" parent="Main"]
 margin_left = -4.73407
-margin_top = -54.0
+margin_top = -94.0
 margin_right = 35.2659
-margin_bottom = -14.0
+margin_bottom = -54.0
 grow_horizontal = 2
 script = ExtResource( 5 )
 __meta__ = {
@@ -159,6 +164,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="VolumeSliders" parent="." instance=ExtResource( 8 )]
+margin_left = -296.0
+margin_top = -91.5
+margin_right = 296.0
+margin_bottom = 91.5
+
+[node name="Label" type="Label" parent="VolumeSliders"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -155.0
+margin_top = -82.0
+margin_right = 155.0
+margin_bottom = 7.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 5 )
+text = "Volume"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="go_to" from="Main/TextMenu" to="." method="_on_TextMenu_go_to"]
 [connection signal="new_game" from="Main/TextMenu" to="." method="_on_TextMenu_new_game"]
 [connection signal="pressed" from="EnterName/Button" to="." method="_on_Button_pressed"]
 [connection signal="text_entered" from="EnterName/TextEdit" to="." method="_on_TextEdit_text_entered"]
+[connection signal="exit" from="VolumeSliders" to="." method="_on_VolumeSliders_exit"]

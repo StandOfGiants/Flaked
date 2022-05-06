@@ -1,0 +1,13 @@
+[remap]
+
+importer="image"
+type="Image"
+path="res://.import/froggyman_slider.png-dc5d6eb36f7b728a066398c89939c8fc.image"
+
+[deps]
+
+source_file="res://entities/player/froggyman_slider.png"
+dest_files=[ "res://.import/froggyman_slider.png-dc5d6eb36f7b728a066398c89939c8fc.image" ]
+
+[params]
+

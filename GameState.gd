@@ -4,6 +4,7 @@ signal update_beers(amount)
 signal update_money(amount)
 
 var state = {"money": 30}
+var preferences = {}
 const KEYBOARD = "Keyboard"
 
 
@@ -261,22 +262,45 @@ func lose_money(amount: int):
 	save_data()
 
 
+func get_volume(bus: String):
+	var key = "%s volume" % bus
+	if key in preferences:
+		return preferences[key]
+	return null
+
+
+func set_volume(bus: String, decibel: float):
+	var key = "%s volume" % bus
+	preferences[key] = decibel
+	save_data()
+
+
 func save_data():
 	var save_game = File.new()
 	save_game.open("user://savegame.save", File.WRITE)
 	save_game.store_line(to_json(state))
 	save_game.close()
 
+	var preferences_file = File.new()
+	preferences_file.open("user://preferences.json", File.WRITE)
+	preferences_file.store_line(to_json(preferences))
+	preferences_file.close()
+
 
 func load_data():
 	var save_game = File.new()
-	if not save_game.file_exists("user://savegame.save"):
-		return
+	if save_game.file_exists("user://savegame.save"):
+		save_game.open("user://savegame.save", File.READ)
+		state = parse_json(save_game.get_line())
 
-	save_game.open("user://savegame.save", File.READ)
-	state = parse_json(save_game.get_line())
+		save_game.close()
 
-	save_game.close()
+	var preferences_file = File.new()
+	if preferences_file.file_exists("user://preferences.json"):
+		preferences_file.open("user://preferences.json", File.READ)
+		preferences = parse_json(preferences_file.get_line())
+
+		preferences_file.close()
 
 
 func clear_data():

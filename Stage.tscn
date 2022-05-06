@@ -156,7 +156,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35308, 0.0861664, -0.804183
 who = "Kat"
 
 [node name="Drummer" parent="Performance" instance=ExtResource( 16 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.12135, 0.558763, -0.560464 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.12135, 0.920133, -0.560464 )
+who = "TonyMacaroni"
 
 [node name="Guitarist" parent="Performance" instance=ExtResource( 16 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.780529, 0.215636, 0.725302 )
@@ -164,6 +165,9 @@ who = "Kat"
 
 [node name="Stool" parent="Performance" instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.36908, 0.161141, -0.827544 )
+
+[node name="DrumStool" parent="Performance" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10137, 0.161141, -0.57682 )
 
 [node name="Drums" parent="." instance=ExtResource( 13 )]
 transform = Transform( 0.971155, 0, 0.238449, 0, 1, 0, -0.238449, 0, 0.971155, 1.97327, 0.174886, -0.318846 )
