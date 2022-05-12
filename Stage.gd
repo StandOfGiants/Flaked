@@ -20,15 +20,20 @@ func _process(_delta):
 	player_was_inside = player_inside
 
 
+var bgm_restore = 0
+
+
 func quiet_down():
 	position_guitar()
 	$Performance/Guitarist.who = GameState.who_plays("Guitar")
+
 	$Performance/Keyboardist.who = GameState.who_plays("Keyboard")
 	$Performance/Drummer.who = GameState.who_plays("Drums")
 
 	var sfx = AudioServer.get_bus_index("SFX")
 	AudioServer.set_bus_volume_db(sfx, -20)
 	var bgm = AudioServer.get_bus_index("BGM")
+	bgm_restore = AudioServer.get_bus_volume_db(bgm)
 	AudioServer.set_bus_volume_db(bgm, -20)
 
 
@@ -71,6 +76,8 @@ func position_guitar():
 func play_song():
 	if $"Main BG".playing:
 		$"Main BG".stop()
+		var bgm = AudioServer.get_bus_index("BGM")
+		AudioServer.set_bus_volume_db(bgm, bgm_restore)
 
 		$Music/Bass.play()
 		if not GameState.instrument_available("Drums"):
